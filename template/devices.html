@@ -1,0 +1,38 @@
+<script id="device" type="text/html">
+<div class="menu_dropdown bk_2">
+		 {{each list value i }}
+				<dl id="{{value.id}}">
+					<div class="{{value.active}}">
+						<dt class="check-box">
+							<input type="checkbox" id="{{value.id}}">
+							<label for="{{value.id}}"><i class="iconfont iconfont-dingwei"></i>{{value.title}}</label>
+							<i class="iconfont iconfont-arrow2-bottom menu_dropdown-arrow"></i>
+						</dt>
+
+						<dd 
+						{{if value.active=='selected'}}
+							style="display: block;"
+						{{/if}}
+						>
+							<ul>
+								{{include 'chileiList' value}}  
+								
+							</ul>
+						</dd>
+					</div>
+					
+				</dl>
+		{{/each}}
+	</div>
+</script>
+
+<script id="chileiList" type="text/html">
+{{each list value i}}
+	<li class="{{value.active}}">
+		<div class="check-box">
+			<input type="checkbox" id="{{value.id}}">
+			<label for="{{value.id}}">{{value.title}}</label>
+		</div>
+	</li>
+{{/each}}
+</script>

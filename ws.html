@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebSocket Chat</title>
+</head>
+<body>
+<h1>WebSocket Chat</h1>
+<section id="content"></section>
+<input id="message" type="text"/>
+
+<button id="fs" onclick="message()">发送数据</button>
+
+<script type="text/javascript" src="ws.js" ></script>
+<script type="text/javascript">
+
+var ws =new ws("ws://localhost:80/KTM/websocket");
+
+function message(){
+	if(ws.getIsW()){
+		var json={};
+		json[cmdType]=cmdType;
+		json[session]=session;
+		json[devIdno]=devIdno;
+		json[devIdnos]=devIdnos;
+		ws.sendWs(json);
+	}
+}
+
+//jQuery.parseJSON()
+
+//JSON.stringify
+//klsstt
+
+</script>
+</body>
+</html>

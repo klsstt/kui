@@ -1,0 +1,25 @@
+<script id="aside" type="text/html">
+<div class="menu_dropdown bk_2">
+		 {{each list value i }}
+				<dl id="{{value.id}}">
+					<dt class="{{value.active}}"><i class="iconfont">&#xe616;</i>{{value.title}}<i class="iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+					<dd 
+					{{if value.active=='selected'}}
+						style="display: block;"
+					{{/if}}
+					>
+						<ul>
+							{{include 'chileiList' value}}  
+							
+						</ul>
+					</dd>
+				</dl>
+		{{/each}}
+	</div>
+</script>
+
+<script id="chileiList" type="text/html">
+{{each list value i}}
+	<li class="{{value.active}}"><a href="{{value.url}}" title="{{value.title}}">{{value.title}}</a></li>
+{{/each}}
+</script>
