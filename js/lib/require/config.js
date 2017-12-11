@@ -10,37 +10,40 @@ var skin=getCookie("Huiskin");
 if(skin==null||skin==""){
 		skin="default";
 }
-var baseUrl="http://localhost:6631/";
+var baseUrl="http://localhost:81/";
 require.config({
 	baseUrl:'js',
-	//urlArgs:'v='+(new Date()).getTime(),//Çå³ş»º´æ
-	paths : {//¶¨ÒåjsÎÄ¼şÂ·¾¶²»ĞèÒª¼Ójs»á×Ô¶¯¼ÓÔØbaseUrlÇ°×º
+	//urlArgs:'v='+(new Date()).getTime(),//æ¸…æ¥šç¼“å­˜
+	paths : {//å®šä¹‰jsæ–‡ä»¶è·¯å¾„ä¸éœ€è¦åŠ jsä¼šè‡ªåŠ¨åŠ è½½baseUrlå‰ç¼€
 		'jquery':'lib/jquery/1.9.1/jquery.min',
-		'async':'lib/require/requirejs-plugins-master/src/async',//requireÒì²½js¼ÓÔØ²å¼ş£¬µØÍ¼×¨ÓÃ
-		"text":"lib/require/text",//requireÎÄ¼şµ¼Èë²å¼ş
-		'css':'lib/require/require.css',//require cssÎÄ¼şµ¼Èë²å¼ş
-		'store':'lib/store',//±¾µØ´æ´¢²å¼ş
+		'async':'lib/require/requirejs-plugins-master/src/async',//requireå¼‚æ­¥jsåŠ è½½æ’ä»¶ï¼Œåœ°å›¾ä¸“ç”¨
+		"text":"lib/require/text",//requireæ–‡ä»¶å¯¼å…¥æ’ä»¶
+		'css':'lib/require/require.css',//require cssæ–‡ä»¶å¯¼å…¥æ’ä»¶
+		'store':'lib/store',//æœ¬åœ°å­˜å‚¨æ’ä»¶
 		
-		'jquery.validate':'lib/jquery.validation/1.14.0/jquery.validate',
+		'jquery.validate':'lib/jquery.validation/1.14.0/jquery.validate',//jqueryåº“æ’ä»¶æ¨¡å—
 		'validate-methods':'lib/jquery.validation/1.14.0/validate-methods',
 		'messages_zh':'lib/jquery.validation/1.14.0/messages_zh',
 		
-		'layer':'lib/layer/2.4/layer',
+		'layer':'lib/layer/2.4/layer',//layeræ’ä»¶æ¨¡å—
 		
-		'k':'k+/js/k',
-		'k-blank':'k+/js/k-blank',
+		'kui':'common/kui',//kuiæ’ä»¶æ¨¡å—
+		'example':'../example/example',
+		'example-css':'../example/example.css',
 		
-		'art-template': 'lib/art-template/template-web',
+		'art-template': 'lib/art-template/template-web',//æ¨¡æ¿æ’ä»¶æ¨¡å—
+
+		'bootstrap-select':'lib/bootstrap-select/bootstrap-select.min',
 		
-		'jdataTables':'lib/datatables/1.10.0/jquery.dataTables.min',
+		'jdataTables':'lib/datatables/1.10.0/jquery.dataTables.min',//è¡¨æ ¼æ’ä»¶æ¨¡å—
 		'bdataTables':'lib/datatables/1.10.0/dataTables.bootstrap.min',
 		'fixedHeader':'lib/datatables/fixedHeade/dataTables.fixedHeader.min',
 
-		'bdButton':'lib/datatables/buttons/dataTables.buttons.min',
+		'bdButton':'lib/datatables/buttons/dataTables.buttons.min',//å‰ç«¯å¯¼å‡ºæ’ä»¶æ¨¡å—
 		'bhtml5':'lib/datatables/buttons/buttons.html5.min',
 		'bjszip':'lib/datatables/buttons/jszip.min',
 	
-		'ztree':'lib/zTree/v3/js/jquery.ztree.all-3.5.min',
+		'ztree':'lib/zTree/v3/js/jquery.ztree.all-3.5.min',//ztreeæ’ä»¶æ¨¡å—
 		'ztree-exedit':'lib/zTree/v3/js/jquery.ztree.exedit.min',
 
 		
@@ -49,38 +52,36 @@ require.config({
 		
 		'tableHtml2canvas':'lib/tableExport/libs/html2canvas/html2canvas.min',
 		
-		'tableJspdf':'lib/tableExport/libs/jsPDF/jspdf.min',
+		'tableJspdf':'lib/tableExport/libs/jsPDF/jspdf.min',//å‰ç«¯å¯¼å‡ºæ’ä»¶æ¨¡å—
 		'tablePdfAutotable':'lib/tableExport/libs/jsPDF-AutoTable/jspdf.plugin.autotable',
 		'tablePdfmake':'lib/tableExport/libs/pdfMake/pdfmake.min',
 		'tableVfs':'lib/tableExport/libs/pdfMake/vfs_fonts',
 		
 		'tableExport':'lib/tableExport/tableExport',
 
-		'bmap':'http://api.map.baidu.com/api?v=2.0&ak=kvNOFS7CVK5EjqWrNBWEbFiEaH7G758U',
+		'bmap':'http://api.map.baidu.com/api?v=2.0&ak=kvNOFS7CVK5EjqWrNBWEbFiEaH7G758U',//åœ°å›¾æ¨¡å—
 		
-		'header':'../template/header.html',
-		'devices':'../template/devices.html',
-		'aside':'../template/aside.html'
+		'prettify':'lib/prettify/prettify',
+
+		'header':'../template/kui_header.html',//ç½‘é¡µæ¨¡æ¿æ¨¡å—
+		'example-page':'../template/kui_example.html'
 		
 		
 	}
 	
-	//°üº¬ÆäËü·ÇAMD¹æ·¶µÄJS¿ò¼Ü  
+	//åŒ…å«å…¶å®ƒéAMDè§„èŒƒçš„JSæ¡†æ¶  
     ,shim:{  
 		'store':['jquery'],
 		'messages_zh': ['jquery'],
 		'jquery.validate': ['jquery'],
 		'validate-methods': ['jquery.validate','messages_zh'],
 		'layer':{
-			deps:['css!lib/layer/2.4/skin/layer','jquery']
+			deps:['css!lib/layer/2.4/skin/layer','jquery']//åŠ è½½layerå¼¹çª—æ ·å¼
 		},
-		'k':{
-            deps:['css!k+/css/k.css','css!lib/iconfont/iconfont','css!lib/iconfont/zenicon','css!k+/css/style','jquery']
+		'kui':{
+            deps:['css!/css/kui','css!/css/lib/font-awesome-4.7/css/font-awesome.min','css!/skin/'+skin+'/skin','jquery']//åŠ è½½kuiä»¥åŠå­—ä½“æ–‡ä»¶å’Œç½‘ç«™ä¸»é¢˜
         },
 		
-		'k-blank':{
-			deps:['css!k+/css/k-blank','css!k+/skin/'+skin+'/skin','k','jquery']
-		},
 		'bdataTables':{
 			deps:['css!lib/datatables/1.10.0/dataTables.bootstrap','jquery','jdataTables']
 		},
@@ -106,7 +107,16 @@ require.config({
 		},
 		'bmap': {
             exports: 'bmap'
-        },
+		},
+		'example':{
+			deps:['css!../example/example','kui']
+		},
+		'prettify':{
+			deps:['css!lib/prettify/prettify','jquery']
+		},
+		'bootstrap-select':{
+			deps:['css!lib/bootstrap-select/bootstrap-select','jquery']
+		},
 		'template': {
             exports: 'template'
         }

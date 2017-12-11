@@ -1,0 +1,3208 @@
+<script id="page-index" type="text/html">
+    <div class="kui-content">
+            <div class="panel">
+                <div class="panel-heading">
+                        <h3>KUI 通用管理系统快速开发框架</h3>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                            <a href="javascript:;">
+                                                    <img class="media-object" src="kui-logo.png" alt="...">
+                                                </a>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <ul class="list-group list-group-full">
+                                            <li class="list-group-item">KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。
+                                            </li>
+                                            <li class="list-group-item">您可以 KUI 为基础，快速开发各种后台系统，如CMS、OA、CRM、ERP、POS、GPS等。</li>
+                                            <li class="list-group-item">KUI 涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+
+                            </div>
+                        </div>
+                </div>
+                      
+            </div>
+    </div>
+</script>
+<script id="page-row" type="text/html">
+    <div class="kui-header">
+            <h1 class="kui-title">栅格系统</h1>
+            <div class="kui-header-actions">
+                <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-pencil" aria-hidden="true">啊</i>
+                </button>
+                <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-refresh" aria-hidden="true">是</i>
+                </button>
+                <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-settings" aria-hidden="true">的</i>
+                </button>
+            </div>
+    </div>
+    <div class="kui-content">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="example-wrap">
+                        <h4 class="example-title">栅格脚手架</h4>
+                        <p>采用 <a href="https://getbootstrap.com/docs/3.3/css/" target="_blank">Bootstrap3</a> 的栅格设计。</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        超小屏幕
+                                        <small>手机 (&lt;768px)</small>
+                                    </th>
+                                    <th>
+                                        小屏幕
+                                        <small>平板 (≥768px)</small>
+                                    </th>
+                                    <th>
+                                        中等屏幕
+                                        <small>桌面显示器 (≥992px)</small>
+                                    </th>
+                                    <th>
+                                        大屏幕
+                                        <small>大桌面显示器 (≥1200px)</small>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th class="text-nowrap">栅格系统行为</th>
+                                    <td>总是水平排列</td>
+                                    <td colspan="3">开始是堆叠在一起的，当大于阈值时将变为水平排列</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap"><code>.container</code> 最大宽度</th>
+                                    <td>None（自动）</td>
+                                    <td>750px</td>
+                                    <td>970px</td>
+                                    <td>1170px</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">类前缀</th>
+                                    <td><code>.col-xs-</code></td>
+                                    <td><code>.col-sm-</code></td>
+                                    <td><code>.col-md-</code></td>
+                                    <td><code>.col-lg-</code></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">列数</th>
+                                    <td colspan="4">12</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">最大列宽</th>
+                                    <td class="text-muted">自动</td>
+                                    <td>~62px</td>
+                                    <td>~81px</td>
+                                    <td>~97px</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">槽宽</th>
+                                    <td colspan="4">24px （每列左右均有 12px 的 padding）</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">可嵌套</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">偏移</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">列排序</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">堆叠与水平排列</h4>
+                                    <p>使用单一的一组 <code>.col-md-*</code>
+                                        栅格，您就可以创建一个基本的栅格系统，在手机和平板设备上一开始是堆叠在一起的（超小屏幕到小屏幕这一范围），在桌面（中等）屏幕设备上变为水平排列。将列(col-*-*)放置于任何
+                                        <code>.row</code> 元素内即可。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="example-col">.col-md-2</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="example-col">.col-md-8</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="example-col">.col-md-4</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="example-col">.col-md-4</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="example-col">.col-md-4</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="example-col">.col-md-4</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="example-col">.col-md-6</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="example-col">.col-md-6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">移动设备和桌面浏览器</h4>
+                                    <p>如果您不希望在小屏幕设备上所有列都堆叠在一起，可以使用针对超小屏幕和中等屏幕设备所定义的
+                                        <code>.col-xs-*</code>、<code>.col-md-*</code> 。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <div class="example-col">.col-xs-12 .col-md-8</div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-4">
+                                                <div class="example-col">.col-xs-6 .col-md-4</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-md-4">
+                                                <div class="example-col">.col-xs-6 .col-md-4</div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-4">
+                                                <div class="example-col">.col-xs-6 .col-md-4</div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-4">
+                                                <div class="example-col">.col-xs-6 .col-md-4</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="example-col">.col-xs-6</div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="example-col">.col-xs-6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">列包裹</h4>
+                                    <p>如果一行中超过了12列，超出的列将换到下一行。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-xs-9">
+                                                <div class="example-col">.col-xs-9</div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div class="example-col">.col-xs-4 <br>9 + 4 = 13 &gt; 12, 列宽为4的 div
+                                                    换到下一行，作为一个连续的单元
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="example-col">.col-xs-6 <br>后续列继续跟随新的行
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">响应列重置</h4>
+                                    <p>即便有上面给出的四组栅格 class ，你可能仍然会碰到一些问题，例如，在某些阈值时，某些列可能会出现比别的列高的情况。为了克服这一问题，建议联合使用 <code>.clearfix</code>
+                                        和响应式工具的类 </p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="example-col">.col-xs-6 .col-sm-3 <br>请调整浏览器窗口大小或在手机上查看该示例
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="example-col">.col-xs-6 .col-sm-3</div>
+                                            </div>
+                                            <div class="clearfix visible-xs-block"></div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="example-col">.col-xs-6 .col-sm-3</div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div class="example-col">.col-xs-6 .col-sm-3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">列偏移</h4>
+                                    <p>使用 <code>.col-md-offset-*</code> 可以将列向右偏移。这些类通过使用 <code>*</code> 选择器将所有列增加了列的左侧 margin。例如
+                                        <code>.col-md-offset-4</code> 将 <code>.col-md-4</code> 向右移动了4个列的宽度。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="example-col">.col-md-4</div>
+                                            </div>
+                                            <div class="col-md-4 col-md-offset-4">
+                                                <div class="example-col">.col-md-4 .col-md-offset-4</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-md-offset-3">
+                                                <div class="example-col">.col-md-3 .col-md-offset-3</div>
+                                            </div>
+                                            <div class="col-md-3 col-md-offset-3">
+                                                <div class="example-col">.col-md-3 .col-md-offset-3</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-3">
+                                                <div class="example-col">.col-md-6 .col-md-offset-3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">列嵌套</h4>
+                                    <p>为了使用内置的栅格将内容嵌套，通过添加一个新的 <code>.row</code> 和一系列 <code>.col-md-*</code> 列到已经存在的 <code>.col-md-*</code>
+                                        列内即可实现。嵌套 <code>row</code> 所包含的列加起来应该等于12。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <div class="example-col">1级：.col-sm-9
+                                                    <div class="row">
+                                                        <div class="col-xs-8 col-sm-6">
+                                                            <div class="example-col">2级：.col-xs-8 .col-sm-6</div>
+                                                        </div>
+                                                        <div class="col-xs-4 col-sm-6">
+                                                            <div class="example-col">2级：.col-xs-4 .col-sm-6</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">列排序</h4>
+                                    <p>通过使用 <code>.col-md-push-*</code> 和 <code>.col-md-pull-*</code> 可以轻松改变列的顺序。</p>
+                                    <div class="example example-grid">
+                                        <div class="row">
+                                            <div class="col-md-9 col-md-push-3">
+                                                <div class="example-col">.col-md-9 .col-md-push-3</div>
+                                            </div>
+                                            <div class="col-md-3 col-md-pull-9">
+                                                <div class="example-col">.col-md-3 .col-md-pull-9</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+            </div> 
+    </div>
+</script>
+<script id="page-typography" type="text/html">
+    <div class="kui-header">
+            <h1 class="kui-title">排版</h1>
+            <div class="kui-header-actions">
+                <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round">
+                    <i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+                </button>
+            </div>
+    </div>
+    <div class="kui-content">
+            <div class="panel panel-bordered">
+                <div class="panel-body">
+                    <h4 class="panel-title">默认设置</h4>
+                    <p>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>KUI的默认字体<code>font-family</code>是无衬线字体<code>Helvetica Neue, Helvetica, Tahoma, Arial, Microsoft Yahei, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif</code>
+                            </p><p>大小 <code>font-size</code> 是 14px</p><p>行高 <code>line-height</code> 为 1.6</p>
+                        </div>
+                    </div>
+                </p>
+                </div>
+            </div>
+            <div class="panel panel-bordered">
+                <div class="panel-body">
+                    <h4 class="panel-title">标题</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <h1>H1.一级KUI标题<small>KUI副标题</small></h1>
+                                <h2>H2.二级KUI标题<small>KUI副标题</small></h1>
+                                <h3>H3.三级KUI标题<small>KUI副标题</small></h1>
+                                <h4>H4.四级KUI标题<small>KUI副标题</small></h1>
+                                <h5>H5.五级KUI标题<small>KUI副标题</small></h1>
+                                <h6>H6.六级KUI标题<small>KUI副标题</small></h1>
+                                <p><i class="fa fa-info-circle"></i>标题样式可使用<code>h1 </code>到<code>h6 </code>作为标题，如果需要使用标题的样式，但又想使用内联文本，也可以为元素添加<code>.h1 </code>到<code>.h6 </code>class类来实现。
+                                副标题可以通过 <code>small</code> 标签，或者通过为元素添加 <code>.small</code>类来实现副标题的显示。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-bordered">
+                <div class="panel-body container-fluid">
+                    <h4 class="panel-title">文字处理</h4>
+                    <p>
+                    <div class="row">
+                        <div class="col-md-4">
+                                <h4><strong>文字突显与强调</strong></h1>
+                                <p>
+                                    <span><code>strong</code> <strong>加粗文字，使用strong标签</strong></span><br/>
+                                    <span><code>em</code> <em>被强调的文字，斜体显示，使用em标签</em></span><br/>
+                                    <span><code>u</code> <u>u标签来使文字带下划线</u></span><br/>
+                                    <span><code>mark</code> <mark>mark标签，突出要显示的文字</mark></span><br/>
+                                    <span><code>del</code> <del>del标签，给文字带删除线</del></span><br/>
+                                    <span><code>code</code> code标签用来突显代码</span><br/>
+                                    <span><code>.uppercase</code> <span class="uppercase">kLSStt自动转大写字母</span></span><br/>
+                                    <span><code>.lowercase</code> <span class="lowercase">kLSStt自动转小写字母</span></span><br/>
+                                    <span><code>.capitalize</code> <span class="capitalize">klsstt 首字母自动转大写</span></span><br/>
+                                </p>
+                        </div>
+                        <div class="col-md-4">
+                                <h4><strong>列表</strong></h1>
+                                <p>
+                                    <code>&lt;ul&gt;&lt;li&gt;...&lt;li&gt;&lt;ul&gt;</code>无序列表标签：
+                                    <ul>
+                                        <li>这是一个无序列表</li>
+                                        <li>含三个列表项</li>
+                                        <li>作为示例</li>
+                                    </ul>
+                                    <code>&lt;ol&gt;&lt;li&gt;...&lt;li&gt;&lt;ol&gt;</code>有序列表标签：
+                                    <ol>
+                                        <li>这是一个有序列表</li>
+                                        <li>含三个列表项</li>
+                                        <li>作为示例</li>
+                                    </ol>	
+                                </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4><strong>段落、引用、文字单行溢出省略号、线条、行内分割竖线</strong></h4>
+                            <code>p</code>段落标签 向下10像素间距。
+                            <blockquote>用<code>blockquote</code>标签来引用一大段内容</blockquote>
+                            <div class="text-overflow" style="width:300px;">我是很长很长的文字，我的所在的容器尺寸有限，所以我溢出了，并且显示省略号</div>
+                            <div class="line"></div>
+                            <span class="pipe">|</span>
+                        </div>
+                    </div>
+                </p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4><strong>文字尺寸</strong></h4>
+                                <p class="f-12">12px 字体</p>
+                                <p class="f-14">14px 字体</p>
+                                <p class="f-16">16px 字体</p>
+                                <p class="f-18">18px 字体</p>
+                                <p class="f-20">20px 字体</p>
+                                <p class="f-24">24px 字体</p>
+                                <p class="f-26">26px 字体</p>
+                                <p class="f-28">28px 字体</p>
+                                <p class="f-30">30px 字体</p>
+                        </div>
+                        <div class="col-md-2">
+                            <h4><strong>文字行距</strong></h4>
+                                <p class="lh-16">16像素行距</p>
+                                <p class="lh-18">18像素行距</p>
+                                <p class="lh-20">20像素行距</p>
+                                <p class="lh-22">22像素行距</p>
+                                <p class="lh-24">24像素行距</p>
+                                <p class="lh-26">26像素行距</p>
+                                <p class="lh-28">28像素行距</p>
+                                <p class="lh-30">30像素行距</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4><strong>文字颜色</strong></h4>
+                            <p class="c-primary">主色</p>
+                            <p class="c-secondary">次色</p>
+                            <p class="c-success">强调色-成功</p>
+                            <p class="c-error">强调色-错误</p>
+                            <p class="c-warning">强调色-警告</p>
+                            <p class="c-333">辅助色-#333333灰色</p>
+                            <p class="c-666">辅助色-#666666灰色</p>
+                            <p class="c-999">辅助色-#999999灰色</p>
+                            <p class="c-red">标准色-红色</p>
+                            <p class="c-green">标准色-绿色</p>
+                            <p class="c-blue">标准色-蓝色</p>
+                            <p class="c-white">标准色-白色</p>
+                            <p class="c-black">标准色-黑色</p>
+                            <p class="c-orange">标准色-橙色</p>
+                        </div>	
+                        <div class="col-md-2">
+                            <h4><strong>上标 下标</strong></h4>
+                            <p>
+                                m<sup>2</sup><br/>
+                                CO<sub>2</sub>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <h4><strong>地址</strong></h4>
+                            <address>深圳市宝安区民治街道深圳北站</address>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div  class="col-md-6">
+                            <h4><strong>块级元素的外边距</strong></h4>
+                            <p><code>.mt</code> 表示上边距，<code>.mb</code> 表示下边距，<code>.ml</code> 表示左边距，<code>.mr</code> 表示右边距
+                                    
+                                    支持任何块级元素，如果行内元素要想使用margin，请使用 <code>display：block</code> 先将其转化为块级元素</p>
+                            <hr/>
+                            <div class="mt-10" style="border:solid 1px #ddd; background-color:#f3f7f9;padding:20px">距上10像素</div>
+                          
+                        </div>
+                        <div  class="col-md-3">
+                                <h4><strong>填充</strong></h4>
+                                <div class="pd-10" style="background-color:#f3f7f9; border:solid 1px #ddd"><span style="background-color:#fff">10像素填充</span></div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4><strong>边角圆角</strong></h4>
+                            <div class="bk-gray pd-10 mt-10">边框</div>
+                            <div class="bk-gray radius pt-10 mt-10">圆角边框</div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="row">
+                            <div class="col-sm-6">
+                                <h4><strong>嵌入效果</strong></h4>
+                                <p> 使用 <code>.well</code> 给元素添加一个简单的嵌入效果。 </p>
+                                <div class="col-sm-6">
+                                <div class="well well-sm">嵌入效果展示</div>
+                                <div class="well">嵌入效果展示</div>
+                                <div class="well well-lg">嵌入效果展示</div>
+                                </div>
+                                <div class="col-sm-6">
+                                <div class="well well-sm well-primary">默认</div>
+                                <div class="well well-sm well-success">成功</div>
+                                <div class="well well-sm well-info">信息</div>
+                                <div class="well well-sm well-warning">警告</div>
+                                <div class="well well-sm well-danger">危险</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4><strong>首字下沉</strong></h4>
+                                <p>
+                                        <span class="drop-cap">宋</span>代著名学者朱熹对此章评价极高，说它是「入道之门，积德之基」。本章这三句话是人们非常熟悉的。历来的解释都是：学了以后思，前后句子也没有什么连贯性。但也有人认为这样解释不符合原义，指出这里的「学」不是指学习，而是指学说或主张；「时」不能解为时常，而是时代或社会的意思，「习」不是温习，而是使用，引申为采用。而且，这三句话不是孤立的，而是前后相互连贯的。这三句的意思是：自己的学说，要是被社会采用了，那就太高兴了；退一步说，要是没有被社会所采用，可是很多朋友赞同我的学说，纷纷到我这里来讨论问题，我也感到快乐；再退一步说，即使社会不采用，人们也不理解我，我也不怨恨，这样做，，供读者在理解本章内容时参考。
+                                    </p>
+                                    <p>
+                                            <span class="drop-cap drop-cap-reversed">宋</span>代著名学者朱熹对此章评价极高，说它是「入道之门，积德之基」。本章这三句话是人们非常熟悉的。历来本章这三句话是人们非常熟悉的。历来的解释都是本章这三句话是人们非常熟悉的。历来的解释都是本章这三句话是人们非常熟悉的。历来的解释都是的解释都是本章这三句话是人们非常熟悉的。历来的解释都是本章这三句话是人们非常熟悉的。历来的解释都是本章这三句话是人们非常熟悉的。，供读者在理解本章内容时参考。
+                                        </p>
+                            </div>
+                            
+                        </div>
+                </div>
+            </div>
+    </div>
+</script>
+
+<script id="page-container" type="text/html">
+    <div class="kui-header">
+            <h1 class="kui-title">容器</h1>
+            <div class="kui-header-actions">
+                    <ol class="kui-breadcrumb">
+                            <li>
+                                <a href="javascript:;">首页</a>
+                            </li>
+                            <li class="active">当前位置</li>
+                        </ol>
+            </div>
+    </div>
+    <div class="kui-content">
+        <div class="panel">
+                <div class="panel-body">
+                        <h4><strong>容器的作用</strong></h4>
+                        <p>用来包裹格栅脚手架和页面内容，能够自动在水平方向居中。</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4><strong>响应式布局</strong></h4>
+                                <p>该容器使用<code>.container</code>来引用，它会根据页面高度自动调整宽度。
+                                </p>
+                                <div class="container" style="border: 1px solid #eeeeee;height:120px;">我是container</div>
+                            </div>
+                            <div  class="col-md-12">
+                                <h4><strong>液态布局容器</strong></h4>
+                                <p>该容器使用<code>.container-fluid</code>来引用，它的<code>width</code>是100%，会占据父级容器全部宽度。</p>
+                                <div class="container-fluid" style="border: 1px solid #eeeeee;height:120px;">我是container-fluid</div>
+                            </div>
+                            <div  class="col-lg-4">
+                                    <h4><strong>固定宽度容器</strong></h4>
+                                    <p>
+                                        <code>.container-fixed</code>宽度1160px<br/>
+                                        <div class="container-fixed" style="border: 1px solid #eeeeee;height:120px;">我是container-fixed</div> </p>
+                                        <p><code>.container-fixed-md</code>宽度960px<br/>
+                                        <div class="container-fixed-md" style="border: 1px solid #eeeeee;height:120px;">我是container-fixed-md</div> </p>
+                                        <p> <code>.container-fixed-sm</code>宽度740px<br/>
+                                        <div class="container-fixed-sm" style="border: 1px solid #eeeeee;height:120px;">我是container-fixed-sm</div> </p>
+                                        <p><code>.container-fixed-xs</code>宽度440px<br/>
+                                        <div class="container-fixed-xs" style="border: 1px solid #eeeeee;height:120px;">我是container-fixed-xs</div>
+                                    </p>
+                            </div>
+                        </div>
+                </div>
+        </div>
+    </div>
+</script>
+
+<script id="page-layout" type="text/html">
+    <link rel="stylesheet" type="text/css" href="js/lib/layout/layout-grid.css" />
+    <div class="kui-header">
+            <h1 class="kui-title">格子布局</h1>
+    </div>
+    <div class="kui-content">
+    <div class="panel">
+            <div class="panel-body">
+                <h4> 可拖动和排序</h4>
+                <div data-arrange="lt-grid" class="lt-container
+                    lt-xs-h-9
+                    lt-sm-h-6
+                    lt-md-h-4
+                    lt-lg-h-3">
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-0
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-0
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-0
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>1</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-1
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-1
+                    lt-sm-y-0
+                    lt-sm-w-1
+                    lt-sm-h-2
+                    lt-md-x-2
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-2
+                    lt-lg-x-1
+                    lt-lg-y-0
+                    lt-lg-w-1
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>2</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-3
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-1
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-1
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-1
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>3</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-4
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-0
+                    lt-sm-y-2
+                    lt-sm-w-2
+                    lt-sm-h-2
+                    lt-md-x-0
+                    lt-md-y-1
+                    lt-md-w-2
+                    lt-md-h-2
+                    lt-lg-x-2
+                    lt-lg-y-0
+                    lt-lg-w-2
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>4</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-6
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-4
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-2
+                    lt-md-y-2
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-2
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>5</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-7
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-5
+                    lt-sm-w-2
+                    lt-sm-h-1
+                    lt-md-x-1
+                    lt-md-y-3
+                    lt-md-w-2
+                    lt-md-h-1
+                    lt-lg-x-1
+                    lt-lg-y-2
+                    lt-lg-w-2
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>6</h3>
+                        </div>
+                    </div>
+                    <div draggable="true" class="lt
+                    lt-xs-x-0
+                    lt-xs-y-8
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-1
+                    lt-sm-y-4
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-3
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-3
+                    lt-lg-y-2
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>7</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="panel">
+            <div class="panel-body">
+                    <h4>不能拖动</h4>
+                <div class="lt-container
+                    lt-xs-h-18
+                    lt-sm-h-12
+                    lt-md-h-8
+                    lt-lg-h-6">
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-0
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-0
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-0
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>1</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-1
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-1
+                    lt-sm-y-0
+                    lt-sm-w-1
+                    lt-sm-h-2
+                    lt-md-x-2
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-2
+                    lt-lg-x-1
+                    lt-lg-y-0
+                    lt-lg-w-1
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>2</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-3
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-1
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-1
+                    lt-md-y-0
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-1
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>3</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-4
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-0
+                    lt-sm-y-2
+                    lt-sm-w-2
+                    lt-sm-h-2
+                    lt-md-x-0
+                    lt-md-y-1
+                    lt-md-w-2
+                    lt-md-h-2
+                    lt-lg-x-2
+                    lt-lg-y-0
+                    lt-lg-w-2
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>4</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-6
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-4
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-2
+                    lt-md-y-2
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-2
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>5</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-7
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-5
+                    lt-sm-w-2
+                    lt-sm-h-1
+                    lt-md-x-1
+                    lt-md-y-3
+                    lt-md-w-2
+                    lt-md-h-1
+                    lt-lg-x-1
+                    lt-lg-y-2
+                    lt-lg-w-2
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>6</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-8
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-6
+                    lt-sm-w-2
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-4
+                    lt-md-w-2
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-3
+                    lt-lg-w-2
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>7</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-9
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-0
+                    lt-sm-y-7
+                    lt-sm-w-1
+                    lt-sm-h-2
+                    lt-md-x-2
+                    lt-md-y-4
+                    lt-md-w-1
+                    lt-md-h-2
+                    lt-lg-x-3
+                    lt-lg-y-3
+                    lt-lg-w-1
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>8</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-11
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-1
+                    lt-sm-y-7
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-5
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-2
+                    lt-lg-y-3
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>9</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-12
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-1
+                    lt-sm-y-8
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-1
+                    lt-md-y-5
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-4
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>10</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-13
+                    lt-xs-w-1
+                    lt-xs-h-2
+                    lt-sm-x-0
+                    lt-sm-y-9
+                    lt-sm-w-2
+                    lt-sm-h-2
+                    lt-md-x-1
+                    lt-md-y-6
+                    lt-md-w-2
+                    lt-md-h-2
+                    lt-lg-x-1
+                    lt-lg-y-4
+                    lt-lg-w-2
+                    lt-lg-h-2">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>11</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-15
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-0
+                    lt-sm-y-11
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-6
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-0
+                    lt-lg-y-5
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>12</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-16
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-1
+                    lt-sm-y-4
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-3
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-3
+                    lt-lg-y-2
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>13</h3>
+                        </div>
+                    </div>
+                    <div class="lt
+                    lt-xs-x-0
+                    lt-xs-y-17
+                    lt-xs-w-1
+                    lt-xs-h-1
+                    lt-sm-x-1
+                    lt-sm-y-11
+                    lt-sm-w-1
+                    lt-sm-h-1
+                    lt-md-x-0
+                    lt-md-y-7
+                    lt-md-w-1
+                    lt-md-h-1
+                    lt-lg-x-3
+                    lt-lg-y-5
+                    lt-lg-w-1
+                    lt-lg-h-1">
+                        <div class="lt-body bg-primary-100 text-center padding-20">
+                            <h3>14</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/lib/layout/layout-grid.min.js"></script> 
+</script>
+
+<script id="page-responsive" type="text/html">
+    <div class="kui-header">
+        <h1 class="kui-title">响应式布局</h1>
+    </div>
+    <div class="kui-content">
+       
+        <div class="panel">
+            <div class="panel-body">
+                <div class="example-wrap">
+                    <h4>什么是响应式布局</h4>
+                    <p>集中创建页面的图片排版大小，可以智能地根据用户行为以及使用的设备环境进行相对应的布局,主要用于针对不同屏幕尺寸，定制页面的内容。
+                    </p>
+                    <h4 class="example-title">KUI主要针对四种不同尺寸的设备屏幕</h4>
+                    <p>超小屏幕<code>xs</code>尺寸：&lt;768px,小屏幕<code>sm</code>尺寸：&gt;=768px中等屏幕<code>md</code>尺寸：&gt;=992px，大屏幕<code>lg</code>尺寸：&gt;=1200px</p>
+                    <div class="table-responsive">
+                            <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th></th>
+                                        <th>超小屏幕</th>
+                                        <th>小屏幕</th>
+                                        <th>中等屏幕</th>
+                                        <th>大屏幕</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th>.visible-xs</th>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.visible-sm</th>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.visible-md</th>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.visible-lg</th>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.hidden-xs</th>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.hidden-sm</th>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.hidden-md</th>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                        <td class="hl-success">可见</td>
+                                      </tr>
+                                      <tr>
+                                        <th>.hidden-lg</th>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="hl-success">可见</td>
+                                        <td class="text-muted">隐藏</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <p>
+                                        <i class="fa fa-info-circle"></i> 其中显示辅助类 <code>.visible-xs</code>、<code>.visible-sm</code>、<code>.visible-md</code>、<code>.visible-lg</code> 可以组合使用，同理对于隐藏辅助类也可以组合使用以达到不同的效果。但不要将显示辅助类和隐藏辅助类混合使用。
+                                  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                    <div class="example-wrap">
+                            <h4>禁用响应式布局</h4>
+                            <p>
+                                <ul>
+                                <li>移除 <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> 标签，禁用移动设备缩放可视窗口尺寸。</li>
+                                <li>避免使用一些响应式工具类，例如<code>.visible-xs</code>、<code>.visible-sm</code>、<code>.visible-md</code>、<code>.visible-lg</code>等。</li>
+                                <li>当使用栅格系统时避免使用 <code>.col-sm-*</code>、<code>.col-md-*</code>、<code>.col-lg-*</code>，统一使用 code&gt;.col-xs-*。</li>
+                                <li>使用固定宽度的布局容器（<code>.container-fixed</code>、<code>.container-fixed-md</code>、<code>.container-fixed-sm</code>、<code>.container-fixed-xs</code>）来代替响应式设计容器（<code>.container</code>）。</li>
+                                <li>避免使用响应式组件，应该使用非响应式组件来代替，例如使用导航（<code>.nav</code>） 来代替响应式导航（<code>.navbar</code>）。</li>
+                                </ul>
+                                <i class="fa fa-info-circle"></i> KUI建议采用响应式布局，不需要太多代码，即可实现跨屏体验。
+                            </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="page-content" type="text/html">
+    <div class="kui-header">
+        <h1 class="kui-title">内容布局</h1>
+    </div>
+    <div class="kui-content">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="example-wrap">
+                    <h4>什么是内容布局</h4>
+                    <p>KUI定制了容器中内容的区块，分别是不带边框的头部<code>.kui-header</code>,带边框的头部<code>.kui-header-bordered</code>,以及头部动作区域<code>.kui-header-actions</code>和内容的主要部位<code>.kui-content</code>
+                    </p>
+                    <div class="example" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                        <div class="kui-header">无边框头部，这里通常填充内容的标题，描述<div class="kui-header-actions">头部动作区域，通常用作导航，按钮组</div></div>
+                        <div class="kui-header kui-header-bordered">带边框的头部，这里通常填充内容的标题，描述<div class="kui-header-actions">头部动作区域，通常用作导航，按钮组</div></div>
+                        <div class="kui-content" style="border: 1px solid #fff; ">内容区域，可自由填充</div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="panel">
+            <div class="panel-body">
+                <div class="example-wrap">
+                    <h4>头部</h4>
+                    <p>头部区块，包含了标题<code>.kui-title</code>,描述<code>.kui-description</code>
+                    </p>
+                    <div class="example">
+                        <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                            <div class="kui-title">内容标题</div>
+                            <div class="kui-description">内容描述</div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                <div class="example-wrap">
+                    <h4>动作区域</h4>
+                    <p>动作区域，填充面包屑导航<code>.kui-breadcrumb</code>,按钮<code>button</code>和表单<code>from</code>，也可以自定义一些内容。
+                    </p>
+                    <div class="example">
+                        <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                            <div class="kui-title">内容标题</div>
+                            <div class="kui-header-actions">
+                                <ol class="kui-breadcrumb">
+                                    <li>
+                                        <a href="javascript:;">首页</a>
+                                    </li>
+                                    <li class="active">当前位置</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                            <div class="kui-title">内容标题</div>
+                            <div class="kui-header-actions">
+                                <form data-pjax="#">
+                                    <div class="input-search input-search-dark">
+                                        <i class="input-search-fa fa-search" aria-hidden="true"></i>
+                                        <input type="text" class="kui-form-control" name="" placeholder="请输入关键字">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                            <div class="kui-title">内容标题</div>
+                            <div class="kui-header-actions">
+                                <div class="btn-group btn-group-sm" id="withBtnGroup" aria-label="操作" role="group">
+                                    <button type="button" class="btn btn-outline btn-default">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <span class="hidden-xs">设置</span>
+                                    </button>
+                                    <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="重新加载" data-container="body">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="搜索" data-container="body">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="打印" data-container="body">
+                                        <i class="fa fa-print" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+    </div>
+</script>
+
+<script id="page-fonticons" type="text/html">
+    <div class="kui-header">
+            <h1 class="kui-title">图标</h1>
+    </div>
+    <div class="kui-content">
+    <div class="panel">
+            <div class="panel-body">
+                    <div>
+                            <section>
+                                <h2 class="kui-header">什么是图标字体</h2>
+                                <p>在图标字体没有普及之前，图标通常是通过图片来展示，如今图标字体是展示图标的更好方式。使用图标字体能使用CSS对图标进行调整，例如定义大小、颜色及特殊效果。KUI采用开源web图标字体 <a href="http://fontawesome.dashgame.com/">Font Awesome4.7</a>,也可以前往阿里巴巴图标库上传您自己设计或购买的图标（ <a class="c-orange" href="http://fontawesome.dashgame.com/">点我查看更多图标内容</a>）。
+                                </p>
+                            </section>
+                            
+                            <section>
+                                <h2 class="kui-header">基本用法</h2>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <p>
+                                        您可以将Font Awesome图标使用在几乎任何地方，只需要使用CSS前缀 <code>fa</code> ，再加上图标名称。
+                                        Font Awesome是为使用内联元素而设计的。我们通常更喜欢使用 <code>&lt;i&gt;</code> ，因为它更简洁。
+                                        但实际上使用 <code>&lt;span&gt;</code> 才能更加语义化。
+                                        </p>
+                                        <div class="pre">
+                                            <p>&lt;i class= "fa fa-camera-retro" &gt;&lt;/i&gt;</p>
+                                        </div>
+                                        <div class="alert alert-success">
+                                            <ul class="fa-ul">
+                                                <li>
+                                                <i class="fa fa-info-circle fa-lg fa-li"></i>
+                                                如果您修改了图标容器的字体大小，图标大小会随之改变。同样的变化也会发生在颜色、阴影等其它任何CSS支持的效果上。
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="larger" class="mainParts">
+                                <h2 class="kui-header">大图标</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        使用 <code>fa-lg</code> (33%递增)、<code>fa-2x</code>、
+                                        <code>fa-3x</code>、<code>fa-4x</code>，或者 <code>fa-5x</code> 类 来放大图标。
+                                        </p>
+                                        <div class="pre">
+                                                <i class="fa fa-camera-retro fa-lg"></i>  &lt;i class=&quot;fa fa-camera-retro fa-lg&quot;&gt;&lt;/i&gt; fa-lg<br/> 
+                                                <i class="fa fa-camera-retro fa-2x"></i>   &lt;i class=&quot;fa fa-camera-retro fa-2x&quot;&gt;&lt;/i&gt; fa-2x
+                                        </div>
+                                        <div class="alert alert-success">
+                                            <ul class="fa-ul">
+                                                <li>
+                                                <i class="fa fa-exclamation-triangle fa-li fa-lg"></i>
+                                                如果图标的底部和顶部被截断了，您需要增加行高来解决此问题。
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="fixed-width" class="mainParts">
+                                <h2 class="kui-header">固定宽度</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                           
+                                        <p>
+                                        使用 <code>fa-fw</code> 可以将图标设置为一个固定宽度。主要用于不同宽度图标无法对齐的情况。
+                                        尤其在列表或导航时起到重要作用。
+                                        </p>
+                                        <div class="pre">
+                                            <div class="col-md-2"><br/>
+                                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a><br/>
+                                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a><br/>
+                                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a><br/>
+                                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+                                            </div>
+                                            <div class="col-md-10">
+                                                    &lt;div class=&quot;list-group&quot;&gt;<br/>
+                                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-home fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Home&lt;/a&gt;<br/>
+                                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-book fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Library&lt;/a&gt;<br/>
+                                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-pencil fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Applications&lt;/a&gt;<br/>
+                                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-cog fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Settings&lt;/a&gt;<br/>
+                                                    &lt;/div&gt;
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="yulist" class="mainParts">
+                                <h2 class="kui-header">用于列表</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>使用 <code>fa-ul</code> 和 <code>fa-li</code> 便可以简单的将无序列表的默认符号替换掉。</p>
+                                        <div class="pre">
+                                            <div class="col-md-2"><br/>
+                                                <ul class="fa-ul">
+                                                    <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+                                                    <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+                                                    <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+                                                    <li><i class="fa-li fa fa-square"></i>in lists</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-10">
+                                                &lt;ul class=&quot;fa-ul&quot;&gt; <br/>
+                                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;List icons&lt;/li&gt; <br/>
+                                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;can be used&lt;/li&gt; <br/>
+                                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;as bullets &lt;/li&gt; <br/>
+                                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-square&quot;&gt;&lt;/i&gt; in lists&lt;/li&gt; <br/>
+                                                &lt;/ul&gt;
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="bordered-pulled" class="mainParts">
+                                <h2 class="kui-header">边框与对齐</h2>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-4">
+                                    <p>
+                                    <i class="fa fa-quote-left fa-3x pull-left fa-border"></i>
+                                   啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
+                                    </p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-8">
+                                    <p>
+                                    使用 <code>fa-border</code> 以及 <code>pull-right</code> 或 <code>pull-left</code> 可以轻易构造出引用的特殊效果。
+                                    </p>
+                                    <div class="pre">
+                                        <p>
+                                           &lt;i class=&quot;fa fa-quote-left fa-3x pull-left fa-border&quot;&gt;&lt;/i&gt;啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="animated" class="mainParts">
+                                <h2 class="kui-header">动画</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <p>
+                                    使用 <code>fa-spin</code> 类来使任意图标旋转，现在您还可以使用 <code>fa-pulse</code> 来使其进行8方位旋转。尤其适合 <code>fa-spinner</code>、<code>fa-refresh</code> 和 <code>fa-cog</code> 。
+                                    </p>
+                                    <div class="pre">
+                                        <div class="col-md-1"> 
+                                            <i class="fa fa-spinner fa-spin  fa-fw margin-bottom"></i><br/>
+                                            <i class="fa fa-circle-o-notch fa-spin  fa-fw margin-bottom"></i><br/>
+                                            <i class="fa fa-refresh fa-spin  fa-fw margin-bottom"></i><br/>
+                                            <i class="fa fa-cog fa-spin  fa-fw margin-bottom"></i><br/>
+                                            <i class="fa fa-spinner fa-pulse  fa-fw margin-bottom"></i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            &lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                                            &lt;i class=&quot;fa fa-circle-o-notch fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                                            &lt;i class=&quot;fa fa-refresh fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                                            &lt;i class=&quot;fa fa-cog fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                                            &lt;i class=&quot;fa fa-spinner fa-pulse&quot;&gt;&lt;/i&gt;
+                                        </div>
+                                        
+                                    </div>
+                                    <p>
+                                    <i class="fa fa-info-circle"></i> CSS3动画不支持IE8-IE9。
+                                    </p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="rotated-flipped" class="mainParts">
+                                <h2 class="kui-header">旋转与翻转</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        使用 <code>fa-rotate-*</code> 和 <code>fa-flip-*</code> 类可以对图标进行任意旋转和翻转。
+                                        </p>
+                                        <div class="pre">
+                                            <div class="col-md-2">
+                                                <i class="fa fa-shield"></i>&nbsp; normal<br>
+                                                <i class="fa fa-shield fa-rotate-90"></i>&nbsp; fa-rotate-90<br/>
+                                                <i class="fa fa-shield fa-rotate-180"></i>&nbsp; fa-rotate-180<br/>
+                                                <i class="fa fa-shield fa-rotate-270"></i>&nbsp; fa-rotate-270<br/>
+                                                <i class="fa fa-shield fa-flip-horizontal"></i>&nbsp; fa-flip-horizontal<br/>
+                                                <i class="fa fa-shield fa-flip-vertical"></i>&nbsp; fa-flip-vertical
+                                            </div>
+                                            <div class="col-md-10">
+                                                &lt;i class=&quot;fa fa-shield&quot;&gt;&lt;/i&gt; normal<br/>
+                                                &lt;i class=&quot;fa fa-shield fa-rotate-90&quot;&gt;&lt;/i&gt; fa-rotate-90<br/>
+                                                &lt;i class=&quot;fa fa-shield fa-rotate-180&quot;&gt;&lt;/i&gt; fa-rotate-180<br/>
+                                                &lt;i class=&quot;fa fa-shield fa-rotate-270&quot;&gt;&lt;/i&gt; fa-rotate-270<br/>
+                                                &lt;i class=&quot;fa fa-shield fa-flip-horizontal&quot;&gt;&lt;/i&gt; fa-flip-horizontal<br/>
+                                                &lt;i class=&quot;fa fa-shield fa-flip-vertical&quot;&gt;&lt;/i&gt; icon-flip-vertical
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="stacked" class="mainParts">
+                                <h2 class="kui-header">组合使用</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        如果想要将多个图标组合起来，使用 <code>fa-stack</code> 类作为父容器， <code>fa-stack-1x</code> 作为正常比例的图标，
+                                        <code>fa-stack-2x</code> 作为大一些的图标。还可以使用 <code>fa-inverse</code> 类来切换图标颜色。您可以在父容器中
+                                        通过添加 <a href="#larger">大图标</a> 类来控制整体大小。
+                                        </p>
+                                        <div class="pre">
+                                            <div class="col-md-3">
+                                                    <span class="fa-stack fa-lg">
+                                                    <i class="fa fa-square-o fa-stack-2x"></i>
+                                                    <i class="fa fa-twitter fa-stack-1x"></i>
+                                                    </span>
+                                                    fa-twitter on fa-square-o<br/>
+                                                    <span class="fa-stack fa-lg">
+                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                    <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                    fa-flag on fa-circle<br/><br/>
+                                                    <span class="fa-stack fa-lg">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                    fa-terminal on fa-square<br/>
+                                                    <span class="fa-stack fa-lg">
+                                                    <i class="fa fa-camera fa-stack-1x"></i>
+                                                    <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                                                    </span>
+                                                    fa-ban on fa-camera
+                                            </div>
+                                            <div class="col-md-9">
+                                            <p>
+                                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
+                                                &lt;i class=&quot;fa fa-square-o fa-stack-2x&quot;&gt;&lt;/i&gt; 
+                                                &lt;i class=&quot;fa fa-twitter fa-stack-1x&quot;&gt;&lt;/i&gt; 
+                                                &lt;/span&gt;
+                                            </p><br>
+                                            <p>
+                                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
+                                                &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt; 
+                                                &lt;i class=&quot;fa fa-flag fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
+                                                &lt;/span&gt; 
+                                            </p><br>
+                                            <p>
+                                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
+                                                &lt;i class=&quot;fa fa-square fa-stack-2x&quot;&gt;&lt;/i&gt;
+                                                &lt;i class=&quot;fa fa-terminal fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt; 
+                                                &lt;/span&gt; 
+                                            </p><br>
+                                            <p>
+                                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
+                                                &lt;i class=&quot;fa fa-camera fa-stack-1x&quot;&gt;&lt;/i&gt; 
+                                                &lt;i class=&quot;fa fa-ban fa-stack-2x text-danger&quot;&gt;&lt;/i&gt; 
+                                                &lt;/span&gt;
+                                            </p>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                                    
+                            <section id="custom" class="mainParts">
+                                    <h2 class="kui-header">自定义CSS</h2>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>您可以任意自定义修改 Font Awesome 的CSS样式表来实现您想要的效果。<br/>
+                                            例如：星级评定</p>
+                                            <div class="well">
+                                                <span class="rating">
+                                                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </section>
+                        </div>
+                    
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="page-button" type="text/html">
+    <div class="kui-header">
+            <h1 class="kui-title">按钮</h1>
+    </div>
+    <div class="kui-content">
+            <div class="panel">
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-lg-12">
+    
+                            <div class="example-wrap">
+                                <h4 class="example-title">默认风格</h4>
+                                <p>可以使用任何可用的按钮类来快速创建按钮，我们提供了多种不同颜色来适应不同的应用场景。</p>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                                        <div class="example">
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-default">Default</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box bg-blue-grey-200 pl-10 pt-5">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box bg-blue-grey-300 pl-10 pt-5">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box bg-blue-grey-400 pl-10 pt-5">激活</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-primary">Primary</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-primary-600">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-primary-500">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-primary-700">激活</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-success">Success</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-green-600">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-green-500">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-green-700">激活</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-info">Info</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-cyan-600">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-cyan-500">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-cyan-700">激活</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-warning">Warning</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-orange-600">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-orange-500">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-orange-700">激活</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2">
+                                                <button type="button" class="btn btn-block btn-danger">Danger</button>
+                                                <div class="mt-10 mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-red-600">默认</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-red-500">鼠标悬停</div>
+                                                </div>
+                                                <div class="mb-20">
+                                                    <div class="example-box pl-10 pt-5 bg-red-700">激活</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="row row-lg">
+                        <div class="col-md-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">描边按钮</h4>
+                                <p>通过添加 <code>.btn-outline</code> 类来实现描边效果。</p>
+                                <div class="example example-buttons">
+                                    <button type="button" class="btn btn-outline btn-default">Default</button>
+                                    <button type="button" class="btn btn-outline btn-primary">Primary</button>
+                                    <button type="button" class="btn btn-outline btn-success">Success</button>
+                                    <button type="button" class="btn btn-outline btn-info">Info</button>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="col-md-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">圆角按钮</h4>
+                                <p>圆形按钮与方形按钮可以用来区分不同的行为或风格。</p>
+                                <div class="example example-buttons">
+                                    <button type="button" class="btn btn-round btn-outline btn-default"> 默认</button>
+                                    <button type="button" class="btn btn-squared btn-outline btn-default"> 默认</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">动画</h4>
+                                    <p>按钮可以通过动画来显示隐藏按钮内容。</p>
+                                    <div class="example example-buttons">
+                                        <button type="button" class="btn btn-animate btn-animate-side btn-success">
+                                            <span><i class="fa fa-download" aria-hidden="true"></i>水平动画</span>
+                                        </button>
+                                        <button type="button" class="btn btn-animate btn-animate-vertical btn-success">
+                                            <span><i class="fa fa-upload" aria-hidden="true"></i>垂直动画</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">图标按钮</h4>
+                                    <p>按钮中仅包含图标。</p>
+                                    <div class="example example-buttons">
+                                        <button type="button" class="btn btn-icon btn-default"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-icon btn-primary"><i class="fa fa-th" aria-hidden="true"></i></button>
+                                       
+                                        <button type="button" class="btn btn-icon btn-default btn-outline"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-icon btn-primary btn-outline"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-icon btn-dark btn-round"> <i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-icon btn-danger btn-outline btn-round"><i class="fa fa-heart" aria-hidden="true"></i></button><br/>
+                                        <button type="button" class="btn btn-pure btn-default fa fa-lock"></button>
+                                        <button type="button" class="btn btn-pure btn-success fa fa-share"></button>
+                                        <button type="button" class="btn btn-pure btn-info fa fa-random"></button>
+                                        <button type="button" class="btn btn-pure btn-warning fa fa-star"></button>
+                                        <button type="button" class="btn btn-pure btn-danger fa fa-print"></button>
+                                        <button type="button" class="btn btn-pure btn-dark fa fa-flag"></button>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">图标下拉菜单</h4>
+                                    <p>在下拉菜单中仅使用图标</p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle" id="exampleIconDropdown1" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-bell" aria-hidden="true"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="exampleIconDropdown1" role="menu">
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-warning dropdown-toggle" id="exampleIconDropdown2" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-heart" aria-hidden="true"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="exampleIconDropdown2" role="menu">
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" id="exampleIconDropdown3" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="exampleIconDropdown3" role="menu">
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-dark dropdown-toggle" id="exampleIconDropdown4" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-pie-chart" aria-hidden="true"></i> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="exampleIconDropdown4" role="menu">
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-4">
+                                    <div class="example-wrap">
+                                        <h4 class="example-title">带图标的块级按钮</h4>
+                                        <p>只需要在按钮上添加 <code>.btn-block</code> 即可。</p>
+                                        <div class="example example-buttons">
+                                            <button type="button" class="btn btn-default btn-outline btn-block">
+                                                <i class="fa fa-th-list pull-right" aria-hidden="true"></i>块级按钮
+                                            </button>
+                                            <button type="button" class="btn btn-primary btn-block btn-round">
+                                                <i class="fa fa-th-list" aria-hidden="true"></i>块级按钮
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                    </div>
+                    <div class="row row-lg">
+                        
+                        
+                        <div class="clearfix visible-lg-block"></div>
+                        <div class="col-md-6 col-lg-4">
+    
+                            <div class="example-wrap">
+                                <h4 class="example-title">质感/扁平</h4>
+                                <p>质感按钮和扁平按钮示例</p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="example example-buttons">
+                                            <button type="button" class="btn btn-raised btn-primary btn-block">普通</button>
+                                            <button type="button" class="btn btn-raised btn-primary btn-block active" style="background: #89bceb; border-color:#89bceb">
+                                                鼠标悬停
+                                            </button>
+                                            <button type="button" class="btn btn-raised btn-primary btn-block active">激活
+                                            </button>
+                                            <button type="button" class="btn btn-raised btn-primary btn-block disabled">禁用
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="example example-buttons">
+                                            <button type="button" class="btn btn-flat btn-default btn-block">普通</button>
+                                            <button type="button" class="btn btn-flat btn-default btn-block active" style="background: #f8f9f9; border-color: #f8f9f9;">
+                                                鼠标悬停
+                                            </button>
+                                            <button type="button" class="btn btn-flat btn-default btn-block active">激活
+                                            </button>
+                                            <button type="button" class="btn btn-flat btn-default btn-block disabled">禁用
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+    
+                            <div class="example-wrap">
+                                <h4 class="example-title">胶囊按钮</h4>
+                                <p>在 <code>.btn-round</code> 按钮上的基础上通过添加 <code>.btn-pill-left</code> 或
+                                    <code>.btn-pill-right</code> 类来实现。</p>
+                                <div class="example example-buttons">
+                                    <div>
+                                        <button type="button" class="btn btn-round btn-default btn-outline btn-pill-left">
+                                            左边
+                                        </button>
+                                        <button type="button" class="btn btn-round btn-default btn-outline btn-pill-right">
+                                            右边
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-round btn-primary btn-pill-left">左边</button>
+                                        <button type="button" class="btn btn-round btn-primary btn-pill-right">右边</button>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+    
+                            <div class="example-wrap">
+                                <h4 class="example-title">带图标的按钮</h4>
+                                <p>带图标的按钮示例，您可以通过“
+                                    <a href="/components/basic/icons" data-pjax="">矢量图标</a>
+                                    ”页面来选择图标。
+                                </p>
+                                <div class="example example-buttons">
+                                    <button type="button" class="btn btn-dark">
+                                        <i class="fa fa-upload" aria-hidden="true"></i> 上传
+                                    </button>
+                                    <button type="button" class="btn btn-warning">
+                                        <i class="fa fa-heart" aria-hidden="true"></i> 喜欢
+                                    </button>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="fa fa-check" aria-hidden="true"></i> 我同意
+                                    </button>
+                                    <button type="button" class="btn btn-outline btn-primary">
+                                        <i class="fa fa-plus" aria-hidden="true"></i> 更多
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="fa fa-link" aria-hidden="true"></i> 链接
+                                    </button>
+                                    <button type="button" class="btn btn-info">
+                                        <i class="fa fa-comments" aria-hidden="true"></i> 评论
+                                    </button>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="clearfix visible-lg-block"></div>
+                       
+                        <div class="col-md-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">箭头</h4>
+                                <p>上<code>.btn-up</code> 右<code>.btn-right</code> 下<code>.btn-bottom</code> 左<code>.btn-left</code> </p>
+                                <div class="example example-buttons">
+                                    <button type="button" class="btn btn-direction btn-up btn-primary ml-5">向上</button>
+                                    <button type="button" class="btn btn-direction btn-right btn-warning ml-5">向右</button>
+                                    <button type="button" class="btn btn-direction btn-bottom btn-success btn-outline ml-5">向下</button>
+                                    <button type="button" class="btn btn-direction btn-left btn-danger btn-outline ml-5">向左</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">大小</h4>
+                                <p>可以通过添加 <code>.btn-lg</code> ， <code>.btn-sm</code> ，或
+                                    <code>.btn-xs</code> 来控制按钮大小。 </p>
+                                <div class="example example-buttons">
+                                    <button type="button" class="btn btn-outline btn-default btn-lg">大按钮</button>
+                                    <button type="button" class="btn btn-outline btn-default">默认按钮</button>
+                                    <button type="button" class="btn btn-outline btn-default btn-sm">小按钮</button>
+                                    <button type="button" class="btn btn-outline btn-default btn-xs">微型按钮</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="example-wrap margin-md-0">
+                                <h4 class="example-title">按钮动作</h4>
+                                <p>通过<code>data-toggle</code>属性让按钮根据响应结果展示内容</p>
+                                <div class="example example-buttons">
+                                    <div>
+                                        <button type="button" class="btn btn-sm btn-primary active" data-toggle="button" data-more="#exampleMoreless" aria-pressed="true">
+                                            <i class="fa fa-plus text" aria-hidden="true"></i>
+                                            <span class="text">展开</span>
+                                            <i class="fa fa-minus text-active" aria-hidden="true"></i>
+                                            <span class="text-active">收起</span>
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
+                                            <i class="fa fa-upload text" aria-hidden="true"></i>
+                                            <span class="text">下载</span>
+                                            <span class="text-active">加载中...</span>
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
+                                            <i class="fa fa-upload text" aria-hidden="true"></i>
+                                            <span class="text">上传</span>
+                                            <i class="fa fa-check text-active" aria-hidden="true"></i>
+                                            <span class="text-active">成功</span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-outline active" data-toggle="button" aria-pressed="true">
+                                            <i class="fa fa-heart-o text" aria-hidden="true"></i>
+                                            <i class="fa fa-heart text-active c-red" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-outline active" data-toggle="button">
+                                            <span class="text">
+                                                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 25
+                                            </span> <span class="text-active">
+                                                <i class="fa fa-thumbs-up c-red" aria-hidden="true"></i> 26
+                                            </span>
+                                        </button>
+                                        <div class="btn-group" data-toggle="buttons" role="group">
+                                            <label class="btn btn-outline btn-primary active">
+                                                <input type="radio" name="options" autocomplete="off" value="male" checked="">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i> 男
+                                            </label>
+                                            <label class="btn btn-outline btn-primary">
+                                                <input type="radio" name="options" autocomplete="off" value="female">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i> 女
+                                            </label>
+                                            <label class="btn btn-outline btn-primary">
+                                                <input type="radio" name="options" autocomplete="off" value="n/a">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i> 保密
+                                            </label>
+                                        </div>
+                                        <div class="btn-group" data-toggle="buttons" role="group">
+                                            <label class="btn btn-primary">
+                                                <input type="checkbox" name="multiples" autocomplete="off" value="apple" checked="">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i>苹果
+                                            </label>
+                                            <label class="btn btn-primary">
+                                                <input type="checkbox" name="multiples" autocomplete="off" value="banana" checked="">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i>香蕉
+                                            </label>
+                                            <label class="btn btn-primary active">
+                                                <input type="checkbox" name="multiples" autocomplete="off" value="orange">
+                                                <i class="fa fa-check text-active" aria-hidden="true"></i>橘子
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                    <div class="panel-body container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">基本按钮组</h4>
+                                    <p>添加 <code>.btn-group</code> ，实现一组按钮展示。</p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-icon btn-pure btn-default">
+                                                <i class="fa fa-play" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-icon btn-pure btn-primary">
+                                                <i class="fa fa-pause" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-icon btn-pure btn-danger">
+                                                <i class="fa fa-stop" aria-hidden="true"></i></button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-icon btn-primary">
+                                                <i class="fa fa-play" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-primary">
+                                                <i class="fa fa-pause" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-icon btn-primary">
+                                                <i class="fa fa-stop" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>编辑
+                                            </button>
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-reply" aria-hidden="true"></i>回复
+                                            </button>
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-share" aria-hidden="true"></i>分享
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-outline btn-default">左边</button>
+                                            <button type="button" class="btn btn-outline btn-default">中间</button>
+                                            <button type="button" class="btn btn-outline btn-default">右边</button>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">按钮组垂直显示</h4>
+                                    <p>父级容器使用<code>.btn-group-vertical</code>,让一组按钮垂直堆叠排列展示。</p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-group-vertical" role="group">
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-flag" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-wrench" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline btn-default">
+                                                <i class="fa fa-print" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group-vertical" role="group">
+                                            <button type="button" class="btn btn-outline btn-default">1</button>
+                                            <button type="button" class="btn btn-outline btn-default">2</button>
+                                            <button type="button" class="btn btn-outline btn-default">3</button>
+                                        </div>
+                                        <div class="btn-group-vertical" role="group">
+                                            <button type="button" class="btn btn-primary">左边</button>
+                                            <button type="button" class="btn btn-primary">中间</button>
+                                            <button type="button" class="btn btn-primary">右边</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">按钮工具条</h4>
+                                    <p>该按钮组用于显示多个按钮之间的密切关系，通常在编辑页面上使用。</p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-bold" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-italic" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-underline" aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-align-left" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-align-center" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-icon btn-primary">
+                                                    <i class="fa fa-align-right" aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-hidden="true">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">
+                                                            <i class="fa fa-scissor" aria-hidden="true"></i> 剪切
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">
+                                                            <i class="fa fa-copy" aria-hidden="true"></i> 复制
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">
+                                                            <i class="fa fa-rubber" aria-hidden="true"></i> 橡皮擦
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-icon btn-default btn-outline">
+                                                    <i class="fa fa-file" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-icon btn-default btn-outline">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-icon btn-default btn-outline">
+                                                    <i class="fa fa-folder" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-icon btn-default btn-outline">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="clearfix visible-md-block"></div>
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">按钮组大小设置</h4>
+                                    <p>只要给一组按钮 <code>.btn-group</code> 加上 <code>.btn-group-*</code> 类，就可以控制该组按钮。
+                                    </p>
+                                    <div class="example example-buttons">
+                                        <div>
+                                            <div class="btn-group btn-group-lg" role="group">
+                                                <button type="button" class="btn btn-outline btn-default">左边</button>
+                                                <button type="button" class="btn btn-outline btn-default">中间</button>
+                                                <button type="button" class="btn btn-outline btn-default">右边</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline btn-default">左边</button>
+                                                <button type="button" class="btn btn-outline btn-default">中间</button>
+                                                <button type="button" class="btn btn-outline btn-default">右边</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline btn-default">左边</button>
+                                                <button type="button" class="btn btn-outline btn-default">中间</button>
+                                                <button type="button" class="btn btn-outline btn-default">右边</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="btn-group btn-group-xs" role="group">
+                                                <button type="button" class="btn btn-outline btn-default">左边</button>
+                                                <button type="button" class="btn btn-outline btn-default">中间</button>
+                                                <button type="button" class="btn btn-outline btn-default">右边</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-md-4">
+                                <div class="example-wrap">
+                                    <h4 class="example-title">按钮组下拉列表</h4>
+                                    <p>如果需要把下拉菜单混合到一系列按钮中，您只须把 <code>.btn-group</code> 包含另一个 <code>.btn-group</code> </p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">1</button>
+                                            <button type="button" class="btn btn-primary">2</button>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" id="exampleGroupDrop1" data-toggle="dropdown" aria-expanded="false">
+                                                    下拉菜单 <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="exampleGroupDrop1" role="menu">
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-outline btn-default">1</button>
+                                            <button type="button" class="btn btn-outline btn-default">2</button>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-outline btn-default dropdown-toggle" id="exampleGroupDrop2" data-toggle="dropdown" aria-expanded="false">
+                                                    下拉菜单 <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="exampleGroupDrop2" role="menu">
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a href="javascript:;" role="menuitem">下拉菜单项</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+        
+                                <div class="example-wrap">
+                                    <h4 class="example-title">两端对齐的按钮组</h4>
+                                    <p>让一组按钮拉长为相同的尺寸，填满父元素的宽度。对于按钮组中的按钮式下拉菜单也同样适用。</p>
+                                    <div class="example example-buttons">
+                                        <div class="btn-group btn-group-justified">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="fa fa-star" aria-hidden="true"></i> <br>
+                                                    <span class="text-uppercase hidden-xs">收藏</span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-info">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i> <br>
+                                                    <span class="text-uppercase hidden-xs">最近</span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-success">
+                                                    <i class="fa fa-user" aria-hidden="true"></i> <br>
+                                                    <span class="text-uppercase hidden-xs">联系人</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+    </div>
+</script>
+
+<script id="page-form" type="text/html">
+    <div class="kui-header">
+        <h1 class="kui-title">表单</h1>
+    </div>
+    <div class="kui-content">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">常用表单 </h3>
+            </div>
+            <div class="panel-body container-fluid">
+                <div class="example-wrap">
+                    <div class="row row-lg">
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">圆形</h4>
+                                <input class="kui-form-control round" name="inputEmail" id="inputRounded" type="email">
+                                <h4 class="example-title">矩形</h4>
+                                <input class="kui-form-control square" id="inputRounded" type="text">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">禁用</h4>
+                                <input disabled="" class="kui-form-control" id="inputDisabled" type="text" placeholder="被禁用的文本框">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">获得焦点</h4>
+                                <input class="kui-form-control focus empty" id="inputFocus" type="text" value="当前文本框获得了焦点">
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">文本域</h4>
+                                <textarea class="kui-form-control" id="textareaDefault" rows="3"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">文件上传</h4>
+                                <div class="kui-form-group">
+                                    <div class="kui-input-group kui-input-group-file">
+                                        <input class="kui-form-control" type="text" readonly="">
+                                        <span class="kui-input-group-btn">
+                                            <span class="btn btn-success btn-file">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                                <input type="file" multiple="">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="kui-input-group kui-input-group-file">
+                                        <input class="kui-form-control" type="text" readonly="">
+                                        <span class="kui-input-group-btn">
+                                            <span class="btn btn-outline btn-file">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                                <input type="file" multiple="">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">搜索框</h4>
+                                <div class="kui-form-group">
+                                    <div class="kui-input-group">
+                                        <input class="kui-form-control" type="text" placeholder="请输入关键词...">
+                                        <span class="kui-input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="input-search">
+                                        <button class="input-search-btn" type="submit">
+                                            <i class="fa fa-search" aria-hidden="true"></i></button>
+                                        <input class="kui-form-control" type="text" placeholder="请输入关键词...">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="input-search input-search-dark">
+                                        <i class="input-search-icon fa fa-search" aria-hidden="true"></i>
+                                        <input class="kui-form-control" type="text" placeholder="请输入关键词...">
+                                        <button class="input-search-close fa fa-close" aria-label="清空" type="button"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    
+                        <div class="col-sm-6 col-md-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">大小</h4>
+                                <div class="kui-form-group">
+                                    <input class="kui-form-control input-sm" type="text" placeholder="小尺寸">
+                                </div>
+                                <div class="kui-form-group">
+                                    <input class="kui-form-control" type="text" placeholder="普通">
+                                </div>
+                                <div class="kui-form-group">
+                                    <input class="kui-form-control input-lg" type="text" placeholder="大尺寸">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="example-wrap margin-sm-0">
+                                <h4 class="example-title">下拉列表</h4>
+                                <div class="kui-form-group">
+                                    <select class="kui-form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <div class="kui-form-group">
+                                    <select class="kui-form-control" multiple="">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix visible-sm-block"></div>
+                    
+                    </div>
+                    <div class="row row-lg">
+                        <div class="col-sm-6 col-lg-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">复选框</h4>
+                                <p>添加 <code>.checkbox-custom</code></p>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input id="inputUnchecked" type="checkbox">
+                                        <label for="inputUnchecked">未选中</label>
+                                    </div>
+                                    <div class="checkbox-custom checkbox-primary">
+                                        <input id="inputChecked" type="checkbox" checked="">
+                                        <label for="inputChecked">选中</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="checkbox-custom">
+                                        <input disabled="" type="checkbox">
+                                        <label>未选中（禁用）</label>
+                                    </div>
+                                    <div class="checkbox-custom">
+                                        <input disabled="" type="checkbox" checked="">
+                                        <label>选中（禁用）</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+
+                            <div class="example-wrap">
+                                <h4 class="example-title">单选框</h4>
+                                <p>添加 <code>.radio-custom</code></p>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="radio-custom radio-primary">
+                                            <input name="inputRadios" id="inputRadiosUnchecked" type="radio">
+                                            <label for="inputRadiosUnchecked">未选中</label>
+                                        </div>
+                                        <div class="radio-custom radio-primary">
+                                            <input name="inputRadios" id="inputRadiosChecked" type="radio" checked="">
+                                            <label for="inputRadiosChecked">选中</label>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="radio-custom radio-primary">
+                                            <input name="inputRadiosDisabled" disabled="" id="inputRadiosDisabled" type="radio">
+                                            <label for="inputRadiosDisabled">未选中（禁用）</label>
+                                        </div>
+                                        <div class="radio-custom radio-primary">
+                                            <input name="inputRadiosDisabledChecked" disabled="" id="inputRadiosDisabledChecked" type="radio" checked="">
+                                            <label for="inputRadiosDisabledChecked">选中（禁用）</label>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">颜色</h4>
+                                <p>默认样式是 <code>.checkbox-default</code>，修改default，支持五种不同样式:<br/>
+                                    <code>primary</code> <code>success</code> <code>info</code> <code>warning</code> <code>danger</code> </p>
+                                    <div class="col-md-1">
+                                        <div class="checkbox-custom">
+                                            <input name="inputCheckboxes" type="checkbox" checked="">
+                                            <label></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="checkbox-custom checkbox-default">
+                                            <input name="inputCheckboxes" type="checkbox" checked="">
+                                            <label></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                            <div class="checkbox-custom checkbox-primary">
+                                                <input name="inputCheckboxes" type="checkbox" checked="">
+                                                <label></label>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-1">
+                                        <div class="radio-custom">
+                                            <input name="inputRadioDefault" id="inputRadioNormal" type="radio" checked="">
+                                            <label for="inputRadioNormal"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="radio-custom radio-default">
+                                            <input name="inputRadioDefault" type="radio" checked="">
+                                            <label></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                            <div class="radio-custom radio-primary">
+                                                <input name="inputRadioDefault" type="radio" checked="">
+                                                <label></label>
+                                            </div>
+                                        </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">表单组合 </h3>
+            </div>
+            <div class="panel-body container-fluid">
+                <div class="row row-lg">
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">复选、单选</h4>
+                            <p>复选，单选框也可以换成其他元素</p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">
+                                        <span class="checkbox-custom checkbox-default">
+                                            <input name="inputCheckbox" id="inputCheckbox" type="checkbox" checked="">
+                                            <label for="inputCheckbox"></label>
+                                        </span>
+                                    </span>
+                                    <input class="kui-form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">
+                                        <span class="radio-custom radio-default">
+                                            <input name="inputRadio" id="inputRadio" type="radio" checked="">
+                                            <label for="inputRadio"></label>
+                                        </span>
+                                    </span>
+                                    <input class="kui-form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">文本</h4>
+                            <p>可以在文本框任意一侧放置</p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <input class="kui-form-control" type="email" placeholder="email">
+                                    <span class="kui-input-group-addon">@example.com</span>
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">¥</span>
+                                    <input class="kui-form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">¥</span>
+                                    <input class="kui-form-control" type="text" placeholder="">
+                                    <span class="kui-input-group-addon">.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">图标</h4>
+                            <p>可以使用字体图标</p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group input-group-icon">
+                                    <span class="kui-input-group-addon">
+                                        <span class="fa fa-user" aria-hidden="true"></span>
+                                    </span>
+                                    <input class="kui-form-control" type="text" placeholder="用户名">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group input-group-icon">
+                                    <span class="kui-input-group-addon">
+                                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                                    </span>
+                                    <input class="kui-form-control" type="text" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group input-group-icon">
+                                    <input class="kui-form-control" type="email" placeholder="Email">
+                                    <span class="kui-input-group-addon">
+                                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix visible-md-block"></div>
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap margin-md-0">
+                            <h4 class="example-title">按钮</h4>
+                            <p>需要使用 <code>.kui-input-group-btn</code> 包裹在按钮外面 </p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-btn">
+                                        <button class="btn btn-default btn-outline" type="button">搜索</button>
+                                    </span>
+                                    <input class="kui-form-control" type="text" placeholder="关键词...">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <input class="kui-form-control" type="text" placeholder="关键词...">
+                                    <span class="kui-input-group-btn">
+                                        <button class="btn btn-default btn-outline" type="button">搜索</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap margin-sm-0">
+                            <h4 class="example-title">下拉菜单</h4>
+                            <p>使用下拉菜单</p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <div class="kui-input-group-btn">
+                                        <button class="btn btn-default btn-outline dropdown-toggle" aria-expanded="false" type="button" data-toggle="dropdown">
+                                            操作 <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="exampleColorDropdown1">
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项1</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项2</a>
+                                            </li>
+                                            <li class="active" role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项3</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项4</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input class="kui-form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <input class="kui-form-control" type="text">
+                                    <div class="kui-input-group-btn">
+                                        <button tabindex="-1" class="btn btn-default btn-outline" type="button">操作
+                                        </button>
+                                        <button tabindex="-1" class="btn btn-default btn-outline dropdown-toggle" aria-expanded="false" type="button" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="exampleColorDropdown1">
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项1</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项2</a>
+                                            </li>
+                                            <li class="active" role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项3</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" href="javascript:;">下拉菜单项4</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">大小</h4>
+                            <p>在 <code>.kui-input-group</code> 添加控制大小的类 </p>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group kui-input-group-lg">
+                                    <span class="kui-input-group-addon">@</span>
+                                    <input class="kui-form-control input-lg" type="text" placeholder="用户名">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">@</span>
+                                    <input class="kui-form-control" type="text" placeholder="用户名">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group kui-input-group-sm">
+                                    <span class="kui-input-group-addon">@</span>
+                                    <input class="kui-form-control" type="text" placeholder="用户名">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">无框表单</h3>
+            </div>
+            <div class="panel-body container-fluid">
+                <div class="row row-lg">
+                    <div class="col-sm-6">
+                        <form autocomplete="off">
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputText">文本框</label>
+                                <input name="inputText" class="kui-form-control" id="inputText" type="text" placeholder="文本框">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputEmail">邮箱</label>
+                                <input name="inputEmail" class="kui-form-control" id="inputEmail" type="email" placeholder="邮箱">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputPassword">密码</label>
+                                <input name="inputPassword" class="kui-form-control" id="inputPassword" type="password" placeholder="密码">
+                            </div>
+                            <div class="kui-form-group kui-form-material kui-form-material-file">
+                                <label class="control-label" for="inputFile">文件域</label>
+                                <input class="kui-form-control" type="text" readonly="" placeholder="请选择文件..">
+                                <input name="inputFile" id="inputFile" type="file" multiple="">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="textarea">文本域</label>
+                                <textarea name="textarea" class="kui-form-control" id="textarea" rows="3"></textarea>
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="select">下拉菜单</label>
+                                <select class="kui-form-control" id="select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="selectMulti">下拉菜单（多选）</label>
+                                <select class="kui-form-control" id="selectMulti" multiple="">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputDisabled">文本框（禁用）</label>
+                                <input disabled="" class="kui-form-control" id="inputDisabled" type="text" placeholder="禁用">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputFocus">文本框（获得焦点）</label>
+                                <input class="kui-form-control focus" id="inputFocus" type="text" placeholder="获得焦点">
+                            </div>
+                            <div class="kui-form-group kui-form-material has-warning">
+                                <label class="control-label" for="inputWarning">文本框（警告）</label>
+                                <input class="kui-form-control" id="inputWarning" type="text" placeholder="警告">
+                            </div>
+                            <div class="kui-form-group kui-form-material has-error">
+                                <label class="control-label" for="inputError">文本框（错误）</label>
+                                <input class="kui-form-control" id="inputError" type="text" placeholder="错误">
+                            </div>
+                            <div class="kui-form-group kui-form-material has-success">
+                                <label class="control-label" for="inputSuccess">文本框（成功）</label>
+                                <input class="kui-form-control" id="inputSuccess" type="text" placeholder="成功">
+                            </div>
+                            <div class="kui-form-group kui-form-material has-info">
+                                <label class="control-label" for="inputInfo">文本框（信息）</label>
+                                <input class="kui-form-control" id="inputInfo" type="text" placeholder="信息">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputSmall">小尺寸</label>
+                                <input name="inputSmall" class="kui-form-control input-sm" id="inputSmall" type="text" placeholder="小尺寸">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputSmall">默认尺寸</label>
+                                <input name="inputDefault" class="kui-form-control" id="inputDefault" type="text" placeholder="默认">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputSmall">大尺寸</label>
+                                <input name="inputLarge" class="kui-form-control input-lg" id="inputLarge" type="text" placeholder="大尺寸">
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputHint">提示</label>
+                                <input name="inputHint" class="kui-form-control" id="inputHint" type="text" placeholder="获得焦点时显示提示信息" data-hint="欢迎使用KUI"><div class="hint">欢迎使用KUI</div>
+                            </div>
+                            <div class="kui-form-group kui-form-material">
+                                <label class="control-label" for="inputAddons">附加组件</label>
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">¥</span>
+                                    <div class="kui-form-control-wrap">
+                                        <input class="kui-form-control" id="inputAddons" type="text">
+                                    </div>
+                                    <span class="kui-input-group-btn">
+                                        <button class="btn btn-outline btn-default" type="button">按钮</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="kui-form-group kui-form-material row">
+                                <div class="col-sm-6">
+                                    <label class="control-label" for="inputGrid1">栅格</label>
+                                    <input name="inputGrid1" class="kui-form-control" id="inputGrid1" type="text" placeholder=".col-sm-6">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label" for="inputGrid2">栅格</label>
+                                    <input name="inputGrid2" class="kui-form-control" id="inputGrid2" type="text" placeholder=".col-sm-6">
+                                </div>
+                            </div>
+                        </form>
+                    </div>   
+                    <div class="col-sm-6">
+                        <form autocomplete="off">
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control empty" name="inputFloatingText">
+                                <label class="floating-label">文本框</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="email" class="kui-form-control empty" name="inputFloatingEmail">
+                                <label class="floating-label">邮箱</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="password" class="kui-form-control empty" name="inputFloatingPassword">
+                                <label class="floating-label">密码</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating kui-form-material-file">
+                                <input type="text" class="kui-form-control empty" readonly="">
+                                <input type="file" name="inputFloatingFile" multiple="">
+                                <label class="floating-label">请选择文件..</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <textarea class="kui-form-control empty" rows="3" name="textareaFloating"></textarea>
+                                <label class="floating-label">文本域</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <select class="kui-form-control empty">
+                                    <option>&nbsp;</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <label class="floating-label">下拉框</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <label class="floating-label floating-label-static">下拉框（多选）</label>
+                                <select class="kui-form-control empty" multiple="">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control empty" disabled="">
+                                <label class="floating-label">禁用</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control focus empty">
+                                <label class="floating-label">获得焦点s</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating has-warning">
+                                <input type="text" class="kui-form-control empty">
+                                <label class="floating-label">警告</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating has-error">
+                                <input type="text" class="kui-form-control empty">
+                                <label class="floating-label">错误</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating has-success">
+                                <input type="text" class="kui-form-control empty">
+                                <label class="floating-label">成功</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating has-info">
+                                <input type="text" class="kui-form-control empty">
+                                <label class="floating-label">信息</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control input-sm empty" name="inputFloatingSmall">
+                                <label class="floating-label">小尺寸</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control empty" name="inputFloatingSmall">
+                                <label class="floating-label">默认尺寸</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control input-lg empty" name="inputFloatingLarge">
+                                <label class="floating-label">大尺寸</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <input type="text" class="kui-form-control empty" name="inputFloatingHint" data-hint="Write here something cool"><div class="hint">欢迎使用KUI</div>
+                                <label class="floating-label">提示</label>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">¥</span>
+                                    <div class="kui-form-control-wrap">
+                                        <input type="text" class="kui-form-control empty">
+                                        <label class="floating-label">附加组件</label>
+                                    </div>
+                                    <span class="kui-input-group-btn">
+                                        <button class="btn btn-outline btn-default" type="button">Button</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="kui-form-group kui-form-material floating row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="kui-form-control empty" name="inputFloatingGrid1">
+                                    <label class="floating-label">栅格</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="kui-form-control empty" name="inputFloatingGrid2">
+                                    <label class="floating-label">栅格</label>
+                                </div>
+                            </div>
+                        </form>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="page-select" type="text/html">
+    <div class="kui-header">
+        <h1 class="kui-title">筛选表单</h1>
+    </div>
+    <div class="kui-content">
+        <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">下拉选择
+                        <small>
+                            <a class="example-plugin-link" href="http://silviomoreto.github.io/bootstrap-select" target="_blank">
+                                bootstrap-select官网
+                            </a>
+                        </small>
+                    </h3>
+                </div>
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">基本</h4>
+                                <div class="example">
+                                    <select data-plugin="selectpicker">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <p>也可以使用分组</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker" title='请选择品牌'>
+                                        <optgroup label="A 字母开头">
+                                            <option value="AC BMW">A AC宝马</option>
+                                            <option value="Aston Martin">A 阿斯顿马丁</option>
+                                            <option value="Audi">A 奥迪</option>
+                                        </optgroup>
+                                        <optgroup label="B 字母开头">
+                                            <option value="Brabus">B 巴博斯</option>
+                                            <option value="Porsche">B 保时捷</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <p>可以使用 <code>.show-tick</code> 来为 <code>select</code> 添加选中图标</p>
+                                <div class="example">
+                                    <select class="show-tick" data-plugin="selectpicker">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <p>可以通过 <code>.show-menu-arrow</code> 让下拉列表显示箭头</p>
+                                <div class="example">
+                                    <select class="show-menu-arrow" data-plugin="selectpicker">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">样式</h4>
+                                <p>可以通过 <code>data-style</code> 属性改变其样式</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker-outline" data-style="btn-outline btn-primary">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker-outline" data-style="btn-outline btn-info">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker-outline" data-style="btn-outline btn-success">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker-outline" data-style="btn-outline btn-warning">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker-outline" data-style="btn-outline btn-danger">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">选择多个</h4>
+                                <p>可以通过 <code>data-max-option</code> 属性设置最大选中项，也可以用于分组</p>
+                                <div class="example">
+                                    <select multiple data-plugin="selectpicker" data-max-options="2">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select multiple data-plugin="selectpicker">
+                                        <optgroup label="A 字母开头" data-max-options="2">
+                                            <option value="AC BMW">A AC宝马</option>
+                                            <option value="Aston Martin">A 阿斯顿马丁</option>
+                                            <option value="Audi">A 奥迪</option>
+                                        </optgroup>
+                                        <optgroup label="B 字母开头" data-max-options="1">
+                                            <option value="Brabus">B 巴博斯</option>
+                                            <option value="Porsche">B 保时捷</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-lg-block"></div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">选中项显示格式</h4>
+                                <p>可以使用 <code>data-selected-text-format</code> 属性 来指定 <code>multiple select</code> 选中项如何显示
+                                </p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker" multiple data-selected-text-format="count">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker" multiple data-selected-text-format="count > 3">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">即时搜索</h4>
+                                <p>可以使用 <code>data-live-search="true"</code> 属性来实现即时搜索</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker" data-live-search="true">
+                                        <option value="AC BMW">A AC宝马</option>
+                                        <option value="Aston Martin">A 阿斯顿马丁</option>
+                                        <option value="Audi">A 奥迪</option>
+                                        <option value="Brabus">B 巴博斯</option>
+                                        <option value="Porsche">B 保时捷</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">标题转换</h4>
+                                <p>可以使用 <code>title</code> 来改变选中项的显示标题 </p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker">
+                                        <option title="AC BMW">A AC宝马</option>
+                                        <option title="Aston Martin">A 阿斯顿马丁</option>
+                                        <option title="Audi">A 奥迪</option>
+                                        <option title="Brabus">B 巴博斯</option>
+                                        <option title="Porsche">B 保时捷</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix visible-lg-block"></div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">选项分割线</h4>
+                                <p>可以通过添加 <code>data-divider="true"</code> 的 <code>&lt;option&gt;</code> 来实现</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker">
+                                        <option value="Windows">Windows</option>
+                                        <option value="Mac">macOS</option>
+                                        <option value="Linux">Linux</option>
+                                        <option value="" data-divider="true">&nbsp;</option>
+                                        <option value="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">选项图标</h4>
+                                <p>为选项或者分组项添加 <code>data-icon</code> 属性</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker">
+                                        <option data-icon="fa-windows" value="Windows">Windows</option>
+                                        <option data-icon="fa-apple" value="Mac">macOS</option>
+                                        <option data-icon="fa-linux" value="Linux">Linux</option>
+                                        <option data-icon="fa-desktop" value="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="example-wrap">
+                                <h4 class="example-title">选项副标题</h4>
+                                <p>为选项或者分组项添加 <code>data-subtext</code> 属性</p>
+                                <div class="example">
+                                    <select data-plugin="selectpicker">
+                                        <option data-subtext="Windows">Windows</option>
+                                        <option data-subtext="Mac">macOS</option>
+                                        <option data-subtext="Linux">Linux</option>
+                                        <option data-subtext="other">其他</option>
+                                    </select>
+                                </div>
+                                <div class="example">
+                                    <select data-plugin="selectpicker" data-show-subtext="true">
+                                        <option data-subtext="Windows">Windows</option>
+                                        <option data-subtext="Mac">macOS</option>
+                                        <option data-subtext="Linux">Linux</option>
+                                        <option value="" data-divider="true">&nbsp;</option>
+                                        <option data-subtext="other">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+</script>

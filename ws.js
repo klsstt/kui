@@ -1,41 +1,29 @@
-function ws(url_){
-	var url=null;
-	var isW=false;
+function ws(){
+	var op=null;
+	window.isW=false;
 	var websocket = null;
-	var heartCheck = {
-		timeout: 10000,//60ms
-		timeoutObj: null,
-		serverTimeoutObj: null,
-		reset: function(){
-			clearTimeout(this.timeoutObj);
-			this.start();
-		},
-		start: function(){
-			var self = this;
-			this.timeoutObj = setTimeout(function(){
-				_this.websocket.send("HeartBeat", "beat");
-			}, this.timeout)
-		},
-	};
-	var _this = this;
-	if(null!=url_){
-		this.url=url_;
+};
+ws.prototype.init=function(op){
+	if(null!=op){
+		this.setOp(op);
 	}
+	var _this = this;
+	
 	//判断当前浏览器是否支持WebSocket
-    if ('WebSocket' in window) {
-        this.websocket = new WebSocket(this.url);
-		
+	if ('WebSocket' in window) {
+		this.websocket = new WebSocket(this.op.url);
 		
 		this.websocket.onopen =function (){
 			//启动定时器检测心跳
-			_this.isW=true;
-			heartCheck.start(); 
+			window.isW=true;
+			_this.getOp().heartCheck.start(_this); 
+			_this.getOp().open();
 		}
-		
 		
 		this.websocket.onmessage=function (event) {
 			console.info(event.data);
-			heartCheck.reset(); 
+			_this.getOp().onmessage(event.data);
+			_this.getOp().heartCheck.reset(_this); 
 		}
 
 		this.websocket.onerror=function(e){
@@ -43,30 +31,36 @@ function ws(url_){
 			console.log("WebSocket连接发生错误,错误时间："+new Date());
 			_this.reconnect();
 		}
+
 		this.websocket.onclose = function (e) {
 			if(e.wasClean){
 				console.log(_this.websocket.readyState+"WebSocket服务器连接主动关闭,关闭时间："+new Date());
 			}else{
 				console.log("WebSocket连接关闭,关闭时间："+new Date());
 			}
-			_this.isW=false;
+			window.isW=false;
 			//_this.websocket = null;  
 			_this.reconnect();
 		}
 		
-    }
-};
-
+	}
+}
 //重新连接
 ws.prototype.reconnect=function(){
 	if(!this.isW){
 		var md=new Date();
-		this.websocket = new WebSocket(this.url);
+		this.websocket = new WebSocket(this.op.url);
 		getReadyMessage(this.websocket.readyState);
 	}
 	
 };
 //返回对浏览器支持ws的检测结果
+ws.prototype.getOp=function(){
+	return this.op;
+};
+ws.prototype.setOp=function(op){
+	this.op=op;
+};
 ws.prototype.getIsW=function(){
 	return this.isW;
 };

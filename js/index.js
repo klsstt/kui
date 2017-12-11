@@ -1,53 +1,61 @@
-require(['jquery','art-template','text!header','text!devices','async!bmap','layer','k','k-blank'], function($,template,header,devices) {
+require(['jquery','art-template','text!header','text!example-page','bootstrap-select','layer','kui','example'], function($,template,header,epage) {
 	/*换肤*/
 	$(function(){
 		
 	});
-	
+	var data=null;
+	var html=null;
+	//加载header模块
 	$("#data").html(header);
-    var data = {
-			add: '增加',username:'欢迎光临',useraccount:'admin',userinfo:'个人信息',upaw:'修改密码',esc:'退出',
+    data = {
+			add: '增加',welcome:'欢迎光临',account:'admin',userinfo:'个人信息',upaw:'修改密码',esc:'退出',
 			list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
 		};
 	
-	var html = template('header', data);
-	$(".navbar-wrapper").html(html);
+	html = template('header', data);
+	$("header").html(html);
 	
-	$("#data").html(devices);
-	data = {
-			list: [{title:'出租车',id:'menu-article',list:[{title:'粤BAS21',id:11},{title:'粤BAS22',id:12},{title:'粤BAS25',id:13}]},{title:'图片管理',id:2,list:[{title:'图片管理1',id:21},{title:'图片管理2',id:22},{title:'图片管理3',id:33}]} ]
-		};
+	//加载首页内容
+	initPage("page-index");
+	function initPage(p){
+		$("#data").html(epage);
+		html = template(p);
+		$("main").html(html);
+	}
+	$("a[jump]").click(function(e){
+        var page=e.target.getAttribute("jump");
+		initPage(page);
+		if(page=="page-select"){
+			$('[data-plugin=selectpicker]').selectpicker({
+				'noneSelectedText': '没有选中任何项',
+				'noneResultsText': "没有找到匹配项",
+				'countSelectedText':"已选中{1}项中的{0}项",
+				'maxOptionsText': ['超出限制 (最多选择{n}项)', '组选择超出限制(最多选择{n}组)'],
+				'selectAllText': "选择全部",
+				'deselectAllText': "取消全部选择",
+				'doneButtonText': '关闭',
+				'style': "btn-select",
+				'iconBase':"fa",
+				'tickIcon': "fa-check"
+			  });
+			$('[data-plugin=selectpicker-outline]').selectpicker({
+				'noneSelectedText': '没有选中任何项',
+				'noneResultsText': "没有找到匹配项",
+				'countSelectedText':"已选中{1}项中的{0}项",
+				'maxOptionsText': ['超出限制 (最多选择{n}项)', '组选择超出限制(最多选择{n}组)'],
+				'selectAllText': "选择全部",
+				'deselectAllText': "取消全部选择",
+				'doneButtonText': '关闭',
+				
+				'iconBase':"fa",
+				'tickIcon': "fa-check"
+			});
+			  
+		}
+	});
 	
-	html = template('device', data);
-	$(".k-aside").html(html);
-	/*左侧菜单*/
-	$(".k-aside").kfold({
-		triggerType:true,
-		titCell:'.menu_dropdown dl dt',
-		mainCell:'.menu_dropdown dl dd',
-	});	
-	
-
-	var map = new BMap.Map('allmap');
-	map.centerAndZoom(new BMap.Point(121.491, 31.233), 11);
-		//添加地图类型控件
-	map.addControl(new BMap.MapTypeControl({
-		mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));	  
-	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
 });
 
 
 
-function skin(e){
-	var skin = $(e).attr("data-val");
-	if(skin==null||skin==""){
-		skin="default";
-	}
-	$.cookie("Huiskin",skin);
-	window.location.reload();
-}

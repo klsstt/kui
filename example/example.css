@@ -1,0 +1,106 @@
+
+.navbar .logoimg {
+    height:31px;
+    line-height: 61px;
+     vertical-align: middle;
+     border: 0;
+ }
+ .example {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.example-blocks .example-col, .example-grid .example-col {
+    min-height: 0;
+    padding: 10px 15px 12px;
+    background-color: #94cce8;
+    border-radius: 0;
+}
+
+.example-grid .example-col {
+    margin-bottom: 20px;
+}
+.example-grid .example-col .example-col {
+    margin-top: 20px;
+    margin-bottom: 0;
+    background-color: #f9f9f9;
+}
+
+.example-box{
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+}
+.example-buttons .btn, .example-buttons .btn-group, .example-buttons .btn-group-vertical {
+    margin: 0 10px 10px 0;
+}
+.example-buttons .btn-group .btn, .example-buttons .btn-group-vertical .btn {
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.social-wechat {
+	color: #fff;
+	background-color: #51c332!important
+}
+
+.social-wechat:focus,.social-wechat:hover {
+	color: #fff;
+	background-color: #70d355!important
+}
+
+.social-wechat.active,.social-wechat:active {
+	color: #fff;
+	background-color: #409a28!important
+}
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 30px;
+  }
+  .rating span.star {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+  }
+  .rating span.star:hover {
+    cursor: pointer;
+  }
+  .rating span.star:before {
+    content: "\f006";
+    padding-right: 5px;
+    color: #777777;
+  }
+  .rating span.star:hover:before,
+  .rating span.star:hover ~ span.star:before {
+    content: "\f005";
+    color: #e3cf7a;
+  }
+  pre,.pre {
+    overflow: auto;
+}
+  pre ,.pre{
+    background-color: #fafafa;
+    padding: 8px 15px;
+}
+pre,.pre{
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #333333;
+    background-color: #f5f5f5;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+}
+
+pre code {
+    padding: 0px;
+    border: 0px solid #bcd8f1;
+    padding: 0px;
+    font-size: 90%;
+
+}
