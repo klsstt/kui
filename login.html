@@ -5,10 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>登录页面</title>
-<link type="text/css" rel="stylesheet" href="js/kui/login/css/normalize.css" />
-<link type="text/css" rel="stylesheet" href="js/kui/login/css/demo.css" />
+<link type="text/css" rel="stylesheet" href="login/css/normalize.css" />
+<link type="text/css" rel="stylesheet" href="login/css/demo.css" />
 <!--必要样式-->
-<link type="text/css" rel="stylesheet" href="js/kui/login/css/component.css" />
+<link type="text/css" rel="stylesheet" href="login/css/component.css" />
 <!--[if IE]>
 <script src="js/html5.js"></script>
 <![endif]-->
@@ -26,46 +26,59 @@ body {
 	text-shadow: 0px 0px 1px rgba(24, 22, 22, 0.35);
 	background-color: #000;
 }
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;
+	BACKGROUND-COLOR: transparent;
+}
 </style>
 </head>
 
-<body>
+<body class="container demo-1">
 
-<div class="container demo-1" >
+<div>
 	<div class="content">
-		<div id="large-header" class="large-header">
-			<canvas id="demo-canvas"></canvas>
-			<div class="logo_box"  style="position:absolute; z-index:100;">
+		<div id="large-header" class="large-header"  >
+			
+			<div class="logo_box" style="position:absolute; z-index:100;">
+					
 				<h3>欢迎登录</h3>
 				<form action="#" name="f" method="post">
+						
 					<div class="input_outer">
 						<span class="u_user"></span>
-						<input id="account" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+						<input id="k_account" name="k_account"  class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户" autocomplete="new-password" disabled>
 					</div>
 					<div class="input_outer">
 						<span class="us_uer"></span>
-						<input name="logpass" class="text" style="color: #FFFFFF !important; "value="" type="password" placeholder="请输入密码">
+						<input id="k_password" name="k_password" class="text" style="color: #FFFFFF !important; " type="text"  textmode=“password” autocomplete="new-password" onfocus="this.type='password'" disabled>
 					</div>
 					<div class="mb2"><a class="act-but submit" href="javascript:;" onclick="login()" style="color: #FFFFFF">登录</a></div>
 				</form>
 			</div>
 		</div>
 	</div>
-</div>
-<script type="text/javascript" src="js/kui/login/js/TweenLite.min.js"></script>
-<script type="text/javascript" src="js/kui/login/js/EasePack.min.js"></script>
-<script type="text/javascript" src="js/kui/login/js/demo-1.js"></script>
 
+</div>
 <script type="text/javascript" src="js/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/lib/store.js"></script>
+<script type="text/javascript" src="login/js/canvas-nest.js" color="255,255,255" opacity='0.7' zIndex="1" count="200"></script>
 <script type="text/javascript">
+ document.getElementById('large-header').style.height = window.innerHeight+'px';
+
+
+       
 $(function () {
 	if(!$.k_store.enable){//浏览器不支持本地存储
 		alert('浏览器不支持本地存储');
 	}
+	setTimeout("javascript:init();",1000) //1秒=5000，这里是3秒
+	
 });
+function init(){
+	$("#k_account").removeAttr("disabled");
+	$("#k_password").removeAttr("disabled");
+}
 function login(){
-	var account=$("#account").val();
+	var account=$("#k_account").val();
 	if($.trim(account).length>0){
 		$.k_store.set("account",account);
 		$.k_store.set("name","康博磊");

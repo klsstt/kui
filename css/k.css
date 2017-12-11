@@ -1123,6 +1123,17 @@ a.btn.size-XL,span.btn.size-XL{ line-height:26px}
 	Explain:		code：行内代码，pre：基本代码块;包装代码片段，.prettyprint颜色增强/.linenums显示行号
 */
 code{padding:0 3px 2px;font-family:Monaco,Menlo,Consolas,"Courier New",monospace}
+/*代码*/
+code {
+   
+    font-size: 90%;
+    color: #5683ad;
+    background-color: rgba(232,241,248,.1);
+    border-radius: 3px;
+}
+code {
+    border: 1px solid #bcd8f1;
+}
 pre .title,pre .keyword,pre .body,pre .des{color:#333}/*关键词*/
 
 pre{display:block;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;padding:9.5px;margin-bottom:10px;font-size:12px;line-height:20px;word-break:break-all;word-wrap:break-word;white-space:pre;white-space:pre-wrap;background-color:#f5f5f5;border:1px solid #ccc;border-radius:4px;color:#333}
@@ -1156,7 +1167,7 @@ pre ol.linenums li{padding-left:12px;color:#bbb;line-height:18px;text-shadow:0 1
 	Explain:		表格，None无样式，仅仅有列和行|.table行与行之间以水平线相隔|.table-bordered表格外围均有外边框|.table-striped奇数行背景设为浅灰色|.table-condensed竖直方向padding缩减一半，从8px变为4px，所有的 td 和 th 元素都受影响
 */
 /*默认table*/
-table{width:100%;empty-cells:show;background-color:transparent;border-collapse:collapse;border-spacing:0}
+table{width:100%;empty-cells:show;background-color:transparent;border-collapse:collapse;border-spacing:0;color: #76838f;}
 table th{text-align:left; font-weight:400}
 /*带水平线*/
 .table th{font-weight:bold}
@@ -1170,7 +1181,7 @@ table th{text-align:left; font-weight:400}
 .table .table{background-color:#fff}
 
 /*带横向分割线*/
-.table-border{border-top:1px solid #ddd}
+.table-border{border-top:1px solid #e4eaec}
 .table-border th,.table-border td{border-bottom:1px solid #ddd}
 
 /*th带背景*/
@@ -3080,7 +3091,12 @@ H-ui采用Font Awesome 3.2.1的整套图标，因为是图标字体，所以可�
 	Explain: 鼠标经过状态a:hover，当前选中状态li:current。
 */
 /*导航条*/
-.navbar-wrapper{ height: 45px}
+.k-navbar{
+	z-index: 2000;
+	min-height: 60px;
+	margin-bottom: 22px;
+}
+.navbar-wrapper{ height: 61px}
 .navbar{ position:relative; z-index:1030; background-color: #fff}
 .navbar-black{ background-color: #222}
 .navbar-fixed-top{ position:fixed; top:0;left: 0; right: 0; z-index:1030}
@@ -3827,13 +3843,36 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus{color: #fff;text-deco
 		<div class="panel-body">默认面板</div>
 	</div>
 */
-.panel{ background-color:#fff; border:solid 1px transparent}
-	.panel-header{ border-bottom:solid 1px transparent; padding:8px 15px; font-size:14px; font-weight:700; margin-bottom:-1px}/*面板标题*/
+.panel{position: relative;margin-bottom: 24px;background-color:#fff;border-radius: 1px;border:none}
+	.panel-header{ /*面板标题*/
+		position: relative;
+		border-bottom: 1px solid #e4eaec; 
+		padding:0px; 
+		font-size:14px; 
+		font-weight:700; 
+		margin-bottom:-1px;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+	.panel-title {
+		display: block;
+		padding: 20px 20px;
+		color: #37474f;
+		margin-top: 0px; 
+		margin-bottom: 0px; 
+	}
+	.panel-desc {
+		display: block;
+		padding: 5px 0 0;
+		margin: 0;
+		font-size: 14px;
+		color: #76838f;
+	}
 	.panel-body{ padding:15px}/*面板内容*/
 	.panel-footer{background-color: #f5f5f5;border-top: 1px solid #ddd;padding:5px 20px}/*面板页脚*/
 /*默认面板*/
-.panel-default{border-color:#ddd}
-.panel-default > .panel-header{ border-color:#ddd; background-color:#f5f5f5; color:#444}
+.panel-default{border-color:#fff}
+.panel-default > .panel-header{ border-color:#ddd; background-color:#fff; color:#444}
 
 /*主要面板*/
 .panel-primary{border-color:#5a98de}
