@@ -83,7 +83,7 @@ top:61px;
 bottom:0;
 left:0;
 padding:10px 0;
-margin-top: 0;
+margin: 0;
 width:199px;
 z-index:99;
 overflow-y: auto;
@@ -130,11 +130,11 @@ transform: none!important;
 }
 
 
-
-.kui-tree-menu ,.kui-tree-menu-arrow,.kui-main{-moz-transition: all 0.4s ease 0s;-webkit-transition: all 0.4s ease 0s;-ms-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;transition: all 0.4s ease 0s}
-.big-page .kui-main,.big-page .kui-tree-menu-arrow{ left:0px}
-.big-page .kui-tree-menu{ left:-200px}
-.big-page .kui-main{ margin-left:0px}
+.site-contabs{ margin-left:200px}
+.kui-tree-menu ,.kui-tree-menu-arrow,.kui-main,.site-contabs{-moz-transition: all 0.4s ease 0s;-webkit-transition: all 0.4s ease 0s;-ms-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;transition: all 0.4s ease 0s}
+.big-page .kui-main,.big-page .kui-tree-menu-arrow,.big-page .site-contabs{ left:0px}
+.big-page .kui-tree-menu,.big-page .site-contabs{ left:-200px}
+.big-page .kui-main,.big-page .site-contabs{ margin-left:0px}
 /*横向手机 竖向平板*/
 @media (max-width: 767px) {
     .kui-tree-menu { display:none;float:none; width:100%; height:auto; margin-top:0;padding-top:0;bottom:auto}
