@@ -104,3 +104,8 @@ pre code {
     font-size: 90%;
 
 }
+
+
+.pull-right {
+    float: right!important;
+}

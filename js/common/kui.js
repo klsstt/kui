@@ -1008,12 +1008,328 @@
 }(window, document, jQuery));
 
 
+/**
+ * 页面选项卡
+ */
+(function (win, doc, $) {
+	'use strict';
+	$["kui"]["contentTabs"] = {
+		'$instance': $(".kui-tree-menu"),
+		'relative': 0,
+		'init': function () {
+			this['bind']();
+			this["getPath"]();
+		},
+		'containerSize': function () {
+			this["labelWidth"] = this["$label"]["width"]();
+			this["view"] = this["$view"]["width"]();
+		},
+		'bind': function () {
+			var _this = this,
+			sc = $(".site-contabs"),
+			ct = sc["find"]("ul.con-tabs"),
+			li = this['$label'] = ct["find"]('li'),
+			cs = this['$view'] = sc["find"](".contabs-scroll");
+			this["containerSize"](li, cs);
+			$(doc)['on']("click", 'a[data-pjax]', function (e) {
+				var a = $(this),
+				reg,
+				text = a['text'](),
+				url = a['attr']('href');
+				text = text === '' ? a["attr"]('title') : text;
+				reg = new RegExp(/^([a-zA-z]+:|#|javascript|www\.)/);
+				if (reg["test"](url)) {
+					e['preventDefault']();
+					return;
+				}
+				if (a['is']("[target=\"_blank\"]")) {
+					_this["buildTag"]({
+						'name': text,
+						'url': a['attr']("href")
+					}, e);
+				}
+			});
+			sc['on']("click.site.contabs", "button.pull-left", function () {
+				_this["labelPosition"](ct, _this["labelWidth"], "right");
+			})['on']("click.site.contabs", ".pull-right>.btn-icon", function () {
+				var width = ct["width"]();
+				_this["labelPosition"](ct, _this["labelWidth"], "left", _this["view"], width);
+			})['on']("click.site.contabs", 'ul.con-tabs>li', function (e) {
+				var target = $(e["target"]),
+				contab = $(this);
+				if (target['is']('i.wb-close-mini') && contab['is']('.active')) {
+					_this["closeTab"]();
+					e["preventDefault"]();
+				} else if (target['is']('i.wb-close-mini')) {
+					contab["remove"]();
+					_this['labelSize']();
+					_this['labelEvent'](ct, "media");
+					e["preventDefault"]();
+				} else if (contab['is']('.active')) {
+					e["preventDefault"]();
+				} else {
+					contab["siblings"]('li')['removeClass']("active");
+					contab["addClass"]("active");
+					_this["enable"](contab);
+				}
+			});
+			sc['on']('click.site.contabs',".pull-right li.reload-page", function () {
+				var url = sc["find"]("ul.con-tabs>li.active>a")["attr"]("href");
+				$["pjax"]({
+					'url': url,
+					'container': 'main',
+					'replace': !![]
+				});
+			})['on']('click.site.contabs', ".pull-right li.close-other", function () {
+				sc["find"]("ul.con-tabs>li")["filter"](function () {
+					return !$(this)['is'](".active") && $(this)["index"]() !== 0;
+				})["remove"]();
+				ct["animate"]({
+					'left': 0
+				}, 100);
+				_this['btnView']("hide");
+			})['on']('click.site.contabs',".pull-right li.close-all", function () {
+				var li = sc['find']("ul.con-tabs>li"),
+				url = li['eq'](0)["find"]('a')["attr"]("href");
+				li["filter"](function () {
+					return $(this)["index"]() !== 0;
+				})["remove"]();
+				ct["animate"]({
+					'left': 0
+				}, 100);
+				_this["btnView"]("hide");
+				$["pjax"]({
+					'url': url,
+					'container':"main",
+					'replace': !![]
+				});
+				li['eq'](0)["addClass"]("active");
+			});
+			$(win)['on']("resize", this["resize"]);
+		},
+		'resize': function () {
+			var sContabs = $(".site-contabs"),
+			cTabs = sContabs["find"]("ul.con-tabs");
+			$["site"]['contentTabs']['throttle'](function () {
+				$["site"]['contentTabs']["view"] = sContabs["find"](".contabs-scroll")["width"]();
+				$["site"]["contentTabs"]["labelEvent"](cTabs, 'media');
+			}, 200)();
+		},
+		'enable': function (e) {
+			var url = $['trim'](e["find"]('a')['attr']('href')),
+			temp_,
+			a = this;
+			var tempf = function () {
+          var nTabs = $(".nav-tabs"),
+          li;
+          if (a['$instance']["parents"]('div.tab-pane.active')["attr"]('id') !== temp_) {
+              li = nTabs["find"]("a[href='#" + temp_ + "34]")["parent"]('li');
+              $("a[href='#'" + temp_ +"34]")["tab"]('show');
+              nTabs['find']('li')["removeClass"]("active");
+              li["addClass"]('active');
+              if (li["parent"]('ul')["hasClass"]('dropdown-menu')) {
+                  li['closest'](".dropdown")["addClass"]("active");
+              }
+          }
+          a["$instance"]['find']("li.has-sub")['removeClass']("open");
+          a["$instance"]["find"]('a')["parent"]('li')["removeClass"]("active");
+          if (a["$instance"]["find"]('a[href=34' + url + '34]')["parents"]('li')["hasClass"]("has-sub")) {
+            a["$instance"]["find"]("a[href=\"" + url + '34]')["parents"]('li.has-sub')["addClass"]('open');
+          }
+      };
+      
+			a["$instance"]["find"]('a')['each'](function () {
+				var a = $(this);
+				if (a["attr"]('href') === url) {
+					temp_ = a["parents"](".tab-pane")['attr']('id');
+					tempf();
+					a["parent"]('li')["addClass"]("active");
+					return ![];
+				}
+			});
+		},
+		'getPath': function () {
+			var pname = location["pathname"],
+			txt = $('main')["find"]('title')["text"]();
+			if (pname !== $["ctx"] + '/') {
+				this['buildTag']({
+					'name': txt,
+					'url': pname
+				});
+			}
+			$("main")["find"]("title")["remove"]();
+		},
+		'buildTag': function (btag, _this) {
+			var cTabs = $(".con-tabs");
+			if (_this && this["checkTags"](btag["url"])) {
+				_this["preventDefault"]();
+				return;
+			}
+			btag['name'] = btag['name'] === '' ? "无标题" : btag["name"];
+			$("title")["text"]($["trim"](btag["name"]));
+			if (cTabs["find"]('a[href=' + btag["url"] + ']')["size"]() > 0) {
+				return;
+			}
+			cTabs["find"]("li.active")["removeClass"]('active');
+			cTabs['append']('<li class= active34><a data-pjax=main href=' + btag["url"] + "\" title=\"" + btag["name"] + '' + "\" rel=\"contents\"><span>" + btag["name"] + "</span><i class=\"icon wb-close-mini\"></i></a></li>");
+			this['labelSize']();
+			this["labelEvent"](cTabs, 'media', "add");
+		},
+		'checkTags': function (ctag) {
+			var ctans = $('.con-tabs'),
+			a = ctans["find"]("a[href='" + ctag + "']");
+			var width = $(".con-tabs")["width"]();
+			if (a["size"]() > 0) {
+				if (a['closest']('li')["hasClass"]("active")) {
+					this["app"](ctans, a["closest"]('li'), this["labelWidth"], this["view"], width);
+					return !![];
+				} else {
+					ctans["find"]("li.active")['removeClass']("active");
+					ctans['find']("a[href='" + ctag + ']')["closest"]('li')["addClass"]("active");
+					this["app"](ctans, a['closest']('li'), this["labelWidth"], this["view"], width);
+					return ![];
+				}
+			} else {
+				return ![];
+			}
+		},
+		'labelSize': function () {
+			var size,
+			width,
+			ctans = $('.con-tabs');
+			size = ctans["find"]('li')["size"]();
+			width = this["labelWidth"] * size;
+			ctans["css"]('width', width);
+		},
+		'labelEvent': function (value, value2) {
+			var width = $(".con-tabs")["width"]();
+			if (width > this["view"]) {
+				this["labelPosition"](value, this["labelWidth"], "left", this["view"], width, value2);
+				this["btnView"]("visible");
+			} else {
+				this["btnView"]('hide');
+			}
+			if (this["currentView"] < this["view"] || this['currentContent'] > width) {
+				this["labelPosition"](value, this["labelWidth"], "right", this["view"], width, value2);
+			}
+			this["currentView"] = this["view"];
+			this['currentContent'] = width;
+		},
+		'app': function (ani, o, n, npx, npx2) {
+			var left_value = ani["position"]()["left"],
+			size1 = o["prevAll"]('li')["size"]() * n,
+			size2 = o["nextAll"]('li')["size"]() * n;
+			if (-size1 < left_value) {
+				if (size1 + left_value < npx) {
+					return ![];
+				}
+				left_value =  - (size1 - npx + n);
+			} else {
+				if (-left_value < npx2 - size2) {
+					return ![];
+				}
+				left_value =  - (npx2 - size2 - n);
+			}
+			ani["animate"]({
+				'left': left_value
+			}, 100);
+		},
+		'labelPosition': function (lablePostion, size, leftPx, left1, left2, par) {
+			var _this = this,
+			vLfet = lablePostlablePostion['position']()['left'],
+			rela = function (n) {
+				var temp = n + size;
+				if (temp > 0) {
+					_this["relative"] = n;
+					return 0;
+				} else {
+					return n;
+				}
+			};
+			if (leftPx === 'left') {
+				if (vLfet <= left1 - left2) {
+					return ![];
+				}
+				if (typeof par !== "undefined") {
+					vLfet = left1 - left2;
+				} else {
+					vLfet = this["relative"] !== 0 ? vLfet - size + this["relative"] : vLfet - size;
+					this["relative"] = 0;
+				}
+			} else if (leftPx === 'right') {
+				if (vLfet === 0) {
+					return ![];
+				}
+				if (typeof par !== "undefined") {
+					vLfet = left2 <= left1 ? 0 : left1 - left2;
+				} else {
+					vLfet = rela(vLfet + size);
+				}
+			}
+			lablePostion['animate']({
+				'left': vLfet
+			}, 100);
+		},
+		'throttle': function (e, n) {
+			var _e = e,
+			number,
+			tbool = !![];
+			return function () {
+				var _arguments = arguments,
+				_this = this;
+				if (tbool) {
+					_e["apply"](_this, _arguments);
+					tbool = ![];
+				}
+				if (number) {
+					return ![];
+				}
+				number = setTimeout(function () {
+						clearTimeout(number);
+						number = null;
+						_e['apply'](_this, _arguments);
+					}, n || 500);
+			};
+		},
+		'closeTab': function () {
+			var sc = $(".site-contabs"),
+			active_li = sc['find']("ul.con-tabs>li.active"),
+			url;
+			this['$instance']["find"](".active")["removeClass"]("active");
+			if (active_li["next"]('li')["size"]() > 0) {
+				url = active_li["next"]('li')["find"]('a')['attr']("href");
+				active_li["next"]('li')['addClass']("active");
+			} else {
+				url = active_li['prev']('li')["find"]('a')["attr"]('href');
+				active_li['prev']('li')['addClass']('active');
+			}
+			active_li["remove"]();
+			this["labelSize"]();
+			this['labelEvent'](sc, "media");
+			$['pjax']({
+				'url': url,
+				'container': 'main',
+				'replace': !![]
+			});
+			this["$instance"]['find']("a[href='" + url + ']')["parent"]('li')['addClass']('active');
+		},
+		'btnView': function (display) {
+			var sContabs = $(".site-contabs"),
+			bpl = sContabs['children']("button.pull-left"),
+			bicon = sContabs['find'](".pull-right > button.btn-icon");
+			if (display === "visible") {
+				bpl["removeClass"]('hide');
+				bicon['removeClass']("hide");
+			} else if (display === 'hide') {
+				bpl["addClass"]("hide");
+				bicon['addClass']('hide');
+			}
+		}
+    };
+}(window, document, jQuery));
+/*文件输入组文件上传函数 */
 (function(document, $) {
     'use strict';
-
- 
-
-
     $(document)['on']("change", ".kui-input-group-file [type=file]", function() {
         var obj = $(this);
         var file = $(this)["parents"]('.kui-input-group-file')["find"](".kui-form-control");
@@ -1026,3 +1342,70 @@
     });
 }(document, jQuery));
 
+
+
+//ajax访问远程资源模版
+(function (document, $) {
+
+    var kjax = function() {
+       var url=null;
+       var data=null;
+       var temp=null;
+       
+    };
+    /**
+     * 发送ajax请求
+     * url--url
+     * methodtype(post/get)
+     * con (true(异步)|false(同步))
+     * parameter(参数)
+     * functionName(回调方法名，不需要引号,这里只有成功的时候才调用)
+     * (注意：这方法有二个参数，一个就是xmlhttp,一个就是要处理的对象)
+     * obj需要到回调方法中处理的对象
+     */
+    kjax.prototype.ajaxrequest=function(url, methodtype, con, parameter, functionName, obj) {
+        var xmlhttp = this.getajaxHttp();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) {
+                //HTTP响应已经完全接收才调用
+                functionName(xmlhttp, obj);
+            }
+        };
+        xmlhttp.open(methodtype, url, con);
+        xmlhttp.send(parameter);
+    };
+     /**原生ajax系列-获取xmlHttp对象*/
+    kjax.prototype.getajaxHttp=function () {
+        var xmlHttp;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        } catch (e) {
+            // Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("您的浏览器不支持AJAX！");
+                    return false;
+                }
+            }
+        }
+        return xmlHttp;
+    };
+
+    kjax.prototype.atemplate=function(template_id,template_url,template_data,template_div){
+        this.ajaxrequest(template_url, 'get', true, null, function (http, obj) {
+            //编译模版
+            $(template_div).html(http.responseText);
+            $(template_id).html(template(template_id, template_data));
+        }, null);
+    };
+   
+  
+    $.kui({
+        kjax: new kjax()
+    });
+})(document, jQuery);

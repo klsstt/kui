@@ -79,4 +79,10 @@ $(function(){
         $("body").addClass("big-page");
     }
     });
+	//加载header模块
+    var header_data = {
+        add: '增加',welcome:'欢迎光临',account:'admin',userinfo:'个人信息',upaw:'修改密码',esc:'退出',
+        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+    };
+    $.kui.kjax.atemplate('header','template/kui_header.html',header_data,'#data');
 });
