@@ -1,0 +1,91 @@
+
+  <div class="kui-header">
+      <h1 class="kui-title">内容布局</h1>
+  </div>
+  <div class="kui-content">
+      <div class="panel">
+          <div class="panel-body">
+              <div class="example-wrap">
+                  <h4>什么是内容布局</h4>
+                  <p>KUI定制了容器中内容的区块，分别是不带边框的头部<code>.kui-header</code>,带边框的头部<code>.kui-header-bordered</code>,以及头部动作区域<code>.kui-header-actions</code>和内容的主要部位<code>.kui-content</code>
+                  </p>
+                  <div class="example" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                      <div class="kui-header">无边框头部，这里通常填充内容的标题，描述<div class="kui-header-actions">头部动作区域，通常用作导航，按钮组</div></div>
+                      <div class="kui-header kui-header-bordered">带边框的头部，这里通常填充内容的标题，描述<div class="kui-header-actions">头部动作区域，通常用作导航，按钮组</div></div>
+                      <div class="kui-content" style="border: 1px solid #fff; ">内容区域，可自由填充</div>
+                  </div>
+              </div>
+          </div>
+      </div>        
+      <div class="panel">
+          <div class="panel-body">
+              <div class="example-wrap">
+                  <h4>头部</h4>
+                  <p>头部区块，包含了标题<code>.kui-title</code>,描述<code>.kui-description</code>
+                  </p>
+                  <div class="example">
+                      <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                          <div class="kui-title">内容标题</div>
+                          <div class="kui-description">内容描述</div>
+                      </div>
+                  
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="panel">
+          <div class="panel-body">
+              <div class="example-wrap">
+                  <h4>动作区域</h4>
+                  <p>动作区域，填充面包屑导航<code>.kui-breadcrumb</code>,按钮<code>button</code>和表单<code>from</code>，也可以自定义一些内容。
+                  </p>
+                  <div class="example">
+                      <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                          <div class="kui-title">内容标题</div>
+                          <div class="kui-header-actions">
+                              <ol class="kui-breadcrumb">
+                                  <li>
+                                      <a href="javascript:;">首页</a>
+                                  </li>
+                                  <li class="active">当前位置</li>
+                              </ol>
+                          </div>
+                      </div>
+                      <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                          <div class="kui-title">内容标题</div>
+                          <div class="kui-header-actions">
+                              <form data-pjax="#">
+                                  <div class="input-search input-search-dark">
+                                      <i class="input-search-fa fa fa-search" aria-hidden="true"></i>
+                                      <input type="text" class="kui-form-control" name="" placeholder="请输入关键字">
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                      <div class="kui-header" style="background-color: #f3f7f9;border: 1px solid #ddd; ">
+                          <div class="kui-title">内容标题</div>
+                          <div class="kui-header-actions">
+                              <div class="btn-group btn-group-sm" aria-label="操作" role="group">
+                                  <button type="button" class="btn btn-outline btn-default">
+                                      <i class="fa fa-wrench" aria-hidden="true"></i>
+                                      <span>设置</span>
+                                  </button>
+                                  <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="重新加载" data-container="body">
+                                      <i class="fa fa-refresh" aria-hidden="true"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="搜索" data-container="body">
+                                      <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-outline btn-default" data-toggle="tooltip" data-original-title="打印" data-container="body">
+                                      <i class="fa fa-print" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>                
+  </div>
+
+  <script id="page_content" type="text/html"></script>

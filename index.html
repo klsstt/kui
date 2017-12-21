@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
 <link rel="stylesheet" href="skin/default/skin.css">
 <link rel="stylesheet" href="example/example.css">
+
+
 </head>
 <body>
 <header class="navbar navbar-fixed-top"></header>
@@ -44,7 +46,7 @@
 	<div class="contabs-scroll pull-left">
 			<ul class="nav con-tabs">
 					<li class="active">
-							<a data-pjax href="/home" rel="contents"><span>首页</span></a>
+							<a data-pjax="" data-index="true" data-fragment="main" href="/index.html" rel="contents"><span>首页</span></a>
 					</li>
 			</ul>
 	</div>
@@ -69,14 +71,53 @@
 	</div>
 </nav>
 
-<main class="kui-main"></main>
+<main class="kui-main">
+		<div class="kui-header">
+        <h1 class="kui-title hide">首页</h1>
+    </div>
+  <div class="kui-content">
+          <div class="panel">
+              <div class="panel-heading">
+                      <h3>KUI 通用管理系统快速开发框架</h3>
+              </div>
+              <div class="panel-body">
+                      <div class="row">
+                          <div class="col-lg-8">
+                              <div class="row">
+                                  <div class="col-lg-2">
+                                          <a href="javascript:;">
+                                              <img class="media-object" src="kui-logo.png" alt="...">
+                                          </a>
+                                  </div>
+                                  <div class="col-lg-10">
+                                      <ul class="list-group list-group-full">
+                                          <li class="list-group-item">KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。
+                                          </li>
+                                          <li class="list-group-item">您可以 KUI 为基础，快速开发各种后台系统，如CMS、OA、CRM、ERP、POS、GPS等。</li>
+                                          <li class="list-group-item">KUI 涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-4">
+
+                          </div>
+                      </div>
+              </div>
+                    
+          </div>
+  </div>
+</main>
 </div>
 
 
 <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
 <script src="js/common/kui.js"></script>
 <script src="js/lib/art-template/template-web.js"></script>
+<script src="js/lib/layer/2.4/layer.js"></script>
 <script src="example/example.js"></script>
+
+
 <div id="data"></div>
 <!--/_header 作为公共模版分离出去-->
 <!--/请在上方写此页面业务相关的脚本-->
