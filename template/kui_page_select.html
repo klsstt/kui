@@ -1,9 +1,9 @@
-
-
 <link rel="stylesheet"  href="js/lib/bootstrap-select/bootstrap-select.css" />
-<link rel="stylesheet"  href="js/lib/bootstrap-tokenfield/css/bootstrap-tokenfield.css" />
 <link rel="stylesheet"  href="js/lib/bootstrap-tokenfield/css/typeahead.css" />
-<link rel="stylesheet"  href="js/lib/jquery.multi-select/css/multi-select.css" />
+<link rel="stylesheet"  href="js/lib/bootstrap-tokenfield/css/bootstrap-tokenfield.css" />
+<link rel="stylesheet"  href="js/lib/jquery.multi-select/css/kui-multi-select.css" />
+
+
   <div class="kui-header">
       <h1 class="kui-title">筛选表单</h1>
   </div>
@@ -308,15 +308,15 @@
                           <p>您可以通过 <code>data-max-option</code> 限制选项或分组的选中项数量</p>
                           <div class="example">
                               <div class="kui-form-group">
-                                  <div class="input-group">
-                                      <span class="input-group-addon">标签：</span>
+                                  <div class="kui-input-group">
+                                      <span class="kui-input-group-addon">标签：</span>
                                       <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
                                   </div>
                               </div>
                               <div class="kui-form-group">
-                                  <div class="input-group">
+                                  <div class="kui-input-group">
                                       <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
-                                      <span class="input-group-addon">
+                                      <span class="kui-input-group-addon">
                                           <span class="fa fa-star"></span>
                                       </span>
                                   </div>
@@ -342,9 +342,9 @@
       </div>
       <div class="panel">
           <div class="panel-heading">
-              <h3 class="panel-title">Multi-Select（select多选）
+              <h3 class="panel-title">分组多选
                   <small>
-                      <a class="example-plugin-link" href="http://loudev.com/" target="_blank">官网</a>
+                      <a class="example-plugin-link" href="http://loudev.com/" target="_blank">Multi-Select官网</a>
                   </small>
               </h3>
           </div>
@@ -411,10 +411,10 @@
       <div class="panel">
           <div class="panel-heading">
               <h3 class="panel-title">
-                  Typeahead（搜索建议提示）
+                搜索自动补全提示
                   <small>
                       <a class="example-plugin-link" href="http://twitter.github.com/typeahead.js" target="_blank">
-                          官网
+                        Typeahead官网
                       </a>
                   </small>
               </h3>
@@ -469,6 +469,8 @@
               </div>
           </div>
       </div>
+
+    
 
   </div>
   <script type="text/javascript" src="js/lib/bootstrap-select/bootstrap-select.min.js"></script>
@@ -568,6 +570,83 @@
 
         $('[data-plugin=multiSelect]').multiSelect();
         
+        $(".multi-select-methods").multiSelect();
+        $("#buttonSelectAll")["click"](function () {
+            $(".multi-select-methods")['multiSelect']("select_all");
+            return ![];
+        });
+        $("#buttonDeselectAll")['click'](function () {
+            $('.multi-select-methods')["multiSelect"]("deselect_all");
+            return ![];
+        });
+        $("#buttonSelectSome")["click"](function () {
+            $(".multi-select-methods")["multiSelect"]("select", ["BMW", "Audi", "Benz"]);
+            return ![];
+        });
+        $("#buttonDeselectSome")["click"](function () {
+            $(".multi-select-methods")["multiSelect"]("select", ["BMW", "Audi", "Benz"]);
+            return ![];
+        });
+        $('#buttonRefresh')['on']("click", function () {
+            $(".multi-select-methods")["multiSelect"]("refresh");
+            return ![];
+        });
+        $("#buttonAdd")['on']('click', function () {
+            $(".multi-select-methods")["multiSelect"]("addOption", {
+                'value': 42,
+                'text': '测试项',
+                'index': 0
+            });
+            return ![];
+        });
+
+
+        var array = ["Andorra , 安道尔", "Afghanistan , 阿富汗", 'Antigua安提瓜和巴布达',  'Angola安哥拉', 'Burundi 布隆迪', 'Beni 贝宁', ];
+			var getV = function (e) {
+				return function findMatches(v, f) {
+					var vals,reg;
+					vals = [];
+					reg = new RegExp(v, 'i');
+					$["each"](e, function (temp, value) {
+						if (reg["test"](value)) {
+							vals["push"](value);
+						}
+					});
+					f(vals);
+				};
+			};
+			$("#exampleTypeaheadBasic, #exampleTypeaheadStyle")["typeahead"]({
+				'hint': !![],
+				'highlight': !![],
+				'minLength': 0x1
+			}, {
+				'name': "states",
+				'source': getV(array)
+			});
+			var bh1 = new Bloodhound({
+					'datumTokenizer': Bloodhound['tokenizers']["whitespace"],
+					'queryTokenizer': Bloodhound["tokenizers"]["whitespace"],
+					'local': array
+				});
+			$("#exampleTypeaheadBloodhound")['typeahead']({
+				'hint': !![],
+				'highlight': !![],
+				'minLength': 0x1
+			}, {
+				'name': "states",
+				'source': bh1
+			});
+			var bh2 = new Bloodhound({
+					'datumTokenizer': Bloodhound['tokenizers']['whitespace'],
+					'queryTokenizer': Bloodhound['tokenizers']["whitespace"],
+					'prefetch': "/example/data.json"
+				});
+			$("#exampleTypeaheadPrefetch")["typeahead"](null, {
+				'name': "countries",
+				'source': bh2
+            });
+            
+            
     });
   </script>
 

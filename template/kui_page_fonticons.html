@@ -1,279 +1,386 @@
 
-
-  <div class="kui-header">
-          <h1 class="kui-title">图标</h1>
-  </div>
-  <div class="kui-content">
-  <div class="panel">
-          <div class="panel-body">
-                  <div>
-                          <section>
-                              <h2 class="kui-header">什么是图标字体</h2>
-                              <p>在图标字体没有普及之前，图标通常是通过图片来展示，如今图标字体是展示图标的更好方式。使用图标字体能使用CSS对图标进行调整，例如定义大小、颜色及特殊效果。KUI采用开源web图标字体 <a href="http://fontawesome.dashgame.com/">Font Awesome4.7</a>,也可以前往阿里巴巴图标库上传您自己设计或购买的图标（ <a class="c-orange" href="http://fontawesome.dashgame.com/">点我查看更多图标内容</a>）。
-                              </p>
-                          </section>
-                          
-                          <section>
-                              <h2 class="kui-header">基本用法</h2>
-                              <div class="row">
-                                  <div class="col-md-12 col-sm-12">
-                                      <p>
-                                      您可以将Font Awesome图标使用在几乎任何地方，只需要使用CSS前缀 <code>fa</code> ，再加上图标名称。
-                                      Font Awesome是为使用内联元素而设计的。我们通常更喜欢使用 <code>&lt;i&gt;</code> ，因为它更简洁。
-                                      但实际上使用 <code>&lt;span&gt;</code> 才能更加语义化。
-                                      </p>
-                                      <div class="pre">
-                                          <p>&lt;i class= "fa fa-camera-retro" &gt;&lt;/i&gt;</p>
-                                      </div>
-                                      <div class="alert alert-success">
-                                          <ul class="fa-ul">
-                                              <li>
-                                              <i class="fa fa-info-circle fa-lg fa-li"></i>
-                                              如果您修改了图标容器的字体大小，图标大小会随之改变。同样的变化也会发生在颜色、阴影等其它任何CSS支持的效果上。
-                                              </li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="larger" class="mainParts">
-                              <h2 class="kui-header">大图标</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                      <p>
-                                      使用 <code>fa-lg</code> (33%递增)、<code>fa-2x</code>、
-                                      <code>fa-3x</code>、<code>fa-4x</code>，或者 <code>fa-5x</code> 类 来放大图标。
-                                      </p>
-                                      <div class="pre">
-                                              <i class="fa fa-camera-retro fa-lg"></i>  &lt;i class=&quot;fa fa-camera-retro fa-lg&quot;&gt;&lt;/i&gt; fa-lg<br/> 
-                                              <i class="fa fa-camera-retro fa-2x"></i>   &lt;i class=&quot;fa fa-camera-retro fa-2x&quot;&gt;&lt;/i&gt; fa-2x
-                                      </div>
-                                      <div class="alert alert-success">
-                                          <ul class="fa-ul">
-                                              <li>
-                                              <i class="fa fa-exclamation-triangle fa-li fa-lg"></i>
-                                              如果图标的底部和顶部被截断了，您需要增加行高来解决此问题。
-                                              </li>
-                                          </ul>
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="fixed-width" class="mainParts">
-                              <h2 class="kui-header">固定宽度</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                         
-                                      <p>
-                                      使用 <code>fa-fw</code> 可以将图标设置为一个固定宽度。主要用于不同宽度图标无法对齐的情况。
-                                      尤其在列表或导航时起到重要作用。
-                                      </p>
-                                      <div class="pre">
-                                          <div class="col-md-2"><br/>
-                                                  <a class="list-group-item" href="javascript:;"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a><br/>
-                                                  <a class="list-group-item" href="javascript:;"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a><br/>
-                                                  <a class="list-group-item" href="javascript:;"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a><br/>
-                                                  <a class="list-group-item" href="javascript:;"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
-                                          </div>
-                                          <div class="col-md-10">
-                                                  &lt;div class=&quot;list-group&quot;&gt;<br/>
-                                                  &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-home fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Home&lt;/a&gt;<br/>
-                                                  &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-book fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Library&lt;/a&gt;<br/>
-                                                  &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-pencil fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Applications&lt;/a&gt;<br/>
-                                                  &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-cog fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Settings&lt;/a&gt;<br/>
-                                                  &lt;/div&gt;
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="yulist" class="mainParts">
-                              <h2 class="kui-header">用于列表</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                      <p>使用 <code>fa-ul</code> 和 <code>fa-li</code> 便可以简单的将无序列表的默认符号替换掉。</p>
-                                      <div class="pre">
-                                          <div class="col-md-2"><br/>
-                                              <ul class="fa-ul">
-                                                  <li><i class="fa-li fa fa-check-square"></i>List icons</li>
-                                                  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
-                                                  <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
-                                                  <li><i class="fa-li fa fa-square"></i>in lists</li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-md-10">
-                                              &lt;ul class=&quot;fa-ul&quot;&gt; <br/>
-                                              &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;List icons&lt;/li&gt; <br/>
-                                              &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;can be used&lt;/li&gt; <br/>
-                                              &lt;li&gt;&lt;i class=&quot;fa-li fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;as bullets &lt;/li&gt; <br/>
-                                              &lt;li&gt;&lt;i class=&quot;fa-li fa fa-square&quot;&gt;&lt;/i&gt; in lists&lt;/li&gt; <br/>
-                                              &lt;/ul&gt;
-                                          </div>
-                                          
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="bordered-pulled" class="mainParts">
-                              <h2 class="kui-header">边框与对齐</h2>
-                              <div class="row">
-                                  <div class="col-md-3 col-sm-4">
-                                  <p>
-                                  <i class="fa fa-quote-left fa-3x pull-left fa-border"></i>
-                                 啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
-                                  </p>
-                                  </div>
-                                  <div class="col-md-9 col-sm-8">
-                                  <p>
-                                  使用 <code>fa-border</code> 以及 <code>pull-right</code> 或 <code>pull-left</code> 可以轻易构造出引用的特殊效果。
-                                  </p>
-                                  <div class="pre">
-                                      <p>
-                                         &lt;i class=&quot;fa fa-quote-left fa-3x pull-left fa-border&quot;&gt;&lt;/i&gt;啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
-                                      </p>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="animated" class="mainParts">
-                              <h2 class="kui-header">动画</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                  <p>
-                                  使用 <code>fa-spin</code> 类来使任意图标旋转，现在您还可以使用 <code>fa-pulse</code> 来使其进行8方位旋转。尤其适合 <code>fa-spinner</code>、<code>fa-refresh</code> 和 <code>fa-cog</code> 。
-                                  </p>
-                                  <div class="pre">
-                                      <div class="col-md-1"> 
-                                          <i class="fa fa-spinner fa-spin  fa-fw margin-bottom"></i><br/>
-                                          <i class="fa fa-circle-o-notch fa-spin  fa-fw margin-bottom"></i><br/>
-                                          <i class="fa fa-refresh fa-spin  fa-fw margin-bottom"></i><br/>
-                                          <i class="fa fa-cog fa-spin  fa-fw margin-bottom"></i><br/>
-                                          <i class="fa fa-spinner fa-pulse  fa-fw margin-bottom"></i>
-                                      </div>
-                                      <div class="col-md-11">
-                                          &lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt; <br/>
-                                          &lt;i class=&quot;fa fa-circle-o-notch fa-spin&quot;&gt;&lt;/i&gt; <br/>
-                                          &lt;i class=&quot;fa fa-refresh fa-spin&quot;&gt;&lt;/i&gt; <br/>
-                                          &lt;i class=&quot;fa fa-cog fa-spin&quot;&gt;&lt;/i&gt; <br/>
-                                          &lt;i class=&quot;fa fa-spinner fa-pulse&quot;&gt;&lt;/i&gt;
-                                      </div>
-                                      
-                                  </div>
-                                  <p>
-                                  <i class="fa fa-info-circle"></i> CSS3动画不支持IE8-IE9。
-                                  </p>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="rotated-flipped" class="mainParts">
-                              <h2 class="kui-header">旋转与翻转</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                      <p>
-                                      使用 <code>fa-rotate-*</code> 和 <code>fa-flip-*</code> 类可以对图标进行任意旋转和翻转。
-                                      </p>
-                                      <div class="pre">
-                                          <div class="col-md-2">
-                                              <i class="fa fa-shield"></i>&nbsp; normal<br>
-                                              <i class="fa fa-shield fa-rotate-90"></i>&nbsp; fa-rotate-90<br/>
-                                              <i class="fa fa-shield fa-rotate-180"></i>&nbsp; fa-rotate-180<br/>
-                                              <i class="fa fa-shield fa-rotate-270"></i>&nbsp; fa-rotate-270<br/>
-                                              <i class="fa fa-shield fa-flip-horizontal"></i>&nbsp; fa-flip-horizontal<br/>
-                                              <i class="fa fa-shield fa-flip-vertical"></i>&nbsp; fa-flip-vertical
-                                          </div>
-                                          <div class="col-md-10">
-                                              &lt;i class=&quot;fa fa-shield&quot;&gt;&lt;/i&gt; normal<br/>
-                                              &lt;i class=&quot;fa fa-shield fa-rotate-90&quot;&gt;&lt;/i&gt; fa-rotate-90<br/>
-                                              &lt;i class=&quot;fa fa-shield fa-rotate-180&quot;&gt;&lt;/i&gt; fa-rotate-180<br/>
-                                              &lt;i class=&quot;fa fa-shield fa-rotate-270&quot;&gt;&lt;/i&gt; fa-rotate-270<br/>
-                                              &lt;i class=&quot;fa fa-shield fa-flip-horizontal&quot;&gt;&lt;/i&gt; fa-flip-horizontal<br/>
-                                              &lt;i class=&quot;fa fa-shield fa-flip-vertical&quot;&gt;&lt;/i&gt; icon-flip-vertical
-                                          </div>
-                                          
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                          <section id="stacked" class="mainParts">
-                              <h2 class="kui-header">组合使用</h2>
-                              <div class="row">
-                                  <div class="col-md-12">
-                                      <p>
-                                      如果想要将多个图标组合起来，使用 <code>fa-stack</code> 类作为父容器， <code>fa-stack-1x</code> 作为正常比例的图标，
-                                      <code>fa-stack-2x</code> 作为大一些的图标。还可以使用 <code>fa-inverse</code> 类来切换图标颜色。您可以在父容器中
-                                      通过添加 <a href="#larger">大图标</a> 类来控制整体大小。
-                                      </p>
-                                      <div class="pre">
-                                          <div class="col-md-3">
-                                                  <span class="fa-stack fa-lg">
-                                                  <i class="fa fa-square-o fa-stack-2x"></i>
-                                                  <i class="fa fa-twitter fa-stack-1x"></i>
-                                                  </span>
-                                                  fa-twitter on fa-square-o<br/>
-                                                  <span class="fa-stack fa-lg">
-                                                  <i class="fa fa-circle fa-stack-2x"></i>
-                                                  <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
-                                                  </span>
-                                                  fa-flag on fa-circle<br/><br/>
-                                                  <span class="fa-stack fa-lg">
-                                                  <i class="fa fa-square fa-stack-2x"></i>
-                                                  <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
-                                                  </span>
-                                                  fa-terminal on fa-square<br/>
-                                                  <span class="fa-stack fa-lg">
-                                                  <i class="fa fa-camera fa-stack-1x"></i>
-                                                  <i class="fa fa-ban fa-stack-2x text-danger"></i>
-                                                  </span>
-                                                  fa-ban on fa-camera
-                                          </div>
-                                          <div class="col-md-9">
-                                          <p>
-                                              &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
-                                              &lt;i class=&quot;fa fa-square-o fa-stack-2x&quot;&gt;&lt;/i&gt; 
-                                              &lt;i class=&quot;fa fa-twitter fa-stack-1x&quot;&gt;&lt;/i&gt; 
-                                              &lt;/span&gt;
-                                          </p><br>
-                                          <p>
-                                              &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
-                                              &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt; 
-                                              &lt;i class=&quot;fa fa-flag fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
-                                              &lt;/span&gt; 
-                                          </p><br>
-                                          <p>
-                                              &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
-                                              &lt;i class=&quot;fa fa-square fa-stack-2x&quot;&gt;&lt;/i&gt;
-                                              &lt;i class=&quot;fa fa-terminal fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt; 
-                                              &lt;/span&gt; 
-                                          </p><br>
-                                          <p>
-                                              &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
-                                              &lt;i class=&quot;fa fa-camera fa-stack-1x&quot;&gt;&lt;/i&gt; 
-                                              &lt;i class=&quot;fa fa-ban fa-stack-2x text-danger&quot;&gt;&lt;/i&gt; 
-                                              &lt;/span&gt;
-                                          </p>
-                                          </div>
-                                         
-                                      </div>
-                                  </div>
-                              </div>
-                          </section>
-                                  
-                          <section id="custom" class="mainParts">
-                                  <h2 class="kui-header">自定义CSS</h2>
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <p>您可以任意自定义修改 Font Awesome 的CSS样式表来实现您想要的效果。<br/>
-                                          例如：星级评定</p>
-                                          <div class="well">
-                                              <span class="rating">
-                                              <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-                                              </span>
-                                          </div>
-                                      </div>
-                                  </div>
-                          </section>
-                      </div>
-                  
-          </div>
-      </div>
-  </div>
-  <script id="page_fonticons" type="text/html"></script>
+<link rel="stylesheet"  href="js/lib/fontawesome-iconpicker/iconpicker.css" />
+<div class="kui-header">
+    <h1 class="kui-title">图标</h1>
+</div>
+<div class="kui-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">图标选择器
+                <small>
+                    <a class="example-plugin-link" href="http://victor-valencia.github.io/bootstrap-iconpicker/" target="_blank">
+                        Font Icon Picker官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="example-wrap">
+                        <h4 class="example-title">常用图标</h4>
+                        <p>添加 <code>data-placement="inline"</code></code>
+                        </p>
+                        <div class="example">
+                            <div class="kui-form-group">
+                                <div data-plugin="iconpicker" data-rows="12" data-title="内联模式" data-placement="inline" class="icp icp-auto" data-selected="align-justify"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="example-wrap">
+                        <h4 class="example-title">默认</h4>
+                        <p>添加 <code>data-plugin="iconpicker"</code> 即可调用图标选择器</p>
+                        <input class="kui-form-control icp icp-auto" value="fa-anchor" type="text" data-plugin="iconpicker">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="example-wrap">
+                        <h4 class="example-title">在输入组中使用</h4>
+                        <p>添加 <code>data-placement="bottomRight"</code></p>
+                        <div class="input-group">
+                            <input data-plugin="iconpicker" data-placement="bottomRight" class="kui-form-control icp icp-auto" value="fa-archive" type="text">
+                            <span class="input-group-addon"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="example-wrap">
+                        <h4 class="example-title">在搜索框中使用</h4>
+                        <p>添加 <code>data-input-search="true"</code></code>
+                        </p>
+                        <div class="example">
+                            <div class="input-search">
+                                <button type="submit" class="input-search-btn">
+                                    <i class="fa fa-search" aria-hidden="true"></i></button>
+                                <input class="kui-form-control icp icp-auto" data-plugin="iconpicker" data-input-search="true" value="fa-plane" type="text" placeholder="请输入关键词">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="example-wrap">
+                        <h4 class="example-title">下拉模式</h4>
+                        <p>添加 <code>data-toggle="dropdown"</code></code>
+                        </p>
+                        <div class="example">
+                            <div class="btn-group">
+                                <button data-selected="graduation-cap" type="button" class="icp icp-dd btn btn-default dropdown-toggle iconpicker-component" data-plugin="iconpicker" data-toggle="dropdown">
+                                    选择图标 <i class="fa fa-fw"></i> <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary iconpicker-component">
+                                    <i class="fa fa-fw fa-heart"></i></button>
+                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-plugin="iconpicker" data-toggle="dropdown">
+                                    <span class="caret"></span> <span class="sr-only">选择图标</span>
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">字体图标库
+                <small>
+                    <a class="example-plugin-link" href="http://fontawesome.dashgame.com/" target="_blank">
+                        Font Awesome 官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <section>
+                <h2 class="kui-header">什么是图标字体</h2>
+                <p>在图标字体没有普及之前，图标通常是通过图片来展示，如今图标字体是展示图标的更好方式。使用图标字体能使用CSS对图标进行调整，例如定义大小、颜色及特殊效果。KUI采用开源web图标字体 <a href="http://fontawesome.dashgame.com/">Font Awesome4.7</a>,也可以前往阿里巴巴图标库上传您自己设计或购买的图标（ <a class="c-orange" href="http://fontawesome.dashgame.com/">点我查看更多图标内容</a>）。
+                </p>
+            </section>
+            
+            <section>
+                <h2 class="kui-header">基本用法</h2>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <p>
+                        您可以将Font Awesome图标使用在几乎任何地方，只需要使用CSS前缀 <code>fa</code> ，再加上图标名称。
+                        Font Awesome是为使用内联元素而设计的。我们通常更喜欢使用 <code>&lt;i&gt;</code> ，因为它更简洁。
+                        但实际上使用 <code>&lt;span&gt;</code> 才能更加语义化。
+                        </p>
+                        <div class="pre">
+                            <p>&lt;i class= "fa fa-camera-retro" &gt;&lt;/i&gt;</p>
+                        </div>
+                        <div class="alert alert-success">
+                            <ul class="fa-ul">
+                                <li>
+                                <i class="fa fa-info-circle fa-lg fa-li"></i>
+                                如果您修改了图标容器的字体大小，图标大小会随之改变。同样的变化也会发生在颜色、阴影等其它任何CSS支持的效果上。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="larger" class="mainParts">
+                <h2 class="kui-header">大图标</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                        使用 <code>fa-lg</code> (33%递增)、<code>fa-2x</code>、
+                        <code>fa-3x</code>、<code>fa-4x</code>，或者 <code>fa-5x</code> 类 来放大图标。
+                        </p>
+                        <div class="pre">
+                                <i class="fa fa-camera-retro fa-lg"></i>  &lt;i class=&quot;fa fa-camera-retro fa-lg&quot;&gt;&lt;/i&gt; fa-lg<br/> 
+                                <i class="fa fa-camera-retro fa-2x"></i>   &lt;i class=&quot;fa fa-camera-retro fa-2x&quot;&gt;&lt;/i&gt; fa-2x
+                        </div>
+                        <div class="alert alert-success">
+                            <ul class="fa-ul">
+                                <li>
+                                <i class="fa fa-exclamation-triangle fa-li fa-lg"></i>
+                                如果图标的底部和顶部被截断了，您需要增加行高来解决此问题。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="fixed-width" class="mainParts">
+                <h2 class="kui-header">固定宽度</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                            
+                        <p>
+                        使用 <code>fa-fw</code> 可以将图标设置为一个固定宽度。主要用于不同宽度图标无法对齐的情况。
+                        尤其在列表或导航时起到重要作用。
+                        </p>
+                        <div class="pre">
+                            <div class="col-md-2"><br/>
+                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a><br/>
+                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a><br/>
+                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a><br/>
+                                    <a class="list-group-item" href="javascript:;"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+                            </div>
+                            <div class="col-md-10">
+                                    &lt;div class=&quot;list-group&quot;&gt;<br/>
+                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-home fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Home&lt;/a&gt;<br/>
+                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-book fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Library&lt;/a&gt;<br/>
+                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-pencil fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Applications&lt;/a&gt;<br/>
+                                    &lt;a class=&quot;list-group-item&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-cog fa-fw&quot;&gt;&lt;/i&gt;&amp;nbsp; Settings&lt;/a&gt;<br/>
+                                    &lt;/div&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="yulist" class="mainParts">
+                <h2 class="kui-header">用于列表</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>使用 <code>fa-ul</code> 和 <code>fa-li</code> 便可以简单的将无序列表的默认符号替换掉。</p>
+                        <div class="pre">
+                            <div class="col-md-2"><br/>
+                                <ul class="fa-ul">
+                                    <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+                                    <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+                                    <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+                                    <li><i class="fa-li fa fa-square"></i>in lists</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-10">
+                                &lt;ul class=&quot;fa-ul&quot;&gt; <br/>
+                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;List icons&lt;/li&gt; <br/>
+                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-check-square&quot;&gt;&lt;/i&gt;can be used&lt;/li&gt; <br/>
+                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;as bullets &lt;/li&gt; <br/>
+                                &lt;li&gt;&lt;i class=&quot;fa-li fa fa-square&quot;&gt;&lt;/i&gt; in lists&lt;/li&gt; <br/>
+                                &lt;/ul&gt;
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="bordered-pulled" class="mainParts">
+                <h2 class="kui-header">边框与对齐</h2>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                    <p>
+                    <i class="fa fa-quote-left fa-3x pull-left fa-border"></i>
+                    啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
+                    </p>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                    <p>
+                    使用 <code>fa-border</code> 以及 <code>pull-right</code> 或 <code>pull-left</code> 可以轻易构造出引用的特殊效果。
+                    </p>
+                    <div class="pre">
+                        <p>
+                            &lt;i class=&quot;fa fa-quote-left fa-3x pull-left fa-border&quot;&gt;&lt;/i&gt;啊手动阀手动阀手动阀手动阀手动阀手动阀撒发射点发射点发撒旦发射点发射点发安慰手动阀手动阀阿斯顿发生发射点
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="animated" class="mainParts">
+                <h2 class="kui-header">动画</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                    使用 <code>fa-spin</code> 类来使任意图标旋转，现在您还可以使用 <code>fa-pulse</code> 来使其进行8方位旋转。尤其适合 <code>fa-spinner</code>、<code>fa-refresh</code> 和 <code>fa-cog</code> 。
+                    </p>
+                    <div class="pre">
+                        <div class="col-md-1"> 
+                            <i class="fa fa-spinner fa-spin  fa-fw margin-bottom"></i><br/>
+                            <i class="fa fa-circle-o-notch fa-spin  fa-fw margin-bottom"></i><br/>
+                            <i class="fa fa-refresh fa-spin  fa-fw margin-bottom"></i><br/>
+                            <i class="fa fa-cog fa-spin  fa-fw margin-bottom"></i><br/>
+                            <i class="fa fa-spinner fa-pulse  fa-fw margin-bottom"></i>
+                        </div>
+                        <div class="col-md-11">
+                            &lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                            &lt;i class=&quot;fa fa-circle-o-notch fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                            &lt;i class=&quot;fa fa-refresh fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                            &lt;i class=&quot;fa fa-cog fa-spin&quot;&gt;&lt;/i&gt; <br/>
+                            &lt;i class=&quot;fa fa-spinner fa-pulse&quot;&gt;&lt;/i&gt;
+                        </div>
+                        
+                    </div>
+                    <p>
+                    <i class="fa fa-info-circle"></i> CSS3动画不支持IE8-IE9。
+                    </p>
+                    </div>
+                </div>
+            </section>
+            <section id="rotated-flipped" class="mainParts">
+                <h2 class="kui-header">旋转与翻转</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                        使用 <code>fa-rotate-*</code> 和 <code>fa-flip-*</code> 类可以对图标进行任意旋转和翻转。
+                        </p>
+                        <div class="pre">
+                            <div class="col-md-2">
+                                <i class="fa fa-shield"></i>&nbsp; normal<br>
+                                <i class="fa fa-shield fa-rotate-90"></i>&nbsp; fa-rotate-90<br/>
+                                <i class="fa fa-shield fa-rotate-180"></i>&nbsp; fa-rotate-180<br/>
+                                <i class="fa fa-shield fa-rotate-270"></i>&nbsp; fa-rotate-270<br/>
+                                <i class="fa fa-shield fa-flip-horizontal"></i>&nbsp; fa-flip-horizontal<br/>
+                                <i class="fa fa-shield fa-flip-vertical"></i>&nbsp; fa-flip-vertical
+                            </div>
+                            <div class="col-md-10">
+                                &lt;i class=&quot;fa fa-shield&quot;&gt;&lt;/i&gt; normal<br/>
+                                &lt;i class=&quot;fa fa-shield fa-rotate-90&quot;&gt;&lt;/i&gt; fa-rotate-90<br/>
+                                &lt;i class=&quot;fa fa-shield fa-rotate-180&quot;&gt;&lt;/i&gt; fa-rotate-180<br/>
+                                &lt;i class=&quot;fa fa-shield fa-rotate-270&quot;&gt;&lt;/i&gt; fa-rotate-270<br/>
+                                &lt;i class=&quot;fa fa-shield fa-flip-horizontal&quot;&gt;&lt;/i&gt; fa-flip-horizontal<br/>
+                                &lt;i class=&quot;fa fa-shield fa-flip-vertical&quot;&gt;&lt;/i&gt; icon-flip-vertical
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="stacked" class="mainParts">
+                <h2 class="kui-header">组合使用</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                        如果想要将多个图标组合起来，使用 <code>fa-stack</code> 类作为父容器， <code>fa-stack-1x</code> 作为正常比例的图标，
+                        <code>fa-stack-2x</code> 作为大一些的图标。还可以使用 <code>fa-inverse</code> 类来切换图标颜色。您可以在父容器中
+                        通过添加 <a href="#larger">大图标</a> 类来控制整体大小。
+                        </p>
+                        <div class="pre">
+                            <div class="col-md-3">
+                                    <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square-o fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x"></i>
+                                    </span>
+                                    fa-twitter on fa-square-o<br/>
+                                    <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    fa-flag on fa-circle<br/><br/>
+                                    <span class="fa-stack fa-lg">
+                                    <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                    fa-terminal on fa-square<br/>
+                                    <span class="fa-stack fa-lg">
+                                    <i class="fa fa-camera fa-stack-1x"></i>
+                                    <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                                    </span>
+                                    fa-ban on fa-camera
+                            </div>
+                            <div class="col-md-9">
+                            <p>
+                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
+                                &lt;i class=&quot;fa fa-square-o fa-stack-2x&quot;&gt;&lt;/i&gt; 
+                                &lt;i class=&quot;fa fa-twitter fa-stack-1x&quot;&gt;&lt;/i&gt; 
+                                &lt;/span&gt;
+                            </p><br>
+                            <p>
+                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
+                                &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt; 
+                                &lt;i class=&quot;fa fa-flag fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
+                                &lt;/span&gt; 
+                            </p><br>
+                            <p>
+                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt;
+                                &lt;i class=&quot;fa fa-square fa-stack-2x&quot;&gt;&lt;/i&gt;
+                                &lt;i class=&quot;fa fa-terminal fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt; 
+                                &lt;/span&gt; 
+                            </p><br>
+                            <p>
+                                &lt;span class=&quot;fa-stack fa-lg&quot;&gt; 
+                                &lt;i class=&quot;fa fa-camera fa-stack-1x&quot;&gt;&lt;/i&gt; 
+                                &lt;i class=&quot;fa fa-ban fa-stack-2x text-danger&quot;&gt;&lt;/i&gt; 
+                                &lt;/span&gt;
+                            </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+                    
+            <section id="custom" class="mainParts">
+                    <h2 class="kui-header">自定义CSS</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>您可以任意自定义修改 Font Awesome 的CSS样式表来实现您想要的效果。<br/>
+                            例如：星级评定</p>
+                            <div class="well">
+                                <span class="rating">
+                                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+                    
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/lib/fontawesome-iconpicker/fontawesome-iconpicker.min.js"></script>
+<script>
+     $('[data-plugin=iconpicker]').iconpicker({  
+        'fullClassFormatter': function (v) {
+            return "fa " + v;
+        },
+        'templates': {
+            buttons:"<button class=\"iconpicker-btn iconpicker-btn-cancel btn btn-default btn-sm\">取消</button> <button class=\"iconpicker-btn iconpicker-btn-accept btn btn-primary btn-sm\">确认</button>",
+            footer:"<div class=\"popover-footer\"></div>",
+            iconpicker:"<div class=\"iconpicker\"><div class=\"iconpicker-items\"></div></div>",
+            iconpickerItem:"<a role=\"button\" href=\"#\" class=\"iconpicker-item\"><i></i></a>",
+            popover:"<div class=\"iconpicker-popover popover\"><div class=\"arrow\"></div><div class=\"popover-title\"></div><div class=\"popover-content\"></div></div>",
+            search:"<input type=\"search\" class=\"kui-form-control iconpicker-search\" placeholder=\"查找图标\">"
+        },
+       
+       
+        'icons':['fa fa-search','fa fa-times-circle','fa fa-address-book','fa fa-address-book-o','fa fa-address-card','fa fa-address-card-o','fa fa-bandcamp','fa fa-bath','fa fa-bathtub','fa fa-drivers-license','fa fa-drivers-license-o','fa fa-eercast','fa fa-envelope-open','fa fa-envelope-open-o','fa fa-etsy','fa fa-free-code-camp','fa fa-grav','fa fa-handshake-o','fa fa-id-badge','fa fa-id-card','fa fa-id-card-o','fa fa-imdb','fa fa-linode','fa fa-meetup','fa fa-microchip','fa fa-podcast','fa fa-quora','fa fa-ravelry','fa fa-s','fa fa-shower','fa fa-snowflake-o','fa fa-superpowers','fa fa-telegram','fa fa-thermometer','fa fa-thermometer-','fa fa-thermometer-empty','fa fa-thermometer-full','fa fa-thermometer-half','fa fa-thermometer-quarter','fa fa-thermometer-three-quarters','fa fa-times-rectangle','fa fa-times-rectangle-o','fa fa-user-circle','fa fa-user-circle-o','fa fa-user-o','fa fa-vcard','fa fa-vcard-o','fa fa-window-close','fa fa-window-close-o','fa fa-window-maximize','fa fa-window-minimize','fa fa-window-restore','fa fa-wpexplorer','fa fa-adjust','fa fa-american-sign-language-interpreting','fa fa-anchor','fa fa-archive','fa fa-area-chart','fa fa-arrows','fa fa-arrows-h','fa fa-arrows-v','fa fa-asl-interpreting','fa fa-assistive-listening-systems','fa fa-asterisk','fa fa-at','fa fa-audio-description','fa fa-automobile','fa fa-balance-scale','fa fa-ban','fa fa-bank','fa fa-bar-chart','fa fa-bar-chart-o','fa fa-barcode','fa fa-bars','fa fa-battery','fa fa-battery-','fa fa-battery-empty','fa fa-battery-full','fa fa-battery-half','fa fa-battery-quarter','fa fa-battery-three-quarters','fa fa-bed','fa fa-beer','fa fa-bell','fa fa-bell-o','fa fa-bell-slash','fa fa-bell-slash-o','fa fa-bicycle','fa fa-binoculars','fa fa-birthday-cake','fa fa-blind','fa fa-bluetooth','fa fa-bluetooth-b','fa fa-bolt','fa fa-bomb','fa fa-book','fa fa-bookmark','fa fa-bookmark-o','fa fa-braille','fa fa-briefcase','fa fa-bug','fa fa-building','fa fa-building-o','fa fa-bullhorn','fa fa-bullseye','fa fa-bus','fa fa-cab','fa fa-calculator','fa fa-calendar','fa fa-calendar-check-o','fa fa-calendar-minus-o','fa fa-calendar-o','fa fa-calendar-plus-o','fa fa-calendar-times-o','fa fa-camera','fa fa-camera-retro','fa fa-car','fa fa-caret-square-o-down','fa fa-caret-square-o-left','fa fa-caret-square-o-right','fa fa-caret-square-o-up','fa fa-cart-arrow-down','fa fa-cart-plus','fa fa-cc','fa fa-certificate','fa fa-check','fa fa-check-circle','fa fa-check-circle-o','fa fa-check-square','fa fa-check-square-o','fa fa-child','fa fa-circle','fa fa-circle-o','fa fa-circle-o-notch','fa fa-circle-thin','fa fa-clock-o','fa fa-clone','fa fa-close','fa fa-cloud','fa fa-cloud-download','fa fa-cloud-upload','fa fa-code','fa fa-code-fork','fa fa-coffee','fa fa-cog','fa fa-cogs','fa fa-comment','fa fa-comment-o','fa fa-commenting','fa fa-commenting-o','fa fa-comments','fa fa-comments-o','fa fa-compass','fa fa-copyright','fa fa-creative-commons','fa fa-credit-card','fa fa-credit-card-alt','fa fa-crop','fa fa-crosshairs','fa fa-cube','fa fa-cubes','fa fa-cutlery','fa fa-dashboard','fa fa-database','fa fa-deaf','fa fa-deafness','fa fa-desktop','fa fa-diamond','fa fa-dot-circle-o','fa fa-download','fa fa-edit','fa fa-ellipsis-h','fa fa-ellipsis-v','fa fa-envelope','fa fa-envelope-o','fa fa-envelope-square','fa fa-eraser','fa fa-exchange','fa fa-exclamation','fa fa-exclamation-circle','fa fa-exclamation-triangle','fa fa-external-link','fa fa-external-link-square','fa fa-eye','fa fa-eye-slash','fa fa-eyedropper','fa fa-fax','fa fa-feed','fa fa-female','fa fa-fighter-jet','fa fa-file-archive-o','fa fa-file-audio-o','fa fa-file-code-o','fa fa-file-excel-o','fa fa-file-image-o','fa fa-file-movie-o','fa fa-file-pdf-o','fa fa-file-photo-o','fa fa-file-picture-o','fa fa-file-powerpoint-o','fa fa-file-sound-o','fa fa-file-video-o','fa fa-file-word-o','fa fa-file-zip-o','fa fa-film','fa fa-filter','fa fa-fire','fa fa-fire-extinguisher','fa fa-flag','fa fa-flag-checkered','fa fa-flag-o','fa fa-flash','fa fa-flask','fa fa-folder','fa fa-folder-o','fa fa-folder-open','fa fa-folder-open-o','fa fa-frown-o','fa fa-futbol-o','fa fa-gamepad','fa fa-gavel','fa fa-gear','fa fa-gears','fa fa-gift','fa fa-glass','fa fa-globe','fa fa-graduation-cap','fa fa-group','fa fa-hand-grab-o','fa fa-hand-lizard-o','fa fa-hand-paper-o','fa fa-hand-peace-o','fa fa-hand-pointer-o','fa fa-hand-rock-o','fa fa-hand-scissors-o','fa fa-hand-spock-o','fa fa-hand-stop-o','fa fa-hard-of-hearing','fa fa-hashtag','fa fa-hdd-o','fa fa-headphones','fa fa-heart','fa fa-heart-o','fa fa-heartbeat','fa fa-history','fa fa-home','fa fa-hotel','fa fa-hourglass','fa fa-hourglass-','fa fa-hourglass-end','fa fa-hourglass-half','fa fa-hourglass-o','fa fa-hourglass-start','fa fa-i-cursor','fa fa-image','fa fa-inbox','fa fa-industry','fa fa-info','fa fa-info-circle','fa fa-institution','fa fa-key','fa fa-keyboard-o','fa fa-language','fa fa-laptop','fa fa-leaf','fa fa-legal','fa fa-lemon-o','fa fa-level-down','fa fa-level-up','fa fa-life-bouy','fa fa-life-buoy','fa fa-life-ring','fa fa-life-saver','fa fa-lightbulb-o','fa fa-line-chart','fa fa-location-arrow','fa fa-lock','fa fa-low-vision','fa fa-magic','fa fa-magnet','fa fa-mail-forward','fa fa-mail-reply','fa fa-mail-reply-all','fa fa-male','fa fa-map','fa fa-map-marker','fa fa-map-o','fa fa-map-pin','fa fa-map-signs','fa fa-meh-o','fa fa-microphone','fa fa-microphone-slash','fa fa-minus','fa fa-minus-circle','fa fa-minus-square','fa fa-minus-square-o','fa fa-mobile','fa fa-mobile-phone','fa fa-money','fa fa-moon-o','fa fa-mortar-board','fa fa-motorcycle','fa fa-mouse-pointer','fa fa-music','fa fa-navicon','fa fa-newspaper-o','fa fa-object-group','fa fa-object-ungroup','fa fa-paint-brush','fa fa-paper-plane','fa fa-paper-plane-o','fa fa-paw','fa fa-pencil','fa fa-pencil-square','fa fa-pencil-square-o','fa fa-percent','fa fa-phone','fa fa-phone-square','fa fa-photo','fa fa-picture-o','fa fa-pie-chart','fa fa-plane','fa fa-plug','fa fa-plus','fa fa-plus-circle','fa fa-plus-square','fa fa-plus-square-o','fa fa-power-off','fa fa-print','fa fa-puzzle-piece','fa fa-qrcode','fa fa-question','fa fa-question-circle','fa fa-question-circle-o','fa fa-quote-left','fa fa-quote-right','fa fa-random','fa fa-recycle','fa fa-refresh','fa fa-registered','fa fa-remove','fa fa-reorder','fa fa-reply','fa fa-reply-all','fa fa-retweet','fa fa-road','fa fa-rocket','fa fa-rss','fa fa-rss-square','fa fa-search-minus','fa fa-search-plus','fa fa-send','fa fa-send-o','fa fa-server','fa fa-share','fa fa-share-alt','fa fa-share-alt-square','fa fa-share-square','fa fa-share-square-o','fa fa-shield','fa fa-ship','fa fa-shopping-bag','fa fa-shopping-basket','fa fa-shopping-cart','fa fa-sign-in','fa fa-sign-language','fa fa-sign-out','fa fa-signal','fa fa-signing','fa fa-sitemap','fa fa-sliders','fa fa-smile-o','fa fa-soccer-ball-o','fa fa-sort','fa fa-sort-alpha-asc','fa fa-sort-alpha-desc','fa fa-sort-amount-asc','fa fa-sort-amount-desc','fa fa-sort-asc','fa fa-sort-desc','fa fa-sort-down','fa fa-sort-numeric-asc','fa fa-sort-numeric-desc','fa fa-sort-up','fa fa-space-shuttle','fa fa-spinner','fa fa-spoon','fa fa-square','fa fa-square-o','fa fa-star','fa fa-star-half','fa fa-star-half-empty','fa fa-star-half-full','fa fa-star-half-o','fa fa-star-o','fa fa-sticky-note','fa fa-sticky-note-o','fa fa-street-view','fa fa-suitcase','fa fa-sun-o','fa fa-support','fa fa-tablet','fa fa-tachometer','fa fa-tag','fa fa-tags','fa fa-tasks','fa fa-taxi','fa fa-television','fa fa-terminal','fa fa-thumb-tack','fa fa-thumbs-down','fa fa-thumbs-o-down','fa fa-thumbs-o-up','fa fa-thumbs-up','fa fa-ticket','fa fa-times','fa fa-times-circle-o','fa fa-tint','fa fa-toggle-down','fa fa-toggle-left','fa fa-toggle-off','fa fa-toggle-on','fa fa-toggle-right','fa fa-toggle-up','fa fa-trademark','fa fa-trash','fa fa-trash-o','fa fa-tree','fa fa-trophy','fa fa-truck','fa fa-tty','fa fa-tv','fa fa-umbrella','fa fa-universal-access','fa fa-university','fa fa-unlock','fa fa-unlock-alt','fa fa-unsorted','fa fa-upload','fa fa-user','fa fa-user-plus','fa fa-user-secret','fa fa-user-times','fa fa-users','fa fa-video-camera','fa fa-volume-control-phone','fa fa-volume-down','fa fa-volume-off','fa fa-volume-up','fa fa-warning','fa fa-wheelchair','fa fa-wheelchair-alt','fa fa-wifi','fa fa-wrench','fa fa-hand-o-down','fa fa-hand-o-left','fa fa-hand-o-right','fa fa-hand-o-up','fa fa-ambulance','fa fa-subway','fa fa-train','fa fa-genderless','fa fa-intersex','fa fa-mars','fa fa-mars-double','fa fa-mars-stroke','fa fa-mars-stroke-h','fa fa-mars-stroke-v','fa fa-mercury','fa fa-neuter','fa fa-transgender','fa fa-transgender-alt','fa fa-venus','fa fa-venus-double','fa fa-venus-mars','fa fa-file','fa fa-file-o','fa fa-file-text','fa fa-file-text-o','fa fa-cc-amex','fa fa-cc-diners-club','fa fa-cc-discover','fa fa-cc-jcb','fa fa-cc-mastercard','fa fa-cc-paypal','fa fa-cc-stripe','fa fa-cc-visa','fa fa-google-wallet','fa fa-paypal','fa fa-bitcoin','fa fa-btc','fa fa-cny','fa fa-dollar','fa fa-eur','fa fa-euro','fa fa-gbp','fa fa-gg','fa fa-gg-circle','fa fa-ils','fa fa-inr','fa fa-jpy','fa fa-krw','fa fa-rmb','fa fa-rouble','fa fa-rub','fa fa-ruble','fa fa-rupee','fa fa-shekel','fa fa-sheqel','fa fa-try','fa fa-turkish-lira','fa fa-usd','fa fa-won','fa fa-yen','fa fa-align-center','fa fa-align-justify','fa fa-align-left','fa fa-align-right','fa fa-bold','fa fa-chain','fa fa-chain-broken','fa fa-clipboard','fa fa-columns','fa fa-copy','fa fa-cut','fa fa-dedent','fa fa-files-o','fa fa-floppy-o','fa fa-font','fa fa-header','fa fa-indent','fa fa-italic','fa fa-link','fa fa-list','fa fa-list-alt','fa fa-list-ol','fa fa-list-ul','fa fa-outdent','fa fa-paperclip','fa fa-paragraph','fa fa-paste','fa fa-repeat','fa fa-rotate-left','fa fa-rotate-right','fa fa-save','fa fa-scissors','fa fa-strikethrough','fa fa-subscript','fa fa-superscript','fa fa-table','fa fa-text-height','fa fa-text-width','fa fa-th','fa fa-th-large','fa fa-th-list','fa fa-underline','fa fa-undo','fa fa-unlink','fa fa-angle-double-down','fa fa-angle-double-left','fa fa-angle-double-right','fa fa-angle-double-up','fa fa-angle-down','fa fa-angle-left','fa fa-angle-right','fa fa-angle-up','fa fa-arrow-circle-down','fa fa-arrow-circle-left','fa fa-arrow-circle-o-down','fa fa-arrow-circle-o-left','fa fa-arrow-circle-o-right','fa fa-arrow-circle-o-up','fa fa-arrow-circle-right','fa fa-arrow-circle-up','fa fa-arrow-down','fa fa-arrow-left','fa fa-arrow-right','fa fa-arrow-up','fa fa-arrows-alt','fa fa-caret-down','fa fa-caret-left','fa fa-caret-right','fa fa-caret-up','fa fa-chevron-circle-down','fa fa-chevron-circle-left','fa fa-chevron-circle-right','fa fa-chevron-circle-up','fa fa-chevron-down','fa fa-chevron-left','fa fa-chevron-right','fa fa-chevron-up','fa fa-long-arrow-down','fa fa-long-arrow-left','fa fa-long-arrow-right','fa fa-long-arrow-up','fa fa-backward','fa fa-compress','fa fa-eject','fa fa-expand','fa fa-fast-backward','fa fa-fast-forward','fa fa-forward','fa fa-pause','fa fa-pause-circle','fa fa-pause-circle-o','fa fa-play','fa fa-play-circle','fa fa-play-circle-o','fa fa-step-backward','fa fa-step-forward','fa fa-stop','fa fa-stop-circle','fa fa-stop-circle-o','fa fa-youtube-play','fa fa-adn','fa fa-amazon','fa fa-android','fa fa-angellist','fa fa-apple','fa fa-behance','fa fa-behance-square','fa fa-bitbucket','fa fa-bitbucket-square','fa fa-black-tie','fa fa-buysellads','fa fa-chrome','fa fa-codepen','fa fa-codiepie','fa fa-connectdevelop','fa fa-contao','fa fa-css3','fa fa-dashcube','fa fa-delicious','fa fa-deviantart','fa fa-digg','fa fa-dribbble','fa fa-dropbox','fa fa-drupal','fa fa-edge','fa fa-empire','fa fa-envira','fa fa-expeditedssl','fa fa-fa','fa fa-facebook','fa fa-facebook-f','fa fa-facebook-official','fa fa-facebook-square','fa fa-firefox','fa fa-first-order','fa fa-flickr','fa fa-font-awesome','fa fa-fonticons','fa fa-fort-awesome','fa fa-forumbee','fa fa-foursquare','fa fa-ge','fa fa-get-pocket','fa fa-git','fa fa-git-square','fa fa-github','fa fa-github-alt','fa fa-github-square','fa fa-gitlab','fa fa-gittip','fa fa-glide','fa fa-glide-g','fa fa-google','fa fa-google-plus','fa fa-google-plus-circle','fa fa-google-plus-official','fa fa-google-plus-square','fa fa-gratipay','fa fa-hacker-news','fa fa-houzz','fa fa-html5','fa fa-instagram','fa fa-internet-explorer','fa fa-ioxhost','fa fa-joomla','fa fa-jsfiddle','fa fa-lastfm','fa fa-lastfm-square','fa fa-leanpub','fa fa-linkedin','fa fa-linkedin-square','fa fa-linux','fa fa-maxcdn','fa fa-meanpath','fa fa-medium','fa fa-mixcloud','fa fa-modx','fa fa-odnoklassniki','fa fa-odnoklassniki-square','fa fa-opencart','fa fa-openid','fa fa-opera','fa fa-optin-monster','fa fa-pagelines','fa fa-pied-piper','fa fa-pied-piper-alt','fa fa-pied-piper-pp','fa fa-pinterest','fa fa-pinterest-p','fa fa-pinterest-square','fa fa-product-hunt','fa fa-qq','fa fa-ra','fa fa-rebel','fa fa-reddit','fa fa-reddit-alien','fa fa-reddit-square','fa fa-renren','fa fa-resistance','fa fa-safari','fa fa-scribd','fa fa-sellsy','fa fa-shirtsinbulk','fa fa-simplybuilt','fa fa-skyatlas','fa fa-skype','fa fa-slack','fa fa-slideshare','fa fa-snapchat','fa fa-snapchat-ghost','fa fa-snapchat-square','fa fa-soundcloud','fa fa-spotify','fa fa-stack-exchange','fa fa-stack-overflow','fa fa-steam','fa fa-steam-square','fa fa-stumbleupon','fa fa-stumbleupon-circle','fa fa-tencent-weibo','fa fa-themeisle','fa fa-trello','fa fa-tripadvisor','fa fa-tumblr','fa fa-tumblr-square','fa fa-twitch','fa fa-twitter','fa fa-twitter-square','fa fa-usb','fa fa-viacoin','fa fa-viadeo','fa fa-viadeo-square','fa fa-vimeo','fa fa-vimeo-square','fa fa-vine','fa fa-vk','fa fa-wechat','fa fa-weibo','fa fa-weixin','fa fa-whatsapp','fa fa-wikipedia-w','fa fa-windows','fa fa-wordpress','fa fa-wpbeginner','fa fa-wpforms','fa fa-xing','fa fa-xing-square','fa fa-y-combinator','fa fa-y-combinator-square','fa fa-yahoo','fa fa-yc','fa fa-yc-square','fa fa-yelp','fa fa-yoast','fa fa-youtube','fa fa-youtube-square','fa fa-h-square','fa fa-hospital-o','fa fa-medkit','fa fa-stethoscope','fa fa-user-md']
+        });  
+</script>
