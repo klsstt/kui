@@ -32,11 +32,16 @@ $(function(){
                     html:"<a href=\"#\"><i class=\"fa fa-wpforms fa-fw\"></i> 表单</a>",
                     children: [
                         {
-                            html:"<a  data-pjax jump=\"page_form\" href=\"/template/kui_page_form.html\" target=\"_blank\"><i class=\"fa fa-edit fa-fw\"></i> 常用表单</a>"
+                            html:"<a  data-pjax jump=\"page_form\" href=\"/template/kui_page_form.html\" target=\"_blank\"><i class=\"fa fa-edit fa-fw\"></i> 基本表单</a>"
                         },
                         {
-                            html:"<a  data-pjax jump=\"page_select\" href=\"/template/kui_page_select.html\" target=\"_blank\"><i class=\"fa fa-list-alt fa-fw\"></i> 筛选表单</a>"
+                            html:"<a  data-pjax jump=\"page_select\" href=\"/template/kui_page_select.html\" target=\"_blank\"><i class=\"fa fa-list-alt fa-fw\"></i> 下拉与搜索</a>"
+                        },
+                        {
+                            html:"<a  data-pjax href=\"/template/kui_page_other.html\" target=\"_blank\"><i class=\"fa fa-briefcase fa-fw\"></i> 其它控件</a>"
                         }
+
+                       
                     ]
                 }
                
@@ -98,7 +103,6 @@ $(function(){
     $(document).on('pjax:end', function() {
         //在pjax发送请求时，显示loading动画层
         layer.closeAll();
-        
     });
    
     
@@ -111,7 +115,6 @@ $(function(){
       
 		
 	//});
-	
 });
 
 

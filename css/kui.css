@@ -6046,6 +6046,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
  * Explain:背景颜色
  * Last Modify:kangbolei 20171201
  */
+.bg-primary{
+	background-color: #62a8ea!important
+}
 .bg-primary-100 {
 	background-color: #e8f1f8!important
 }
@@ -6077,7 +6080,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-primary-800 {
 	background-color: #3583ca!important
 }
-
+.bg-red {
+	background-color: #f96868!important
+}
 .bg-red-100 {
 	background-color: #ffeaea!important
 }
@@ -6109,7 +6114,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-red-800 {
 	background-color: #d6494b!important
 }
-
+.bg-pink {
+	background-color: #f96197!important
+}
 .bg-pink-100 {
 	background-color: #fce4ec!important
 }
@@ -6141,7 +6148,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-pink-800 {
 	background-color: #e53b75!important
 }
-
+.bg-purple {
+	background-color: #926dde!important
+}
 .bg-purple-100 {
 	background-color: #f6f2ff!important
 }
@@ -6173,7 +6182,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-purple-800 {
 	background-color: #6d45bc!important
 }
-
+.bg-indigo {
+	background-color: #677ae4!important
+}
 .bg-indigo-100 {
 	background-color: #edeff9!important
 }
@@ -6205,7 +6216,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-indigo-800 {
 	background-color: #465bd4!important
 }
-
+.bg-blue {
+	background-color: #62a8ea!important
+}
 .bg-blue-100 {
 	background-color: #e8f1f8!important
 }
@@ -6237,7 +6250,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-blue-800 {
 	background-color: #3583ca!important
 }
-
+.bg-cyan {
+	background-color: #57c7d4!important
+}
 .bg-cyan-100 {
 	background-color: #ecf9fa!important
 }
@@ -6269,7 +6284,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-cyan-800 {
 	background-color: #37a9b7!important
 }
-
+.bg-teal {
+	background-color: #3aa99e!important
+}
 .bg-teal-100 {
 	background-color: #ecfdfc!important
 }
@@ -6301,7 +6318,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-teal-800 {
 	background-color: #178d81!important
 }
-
+.bg-green {
+	background-color: #46be8a!important
+}
 .bg-green-100 {
 	background-color: #e7faf2!important
 }
@@ -6333,7 +6352,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-green-800 {
 	background-color: #279566!important
 }
-
+.bg-light-green {
+	background-color: #9ece67!important
+}
 .bg-light-green-100 {
 	background-color: #f1f7ea!important
 }
@@ -6365,7 +6386,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-light-green-800 {
 	background-color: #70a532!important
 }
-
+.bg-yellow {
+	background-color: #f7da64!important
+}
 .bg-yellow-100 {
 	background-color: #fffae7!important
 }
@@ -6397,7 +6420,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-yellow-800 {
 	background-color: #fbc02d!important
 }
-
+.bg-orange {
+	background-color: #f2a654!important
+}
 .bg-orange-100 {
 	background-color: #fff3e6!important
 }
@@ -6429,7 +6454,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-orange-800 {
 	background-color: #e98f2e!important
 }
-
+.bg-brown {
+	background-color: #8d6658!important
+}
 .bg-brown-100 {
 	background-color: #fae6df!important
 }
@@ -6461,7 +6488,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .bg-brown-800 {
 	background-color: #715146!important
 }
-
+.bg-grey {
+	background-color: #757575!important
+}
 .bg-grey-100 {
 	background-color: #fafafa!important
 }
@@ -6492,6 +6521,9 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 
 .bg-grey-800 {
 	background-color: #424242!important
+}
+.bg-blue-grey {
+	background-color: #526069!important
 }
 
 .bg-blue-grey-100 {
@@ -8278,3 +8310,55 @@ button,input,keygen,select,textarea {
 }
 
 
+/*
+ *IOS7风格按钮
+ *
+ */
+ .switchery {
+	position: relative;
+	display: inline-block;
+	width: 45px;
+	height: 24px;
+	-webkit-box-sizing: content-box;
+	   -moz-box-sizing: content-box;
+	        box-sizing: content-box;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	background-color: #fff;
+	-webkit-background-clip: content-box;
+	        background-clip: content-box;
+	border: 1px solid #e4eaec;
+	border-radius: 20px;
+}
+.switchery > small {
+	position: absolute;
+	top: 0;
+	width: 24px;
+	height: 24px;
+	background: #fff;
+	border-radius: 100%;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	        box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+.switchery-small {
+	width: 33px;
+	height: 20px;
+	border-radius: 20px;
+}
+.switchery-small > small {
+	width: 20px;
+	height: 20px;
+}
+.switchery-large {
+	width: 66px;
+	height: 36px;
+	border-radius: 36px;
+}
+.switchery-large > small {
+	width: 36px;
+	height: 36px;
+}

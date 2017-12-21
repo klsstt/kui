@@ -1,0 +1,454 @@
+
+
+<link rel="stylesheet"  href="js/lib/bootstrap-colorpicker/colorpicker.css" />
+
+
+<div class="kui-header">
+    <h1 class="kui-title">筛选表单</h1>
+</div>
+<div class="kui-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                日期与时间组件
+                <small>
+                    <a class="example-plugin-link" href="http://www.layui.com/laydate/?alone" target="_blank">
+                        layDate官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="example-wrap">
+                    <div class="example">
+                        <form autocomplete="off">
+                            <div class="col-sm-2">
+                                <h4 class="example-title">基本用法</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata1" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">日期范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata3" placeholder="日期范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">年范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata4" placeholder="年范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">年月范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata5" placeholder="年月范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">时间范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata6" placeholder="时间范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">日期时间范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata7" placeholder="日期时间范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">限定可选日期</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata2" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">前后若干天可选</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata8" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">限定可选时间</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata9" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义日期格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata10" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义时间格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata11" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义范围格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata12" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">公历嵌套显示</h4>
+                                <div id="exampleLaydata16" ></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">自定义重要日嵌套显示</h4>
+                                <div id="exampleLaydata17" ></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">嵌套显示月份</h4>
+                                <div id="exampleLaydata14" ></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">嵌套显示时间</h4>
+                                <div  id="exampleLaydata15" ></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">拾色器
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/itsjavi/bootstrap-colorpicker" target="_blank">
+                      Color Picker官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+          <div class="row row-lg">
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">基本模式</h4>
+                      <p>添加 <code>data-plugin="colorpicker"</code></p>
+                      <div class="example">
+                          <input id="cp1" type="text" class="kui-form-control" value="#5367ce" data-plugin="colorpicker">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">组件模式</h4>
+                      <p>在 <code>.kui-input-group</code> 添加 <code>data-plugin="colorpicker"</code> 来调用拾色器</p>
+                      <div class="example">
+                          <div class="kui-input-group colorpicker-component" data-plugin="colorpicker">
+                              <input type="text" value="#00AABB" class="kui-form-control">
+                              <span class="kui-input-group-addon"><i></i></span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">自定义选项</h4>
+                      <p>如通过 <code>data-format="rgb"</code> 将当前颜色值格式化为RGB模式</code>
+                      </p>
+                      <div class="example">
+                          <input type="text" class="kui-form-control" data-plugin="colorpicker" data-format="rgb" value="#79d1c9">
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix visible-lg-block"></div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">事件</h4>
+                      <p>下面示例演示演示改变后显示提示信息</code>
+                      </p>
+                      <div class="example">
+                          <button class="btn btn-primary btn-outline" id="colorpickerEvent">改变颜色</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix visible-sm-block visible-md-block"></div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">颜色透明</h4>
+                      <p>添加 <code>data-color="transparent"</code> 及 <code>data-format="hex"</code> 实现</p>
+                      <div class="example">
+                          <input type="text" class="kui-form-control" data-plugin="colorpicker" data-color="transparent" data-format="hex">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">水平模式</h4>
+                      <p>添加 <code>data-color="transparent"</code> 实现</p>
+                      <div class="example">
+                          <input type="text" class="kui-form-control" value="#88cc33" data-plugin="colorpicker" data-horizontal="true">
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix visible-sm-block visible-md-block"></div>
+              <div class="clearfix visible-lg-block"></div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">内联模式</h4>
+                      <p>添加 <code>data-container="true"</code> 及 <code>data-inline="true"</code> 实现</p>
+                      <div class="example">
+                          <div class="inline-block" data-plugin="colorpicker" data-color="#ffaa00" data-container="true" data-inline="true"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="example-wrap">
+                      <h4 class="example-title">常用颜色</h4>
+                      <p>添加 <code>data-container="true"</code> 及 <code>data-inline="true"</code> 实现</p>
+                      <div class="example">
+                          <div class="inline-block" data-plugin="colorpicker" data-color="#ffaa00" data-container="true" data-inline="true"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix visible-sm-block visible-md-block"></div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="panel">
+              <header class="panel-heading">
+                  <h3 class="panel-title">Bootstrap Slider (范围选择）
+                      <small>
+                          <a class="example-plugin-link" href="http://seiyria.com/bootstrap-slider/" target="_blank">
+                              官网
+                          </a>
+                      </small>
+                  </h3>
+              </header>
+              <div class="panel-body">
+                  <p>使用 <code>data-plugin="bootstrapSlider"</code> 创建</p>
+                  <div class="example-wrap">
+                      <h4 class="example-title">默认</h4>
+                      <div class="example">
+                          <input type="text" data-plugin="bootstrapSlider" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14">
+                      </div>
+                  </div>
+                  <div class="example-wrap">
+                      <h4 class="example-title">范围</h4>
+                      <div class="example">
+                          <input type="text" data-plugin="bootstrapSlider" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[150,850]">
+                      </div>
+                  </div>
+                  <div class="example-wrap">
+                      <h4 class="example-title">竖向显示</h4>
+                      <div class="example height-100">
+                          <input type="text" data-plugin="bootstrapSlider" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14" data-slider-orientation="vertical">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="panel">
+              <header class="panel-heading">
+                  <h3 class="panel-title">Jquery Strength（密码强度验证）
+                      <small>
+                          <a class="example-plugin-link" href="https://github.com/amazingSurge/jquery-strength" target="_blank">
+                              官网
+                          </a>
+                      </small>
+                  </h3>
+              </header>
+              <div class="panel-body">
+                  <p>使用 <code>data-plugin="strength"</code> 创建 </p>
+                  <div class="example-wrap">
+                      <form class="example">
+                          <div class="form-group">
+                              <label class="control-label" for="inputPassword1">密码</label>
+                              <input type="password" class="password-strength-example1 form-control" id="inputPassword1" name="inputPasswords" data-plugin="strength" value="">
+                          </div>
+                          <div class="form-group margin-bottom-15">
+                              <label class="control-label" for="inputPassword2">密码</label>
+                              <input type="password" class="password-strength-example2 form-control" id="inputPassword2" name="inputPasswords" data-plugin="strength" data-show-toggle="true" value="123456">
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="panel">
+      <header class="panel-heading">
+          <h3 class="panel-title">Jquery Knob（旋钮）
+              <small>
+                  <a class="example-plugin-link" href="https://github.com/aterrien/jQuery-Knob" target="_blank">
+                      官网
+                  </a>
+              </small>
+          </h3>
+      </header>
+      <div class="panel-body">
+          <p>使用 <code>data-plugin="knob"</code> 创建， 使用 <code>data-option</code> 设置 </p>
+          <div class="row text-center">
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-5" data-plugin="knob" data-displayInput="false" data-fg-color="#526069" value="0">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-3" data-plugin="knob" data-line-cap="round" data-fg-color="#62a8ea" data-cursor="true" value="-25">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-1" data-plugin="knob" data-fg-color="#f96868" data-min="0" data-max="100" value="20">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-2" data-plugin="knob" data-min="-15000" data-max="15000" data-step="1000" data-display-previous="true" data-fg-color="#926dde" value="-10000">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-6" data-plugin="knob" data-angleOffset="90" data-linecap="round" data-min="0" data-max="100" data-fg-color="#57c7d4" value="60">
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="example-wrap">
+                      <div class="example">
+                          <input type="text" class="knob-chart knob-example-4" data-plugin="knob" data-fg-color="#3aa99e" data-cursor="true" data-line-cap="round" data-angle-offset="-125" data-angle-arc="250" value="11">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/lib/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+
+<script>
+      
+  $(function(){
+//执行一个laydate实例
+laydate.render({
+                elem: '#exampleLaydata1' //指定元素
+                ,theme: '#393D49'
+                ,lang: 'zh'//指定语言
+            });
+
+            //日期范围
+            laydate.render({
+                elem: '#exampleLaydata3'
+                ,theme: '#393D49'
+                ,range: true
+            });
+            //年范围
+            laydate.render({
+                elem: '#exampleLaydata4'
+                ,theme: '#393D49'
+                ,type: 'year'
+                ,range: true
+            });
+            //年月范围
+            laydate.render({
+                elem: '#exampleLaydata5'
+                ,theme: '#393D49'
+                ,type: 'month'
+                ,range: true
+            });
+            //时间范围
+            laydate.render({
+                elem: '#exampleLaydata6'
+                ,theme: '#393D49'
+                ,type: 'time'
+                ,range: true
+            });
+            //日期时间范围
+            laydate.render({
+                elem: '#exampleLaydata7'
+                ,theme: '#393D49'
+                ,type: 'datetime'
+                ,range: true
+            }); 
+            var ins22 = laydate.render({
+                elem: '#exampleLaydata2'
+                ,theme: '#393D49'
+                ,min: '2016-10-14'
+                ,max: '2080-10-14'
+                ,ready: function(){
+                    ins22.hint('日期可选值设定在 <br> 2016-10-14 到 2080-10-14');
+                }
+            });
+            //前后若干天可选，这里以7天为例
+            laydate.render({
+                elem: '#exampleLaydata8'
+                ,theme: '#393D49'
+                ,min: -7
+                ,max: 7
+            });
+            //限定可选时间
+            laydate.render({
+                elem: '#exampleLaydata9'
+                ,theme: '#393D49'
+                ,type: 'time'
+                ,min: '09:30:00'
+                ,max: '17:30:00'
+                ,btns: ['clear', 'confirm']
+            }); 
+            //自定义日期格式
+            laydate.render({
+                elem: '#exampleLaydata10'
+                ,theme: '#393D49'
+                ,format: 'yyyy年MM月dd日'
+            });
+            //自定义时间格式
+            laydate.render({
+                elem: '#exampleLaydata11'
+                ,theme: '#393D49'
+                ,type: 'time'
+                ,format: 'H点M分'
+            });
+            laydate.render({
+                elem: '#exampleLaydata12'
+                ,theme: '#393D49'
+                ,type: 'datetime'
+                ,range: '到'
+                ,format: 'yyyy年M月d日'
+            }); 
+            //嵌套显示
+            laydate.render({
+                elem: '#exampleLaydata14'
+                ,theme: '#393D49'
+                ,type: 'month'
+                ,position: 'static'
+            });
+            laydate.render({
+                elem: '#exampleLaydata15'
+                ,theme: '#393D49'
+                ,type: 'time'
+                ,position: 'static'
+            }); 
+            laydate.render({
+                elem: '#exampleLaydata16'
+                ,theme: '#393D49'
+                ,calendar: true
+                ,position: 'static'
+            }); 
+            laydate.render({
+                elem: '#exampleLaydata17'
+                ,theme: '#393D49'
+                ,position: 'static'
+                ,mark: {
+                    '0-10-14': '生日'
+                    ,'0-12-31': '跨年' //每年的日期
+                    ,'0-0-10': '工资' //每月某天
+                    ,'0-0-15': '月中'
+                    ,'2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+                    ,'2099-10-14': '呵呵'
+                }
+                ,done: function(value, date){
+                    if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
+                    alert('这一天是：中国人民抗日战争胜利72周年');
+                    }
+                }
+            }); 
+    $('[data-plugin=colorpicker]').colorpicker();
+      $("#colorpickerEvent")["colorpicker"]()['on']("changeColor", function (e) {
+          console.info("颜色值已改变");
+          e["stopPropagation"]();
+      });
+  });
+</script>
+
+
+

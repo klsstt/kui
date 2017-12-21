@@ -109,3 +109,33 @@ pre code {
 .pull-right {
     float: right!important;
 }
+
+
+.tokenfield {
+    height: auto!important;
+    min-height: 32px!important;
+    padding-bottom: 0!important;
+}
+
+.ms-container {
+	width: 100% !important;
+}
+
+.ms-container .ms-selectable li.ms-hover, .ms-container .ms-selection li.ms-hover {
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #62a8ea;
+}
+
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
