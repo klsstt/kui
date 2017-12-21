@@ -46,7 +46,6 @@ require(['jquery','art-template','text!header','text!example-page','bootstrap-se
 				'selectAllText': "选择全部",
 				'deselectAllText': "取消全部选择",
 				'doneButtonText': '关闭',
-				
 				'iconBase':"fa",
 				'tickIcon': "fa-check"
 			});
