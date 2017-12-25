@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="js/lib/bootstrap-colorpicker/colorpicker.css" />
 <link rel="stylesheet" href="js/lib/bootstrap-slider/css/bootstrap-slider.css" />
-
+<link rel="stylesheet" href="js/lib/jquery.strength/jquery-strength.css" />
 
 <div class="kui-header">
     <h1 class="kui-title">表单控件</h1>
@@ -209,8 +209,10 @@
                 <div class="col-sm-3 col-md-2">
                     <div class="example-wrap">
                         <h4 class="example-title">竖向显示</h4>
-                        <div class="example" style="height:100px">
+                        <div class="example ml-30" style="height:170px">
                             <input type="text" data-plugin="bootstrapSlider" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14" data-slider-orientation="vertical">
+                            <input type="text" data-plugin="bootstrapSlider" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[150,850]" data-slider-orientation="vertical">
+                            <input type="text" id="slider-ticks3" data-slider-ticks-snap-bounds="200" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-tooltip="true" data-slider-value="300" data-slider-orientation="vertical">
                         </div>
                     </div>
                 </div>
@@ -219,10 +221,10 @@
     </div>
     <div class="panel">
         <header class="panel-heading">
-            <h3 class="panel-title">Jquery Strength（密码强度验证）
+            <h3 class="panel-title">密码强度验证
                 <small>
                 <a class="example-plugin-link" href="https://github.com/amazingSurge/jquery-strength" target="_blank">
-                    官网
+                    Jquery Strength官网
                 </a>
             </small>
             </h3>
@@ -231,77 +233,21 @@
             <p>使用 <code>data-plugin="strength"</code> 创建 </p>
             <div class="example-wrap">
                 <form class="example">
-                    <div class="form-group">
+                    <div class="kui-form-group">
                         <label class="control-label" for="inputPassword1">密码</label>
-                        <input type="password" class="password-strength-example1 form-control" id="inputPassword1" name="inputPasswords" data-plugin="strength" value="">
+                        <input type="password" class="password-strength-example1 kui-form-control" id="inputPassword1" name="inputPasswords" data-plugin="strength" value="">
                     </div>
-                    <div class="form-group margin-bottom-15">
-                        <label class="control-label" for="inputPassword2">密码</label>
-                        <input type="password" class="password-strength-example2 form-control" id="inputPassword2" name="inputPasswords" data-plugin="strength" data-show-toggle="true" value="123456">
+                    <div class="kui-form-group margin-bottom-15">
+                        <label class="control-label" for="inputPassword2">使用 <code>data-show-toggle="true"</code>显示密码</label>
+                        <input type="password" class="password-strength-example2 kui-form-control" id="inputPassword2" name="inputPasswords" data-plugin="strength" data-show-toggle="true" value="123456">
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="panel">
-        <header class="panel-heading">
-            <h3 class="panel-title">Jquery Knob（旋钮）
-                <small>
-                  <a class="example-plugin-link" href="https://github.com/aterrien/jQuery-Knob" target="_blank">
-                      官网
-                  </a>
-              </small>
-            </h3>
-        </header>
-        <div class="panel-body">
-            <p>使用 <code>data-plugin="knob"</code> 创建， 使用 <code>data-option</code> 设置 </p>
-            <div class="row text-center">
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-5" data-plugin="knob" data-displayInput="false" data-fg-color="#526069" value="0">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-3" data-plugin="knob" data-line-cap="round" data-fg-color="#62a8ea" data-cursor="true" value="-25">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-1" data-plugin="knob" data-fg-color="#f96868" data-min="0" data-max="100" value="20">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-2" data-plugin="knob" data-min="-15000" data-max="15000" data-step="1000" data-display-previous="true" data-fg-color="#926dde" value="-10000">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-6" data-plugin="knob" data-angleOffset="90" data-linecap="round" data-min="0" data-max="100" data-fg-color="#57c7d4" value="60">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="example-wrap">
-                        <div class="example">
-                            <input type="text" class="knob-chart knob-example-4" data-plugin="knob" data-fg-color="#3aa99e" data-cursor="true" data-line-cap="round" data-angle-offset="-125" data-angle-arc="250" value="11">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
+<script type="text/javascript" src="js/lib/jquery.strength/jquery-strength.min.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap-slider/bootstrap-slider.js"></script>
 <script>
@@ -452,8 +398,50 @@
         });
         $("#slider-ticks2").slider({
             ticks: [0, 100, 200, 300, 400],
+            //ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+            ticks_snap_bounds: 30
+        });
+        $("#slider-ticks3").slider({
+            ticks: [0, 100, 200, 300, 400],
+            ticks_snap_bounds: 30
+        });
+        $("#slider-ticks4").slider({
+            ticks: [0, 100, 200, 300, 400],
             ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
             ticks_snap_bounds: 30
         });
+
+        var defaults_strength = {
+            'showMeter': true,
+            'showToggle': false,
+            'templates': {
+                main: "<div class=\"{containerClass}\">{input}{meter}{toggle}</div>",
+                meter: "<div class=\"{meterClass}\">{score}</div>",
+                score: "<div class=\"{scoreClass}\"></div>",
+                toggle: "<div class=\"checkbox-custom checkbox-primary show-password-wrap\"><input type=\"checkbox\" class=\"{toggleClass}\" title=\"显示/隐藏密码\" id=\"show_password\" /><label for=\"show_password\">显示密码</label></div>"
+            },
+            'classes': {
+                container: "strength-container",
+                input: "strength-input",
+                meter: "strength-meter",
+                score: "strength-score",
+                status: "strength-{status}",
+                toggle: "strength-toggle"
+            },
+            'scoreLables': {
+                good: "Good",
+                invalid: "Invalid",
+                strong: "Strong",
+                weak: "Weak"
+            },
+            'scoreClasses': {
+                good: "strength-good",
+                invalid: "strength-invalid",
+                strong: "strength-strong",
+                weak: "strength-weak"
+            }
+        }
+        $('[data-plugin=strength]').strength(defaults_strength);
+
     });
 </script>
