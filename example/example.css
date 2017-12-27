@@ -1,15 +1,17 @@
-
 .navbar .logoimg {
-    height:31px;
+    height: 31px;
     line-height: 61px;
-     vertical-align: middle;
-     border: 0;
- }
- .example {
+    vertical-align: middle;
+    border: 0;
+}
+
+.example {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.example-blocks .example-col, .example-grid .example-col {
+
+.example-blocks .example-col,
+.example-grid .example-col {
     min-height: 0;
     padding: 10px 15px 12px;
     background-color: #94cce8;
@@ -19,71 +21,90 @@
 .example-grid .example-col {
     margin-bottom: 20px;
 }
+
 .example-grid .example-col .example-col {
     margin-top: 20px;
     margin-bottom: 0;
     background-color: #f9f9f9;
 }
 
-.example-box{
+.example-box {
     width: 100%;
     height: 30px;
     border-radius: 4px;
 }
-.example-buttons .btn, .example-buttons .btn-group, .example-buttons .btn-group-vertical {
+
+.example-buttons .btn,
+.example-buttons .btn-group,
+.example-buttons .btn-group-vertical {
     margin: 0 10px 10px 0;
 }
-.example-buttons .btn-group .btn, .example-buttons .btn-group-vertical .btn {
+
+.example-buttons .btn-group .btn,
+.example-buttons .btn-group-vertical .btn {
     margin-right: 0;
     margin-bottom: 0;
 }
 
 .social-wechat {
-	color: #fff;
-	background-color: #51c332!important
+    color: #fff;
+    background-color: #51c332!important
 }
 
-.social-wechat:focus,.social-wechat:hover {
-	color: #fff;
-	background-color: #70d355!important
+.social-wechat:focus,
+.social-wechat:hover {
+    color: #fff;
+    background-color: #70d355!important
 }
 
-.social-wechat.active,.social-wechat:active {
-	color: #fff;
-	background-color: #409a28!important
+.social-wechat.active,
+.social-wechat:active {
+    color: #fff;
+    background-color: #409a28!important
 }
+
 .rating {
     unicode-bidi: bidi-override;
     direction: rtl;
     font-size: 30px;
-  }
-  .rating span.star {
+}
+
+.rating span.star {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
-  }
-  .rating span.star:hover {
+}
+
+.rating span.star:hover {
     cursor: pointer;
-  }
-  .rating span.star:before {
+}
+
+.rating span.star:before {
     content: "\f006";
     padding-right: 5px;
     color: #777777;
-  }
-  .rating span.star:hover:before,
-  .rating span.star:hover ~ span.star:before {
+}
+
+.rating span.star:hover:before,
+.rating span.star:hover~span.star:before {
     content: "\f005";
     color: #e3cf7a;
-  }
-  pre,.pre {
+}
+
+pre,
+.pre {
     overflow: auto;
 }
-  pre ,.pre{
+
+pre,
+.pre {
     background-color: #fafafa;
     padding: 8px 15px;
 }
-pre,.pre{
+
+pre,
+.pre {
     display: block;
     padding: 9.5px;
     margin: 0 0 10px;
@@ -102,14 +123,11 @@ pre code {
     border: 0px solid #bcd8f1;
     padding: 0px;
     font-size: 90%;
-
 }
-
 
 .pull-right {
     float: right!important;
 }
-
 
 .tokenfield {
     height: auto!important;
@@ -118,14 +136,15 @@ pre code {
 }
 
 .ms-container {
-	width: 100% !important;
+    width: 100% !important;
 }
 
-.ms-container .ms-selectable li.ms-hover, .ms-container .ms-selection li.ms-hover {
-	color: #fff;
-	text-decoration: none;
-	cursor: pointer;
-	background-color: #62a8ea;
+.ms-container .ms-selectable li.ms-hover,
+.ms-container .ms-selection li.ms-hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #62a8ea;
 }
 
 .list-inline {
@@ -138,4 +157,26 @@ pre code {
     display: inline-block;
     padding-right: 5px;
     padding-left: 5px;
+}
+
+.example .has-feedback .kui-form-control-feedback {
+    right: 15px
+}
+
+.example .summary-errors p {
+    color: inherit
+}
+
+.example .summary-errors ul li a {
+    color: inherit
+}
+
+.example .summary-errors ul li a:hover {
+    text-decoration: none
+}
+
+@media (min-width:768px) {
+    .example #exampleFullForm .kui-form-horizontal .control-label {
+        text-align: inherit
+    }
 }

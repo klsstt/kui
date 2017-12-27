@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="js/lib/bootstrap-colorpicker/colorpicker.css" />
 <link rel="stylesheet" href="js/lib/bootstrap-slider/css/bootstrap-slider.css" />
+<link rel="stylesheet" href="js/lib/bootstrap-validation/formvalidation.css" />
 <link rel="stylesheet" href="js/lib/jquery.strength/jquery-strength.css" />
-
+<link rel="stylesheet" href="js/lib/jquery.wizard/jquery-wizard.css" />
 <div class="kui-header">
     <h1 class="kui-title">表单控件</h1>
 </div>
@@ -92,6 +93,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">拾色器
@@ -169,6 +171,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel">
         <header class="panel-heading">
             <h3 class="panel-title">范围选择
@@ -219,6 +222,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel">
         <header class="panel-heading">
             <h3 class="panel-title">密码强度验证
@@ -232,7 +236,7 @@
         <div class="panel-body">
             <p>使用 <code>data-plugin="strength"</code> 创建 </p>
             <div class="example-wrap">
-                <form class="example">
+                <form class="example pd-10">
                     <div class="kui-form-group">
                         <label class="control-label" for="inputPassword1">密码</label>
                         <input type="password" class="password-strength-example1 kui-form-control" id="inputPassword1" name="inputPasswords" data-plugin="strength" value="">
@@ -246,10 +250,487 @@
         </div>
     </div>
 
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">表单验证
+                <small>
+                    <a class="example-plugin-link" href="http://formvalidation.io" target="_blank">
+                        Form Validation官网
+                    </a>
+                </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <div class="row row-lg">
+                <div class="col-md-6">
+
+                    <div class="example-wrap margin-md-0">
+                        <h4 class="example-title">基本</h4>
+                        <div class="example">
+                            <form class="kui-form-horizontal" id="exampleConstraintsForm" autocomplete="off">
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">必填</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="requiredInput" data-fv-notempty="true" data-fv-notempty-message="必填项">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <select class="kui-form-control" name="requiredSelect" data-fv-notempty="true">
+                                                    <option value="">请选择</option>
+                                                    <option value="foo">Foo</option>
+                                                    <option value="bar">Bar</option>
+                                                </select>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="input-group">
+                                            <div class="checkbox-custom checkbox-primary">
+                                                <input type="checkbox" id="requiredCheckbox" name="requiredCheckbox" data-fv-notempty="true" data-fv-notempty-message="必填项">
+                                                <label for="requiredCheckbox">我同意注册协议</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最小长度</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMinLength" data-fv-stringlength="true" data-fv-stringlength-min="8" data-fv-notempty-message="必填项" data-fv-stringlength-message="请输入8个以上的字符" placeholder="minlength = 8">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最大长度</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMaxLength" data-fv-stringlength="true" data-fv-stringlength-max="5" data-fv-stringlength-message="请输入不超过5个的字符" placeholder="maxlength = 3">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">长度区间</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vBetweenLength" data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-min="5" data-fv-stringlength-message="请输入5到10个字符" placeholder="data-rangelength = [5,10]">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最小值</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMin" data-fv-greaterthan="true" data-fv-greaterthan-value="6" data-fv-greaterthan-message="请输入大于6的数字" placeholder="min = 6">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最大值</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMax" data-fv-lessthan="true" data-fv-lessthan-value="50" data-fv-greaterthan-message="请输入小于50的数字" placeholder="max = 50">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">区间</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vRange" data-fv-between="true" data-fv-between-min="6" data-fv-between-max="50" data-fv-between-message="请输入6-50之间的数字" placeholder="range = [6, 50]">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">正则表达式</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vRegExp" data-fv-regexp="true" data-fv-regexp-regexp="#[A-Fa-f0-9]{6}" data-fv-regexp-message="请输入正确的HEXA颜色值" placeholder="请输入HEXA颜色值">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">等于（确认）</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="kui-form-control" name="foo_one" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-identical="true" data-fv-identical-field="foo_two" data-fv-identical-message="两次输入内容不一致">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="kui-form-control" name="foo_two" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-identical="true" data-fv-identical-field="foo_one" data-fv-identical-message="两次输入内容不一致">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">类型</h4>
+                        <div class="example">
+                            <form class="kui-form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">邮箱</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_email" placeholder="email">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">链接</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_url" placeholder="url">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">数字</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_digits" placeholder="012">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">数字</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_numberic" placeholder="120">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">颜色</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_color" placeholder="color">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">日期</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_date" placeholder="YYYY-MM-DD">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">手机</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_phone" placeholder="13012345678">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">信用卡</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_credit_card" placeholder="信用卡">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">IP</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_ip" placeholder="ip">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="example-wrap">
+                        <h4 class="example-title">示例</h4>
+                        <div class="example pd-5" style="border:1px dashed #ddd">
+                            <form id="exampleFullForm" autocomplete="off">
+                                <div class="row row-lg">
+                                    <div class="col-lg-6 form-horizontal">
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">用户名 <span class="required">*</span>
+                                            </label>
+                                            <div class=" col-lg-12 col-sm-9">
+                                                <input type="text" class="kui-form-control" name="username" placeholder="请输入用户名" required="">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">邮箱 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="email" class="kui-form-control" name="email" placeholder="email@email.com" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">密码 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="password" class="kui-form-control" name="password" placeholder="8个字符以上" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">生日 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <input type="text" class="kui-form-control" name="birthday" placeholder="YYYY/MM/DD" required="">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">GitHub</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <input type="url" class="kui-form-control" name="github" placeholder="https://github.com/admui">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">公司</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <select class="kui-form-control" id="company" name="company" required="">
+                                                    <option value="">选择公司</option>
+                                                    <option value="baidu">百度</option>
+                                                    <option value="alibaba">阿里巴巴</option>
+                                                    <option value="jingdong">京东</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 form-horizontal">
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">管理员： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <div>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="inputAwesome" name="porto_is" value="awesome" required="">
+                                                            <label for="inputAwesome">高富帅</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="inputVeryAwesome" name="porto_is" value="very-awesome">
+                                                            <label for="inputVeryAwesome">以上全部</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">用途： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForProject" name="for[]" value="项目" required="">
+                                                            <label for="inputForProject">项目</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForWebsite" name="for[]" value="网站">
+                                                            <label for="inputForWebsite">网站</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForAll" name="for[]" value="其他">
+                                                            <label for="inputForAll">所有</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">技能： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <textarea class="kui-form-control" name="skills" rows="3" placeholder="填写技能" required=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">浏览器</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <select class="kui-form-control" id="browsers" name="browsers" title="请选择浏览器" size="5" multiple="multiple" required="">
+                                                    <option value="chrome">Chrome / Safari</option>
+                                                    <option value="ff">Firefox</option>
+                                                    <option value="ie">Internet Explorer</option>
+                                                    <option value="opera">Opera</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-lg">
+                                    <div class="col-lg-12 text-right mt-15">
+                                        <button type="submit" class="btn btn-primary" id="validateButton1">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">输入向导
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/amazingSurge/jquery-wizard" target="_blank">
+                        jquery Wizard官网
+                    </a>
+                </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>使用 <code>.steps</code> 创建 </p>
+                    <div class="example-wrap" id="exampleWizardForm">
+                        <form class="example">
+                            <div class="steps steps-sm row" data-plugin="matchHeight" data-by-row="true" role="tablist">
+                                <div class="step col-md-4 current" data-target="#exampleAccount" role="tab">
+                                    <span class="step-number">1</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">账户</span>
+                                        <p>请登录您的账户</p>
+                                    </div>
+                                </div>
+                                <div class="step col-md-4" data-target="#exampleBilling" role="tab">
+                                    <span class="step-number">2</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">订单</span>
+                                        <p>完成订单支付</p>
+                                    </div>
+                                </div>
+                                <div class="step col-md-4" data-target="#exampleGetting" role="tab">
+                                    <span class="step-number">3</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">完成</span>
+                                        <p>等待发货</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="wizard-content">
+                                <div class="wizard-pane active" id="exampleAccount" role="tabpanel">
+                                    <form id="exampleAccountForm">
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputUserName">用户名</label>
+                                            <input type="text" class="kui-form-control" id="inputUserName" name="username" required="required">
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputPassword">密码</label>
+                                            <input type="password" class="kui-form-control" id="inputPassword" name="password" required="required">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="wizard-pane" id="exampleBilling" role="tabpanel">
+                                    <form id="exampleBillingForm">
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputCardNumber">信用卡</label>
+                                            <input type="text" class="kui-form-control" id="inputCardNumber" name="number" placeholder="卡号">
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputCVV">CVV码</label>
+                                            <input type="text" class="kui-form-control" id="inputCVV" name="cvv" placeholder="CVV码">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="wizard-pane" id="exampleGetting" role="tabpanel">
+                                    <div class="text-center margin-vertical-20">
+                                        <i class="fa fa-check fa-4x" aria-hidden="true"></i>
+                                        <h4>我们已经收到您的订单，稍后会为您安排发货</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <p>使用 <code>.pearls</code> 创建 </p>
+                    <div class="example-wrap" id="exampleWizardFormContainer">
+                        <div class="pearls row">
+                            <div class="pearl current col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                                <span class="pearl-title">账户信息</span>
+                            </div>
+                            <div class="pearl col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-cc-paypal" aria-hidden="true"></i></div>
+                                <span class="pearl-title">订单信息</span>
+                            </div>
+                            <div class="pearl col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                <span class="pearl-title">完成</span>
+                            </div>
+                        </div>
+
+
+                        <form class="wizard-content" id="exampleFormContainer">
+                            <div class="wizard-pane active" role="tabpanel">
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputUserNameOne">用户名</label>
+                                    <input type="text" class="kui-form-control" id="inputUserNameOne" name="username" required="required">
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputPasswordOne">密码</label>
+                                    <input type="password" class="kui-form-control" id="inputPasswordOne" name="password" required="required">
+                                </div>
+                            </div>
+                            <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputCardNumberOne">信用卡</label>
+                                    <input type="text" class="kui-form-control" id="inputCardNumberOne" name="number" placeholder="卡号">
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputCVVOne">CVV码</label>
+                                    <input type="text" class="kui-form-control" id="inputCVVOne" name="cvv" placeholder="CVV码">
+                                </div>
+                            </div>
+                            <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                                <div class="text-center margin-vertical-20">
+                                    <h4>请确认您的订单</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover text-right">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">序号</th>
+                                                    <th>产品</th>
+                                                    <th class="text-right">重量</th>
+                                                    <th class="text-right">运费</th>
+                                                    <th class="text-right">总计</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-left">三星Note炸弹</td>
+                                                    <td>32</td>
+                                                    <td>&yen;75</td>
+                                                    <td>&yen;2152</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2</td>
+                                                    <td class="text-left">U盘</td>
+                                                    <td>15</td>
+                                                    <td>&yen;169</td>
+                                                    <td>&yen;4169</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">3</td>
+                                                    <td class="text-left">2T移动硬盘</td>
+                                                    <td>69</td>
+                                                    <td>&yen;49</td>
+                                                    <td>&yen;1260</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script type="text/javascript" src="js/lib/jquery.strength/jquery-strength.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.wizard/jquery-wizard.min.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
 <script type="text/javascript" src="js/lib/bootstrap-slider/bootstrap-slider.js"></script>
+<script type="text/javascript" src="js/lib/bootstrap-validation/formvalidation.min.js"></script>
 <script>
     $(function() {
         //执行一个laydate实例
@@ -441,7 +922,261 @@
                 weak: "strength-weak"
             }
         }
+
         $('[data-plugin=strength]').strength(defaults_strength);
 
+
+
+
+
+
+
+    });
+
+    //jquery-wizard
+    (function($) {
+        'use strict';
+        //普通向导
+        var defaults = {
+            'step': ".steps .step, .pearls .pearl",
+            'buttonsAppendTo': ".example",
+            'buttonLabels': {
+                'back': '上一步',
+                'next': "下一步",
+                'finish': '完成'
+            },
+            'templates': {
+                'buttons': function() {
+                    var op = this["options"];
+                    return '<div class=\"wizard-buttons\">' +
+                        "<a class=\"btn btn-default btn-outline\" href=\"#" + this['id'] + "\" data-wizard=\"back\" role=\"button\">" + op['buttonLabels']['back'] + "</a>" +
+                        "<a class=\"btn btn-primary btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"next\" role=\"button\">" + op['buttonLabels']["next"] + "</a>" +
+                        "<a class=\"btn btn-success btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"finish\" role=\"button\">" + op['buttonLabels']["finish"] + "</a>" +
+                        "</div>";
+                }
+            }
+        };
+
+        var bat = $('#exampleWizardForm').wizard(defaults)["data"]('wizard');
+        bat["get"]("#exampleAccount")['setValidator'](function() {
+            //表单验证
+            return $("#inputUserName").val() == "" ? false : true;
+        });
+        //链式向导
+        $("#exampleWizardFormContainer").wizard({
+            'step': ".steps .step, .pearls .pearl",
+            'buttonLabels': {
+                'back': '上一步',
+                'next': "下一步",
+                'finish': '完成'
+            },
+            'templates': {
+                'buttons': function() {
+                    var op = this["options"];
+                    return '<div class=\"wizard-buttons\">' +
+                        "<a class=\"btn btn-default btn-outline\" href=\"#" + this['id'] + "\" data-wizard=\"back\" role=\"button\">" + op['buttonLabels']['back'] + "</a>" +
+                        "<a class=\"btn btn-primary btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"next\" role=\"button\">" + op['buttonLabels']["next"] + "</a>" +
+                        "<a class=\"btn btn-success btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"finish\" role=\"button\">" + op['buttonLabels']["finish"] + "</a>" +
+                        "</div>";
+                }
+            },
+            'onInit': function() {
+
+            },
+            'validator': function() { //表单验证
+                return $("#inputUserNameOne").val() == "" ? false : true;;
+            },
+            'onFinish': function() {},
+            'buttonsAppendTo': ".wizard-content"
+        });
+
+    }(jQuery));
+    //表单验证
+    $(function() {
+        $("#exampleConstraintsForm, #exampleConstraintsFormTypes")["formValidation"]({
+            'excluded': ":disabled",
+            'framework': "bootstrap",
+            'icon': {
+                'invalid': "fa fa-close",
+                'valid': "fa fa-check",
+                'validating': "fa fa-refresh"
+            },
+            'locale': "zh_CN",
+            'fields': {
+                'type_email': {
+                    'validators': {
+                        'emailAddress': {
+                            'message': "邮箱格式不正确"
+                        }
+                    }
+                },
+                'type_url': {
+                    'validators': {
+                        'url': {
+                            'message': "链接格式错误"
+                        }
+                    }
+                },
+                'type_digits': {
+                    'validators': {
+                        'digits': {
+                            'message': "输入值不是一个数"
+                        }
+                    }
+                },
+                'type_numberic': {
+                    'validators': {
+                        'integer': {
+                            'message': "请输入数字"
+                        }
+                    }
+                },
+                'type_phone': {
+                    'validators': {
+                        'phone': {
+                            'message': '请输入正确的手机号'
+                        }
+                    }
+                },
+                'type_credit_card': {
+                    'validators': {
+                        'creditCard': {
+                            'message': '信用卡卡号错误'
+                        }
+                    }
+                },
+                'type_date': {
+                    'validators': {
+                        'date': {
+                            'format': "YYYY/MM/DD"
+                        }
+                    }
+                },
+                'type_color': {
+                    'validators': {
+                        'color': {
+                            'type': ["hex", "hsl", "hsla", 'keyword', "rgb", 'rgba'],
+                            'message': "颜色值错误"
+                        }
+                    }
+                },
+                'type_ip': {
+                    'validators': {
+                        'ip': {
+                            'ipv4': !![],
+                            'ipv6': !![],
+                            'message': "IP格式有误"
+                        }
+                    }
+                }
+            }
+        });
+        //完整示例
+        $('#exampleFullForm')["formValidation"]({
+            'excluded': ":disabled",
+            'framework': "bootstrap",
+            'icon': {
+                'invalid': "fa fa-close",
+                'valid': "fa fa-check",
+                'validating': "fa fa-refresh"
+            },
+            'locale': "zh_CN",
+            'button': {
+                'selector': "#validateButton1",
+                'disabled': "disabled"
+            },
+            'fields': {
+                'username': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写用户名"
+                        },
+                        'stringLength': {
+                            'min': 6,
+                            'max': 30,
+                            'message': "用户名长度是大于6位小于30位的字母数字组合!"
+                        },
+                        'regexp': {
+                            'regexp': /^[a-zA-Z0-9]+$/
+                        }
+                    }
+                },
+                'email': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写邮箱"
+                        },
+                        'emailAddress': {
+                            'message': "邮箱格式错误"
+                        }
+                    }
+                },
+                'password': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写密码"
+                        },
+                        'stringLength': {
+                            'min': 8
+                        }
+                    }
+                },
+                'birthday': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写生日"
+                        },
+                        'date': {
+                            'format': 'YYYY/MM/DD'
+                        }
+                    }
+                },
+                'github': {
+                    'validators': {
+                        'url': {
+                            'message': "请填写URL"
+                        }
+                    }
+                },
+                'skills': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': '请填写技能'
+                        },
+                        'stringLength': {
+                            'max': 300
+                        }
+                    }
+                },
+                'porto_is': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请至少选择一项"
+                        }
+                    }
+                },
+                'for[]': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请至少选择一项"
+                        }
+                    }
+                },
+                'company': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请选择公司"
+                        }
+                    }
+                },
+                'browsers': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请选择浏览器"
+                        }
+                    }
+                }
+            }
+        });
     });
 </script>
