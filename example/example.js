@@ -30,14 +30,14 @@ $(function() {
                             html: "<a  data-pjax jump=\"page_form\" href=\"/template/kui_page_form.html\" target=\"_blank\"><i class=\"fa fa-edit fa-fw\"></i> 基本表单</a>"
                         },
                         {
-                            html: "<a  data-pjax jump=\"page_select\" href=\"/template/kui_page_select.html\" target=\"_blank\"><i class=\"fa fa-search fa-fw\"></i> 下拉与搜索</a>"
+                            html: "<a  data-pjax jump=\"page_select\" href=\"/template/kui_page_select.html\" target=\"_blank\"><i class=\"fa fa-search fa-fw\"></i> 高级筛选</a>"
                         },
                         {
                             html: "<a  data-pjax href=\"/template/kui_page_other.html\" target=\"_blank\"><i class=\"fa fa-briefcase fa-fw\"></i> 表单控件</a>"
                         },
-                        {
-                            html: "<a  data-pjax href=\"/template/kui_page_validation.html\" target=\"_blank\"><i class=\"fa fa-check fa-fw\"></i> 表单验证</a>"
-                        },
+                        /* {
+                              html: "<a  data-pjax href=\"/template/kui_page_validation.html\" target=\"_blank\"><i class=\"fa fa-check fa-fw\"></i> 表单验证</a>"
+                          }, */
                         {
                             html: "<a  data-pjax href=\"/template/kui_page_editable.html\" target=\"_blank\"><i class=\"fa fa-list-alt fa-fw\"></i> 富文本编辑</a>"
                         }
