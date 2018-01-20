@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            height: 100%;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="./hls.min.js"></script>
+
+    <video id="video"></video>
+
+    <script>
+        if (Hls.isSupported()) {
+            var video = document.getElementById('video');
+            var hls = new Hls();
+            hls.loadSource('http://192.168.168.4:8088/Playback.m3u8?DevIDNO=22311&Channel=0&FileLen=130232320&AlarmInfo=0&FileType=0&Offset=0&Location=1&ServerID=0&Date=2018-01-13&Begintime=0&Endtime=900&FileName=/sd1/2018-01-13/I20180113-000000P1N1PC.avi');
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                video.play();
+                video.style.width = document.documentElement.clientWidth + "px";
+                video.style.height = document.documentElement.clientHeight + "px";
+            });
+        }
+        window.onresize = function() {
+            video.style.width = document.documentElement.clientWidth + "px";
+            video.style.height = document.documentElement.clientHeight + "px";
+        }
+    </script>
+</body>
+
+</html>

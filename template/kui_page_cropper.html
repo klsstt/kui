@@ -1,0 +1,313 @@
+<link rel="stylesheet" href="js/lib/cropper/cropper.css">
+<style type="text/css">
+    .kui-content .btn-group .btn+.btn,
+    .kui-content .btn-group .btn+.btn-group,
+    .kui-content .btn-group .btn-group+.btn,
+    .kui-content .btn-group .btn-group+.btn-group {
+        margin-left: 0
+    }
+    
+    .kui-content .cropper-preview {
+        overflow: hidden
+    }
+    
+    .kui-content .img-preview {
+        float: left;
+        margin: 0 10px 10px 0;
+        overflow: hidden
+    }
+    
+    .kui-content .img-preview>img {
+        max-width: 100%
+    }
+    
+    .kui-content .preview-lg {
+        width: 263px;
+        height: 148px
+    }
+    
+    .kui-content .preview-md {
+        width: 139px;
+        height: 78px
+    }
+    
+    .kui-content .preview-sm {
+        width: 69px;
+        height: 39px
+    }
+    
+    .kui-content .preview-xs {
+        width: 35px;
+        height: 20px;
+        margin-right: 0
+    }
+    
+    .kui-content .cropper,
+    .kui-content .cropper-toolbar {
+        margin-bottom: 30px
+    }
+    
+    @media (min-width:1200px) {
+        .kui-content .cropper {
+            max-height: 600px
+        }
+    }
+    
+    @media (min-width:769px) {
+        .kui-content .cropper {
+            max-height: 400px
+        }
+    }
+    
+    @media (max-width:768px) {
+        .kui-content .cropper {
+            max-height: 300px
+        }
+    }
+    
+    @media (max-width:480px) {
+        .kui-content .cropper {
+            max-height: 246px
+        }
+    }
+    
+    @media (max-width:586px) {
+        .kui-content .btn-group .btn {
+            padding: 6px 8px
+        }
+        .kui-content .cropper {
+            max-height: 246px
+        }
+    }
+</style>
+<div class="kui-header">
+    <h1 class="kui-title">图片裁剪</h1>
+</div>
+<div class="kui-content" id="admui-pageContent">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">简单示例</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="cropper" id="simpleCropper">
+                        <img src="../images/photos/cropper.jpg" alt="...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="cropper-preview clearfix" id="simpleCropperPreview">
+                        <div class="img-preview preview-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">完整示例</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="cropper text-center" id="exampleFullCropper">
+                        <img src="../images/photos/cropper.jpg" alt="...">
+                    </div>
+                    <div class="cropper-toolbar text-center">
+                        <div class="btn-group mb-20">
+                            <button type="button" class="btn btn-primary" data-cropper-method="zoom" data-option="0.1" data-toggle="tooltip" data-container="body" title="放大">
+                                            <span class="cropper-tooltip" title="放大">
+                                              <i class="fa fa-search-plus"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="zoom" data-option="-0.1" data-toggle="tooltip" data-container="body" title="缩小">
+                                            <span class="cropper-tooltip" title="缩小">
+                                              <i class="fa fa-search-minus"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="rotate" data-option="-90" data-toggle="tooltip" data-container="body" title="逆时针旋转90°">
+                                            <span class="cropper-tooltip" title="逆时针旋转90°">
+                                              <i class="fa fa-reply"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="rotate" data-option="90" data-toggle="tooltip" data-container="body" title="顺时针旋转90°">
+                                            <span class="cropper-tooltip" title="顺时针旋转90°">
+                                              <i class="fa fa-share"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="rotate" data-option="-5" data-toggle="tooltip" data-container="body" title="逆时针旋转">
+                                            <span class="cropper-tooltip" title="逆时针旋转">
+                                              <i class="fa fa-rotate-left"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="rotate" data-option="5" data-toggle="tooltip" data-container="body" title="顺时针旋转">
+                                            <span class="cropper-tooltip" title="顺时针旋转">
+                                              <i class="fa fa-rotate-right" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                        </div>
+                        <div class="btn-group mb-20">
+                            <button type="button" class="btn btn-primary" data-cropper-method="setDragMode" data-option="move" data-toggle="tooltip" data-container="body" title="移动">
+                                            <span class="cropper-tooltip" title="移动">
+                                              <i class="fa fa-arrows" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="setDragMode" data-option="crop" data-toggle="tooltip" data-container="body" title="裁剪">
+                                            <span class="cropper-tooltip" title="裁剪">
+                                              <i class="fa fa-crop" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="getCroppedCanvas" data-option='{ "width": 320, "height": 180 }' data-toggle="tooltip" data-container="body" title="获取图片">
+                                            <span class="cropper-tooltip" title="获取图片">
+                                              <i class="fa fa-image" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                            <button type="button" class="btn btn-primary" data-cropper-method="clear" data-toggle="tooltip" data-container="body" title="清除">
+                                            <span class="cropper-tooltip" title="清除">
+                                              <i class="fa fa-close" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                            <label class="btn btn-primary" data-toggle="tooltip" for="inputImage" data-container="body" title="上传文件">
+                                            <input type="file" class="hide" id="inputImage" name="file" accept="image/*">
+                                            <span class="cropper-tooltip" title="使用 FileReader 导入图片">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                            </span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cropper-preview clearfix" id="exampleFullCropperPreview">
+                        <div class="img-preview preview-lg"></div>
+                        <div class="img-preview preview-md"></div>
+                        <div class="img-preview preview-sm"></div>
+                        <div class="img-preview preview-xs"></div>
+                    </div>
+                    <h4>数据：</h4>
+                    <div class="cropper-data">
+                        <div class="kui-input-group mb-15">
+                            <label class="kui-input-group-addon" for="inputDataX">X</label>
+                            <input type="number" class="kui-form-control" id="inputDataX" name="inputNumbers" placeholder="x">
+                            <span class="kui-input-group-addon">px</span>
+                        </div>
+                        <div class="kui-input-group mb-15">
+                            <label class="kui-input-group-addon" for="inputDataY">Y</label>
+                            <input type="number" class="kui-form-control" id="inputDataY" name="inputNumbers" placeholder="y">
+                            <span class="kui-input-group-addon">px</span>
+                        </div>
+                        <div class="kui-input-group mb-15">
+                            <label class="kui-input-group-addon" for="inputDataWidth">宽度</label>
+                            <input type="number" class="kui-form-control" id="inputDataWidth" name="inputNumbers" placeholder="width">
+                            <span class="kui-input-group-addon">px</span>
+                        </div>
+                        <div class="kui-input-group mb-15">
+                            <label class="kui-input-group-addon" for="inputDataHeight">高度</label>
+                            <input type="number" class="kui-form-control" id="inputDataHeight" name="inputNumbers" placeholder="height">
+                            <span class="kui-input-group-addon">px</span>
+                        </div>
+                        <button class="btn btn-primary btn-block" id="setCropperData" type="button">设置数据</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade docs-cropped" id="getDataURLModal" aria-hidden="true" aria-labelledby="getDataURLTitle" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                    <h4 class="modal-title" id="getDataURLTitle">裁剪</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center" id="getImageData"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="js/lib/cropper/cropper.min.js"></script>
+
+
+
+<script>
+    (function(win, $) {
+        'use strict';
+        var content = $("#admui-pageContent");
+        $('#simpleCropper img').cropper({
+            'preview': '#simpleCropperPreview > .img-preview',
+            'responsive': true
+        });
+
+        var img = $("#exampleFullCropper img"),
+            inputDataX = $("#inputDataX"),
+            inputDataY = $("#inputDataY"),
+            inputDataHeight = $("#inputDataHeight"),
+            inputDataWidth = $("#inputDataWidth");
+        img["cropper"]({
+            'aspectRatio': 16 / 9,
+            'preview': "#exampleFullCropperPreview > .img-preview",
+            'responsive': true,
+            'crop': function() {
+                var cropper = $(this)["data"]("cropper");
+                if (typeof cropper !== "undefined") {
+                    cropper = cropper["getCropBoxData"]();
+                    inputDataX["val"](Math["round"](cropper["left"]));
+                    inputDataY["val"](Math["round"](cropper['top']));
+                    inputDataHeight["val"](Math["round"](cropper["height"]));
+                    inputDataWidth["val"](Math["round"](cropper["width"]));
+                }
+            }
+        });
+        content['on']('click', "[data-cropper-method]", function() {
+            var data = $(this)["data"](),
+                cmethod = $(this)["data"]("cropper-method"),
+                option;
+            if (cmethod) {
+                option = img["cropper"](cmethod, data["option"]);
+            }
+            if (cmethod === 'getCroppedCanvas') {
+                $("#getDataURLModal")['modal']();
+                $("#getImageData")["html"](option);
+            }
+        });
+        var inputImage = $("#inputImage");
+        if (win['FileReader']) {
+            inputImage["change"](function() {
+                var fr = new FileReader(),
+                    files = this['files'],
+                    file;
+                if (!files["length"]) {
+                    return;
+                }
+                file = files[0];
+                if (/^image\/\w+$/ ['test'](file["type"])) {
+                    fr["readAsDataURL"](file);
+                    fr["onload"] = function() {
+                        img['cropper']("reset", true)["cropper"]("replace", this["result"]);
+                        inputImage["val"]('');
+                    };
+                } else {
+                    toastr["warnings"]("请选择图片文件");
+                }
+            });
+        } else {
+            inputImage["addClass"]('hide');
+        }
+        $("#setCropperData")["click"](function() {
+            var option = {
+                'left': parseInt(inputDataX["val"]()),
+                'top': parseInt(inputDataY["val"]()),
+                'width': parseInt(inputDataWidth["val"]()),
+                'height': parseInt(inputDataHeight["val"]())
+            };
+            img["cropper"]("setCropBoxData", option);
+        });
+    }(window, jQuery));
+</script>

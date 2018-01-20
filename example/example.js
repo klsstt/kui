@@ -40,9 +40,10 @@ $(function() {
                           }, */
                         {
                             html: "<a  data-pjax href=\"/template/kui_page_editable.html\" target=\"_blank\"><i class=\"fa fa-list-alt fa-fw\"></i> 富文本编辑</a>"
+                        },
+                        {
+                            html: "<a  data-pjax href=\"/template/kui_page_cropper.html\" target=\"_blank\"><i class=\"fa fa-cut fa-fw\"></i> 图片裁剪</a>"
                         }
-
-
                     ]
                 }
 

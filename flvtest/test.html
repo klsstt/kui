@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Video.js 6.2.8</title>
+    <link href="video-js.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #191919
+        }
+        
+        .m {
+            width: 740px;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m">
+        <video id="my-video" class="video-js" controls preload="auto" width="740" height="400" poster="m.png" data-setup="{}">
+		  
+		  <source id="url1" src="test.m3u8" type="video/x-flv"> 
+			<!--<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4">
+			 <source src="./test/test1.flv" type="video/x-flv">-->
+			<p class="vjs-no-js">
+			  To view this video please enable JavaScript, and consider upgrading to a web browser that
+			  <!--<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+			--></p>
+		  </video>
+
+        <script src="video.min.js"></script>
+        <script type="text/javascript">
+            var myData = new Date();
+            var times = myData.getTime(); //当前时间的毫秒数
+            var url = "test.m3u8";
+            document.getElementById("url1").src = url;
+            var myPlayer = videojs('my-video');
+            videojs("my-video").ready(function() {
+                var myPlayer = this;
+                myPlayer.play();
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>

@@ -19,6 +19,7 @@
     height: 640px;
     margin: 0 auto;
     text-align: left;
+    z-index: 1020;
     overflow: hidden;
     position: relative;
     margin-bottom: 15px;
@@ -118,7 +119,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10;
     border-bottom: 1px solid #ddd;
 }
 
