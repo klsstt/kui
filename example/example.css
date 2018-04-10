@@ -125,10 +125,6 @@ pre code {
     font-size: 90%;
 }
 
-.pull-right {
-    float: right!important;
-}
-
 .tokenfield {
     height: auto!important;
     min-height: 32px!important;
@@ -179,4 +175,28 @@ pre code {
     .example #exampleFullForm .kui-form-horizontal .control-label {
         text-align: inherit
     }
+}
+
+.example-tooltip {
+    position: relative;
+    z-index: 1;
+    display: inline-block
+}
+
+.example-tooltip .tooltip {
+    position: relative;
+    margin-right: 25px;
+    opacity: 1
+}
+
+.example-popover {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.example-popover .popover {
+    position: relative;
+    display: block;
+    margin-right: 25px;
 }

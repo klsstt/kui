@@ -1,0 +1,219 @@
+<div class="kui-header">
+    <h1 class="kui-title">面板</h1>
+</div>
+<div class="kui-content">
+    <div class="example-wrap">
+        <div class="row row-lg">
+            <div class="col-sm-6 col-md-4">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">默认面板标题栏</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>通过 <code>.panel-heading</code> 来为面板添加标题内容。<br>标题 <code>.panel-title</code> 可以通过 <code>&lt;h1&gt;</code>-<code>
+                            &lt;h6&gt;</code> 控制格式。对于带链接的标题，必须添加 <code>.panel-title</code> 类。</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="panel panel-bordered">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">带横线的标题栏</h3>
+                    </div>
+                    <div class="panel-body">
+                        <P>通过给面板添加<code>.panel-bordered</code>使标题栏带横线
+                            <br> 添加 <code>.panel-footer</code>展示面板脚注,显示辅助文本或者按钮。</P>
+                    </div>
+                    <div class="panel-footer">我是面板脚注</div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="panel panel-bordered">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">含标签的标题栏<span class="label label-default">新</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>通过为<code>span</code>标签添加<br>
+                            <code>.label label-default</code>
+                            <code>.label label-primary</code><br>
+                            <code>.label label-success</code>
+                            <code>.label label-info</code><br>
+                            <code>.label label-warning</code>
+                            <code>.label label-danger</code> <br>来为面板标题轻松添加各种标签。
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="panel panel-bordered">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">含描述的标题栏<small>这里是描述内容 </small></h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>
+                        <p>您可以通过
+                            <code>small</code>标签来为面板标题添加描述。 <br>通过
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">透明面板</h3>
+                        <div class="panel-actions">
+                            <a class="panel-action fa fa-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            <a class="panel-action fa fa-close" data-toggle="panel-close" aria-hidden="true"></a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <p>您可以通过 <code>.panel panel-transparent</code> 添加透明面板。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="panel panel-bordered">
+                    <div class="panel-heading">
+                        <ul class="panel-actions">
+                            <li>
+                                <a href="#">链接1</a>
+                            </li>
+                            <li>
+                                <a href="#">链接2</a>
+                            </li>
+                        </ul>
+                        <h3 class="panel-title">含链接的标题栏</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>您可以通过为 <code>ul</code> 标签添加<code>.panel-actions</code> 展示链接内容。</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel panel-bordered">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">带操作的面板</h3>
+                        <div class="panel-actions">
+                            <a class="panel-action fa fa-refresh" data-toggle="panel-refresh" data-load="我是刷新之后的内容<br>" aria-hidden="true"></a>
+                            <a class="panel-action fa fa-expand" data-toggle="panel-fullscreen" aria-hidden="true"></a>
+                            <a class="panel-action fa fa-minus" data-toggle="panel-collapse" aria-hidden="true"></a>
+                            <a class="panel-action fa fa-close" data-toggle="panel-close" aria-hidden="true"></a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>
+                        <p>您可以通过 如果启用面板自带操作按钮,在
+                            <code>panel-actions</code>中添加相应操作a标签, 通过修改a标签的
+                            <code>data-toggle</code>属性,改变面板操作<br>面板操作:<br>刷新 <code>data-toggle="panel-refresh"</code> 全屏 <code>data-toggle="panel-fullscreen"</code> 折叠
+                            <code>data-toggle="panel-collapse"</code> 关闭
+                            <code>data-toggle="panel-close"</code> <br>在javascript中,需要初始化
+                            <code>$["kui"]["panel"].init();</code>
+                            <br>也可以用过KUI提供的api使用js手动调用
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-primary</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-primary</code>改变面板的颜色</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-success</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-success</code>改变面板的颜色</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-info</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-info</code>改变面板的颜色</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-warning</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-warning</code>改变面板的颜色</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-danger</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-danger</code>改变面板的颜色</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-bordered panel-dark">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">panel-dark</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4>内容标题</h4>通过添加<code>panel-dark</code>改变面板的颜色</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script>
+    $["kui"]["panel"].init();
+    $(document).on("click", '[data-toggle=panel-fullscreen]', function(e) {
+        console.log("00000000");
+        var _this = $(this),
+            panel = _this['closest'](".panel");
+        var api = panel['data']("panel-api");
+        console.log(api);
+        api["toggleFullscreen"]();
+    });
+
+    $(document).on("click", "[data-toggle=panel-collapse]", function(e) {
+        e['preventDefault']();
+        var _this = $(this),
+            panel = _this["closest"](".panel");
+        var api = panel['data']("panel-api");
+        api['toggleContent']();
+    });
+    $(document).on("click", "[data-toggle=panel-close]", function(e) {
+        e["preventDefault"]();
+        var _this = $(this),
+            panel = _this["closest"]('.panel');
+        var api = panel["data"]("panel-api");
+        api['close']();
+    });
+    $(document).on("click", "[data-toggle=panel-refresh]", function(e) {
+        e["preventDefault"]();
+        var _this = $(this);
+        var panel = _this["closest"]('.panel');
+        var api = panel["data"]('panel-api');
+        var loadCallback = _this["data"]("loadCallback");
+        var text = $(this).attr("data-load");
+        api["load"](text + new Date());
+    });
+</script>

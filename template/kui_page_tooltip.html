@@ -1,0 +1,316 @@
+<div class="kui-header">
+    <h1 class="kui-title">提示框</h1>
+    <div class="kui-header-actions">
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </button>
+    </div>
+</div>
+<div class="kui-content">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">气泡提示</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-lg-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">默认</h4>
+                        <p>提供 4 种可选位置：顶部，右侧，底部，左侧。</p>
+                        <div class="example example-tooltip">
+                            <div class="tooltip bottom" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    顶部气泡提示
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    底部气泡提示
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <div class="tooltip right" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    左侧气泡提示
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <div class="tooltip left" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    右侧气泡提示
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">颜色</h4>
+                        <p>提供 5 种可选颜色：分别为 <code>primary</code> ， <code>success</code> ， <code>warning</code> ，<code>info</code> ， <code>danger</code> 。</p>
+                        <div class="example example-tooltip">
+                            <button type="button" class="btn btn-primary tooltip-primary tooltip-only" title="">Primary
+                                </button>
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    Primary
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <button type="button" class="btn btn-success tooltip-success tooltip-only" title="">Success
+                                </button>
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    Success
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <button type="button" class="btn btn-info tooltip-info tooltip-only" title="">Info</button>
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    Info
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <button type="button" class="btn btn-warning tooltip-warning tooltip-only" title="">Warning
+                                </button>
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    Warning
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-tooltip">
+                            <button type="button" class="btn btn-danger tooltip-danger sr-only" title="">Danger
+                                </button>
+                            <div class="tooltip top" role="tooltip">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">
+                                    Danger
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row row-lg">
+                <div class="col-lg-6">
+
+                    <div class="example-wrap margin-lg-0">
+                        <h4 class="example-title">点击时显示</h4>
+                        <p>您可以通过添加 <code>data-trigger=&quot;click&quot;</code> 属性或者通过 JavaScript 配置点击时显示气泡提示。</p>
+                        <div class="example">
+                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" data-trigger="click" data-original-title="点击时显示气泡提示" title="">点我
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">动画</h4>
+                        <p>可使用旋转和缩放两种动画效果。</p>
+                        <div class="example example-buttons">
+                            <button type="button" class="btn btn-primary tooltip-primary tooltip-rotate" data-toggle="tooltip" data-placement="left" data-original-title="左侧的气泡提示" data-animation="true" title="">
+                                    旋转
+                                </button>
+                            <button type="button" class="btn btn-success tooltip-success tooltip-scale" data-toggle="tooltip" data-placement="top" data-original-title="顶部的气泡提示" title="">
+                                    缩放
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">弹出框</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">静态效果</h4>
+                        <p>提供 4 种可选位置：顶部，右侧，底部，左侧。</p>
+                        <div class="example example-popover">
+                            <div class="popover bottom">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">底部弹出框</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">顶部弹出框</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <div class="popover right">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">右侧弹出框</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <div class="popover left">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">左侧弹出框</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row row-lg">
+                <div class="col-sm-12">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">颜色</h4>
+                        <p>提供 5 种可选颜色：分别为 <code>primary</code> ， <code>success</code> ， <code>warning</code> ，<code>info</code> ， <code>danger</code> 。</p>
+                        <div class="example example-popover">
+                            <button type="button" class="btn btn-primary popover-primary sr-only">
+                                    Primary
+                                </button>
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">Primary</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <button type="button" class="btn btn-success popover-success sr-only">
+                                    Success
+                                </button>
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">Success</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <button type="button" class="btn btn-info popover-info sr-only">
+                                    Info
+                                </button>
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">Info</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <button type="button" class="btn btn-warning popover-warning sr-only">
+                                    Warning
+                                </button>
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">Warning</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example example-popover">
+                            <button type="button" class="btn btn-danger popover-danger sr-only">
+                                    Danger
+                                </button>
+                            <div class="popover top">
+                                <div class="arrow"></div>
+                                <h3 class="popover-title">Danger</h3>
+                                <div class="popover-content">
+                                    <p>市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态” </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row row-lg">
+                <div class="col-lg-6">
+
+                    <div class="example-wrap margin-lg-0">
+                        <h4 class="example-title">点击显示</h4>
+                        <p>您可以通过 <code>data-trigger=&quot;focus / hover&quot;</code> 属性或 Javascript 配置弹出框在点击时显示。</p>
+                        <div class="example example-buttons">
+                            <button class="btn btn-danger" data-content="市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态”" data-trigger="focus" data-toggle="popover" data-original-title="获取焦点时显示" tabindex="0" title="" type="button">
+                                    获取焦点时显示
+                                </button>
+                            <button class="btn btn-danger" data-content="市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态”" data-trigger="hover" data-toggle="popover" data-original-title="鼠标悬停时显示" tabindex="0" title="" type="button">
+                                    鼠标悬停时显示
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">动画</h4>
+                        <p>可使用旋转和缩放两种动画效果。</p>
+                        <div class="example example-buttons">
+                            <button type="button" class="btn btn-primary popover-primary popover-rotate" data-toggle="popover" data-content="市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态”" data-placement="left" data-original-title="Primary" title="">
+                                    旋转
+                                </button>
+                            <button type="button" class="btn btn-success popover-success popover-scale" data-toggle="popover" data-content="市值从3000亿到2万亿，马化腾说腾讯将成为“大家的新生态”" data-placement="top" data-original-title="Success" title="">
+                                    缩放
+                                </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('[data-toggle=tooltip]')["tooltip"]();
+    $('[data-toggle=popover]')["popover"]();
+</script>
