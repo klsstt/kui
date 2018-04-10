@@ -1,0 +1,220 @@
+<style type="text/css">
+    .example>span {
+        margin-right: 16px;
+    }
+    
+    .example-2>span {
+        margin-right: 35px;
+    }
+    
+    .example>span {
+        margin-right: 16px;
+    }
+    
+    .example .label {
+        line-height: 30px;
+    }
+</style>
+<div class="kui-header">
+    <h1 class="kui-title">徽章与标签</h1>
+    <div class="kui-header-actions">
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </button>
+    </div>
+</div>
+<div class="kui-content">
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">默认</h4>
+                        <p>给徽章元素添加不同颜色即可，如给<code>.badge</code> 添加 <code>.bg-primary</code> 类等。</p>
+                        <div class="example">
+                            <span class="badge ">1</span> <span class="badge bg-primary white">2</span>
+                            <span class="badge bg-green white">3</span> <span class="badge bg-cyan white">4</span>
+                            <span class="badge bg-orange white">5</span> <span class="badge bg-red white">6</span>
+                            <span class="badge bg-blue-grey white">7</span>
+                        </div>
+                        <div class="example">
+                            <span class="badge">11</span> <span class="badge bg-primary white">12</span>
+                            <span class="badge bg-green white">13</span> <span class="badge bg-cyan white">14</span>
+                            <span class="badge bg-orange white">15</span> <span class="badge bg-red white">16</span>
+                            <span class="badge bg-blue-grey white">17</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">圆角</h4>
+                        <p>通常用来显示数量消息，通过添加 <code>.badge-radius</code> 类来实现。</p>
+                        <div class="example">
+                            <span class="badge badge-radius">1</span>
+                            <span class="badge badge-radius bg-primary white">2</span>
+                            <span class="badge badge-radius bg-green white">3</span>
+                            <span class="badge badge-radius bg-cyan white">4</span>
+                            <span class="badge badge-radius bg-orange white">5</span>
+                            <span class="badge badge-radius bg-red white">6</span>
+                            <span class="badge badge-radius bg-blue-grey white">7</span>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix visible-md-block visible-sm-block"></div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">大小</h4>
+                        <p>各种大小规格的徽章，可以通过添加 <code>.badge-lg</code> 或 <code>.badge-sm</code> 类来实现。</p>
+                        <div class="example">
+                            <span class="badge badge-lg badge-primary">大尺寸</span> <span class="badge badge-primary">默认</span>
+                            <span class="badge badge-sm badge-primary">小尺寸</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix visible-lg-block"></div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">在按钮中显示</h4>
+                        <p>当需要突出显示或者显示未读条目是，可以通过在按钮中添加 <code>&lt;span class="badge"&gt;</code> 类来实现。</p>
+                        <div class="example example-buttons">
+                            <button type="button" class="btn btn-primary">
+                                更新 <span class="badge">5</span>
+                            </button>
+                            <button type="button" class="btn btn-outline btn-primary">
+                                更新 <span class="badge">5</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix visible-md-block visible-sm-block"></div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">定位</h4>
+                        <p>常用在邮件客户端或 APP 等需要推送通知的应用中，可以通过在徽章中 <code>.up</code> 等类来实现。
+                        </p>
+                        <div class="example-2 mt-20">
+                            <span>
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                <span class="badge up bg-red white">5</span>
+                            </span> <span>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span class="badge up bg-orange white">3</span>
+                            </span> <span>
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="badge up bg-primary white">3</span>
+                            </span> <span>
+                                <i class="fa fa-inbox" aria-hidden="true"></i>
+                                <span class="badge up bg-cyan white">3</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">状态</h4>
+                        <p>你可以参考以下例子来在头像图片或类似元素创建状态指示灯徽章。</p>
+                        <div class="example example-avatars">
+                            <div class="avatar avatar-online">
+                                <img src="images/portraits/2.jpg" alt="...">
+                                <i></i>
+                            </div>
+                            <div class="avatar avatar-off">
+                                <img src="images/portraits/3.jpg" alt="...">
+                                <i></i>
+                            </div>
+                            <div class="avatar avatar-busy">
+                                <img src="images/portraits/4.jpg" alt="...">
+                                <i></i>
+                            </div>
+                            <div class="avatar avatar-away">
+                                <img src="images/portraits/5.jpg" alt="...">
+                                <i></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">标签</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">默认</h4>
+                        <p>用下面的任何一个类即可改变标签的外观。</p>
+                        <div class="example">
+                            <span class="label label-default">Default</span> <span class="label label-primary">Primary</span>
+                            <span class="label label-success">Success</span>
+                            <span class="label label-info">Info</span>
+                            <span class="label label-warning">Warning</span>
+                            <span class="label label-danger">Danger</span>
+                            <span class="label label-dark">Dark</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">圆形</h4>
+                        <p>通过添加 <code>.label-round</code> 来改变标签的形状。</p>
+                        <div class="example">
+                            <span class="label label-round label-default">Default</span>
+                            <span class="label label-round label-primary">Primary</span>
+                            <span class="label label-round label-success">Success</span>
+                            <span class="label label-round label-info">Info</span>
+                            <span class="label label-round label-warning">Warning</span>
+                            <span class="label label-round label-danger">Danger</span>
+                            <span class="label label-round label-dark">Dark</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-4">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">描边</h4>
+                        <p>标签有不同的线条颜色可供选择，通过添加 <code>.label-outline</code> 来实现描边。</p>
+                        <div class="example">
+                            <span class="label label-outline label-default">Default</span>
+                            <span class="label label-outline label-primary">Primary</span>
+                            <span class="label label-outline label-success">Success</span>
+                            <span class="label label-outline label-info">Info</span>
+                            <span class="label label-outline label-warning">Warning</span>
+                            <span class="label label-outline label-danger">Danger</span>
+                            <span class="label label-outline label-dark">Dark</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
