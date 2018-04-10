@@ -1,0 +1,120 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE></TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<LINK rel=stylesheet type=text/css href="theme/common.css">
+<SCRIPT type=text/javascript src="js/common.js"></SCRIPT>
+<!--
+<SCRIPT type=text/javascript src ="http://j.maxmind.com/app/geoip.js"></SCRIPT>
+
+AIzaSyBodXIaNItEGcrWByYsyniSqa-kSCZ2TLI
+-->
+
+<script type="text/javascript"  
+      src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0&libraries=places&sensor=false" >  
+    </script>  
+
+<SCRIPT type=text/javascript src="js/json2.js"></SCRIPT>
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<SCRIPT type=text/javascript src="js/hashtable.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/vehicle.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/function.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/map-google.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/public.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/popupmarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/namemarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/mapmarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/maptrack.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/mapframe.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/ev-google.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/lang.js"></SCRIPT>
+<SCRIPT type=text/javascript>
+var	lang = null;
+var GFRAME = new mapframe();
+
+function initialize() {
+	initCommon("theme/");
+	GFRAME.createMap(true);
+	document.getElementById('spanCurMap').innerText = lang.mapGoogle;
+	document.getElementById('liMap0').style.display = "none";
+	
+}
+function search(){};
+
+
+</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.19088">
+
+</HEAD>
+<BODY oncontextmenu="return false;" onresize=GFRAME.restFrame(); onload=initialize();>
+<DIV id=FrameCanvas>
+	<DIV id=mapbar>
+		<DIV id=maptoolbar style="padding-left:6px;">
+			<img id="btnLjfx" src="../google/image/ljfx.gif" style="padding-top:2px;display:none;" onclick="showljfx()"/>
+		</DIV>
+		<div id="selectMap" class="cat_list_type">
+			<div id="mapMenu" class="h2_cat_type"><h3 id="txt"><span id="spanCurMap"></span></h3>
+				<div class="h3_cat_type">
+					<div class="shadow_border_type">
+						<ul>
+							<li style="display:none;" id="liMap3"><a href="javascript:switchMapTo('3');"><span id="spanMap3"></span></a></li>	<!--百度-->
+							<li style="display:none;" id="liMap9"><a href="javascript:switchMapTo('9');"><span id="spanMap9"></span></a></li>  <!--Mapbar-->
+							<li style="display:none;" id="liMap0"><a href="javascript:switchMapTo('0');"><span id="spanMap0"></span></a></li>  <!--谷歌-->
+							<li style="display:none;" id="liMap8"><a href="javascript:switchMapTo('8');"><span id="spanMap8"></span></a></li>  <!--Arcgis-->
+							<li style="display:none;" id="liMap1"><a href="javascript:switchMapTo('1');"><span id="spanMap1"></span></a></li>  <!--MapInfo-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<DIV id=mapbarRight>
+			<img id="btnExpand" src="./image/expand.jpg" style="padding-top:2px;display:none;" onclick="expand()"/>
+		</DIV>
+		<DIV id="overVehicleAddress"></DIV>
+	</DIV>
+	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	<DIV id=mapcanvas></DIV>
+</DIV>
+<SPAN id=menu_more onmouseover=clearInterval(_s); onmouseout="hidemore('menu_more',300)"></SPAN>
+<span id="tip" unselectable="on" style="position: absolute; z-index: 10; background:#FBFFD7; border:solid 1px #999999; font-weight: bold; l"></span>
+</BODY>
+<script>
+function showljfx(){
+	layer.open({
+	    type: 2,
+	    title: 'Travel analysis',
+	    shadeClose: true,
+	    shade: 0.8,
+	    area: ['350px', '280px'],
+	    content: 'gmap_input.html',
+	    btn: ['Save'], 
+	    yes:function(index,layero){
+	    	var datas=$(layero).find("iframe")[0].contentWindow.getData();
+		    if(null!=datas){
+				var data=datas.split("|");
+				ljfx_search(data[0],data[1],data[2]); 
+				layer.closeAll();
+			}
+		}
+	});
+}
+
+function ljfx_search(start,end,type){
+	var directionsService = new google.maps.DirectionsService;
+	var directionsDisplay = new google.maps.DirectionsRenderer;
+	directionsDisplay.setMap(GFRAME.map);
+	directionsService.route({
+		origin: start,
+		destination: end,
+		travelMode: google.maps.TravelMode[type]
+	}, function(response, status) {
+		if (status === 'OK') {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	});
+}
+</script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+</HTML>

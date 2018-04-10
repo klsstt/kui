@@ -1,0 +1,137 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE></TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<LINK rel=stylesheet type=text/css href="theme/common.css">
+<SCRIPT type=text/javascript src="js/common.js"></SCRIPT>
+<!--
+<SCRIPT type=text/javascript src ="http://j.maxmind.com/app/geoip.js"></SCRIPT>
+-->
+<script type=text/javascript src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<SCRIPT type=text/javascript src="js/json2.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/jquery-1.4.2.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/hashtable.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/vehicle.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/function.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/map-google.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/public.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/popupmarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/namemarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/mapmarker.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/maptrack.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/mapframe.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/ev-google.js"></SCRIPT>
+<SCRIPT type=text/javascript src="js/lang.js"></SCRIPT>
+<SCRIPT type=text/javascript>
+var	lang = null;
+var GFRAME = new mapframe();
+
+function initialize() {
+	initCommon("theme/");
+
+	GFRAME.createMap(true);
+	
+	document.getElementById('spanCurMap').innerText = lang.mapGoogle;
+	document.getElementById('liMap0').style.display = "none";
+}
+</SCRIPT>
+          <script type="text/javascript">
+              function addimage()
+              {
+                  insertMarker("111");
+                  updateMarker("111", 100, "mycar", "113", "22", 0, "48|48|http://localhost/testimg/145834A0.jpg", "<img src='http://localhost/testimg/145834A0.jpg' width='255' height='120'>");
+              }
+
+              function bat_add_vehicle()
+              {
+                  if (!isLoadMapSuc())
+                  {
+                      alert("Map no ready yet.");
+                      return;
+                  }
+
+                  var dtBegin = new Date();
+                  var ticksbegin = dtBegin.getTime();
+
+
+                  for (var i = 10000 ; i < 17000 ; i++)
+                  {
+                      var strDevIDNO = i.toString();
+                      insertVehicle(strDevIDNO);
+                      setVehiName(strDevIDNO, strDevIDNO);
+
+                      setVehiMenu(strDevIDNO, 0, "视频", false);
+                      setVehiMenu(strDevIDNO, 1, "操作", false);
+                      setVehiMenu(strDevIDNO, 2, "更多", false);
+
+                      //setVehiIcon(1, "../google/image/1/online/1.gif");
+                      var strInfo = i.toString() + " - ACC ON-JavaScript 计时 事件 通过使用 JavaScript，我们有能力作到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。我们称之为计时事件";
+                      updateVehicle(strDevIDNO, 113 + Math.random(), 22 + Math.random(), Math.floor(360 * Math.random()), 0, 60, "2014-12-24", strInfo);
+                  }
+
+                  var dtEnd = new Date();
+                  var ticksend = dtEnd.getTime();
+                  var tickdiff = ticksend - ticksbegin;
+                  alert(tickdiff);
+              }
+
+              function bat_update_vehicle()
+              {
+                  var dtBegin = new Date();
+                  var ticksbegin = dtBegin.getTime();
+
+
+                  for (var i = 10000 ; i < 17000 ; i++)
+                  {
+                      var strDevIDNO = i.toString();
+                      var strInfo = i.toString() + " - ACC OFF-JavaScript 计时 事件 通过使用 JavaScript，我们有能力作到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。我们称之为计时事件";
+                      updateVehicle(strDevIDNO, 113 + Math.random(), 22 + Math.random(), Math.floor(360 * Math.random()), 0, 60, "2014-12-24", strInfo);
+                  }
+
+                  var dtEnd = new Date();
+                  var ticksend = dtEnd.getTime();
+                  var tickdiff = ticksend - ticksbegin;
+                  alert(tickdiff);
+              }
+          </script>
+<META name=GENERATOR content="MSHTML 8.00.6001.19088"></HEAD>
+<BODY oncontextmenu="return false;" onresize=GFRAME.restFrame(); onload=initialize();>
+<DIV id=FrameCanvas>
+	<DIV id=mapbar>
+		<DIV id=maptoolbar style="padding-left:6px;">
+            <!--
+			<img id="addPoint" src="./image/addpoint.gif" style="padding-top:2px;display:none;" onclick="addMarkerPoint()"/>
+			<img id="addRectangle" src="./image/addrectangle.gif" style="padding-top:2px;display:none;" onclick="addMarkerRectangle()"/>
+			<img id="addPolygon" src="./image/addpolygon.gif" style="padding-top:2px;display:none;" onclick="addMarkerPolygon()"/>
+			<img id="addLine" src="./image/addline.gif" style="padding-top:2px;display:none;" onclick="addMarkerLine()"/>
+			<img id="btnSearch" src="./image/search.gif" style="padding-top:2px;display:none;" onclick="searchVehi()"/>
+			<img id="btnFullScreen" src="./image/fullscreen.gif" style="padding-top:2px;display:none;" onclick="fullScreen()"/>
+			<img id="btnCenter" src="./image/savemapconfig.gif" style="padding-top:2px;display:none;" onclick="getCenter()"/>
+             -->
+            <input type="button" name="button1" value="add v" onclick="addimage();" />
+            <input type="button" name="button1" value="add 3000" onclick="bat_add_vehicle();" />
+            <input type="button" name="button2" value="update 3000" onclick="bat_update_vehicle();" />
+		</DIV>
+		<div id="selectMap" onMouseOver="showMapSelect()" onMouseOut="hideMapSelect()" style="display:none;padding-top:4px;width: 98px; height: 18px; border: 1px solid rgb(166, 166, 166); z-index: 100; float: right; " class="cat_list_type" id="cat_list">
+			<div id="mapMenu" class="h2_cat_type"><h3 id="txt"><span id="spanCurMap"></span></h3>
+				<div class="h3_cat_type">
+					<div class="shadow_border_type">
+						<ul>
+							<li style="display:none;" id="liMap3"><a href="javascript:switchMapTo('3');"><span id="spanMap3"></span></a></li>
+							<li style="display:none;" id="liMap0"><a href="javascript:switchMapTo('0');"><span id="spanMap0"></span></a></li>
+							<li style="display:none;" id="liMap1"><a href="javascript:switchMapTo('1');"><span id="spanMap1"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<DIV id=mapbarRight>
+			<img id="btnExpand" src="./image/expand.jpg" style="padding-top:2px;display:none;" onclick="expand()"/>
+		</DIV>
+		<DIV id="overVehicleAddress"></DIV>
+	</DIV>
+	<DIV id=mapcanvas></DIV>
+</DIV>
+<SPAN id=menu_more onmouseover=clearInterval(_s); onmouseout="hidemore('menu_more',300)"></SPAN>
+<span id="tip" unselectable="on" style="position: absolute; z-index: 10; background:#FBFFD7; border:solid 1px #999999; font-weight: bold; l"></span>
+</BODY>
+</HTML>
