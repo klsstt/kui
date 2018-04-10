@@ -24,7 +24,7 @@ position:absolute;
         if (Hls.isSupported()) {
             var video = document.getElementById('video');
             var hls = new Hls();
-            hls.loadSource('RealPlay.m3u8');
+            hls.loadSource('https://apd-8ce3583f6e792ebca5186e0b9c1d44f0.v.smtcdns.com/varietyts.tc.qq.com/Auq6PNPyYumrMw2hc6eIp9HH8c4yJwtwwqqGBf24WoZ8/z59PyAvBnbJkoeHV5lHjoaN-7aIPwCpArzdZpvpnn6hiftK9hZrHGaUv6RWICg8FSCK-iWWkFNdeTS9obZPyLO4zqAxLLYNKvMQcJvce4DVEKzdY48IIKA0Y9KBAYuvnK6y4_-LIodKxTzZVGyWl9NrHJpqoeyh4/g0014p94tqk.321002.ts.m3u8?ver=4');
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function () {
                 video.play();

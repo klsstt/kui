@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type=text/javascript src="../google/js/common.js"></script>
+<style>
+.form-control, .single-line {
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    -webkit-transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+    transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+    width: 200px;
+    font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+<table width="100%" border="0" align="center" style="width: 100%;">
+<tr>
+	<td><span id="szcs">City</span>:</td>
+	<td><input type="text" class="form-control" id="cs" placeholder="City" value="" align="top" style="margin-top: 2px;"/></td>
+</tr>
+<tr>
+	<td><span id="xsqd">Start</span>:</td>
+	<td><input type="text" class="form-control" id="qd" placeholder="Start" value="st louis, mo" align="top" style="margin-top: 2px;"/></td>
+</tr>
+<tr>
+	<td><span id="xszd">End</span>:</td>
+	<td><input type="text" class="form-control" id="zd" placeholder="End" value="amarillo, tx"/></td>
+</tr>
+<tr>
+	<td><span id="lxlx">Type</span>:</td>
+	<td>
+		<select  id="driving_way" class="form-control" style="width: 225px;">
+			<option value="DRIVING">Driving</option>
+			<option value="WALKING">Walking</option>
+			<option value="BICYCLING">Bicycling</option>
+			<option value="TRANSIT">Transit</option>
+		</select>
+	</td>
+</tr>
+</table>
+</body>
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script>
+
+function getData(){
+	var  arr  = []; 
+	var cs=$("#cs").val();
+	var qd=$("#qd").val();
+	var zd=$("#zd").val();
+	if(null!=cs){
+		qd=cs+qd;
+		zd=cs+zd;
+	}
+	
+	var type=$("#driving_way").val();
+	var datas =null;
+	if(null!=qd&&null!=zd&null!=type){
+		arr.push(qd);  
+		arr.push(zd);
+		arr.push(type); 
+		datas=arr.join('|'); 
+	}
+	return datas;
+}
+</script>
+</html>

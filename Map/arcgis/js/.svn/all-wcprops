@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js
+END
+function.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/function.js
+END
+popupmarker.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/popupmarker.js
+END
+mapframe.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/mapframe.js
+END
+public.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/public.js
+END
+mapmarker.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/mapmarker.js
+END
+vehicle.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/vehicle.js
+END
+ev-arcgis.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/ev-arcgis.js
+END
+maptrack.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/maptrack.js
+END
+namemarker.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/namemarker.js
+END
+map-arcgis.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/klsstt/!svn/ver/4/taxi/webroot/client/Map/arcgis/js/map-arcgis.js
+END

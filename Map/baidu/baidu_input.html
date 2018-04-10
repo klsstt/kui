@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type=text/javascript src="../google/js/common.js"></script>
+<style>
+.form-control, .single-line {
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    -webkit-transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+    transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+    width: 200px;
+    font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+<table width="100%" border="0" align="center" style="width: 100%;">
+<tr>
+	<td><span id="szcs">所在城市</span>:</td>
+	<td><input type="text" class="form-control" id="cs" placeholder="可不填" value="" align="top" style="margin-top: 2px;"/></td>
+</tr>
+<tr>
+	<td><span id="xsqd">行驶起点</span>:</td>
+	<td><input type="text" class="form-control" id="qd" placeholder="起点" value="" align="top" style="margin-top: 2px;"/></td>
+</tr>
+<tr>
+	<td><span id="xszd">行驶终点</span>:</td>
+	<td><input type="text" class="form-control" id="zd" placeholder="终点" value=""/></td>
+</tr>
+<tr>
+	<td><span id="lxlx">路线类型</span>:</td>
+	<td>
+		<select  id="driving_way" class="form-control" style="width: 225px;">
+			<option id="zssj" value="0">最少时间</option>
+			<option id="zdjl" value="1">最短距离</option>
+			<option id="bkgs" value="2">避开高速</option>
+		</select>
+	</td>
+</tr>
+</table>
+</body>
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script>
+var	lang = null;
+
+$(function(){
+	initCommons("../google/theme/");
+//初始化
+function initCommons(themePath) {
+	
+	$("#szcs").text(parent.lang.szcs);
+	$("#xsqd").text(parent.lang.xsqd);
+	$("#xszd").text(parent.lang.xszd);
+	$("#lxlx").text(parent.lang.lxlx);
+
+	$("#zssj").text(parent.lang.zssj);
+	$("#zdjl").text(parent.lang.zdjl);
+	$("#bkgs").text(parent.lang.bkgs);
+
+	$("#cs").attr("placeholder",parent.lang.kbt);
+	$("#qd").attr("placeholder",parent.lang.qd);
+	$("#zd").attr("placeholder",parent.lang.zd);
+}
+});
+function getData(){
+	var  arr  = []; 
+	var cs=$("#cs").val();
+	var qd=$("#qd").val();
+	var zd=$("#zd").val();
+	if(null!=cs){
+		qd=cs+qd;
+		zd=cs+zd;
+	}
+	
+	var type=$("#driving_way").val();
+	var datas =null;
+	if(null!=qd&&null!=zd&null!=type){
+		arr.push(qd);  
+		arr.push(zd);
+		arr.push(type); 
+		datas=arr.join(','); 
+	}
+	return datas;
+}
+</script>
+</html>
