@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>登录页面</title>
+    <title>锁屏页面</title>
     <link rel="stylesheet" href="css/kui.css">
     <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
@@ -14,57 +14,57 @@
 <script src="js/html5.js"></script>
 <![endif]-->
     <style>
-        .login:before {
+        .page-locked:before {
             background-image: url(../images/lockscreen.jpg)
         }
         
-        .login {
+        .page-locked .page {
             background: 0 0
         }
         
-        .login .avatar {
+        .page-locked .page .avatar {
             margin-bottom: 15px
         }
         
-        .login .avatar.avatar-lg {
+        .page-locked .page .avatar.avatar-lg {
             width: 160px;
             height: 160px
         }
         
-        .login .locked-user {
+        .page-locked .page .locked-user {
             margin-bottom: 35px;
             color: #fff
         }
         
-        .login form {
+        .page-locked .page form {
             width: 300px;
             margin: 22px auto
         }
         
-        .content {
+        .page-content {
             padding: 20px 20px;
         }
         
-        .login .avatar.avatar-lg {
+        .page-locked .page .avatar.avatar-lg {
             width: 160px;
             height: 160px;
         }
         
-        .login .avatar {
+        .page-locked .page .avatar {
             margin-bottom: 15px;
         }
         
-        .login .wecome {
+        .page-locked .page .locked-user {
             margin-bottom: 35px;
             color: #fff;
         }
         
-        .login form {
+        .page-locked .page form {
             width: 300px;
             margin: 22px auto;
         }
         
-        .login-dark.layout-full::before {
+        .page-dark.layout-full::before {
             position: fixed;
             top: 0px;
             left: 0px;
@@ -77,7 +77,7 @@
             background-size: cover;
         }
         
-        .login::before {
+        .page-locked::before {
             background-image: url("images/photos/cropper.jpg");
         }
         
@@ -89,50 +89,39 @@
             vertical-align: bottom;
             border-radius: 1000px;
         }
-        
-        form {
-            width: 350px;
-            margin: 45px 0 20px;
-        }
     </style>
 </head>
 
-<body class="login layout-full login-dark">
+<body class="page-locked layout-full page-dark">
 
-    <div class="animation-fade v-align text-center animsition-fade height-full">
-        <div class="content v-align-middle">
+    <div class=" page animation-fade v-align text-center animsition-fade height-full">
+        <div class="page-content v-align-middle">
             <div class="avatar avatar-lg">
-                <img src="kui-logo.png">
+                <img src="http://cdn.admui.com/demo/iframe/1.1.0/images/avatar.svg" alt="liuyiming@admui_demo">
             </div>
-            <h4 class="wecome">欢迎登录</h4>
+            <h4 class="locked-user">liuyiming@admui_demo</h4>
             <form action="/" role="form">
-                <input type="text" class="kui-form-control" name="account" id="k_account" placeholder="请输入账户登录">
-                <input type="password" class="kui-form-control  mt-10" name="password" id="k_password" placeholder="请输入您的密码登录">
-                <button id="btn_login" type="button" class="btn btn-primary btn-block mt-30" onclick="login()">登 录</button>
+                <div class="kui-input-group">
+                    <input type="password" class="kui-form-control last" name="password" placeholder="请输入您的密码继续登录">
+                    <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-unlock" aria-hidden="true"></i>
+                                <span class="sr-only">登录</span>
+                    </button>
+                    </span>
+                </div>
             </form>
+            <p>
+                <a href="/login">或者使用其他账号登录</a>
+            </p>
         </div>
     </div>
     <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/common/kui.js"></script>
-    <script>
-        $(function() {
-            if (!$.kui.store.enable) { //浏览器不支持本地存储
-                alert('浏览器不支持本地存储');
-            }
-
-
-        });
-
-
-
-        function login() {
-            var account = $("#k_account").val();
-            if ($.trim(account).length > 0) {
-                $.kui.store.set("account", account);
-                $.kui.store.set("name", "康博磊");
-                window.location.href = "index.html";
-            }
-
+    <script language="javascript">
+        if (top !== self) {
+            top.location.href = location.href;
         }
     </script>
 </body>
+
+</html>
