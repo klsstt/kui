@@ -1,91 +1,138 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-<title>登录页面</title>
-<link type="text/css" rel="stylesheet" href="login/css/normalize.css" />
-<link type="text/css" rel="stylesheet" href="login/css/demo.css" />
-<!--必要样式-->
-<link type="text/css" rel="stylesheet" href="login/css/component.css" />
-<!--[if IE]>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="css/kui.css">
+    <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
+    <link rel="stylesheet" href="skin/default/skin.css">
+    <link rel="stylesheet" href="example/example.css">
+    <!--[if IE]>
 <script src="js/html5.js"></script>
 <![endif]-->
-<style>
-* {
-	margin:0;
-	padding:0;
-}
-
-body {
-	font-size:16px;
-	font:400 16px/1.62 Georgia,"Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;font-family: 'PT serif',微軟正黑體,微软雅黑,华文细黑,Microsoft Yahei,Hiragino Sans GB,sans-serif;
-	color:#D0CCCC;
-	overflow:hidden;
-	text-shadow: 0px 0px 1px rgba(24, 22, 22, 0.35);
-	background-color: #000;
-}
-input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;
-	BACKGROUND-COLOR: transparent;
-}
-</style>
+    <style>
+        .login:before {
+            background-image: url(../images/lockscreen.jpg)
+        }
+        
+        .login {
+            background: 0 0
+        }
+        
+        .login .avatar {
+            margin-bottom: 15px
+        }
+        
+        .login .avatar.avatar-lg {
+            width: 160px;
+            height: 160px
+        }
+        
+        .login .locked-user {
+            margin-bottom: 35px;
+            color: #fff
+        }
+        
+        .login form {
+            width: 300px;
+            margin: 22px auto
+        }
+        
+        .content {
+            padding: 20px 20px;
+        }
+        
+        .login .avatar.avatar-lg {
+            width: 160px;
+            height: 160px;
+        }
+        
+        .login .avatar {
+            margin-bottom: 15px;
+        }
+        
+        .login .wecome {
+            margin-bottom: 35px;
+            color: #fff;
+        }
+        
+        .login form {
+            width: 300px;
+            margin: 22px auto;
+        }
+        
+        .login-dark.layout-full::before {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-position: center top;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        
+        .login::before {
+            background-image: url("images/photos/cropper.jpg");
+        }
+        
+        .avatar {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            white-space: nowrap;
+            vertical-align: bottom;
+            border-radius: 1000px;
+        }
+        
+        form {
+            width: 350px;
+            margin: 45px 0 20px;
+        }
+    </style>
 </head>
 
-<body class="container demo-1">
+<body class="login layout-full login-dark">
 
-<div>
-	<div class="content">
-		<div id="large-header" class="large-header"  >
-			
-			<div class="logo_box" style="position:absolute; z-index:100;">
-					
-				<h3>欢迎登录</h3>
-				<form action="#" name="f" method="post">
-						
-					<div class="input_outer">
-						<span class="u_user"></span>
-						<input id="k_account" name="k_account"  class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户" autocomplete="new-password" disabled>
-					</div>
-					<div class="input_outer">
-						<span class="us_uer"></span>
-						<input id="k_password" name="k_password" class="text" style="color: #FFFFFF !important; " type="text"  textmode=“password” autocomplete="new-password" onfocus="this.type='password'" disabled>
-					</div>
-					<div class="mb2"><a class="act-but submit" href="javascript:;" onclick="login()" style="color: #FFFFFF">登录</a></div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-</div>
-<script type="text/javascript" src="js/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/lib/store.js"></script>
-<script type="text/javascript" src="login/js/canvas-nest.js" color="255,255,255" opacity='0.7' zIndex="1" count="200"></script>
-<script type="text/javascript">
- document.getElementById('large-header').style.height = window.innerHeight+'px';
+    <div class="animation-fade v-align text-center animsition-fade height-full">
+        <div class="content v-align-middle">
+            <div class="avatar avatar-lg">
+                <img src="kui-logo.png">
+            </div>
+            <h4 class="wecome">欢迎登录</h4>
+            <form action="/" role="form">
+                <input type="text" class="kui-form-control" name="account" id="k_account" placeholder="请输入账户登录">
+                <input type="password" class="kui-form-control  mt-10" name="password" id="k_password" placeholder="请输入您的密码登录">
+                <button id="btn_login" type="button" class="btn btn-primary btn-block mt-30" onclick="login()">登 录</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/common/kui.js"></script>
+    <script>
+        $(function() {
+            if (!$.kui.store.enable) { //浏览器不支持本地存储
+                alert('浏览器不支持本地存储');
+            }
 
 
-       
-$(function () {
-	if(!$.k_store.enable){//浏览器不支持本地存储
-		alert('浏览器不支持本地存储');
-	}
-	setTimeout("javascript:init();",1000) //1秒=5000，这里是3秒
-	
-});
-function init(){
-	$("#k_account").removeAttr("disabled");
-	$("#k_password").removeAttr("disabled");
-}
-function login(){
-	var account=$("#k_account").val();
-	if($.trim(account).length>0){
-		$.k_store.set("account",account);
-		$.k_store.set("name","康博磊");
-		window.location.href="index.html";
-	}
-	
-}
-</script>
+        });
+
+
+
+        function login() {
+            var account = $("#k_account").val();
+            if ($.trim(account).length > 0) {
+                $.kui.store.set("account", account);
+                $.kui.store.set("name", "康博磊");
+                window.location.href = "index.html";
+            }
+
+        }
+    </script>
 </body>
-</html>
