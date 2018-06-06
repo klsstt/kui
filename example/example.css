@@ -65,7 +65,7 @@
 
 .rating {
     unicode-bidi: bidi-override;
-    direction: rtl;
+    /* direction: rtl; */
     font-size: 30px;
 }
 
@@ -199,4 +199,24 @@ pre code {
     position: relative;
     display: block;
     margin-right: 25px;
+}
+
+.example .animation-example {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.example-well {
+    position: relative;
+    margin-bottom: 30px;
+    background-color: #f1f4f5;
+}
+
+.animation-circle {
+    border-radius: 50%;
+    overflow: hidden;
+    line-height: 100px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
 }

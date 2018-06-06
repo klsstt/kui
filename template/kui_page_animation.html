@@ -1,0 +1,156 @@
+<div class="kui-header">
+    <h1 class="kui-title">CSS动画</h1>
+    <div class="kui-header-actions">
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </button>
+    </div>
+</div>
+<div class="kui-content">
+    <div class="page-content container-fluid">
+
+        <div class="panel">
+            <div class="panel-body container-fluid">
+                <div class="row row-lg">
+                    <div class="col-lg-12">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">基本</h4>
+                            <p>添加 <code>.animation-{name}</code> 类到需要添加动画的元素上, 反相动画添加 <code>.animation-reverse</code> 。</p>
+                            <div class="example example-buttons touch">
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-scale">默认</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-fade">渐显</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-scale-up">放大</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-scale-down">缩小</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-slide-top">往下滑入</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-slide-bottom">往上滑入</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-slide-left">往右滑入</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-slide-right">往左滑入</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-shake">抖动</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row row-lg">
+                    <div class="col-md-6 col-xs-12">
+
+                        <div class="example-wrap margin-md-0">
+                            <h4 class="example-title">动画时间</h4>
+                            <p>添加 <code>.animation-duration-{time(秒)}</code> 类到动画元素上。</p>
+                            <div class="example example-buttons touch">
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-duration-1 animation-scale">1秒</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-duration-3 animation-scale-up">3秒</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-duration-5 animation-fade">5秒</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+
+                        <div class="example-wrap">
+                            <h4 class="example-title">延时触发</h4>
+                            <p>添加 <code>.animation-delay-{time(毫秒)}</code> 类到动画元素上。</p>
+                            <div class="example example-buttons touch">
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-delay-300 animation-scale-up">300 毫秒后触发</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-delay-500 animation-scale-up">500 毫秒后触发</div>
+                                </div>
+                                <div class="animation-example animation-hover hover">
+                                    <div class="bg-primary animation-circle animation-delay-800 animation-scale-up">800 毫秒后触发</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <div class="example-wrap">
+                            <h4 class="example-title">LOAD动画</h4>
+                            <p>添加 <code>.loader</code> 和 <code>.loader-{type}</code> 即可,单击下面的按钮查看效果。 </p>
+                        </div>
+                        <div class="example">
+                            <div class="col-lg-10">
+                                <div class="example example-buttons">
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="default">
+                                                    Default
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="grill">
+                                                    Grill
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="circle">
+                                                    Circle
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="tadpole">
+                                                    Tadpole
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="ellipsis">
+                                                    Ellipsis
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="dot">
+                                                    Dot
+                                                </button>
+                                    <button type="button" class="select-loader btn btn-outline btn-default" data-type="bounce">
+                                                    Bounce
+                                                </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="example-loading ">
+                                    <div class="loader loader-default" data-type="default"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function(doc, $) {
+        'use strict';
+        $(doc)['on']("click", '.select-loader',
+            function() {
+                var type = $(this)["data"]("type"),
+                    type_loader = $(".example-loading .loader")["data"]("type");
+                if (type === type_loader) {
+                    return;
+                }
+                $('.example-loading .loader')['removeClass']('loader-' + type_loader)['addClass']("loader-" + type)["data"]('type', type);
+            });
+
+    }(document, jQuery));
+</script>

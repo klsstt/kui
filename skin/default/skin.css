@@ -49,8 +49,17 @@ main {
 
 /*顶部导航*/
 
-.navbar-header {
-    width: 180px;
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 19px 10px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .navbar-brand {
@@ -85,6 +94,17 @@ main {
 }
 
 
+/* 移动端显示方式 */
+
+@media (max-width: 767px) {
+    .navbar-nav>li,
+    .navbar-nav>li>a {
+        line-height: 21px;
+        font-size: 14px
+    }
+}
+
+
 /* 导航条中的下拉菜单样式 */
 
 .dropdown-menu>li>a:hover,
@@ -95,7 +115,28 @@ main {
 }
 
 
+/* 版权模块 */
+
+.kui-footer {
+    margin-left: 200px;
+}
+
+
 /* 内容模块 */
+
+.kui-page {
+    position: relative;
+    top: 0px;
+    min-height: 100vh;
+    overflow: visible;
+    display: block;
+    opacity: 1!important;
+    -webkit-transform: none!important;
+    -ms-transform: none!important;
+    -o-transform: none!important;
+    transform: none!important;
+    background: rgba(238, 238, 238, 0.98);
+}
 
 .kui-main {
     position: relative;
@@ -107,6 +148,23 @@ main {
     -ms-transform: none!important;
     -o-transform: none!important;
     transform: none!important;
+}
+
+
+/* 移动端显示方式 */
+
+@media (max-width: 767px) {
+    .kui-main {
+        position: relative;
+        margin-left: 0px;
+        display: block;
+        background: #f1f4f5;
+        opacity: 1!important;
+        -webkit-transform: none!important;
+        -ms-transform: none!important;
+        -o-transform: none!important;
+        transform: none!important;
+    }
 }
 
 
@@ -172,14 +230,15 @@ main {
     background-position: right -61px
 }
 
-.site-contabs {
+.kui-ktabs {
     margin-left: 200px
 }
 
 .kui-tree-menu,
 .kui-tree-menu-arrow,
 .kui-main,
-.site-contabs {
+.kui-footer,
+.kui-ktabs {
     -moz-transition: all 0.4s ease 0s;
     -webkit-transition: all 0.4s ease 0s;
     -ms-transition: all 0.4s ease 0s;
@@ -188,18 +247,20 @@ main {
 }
 
 .big-page .kui-main,
+.big-page .kui-footer,
 .big-page .kui-tree-menu-arrow,
-.big-page .site-contabs {
+.big-page .kui-ktabs {
     left: 0px
 }
 
 .big-page .kui-tree-menu,
-.big-page .site-contabs {
+.big-page .kui-ktabs {
     left: -200px
 }
 
 .big-page .kui-main,
-.big-page .site-contabs {
+.big-page .kui-footer,
+.big-page .kui-ktabs {
     margin-left: 0px
 }
 
@@ -207,17 +268,22 @@ main {
 /*横向手机 竖向平板*/
 
 @media (max-width: 767px) {
-    .kui-tree-menu {
-        display: none;
-        float: none;
-        width: 100%;
-        height: auto;
-        margin-top: 0;
-        padding-top: 0;
-        bottom: auto
+    .kui-tree-menu,
+    .kui-tree-menu-arrow-a {
+        left: -200px
     }
     .big-page .kui-tree-menu {
         left: 0!important
+    }
+    .big-page .kui-tree-menu-arrow-a,
+    .big-page .kui-tree-menu-arrow-a {
+        left: 400!important
+    }
+    .big-page .kui-tree-menu-arrow {
+        left: 400px;
+    }
+    .kui-ktabs {
+        margin-left: 0px;
     }
 }
 
@@ -235,10 +301,6 @@ main {
     color: #fff;
     background-color: rgba(10, 10, 10, 0.2);
     ;
-}
-
-.text-center {
-    text-align: center!important;
 }
 
 table {

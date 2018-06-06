@@ -1,36 +1,374 @@
 @charset "utf-8";
-/* 蓝色 */
+
+/* 默认 黑色*/
+
+
 /*全站默认字体颜色*/
-a{color:#333}a:hover,a:focus,.maincolor,.maincolor a{color:#06c}
-.navbar{ background:#62a8ea}/*顶部导航*/
-	.navbar-logo,.navbar-logo-m,.navbar-slogan,.navbar-userbar{color:#fff}/*logo 及 用户信息文字颜色*/
-	.navbar-logo:hover,.navbar-logo-m:hover{color:#fff;text-decoration: none}
-	
-.navbar-nav > ul > li, .navbar-nav > ul > li > a{ color:#fff}/*顶部导航文字颜色*/
-.navbar-userbar > ul> > li,.navbar-userbar > ul> > li > a{ color:#fff}
 
-.k-aside{}/*侧边栏*/
-	.k-aside .menu_dropdown dt{color:#333}/*左侧二级导航菜单*/
-	.k-aside .menu_dropdown dt:hover{color:#148cf1}
-	.k-aside .menu_dropdown dt:hover [class^="icon-"]{ color:#7e8795}
-	.k-aside .menu_dropdown li a{color:#666;border-bottom: 1px solid #e5e5e5}
-	.k-aside .menu_dropdown li a:hover{color:#148cf1;background-color:#fafafa}
-	.k-aside .menu_dropdown li.current a,.menu_dropdown li.current a:hover{color:#148cf1}
-	.k-aside .menu_dropdown dt .k-iconfont{ color:#a0a7b1}
-	.k-aside .menu_dropdown dt .menu_dropdown-arrow{ color:#b6b7b8}	
-	.dislpayArrow a{background:url(icon_arrow.png) no-repeat 0 0}
-.tabBar {border-bottom: 2px solid #62a8ea}
-.tabBar span.current{background-color:#62a8ea}
-
-.navbar .logo {
-    height: 61px;
-    line-height: 61px;
-    margin-right: 10px;
-    float: left;
+a {
+    color: #333
 }
-	.k-header{position:absolute;top:0; right:0; left:0;height:61px;z-index:999; padding:0 15px}
-.k-aside{position: absolute;top:61px;bottom:0;left:0;padding-top:10px;width:199px;z-index:99;overflow:auto; background-color:rgba(238,238,238,0.98);_background-color:rgb(238,238,238);border-right: 1px solid #e5e5e5}
-.k-article-box{position: absolute;top:61px;right:0;bottom: 0;left:199px; overflow:hidden; z-index:1; background-color:#fff}
-	.k-article{position: absolute;top:34px;bottom:0;left:0; right:0;overflow:auto;z-index:1}
-.k-container{ padding:45px 0 0}
-  .navbar-nav > ul > li,.navbar-nav > ul > li > a{line-height:61px;font-size:14px}
+
+a:hover,
+a:focus,
+.maincolor,
+.maincolor a {
+    color: #06c
+}
+
+.navbar {
+    background: #4e97d9
+}
+
+
+/* 主模块 */
+
+main {
+    position: relative;
+    background: #f1f4f5;
+    display: block;
+}
+
+
+/*顶部导航*/
+
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 19px 10px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.navbar-brand {
+    color: #ddd;
+    line-height: 61px;
+    font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.nav>li>a:focus {
+    color: #fff;
+}
+
+
+/*导航中的logo*/
+
+.navbar-brand:hover {
+    color: #fff;
+    text-decoration: none
+}
+
+.navbar-nav>li,
+.navbar-nav>li>a {
+    color: #fff
+}
+
+.navbar-nav>li,
+.navbar-nav>li>a {
+    line-height: 41px;
+    font-size: 14px
+}
+
+
+/* 移动端显示方式 */
+
+@media (max-width: 767px) {
+    .navbar-nav>li,
+    .navbar-nav>li>a {
+        line-height: 21px;
+        font-size: 14px
+    }
+}
+
+
+/* 导航条中的下拉菜单样式 */
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #e5e5e5;
+}
+
+
+/* 版权模块 */
+
+.kui-footer {
+    margin-left: 200px;
+}
+
+
+/* 内容模块 */
+
+.kui-page {
+    position: relative;
+    top: 0px;
+    min-height: 100vh;
+    overflow: visible;
+    display: block;
+    opacity: 1!important;
+    -webkit-transform: none!important;
+    -ms-transform: none!important;
+    -o-transform: none!important;
+    transform: none!important;
+    background: rgba(238, 238, 238, 0.98);
+}
+
+.kui-main {
+    position: relative;
+    margin-left: 200px;
+    display: block;
+    background: #f1f4f5;
+    opacity: 1!important;
+    -webkit-transform: none!important;
+    -ms-transform: none!important;
+    -o-transform: none!important;
+    transform: none!important;
+}
+
+
+/* 移动端显示方式 */
+
+@media (max-width: 767px) {
+    .kui-main {
+        position: relative;
+        margin-left: 0px;
+        display: block;
+        background: #f1f4f5;
+        opacity: 1!important;
+        -webkit-transform: none!important;
+        -ms-transform: none!important;
+        -o-transform: none!important;
+        transform: none!important;
+    }
+}
+
+
+/* 左侧树形菜单 */
+
+.kui-tree-menu {
+    position: fixed;
+    top: 61px;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    margin: 0;
+    width: 199px;
+    z-index: 99;
+    overflow-y: auto;
+    background-color: #fff;
+    _background-color: rgb(238, 238, 238);
+    border-right: 0px solid #e5e5e5;
+    opacity: 1!important;
+    -webkit-transform: none!important;
+    -ms-transform: none!important;
+    -o-transform: none!important;
+    transform: none!important;
+}
+
+
+/* 左侧树形菜单显示隐藏箭头 */
+
+.kui-tree-menu-arrow {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 200px;
+    width: 0px;
+    height: 100%;
+    z-index: 10;
+}
+
+.kui-tree-menu-arrow a {
+    position: absolute;
+    display: block;
+    width: 17px;
+    height: 61px;
+    top: 50%;
+    margin-top: -30px;
+    outline: none;
+}
+
+.kui-tree-menu-arrow a {
+    /* background-color: transparent; */
+    background-color: #4e97d9;
+    transform: perspective(0.49em) rotateY(5deg);
+    vertical-align: middle!important;
+}
+
+.kui-tree-menu-arrow a:before {
+    font-family: "FontAwesome";
+    font-size: 24px;
+    content: "\f0da";
+}
+
+.kui-tree-menu-arrow a:hover {
+    text-decoration: none;
+    background-position: right 0;
+}
+
+.kui-tree-menu-arrow a.open {
+    background-position: 0 -61px;
+}
+
+.kui-tree-menu-arrow a.open:hover {
+    background-position: right -61px
+}
+
+.tree-menu>li>a,
+.tree-menu>li>span {
+    border: 0px solid transparent;
+    border-bottom-color: #ddd;
+}
+
+.tree-menu li>a,
+.tree-menu li>span {
+    display: block;
+    padding: 0 20px;
+    line-height: 36px;
+    margin-bottom: -1px;
+    color: #353535;
+}
+
+.tree-menu li>ul>li>a,
+.tree-menu li>span {
+    padding: 0 40px;
+}
+
+.tree-menu li>ul {
+    background-color: rgba(238, 238, 238, 0.98);
+}
+
+.tree-menu li>a:hover,
+.tree-menu li>a:active,
+.tree-menu li>a:focus {
+    color: #62a8ea;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, .04);
+}
+
+.navbar-nav>li.active>a {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.kui-ktabs {
+    margin-left: 200px
+}
+
+.kui-tree-menu,
+.kui-tree-menu-arrow,
+.kui-main,
+.kui-footer,
+.kui-ktabs {
+    -moz-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s
+}
+
+.big-page .kui-main,
+.big-page .kui-footer,
+.big-page .kui-tree-menu-arrow,
+.big-page .kui-ktabs {
+    left: 0px
+}
+
+.big-page .kui-tree-menu,
+.big-page .kui-ktabs {
+    left: -200px
+}
+
+.big-page .kui-main,
+.big-page .kui-footer,
+.big-page .kui-ktabs {
+    margin-left: 0px
+}
+
+
+/*横向手机 竖向平板*/
+
+@media (max-width: 767px) {
+    .kui-tree-menu,
+    .kui-tree-menu-arrow-a {
+        left: -200px
+    }
+    .big-page .kui-tree-menu {
+        left: 0!important
+    }
+    .big-page .kui-tree-menu-arrow-a,
+    .big-page .kui-tree-menu-arrow-a {
+        left: 400!important
+    }
+    .big-page .kui-tree-menu-arrow {
+        left: 400px;
+    }
+    .kui-ktabs {
+        margin-left: 0px;
+    }
+}
+
+
+/* 树形菜单 */
+
+.tree-menu {
+    overflow: hidden;
+    border: 0px solid #ddd;
+    border-radius: 0px;
+}
+
+.tree-menu li.active>a,
+.tree-menu li.active>span {
+    color: #62a8ea;
+    background-color: transparent;
+}
+
+.tree-menu li.active>.list-toggle {
+    color: #62a8ea;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+
+/**
+ * Module:按钮
+ * Explain:选择框，继承bootstrap
+ * Last Modify:kangbolei 20171204
+ */
+
+.btn-select {
+    height: 32px;
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #e4eaec;
+    border-radius: 3px;
+}
+
+.dropdown-menu>.dropdown-header {
+    padding: 8px 20px 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: default;
+}
+
+.dropdown-header {
+    display: block;
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #37474f;
+    white-space: nowrap;
+}
