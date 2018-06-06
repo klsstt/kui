@@ -1,0 +1,147 @@
+<div class="kui-header">
+    <h1 class="kui-title">评分</h1>
+</div>
+<div class="kui-content">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">bootstrap-contextmenu
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/sydcanem/bootstrap-contextmenu" target="_blank">
+                        官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-md-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">示例 1</h4>
+                        <p>通过 <code>data-toggle="context"</code> 来调用右键菜单</p>
+                        <div class="example">
+                            <div class="example-well height-200" data-toggle="context" data-target="#contextMenu"></div>
+                        </div>
+
+                        <div id="contextMenu">
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a tabindex="-1"><i class="fa fa-copy" aria-hidden="true"></i> 复制</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1"><i class="fa fa-scissors" aria-hidden="true"></i> 剪切</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1"><i class="fa fa-clipboard" aria-hidden="true"></i> 粘贴</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1"><i class="fa fa-share" aria-hidden="true"></i> 分享</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">示例 2</h4>
+                        <div class="example">
+                            <div id="exampleContext" data-toggle="context">这是一段演示文本， <span class="bg-blue-grey-100">除了着重显示的这部分文字外</span>，右击其他部分可以查看效果，这里的右键菜单是通过 JavaScript 调用的。
+                            </div>
+                            <div id="exampleContextMenu">
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a tabindex="-1"><i class="fa fa-copy" aria-hidden="true"></i> 复制</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1"><i class="fa fa-scissors" aria-hidden="true"></i> 剪切</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1"><i class="fa fa-clipboard" aria-hidden="true"></i> 粘贴</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1"><i class="fa fa-share" aria-hidden="true"></i> 分享</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">示例 3</h4>
+                        <p>获取菜单名称，请单击菜单项查看。</p>
+                        <div class="example">
+                            <div class="example-well height-200" id="exampleContext2" data-toggle="context"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function(doc, $) {
+        'use strict';
+        $('#exampleContext').contextmenu({
+            target: '#exampleContextMenu',
+            before: function(e, context) {
+                e.preventDefault();
+                if (e.target.tagName == 'SPAN') {
+                    e.preventDefault();
+                    this.closemenu();
+                    return false;
+                }
+                this.getMenu()["find"]('li')['eq'](4)["find"]('a')["html"]("选中内容");
+                return true;
+            },
+            onItem: function(context, e) {
+                layer.msg($(e.target).text());
+            }
+        });
+
+        /*  $("#exampleContext")['contextmenu']({
+             'target': "#exampleContextMenu",
+             'before': function(e, element, target) {
+                 e.preventDefault();
+                 if (e.target.tagName == 'SPAN') {
+                     e.preventDefault();
+                     this.closemenu();
+                     return false;
+
+                 }
+                 this.getMenu()["find"]('li')['eq'](4)["find"]('a')["html"]("选中内容");
+                 layer.msg(this.getMenu()["find"]('li')['eq'](4)["find"]('a')["html"]());
+                 return true;
+
+             }
+         }); */
+        $('#exampleContext2').contextmenu({
+            target: '#exampleContextMenu',
+            onItem: function(context, e) {
+                layer.msg($(e.target).text());
+            }
+        });
+
+        $(doc)['on']("show.bs.context", "#exampleContextMenu", function() {
+            console.log('显示之前');
+        });
+        $(doc)['on']("shown.bs.context", "#exampleContextMenu", function() {
+            console.log('显示之后');
+        });
+        $(doc)['on']("hide.bs.context", "#exampleContextMenu", function() {
+            console.log('隐藏之前');
+        });
+        $(doc)['on']("hidden.bs.context", "#exampleContextMenu", function() {
+            console.log('隐藏之后');
+        });
+    }(document, jQuery));
+</script>

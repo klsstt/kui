@@ -61,24 +61,35 @@ $(function() {
                     html: "<a  data-pjax  href=\"/template/kui_page_badges.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 徽章与标签</a>"
                 }, {
                     html: "<a  data-pjax  href=\"/template/kui_page_progressbars.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 进度条</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_animation.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> CSS动画</a>"
                 }
+
 
             ]
         }, {
             html: '<a href="#"><i class=\"fa fa-plug fa-fw\"></i> 插件</a>',
             open: false,
             children: [{
-                html: "<a  data-pjax  href=\"/template/kui_page_carousel.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 轮播图</a>"
-            }, {
-                html: "<a  data-pjax  href=\"/template/kui_page_prompt.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 弹出框</a>"
-            }, {
-                html: "<a  data-pjax  href=\"/template/kui_page_ribbon.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 多彩丝带</a>"
-            }]
+                    html: "<a  data-pjax  href=\"/template/kui_page_carousel.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 轮播图</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_prompt.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 弹出框</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_ribbon.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 多彩丝带</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_raty.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 评分</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_mouse.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 右键</a>"
+                }
+
+            ]
         }, {
             html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>',
             open: false,
             children: [{
-
+                html: "<a   href=\"/login.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 登录页面</a>"
+            }, {
+                html: "<a    href=\"/locked.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 锁屏页面</a>"
             }]
         }
         /*  ,{
@@ -115,8 +126,8 @@ $(function() {
             $("body").addClass("big-page");
         }
     });
-    $.kui.contentTabs.init();
-    var host = "http://" + window.location.host;
+
+    var host = "http://localhost:81/";
     //加载header模块
     var header_data = {
         add: '增加',
@@ -125,6 +136,7 @@ $(function() {
         userinfo: '个人信息',
         upaw: '修改密码',
         esc: '退出',
+        index: '首页',
         logoimg: host + "/images/kui-logo.png",
         list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
     };
