@@ -16,10 +16,6 @@ a:focus,
     color: #06c
 }
 
-.navbar {
-    background: #4e97d9
-}
-
 
 /* 主模块 */
 
@@ -55,6 +51,43 @@ main {
 
 .nav>li>a:focus {
     color: #fff;
+}
+
+
+/* 导航条颜色设置 */
+
+.navbar-default {
+    background-color: #4e97d9;
+    border-color: #4e97d9;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 
