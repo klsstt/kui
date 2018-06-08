@@ -1885,7 +1885,7 @@ function($) {
     // MODAL CLASS DEFINITION
     // ======================
 
-    var kuiname = 'kui.modal'
+    var kuiname = 'kui.modal';
     var Modal = function(element, options) {
         this.options = options
         this.$body = $(document.body)
@@ -2677,6 +2677,190 @@ function($) {
     })
 
 }(window.jQuery);
+
+/* ========================================================================
+ * Bootstrap: scrollspy.js v3.3.6
+ * http://getbootstrap.com/javascript/#scrollspy
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++
+
+function($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+        this.$body = $(document.body)
+        this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+        this.options = $.extend({}, ScrollSpy.DEFAULTS, options)
+        this.selector = (this.options.target || '') + ' .nav li > a'
+        this.offsets = []
+        this.targets = []
+        this.activeTarget = null
+        this.scrollHeight = 0
+
+        this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+        this.refresh()
+        this.process()
+    }
+
+    ScrollSpy.VERSION = '3.3.6'
+
+    ScrollSpy.DEFAULTS = {
+        offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function() {
+        return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function() {
+        var that = this
+        var offsetMethod = 'offset'
+        var offsetBase = 0
+
+        this.offsets = []
+        this.targets = []
+        this.scrollHeight = this.getScrollHeight()
+
+        if (!$.isWindow(this.$scrollElement[0])) {
+            offsetMethod = 'position'
+            offsetBase = this.$scrollElement.scrollTop()
+        }
+
+        this.$body
+            .find(this.selector)
+            .map(function() {
+                var $el = $(this)
+                var href = $el.data('target') || $el.attr('href')
+                var $href = /^#./.test(href) && $(href)
+
+                return ($href &&
+                    $href.length &&
+                    $href.is(':visible') && [
+                        [$href[offsetMethod]().top + offsetBase, href]
+                    ]) || null
+            })
+            .sort(function(a, b) { return a[0] - b[0] })
+            .each(function() {
+                that.offsets.push(this[0])
+                that.targets.push(this[1])
+            })
+    }
+
+    ScrollSpy.prototype.process = function() {
+        var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+        var scrollHeight = this.getScrollHeight()
+        var maxScroll = this.options.offset + scrollHeight - this.$scrollElement.height()
+        var offsets = this.offsets
+        var targets = this.targets
+        var activeTarget = this.activeTarget
+        var i
+
+        if (this.scrollHeight != scrollHeight) {
+            this.refresh()
+        }
+
+        if (scrollTop >= maxScroll) {
+            return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+        }
+
+        if (activeTarget && scrollTop < offsets[0]) {
+            this.activeTarget = null
+            return this.clear()
+        }
+
+        for (i = offsets.length; i--;) {
+            activeTarget != targets[i] &&
+                scrollTop >= offsets[i] &&
+                (offsets[i + 1] === undefined || scrollTop < offsets[i + 1]) &&
+                this.activate(targets[i])
+        }
+    }
+
+    ScrollSpy.prototype.activate = function(target) {
+        this.activeTarget = target
+
+        this.clear()
+
+        var selector = this.selector +
+            '[data-target="' + target + '"],' +
+            this.selector + '[href="' + target + '"]'
+
+        var active = $(selector)
+            .parents('li')
+            .addClass('active')
+
+        if (active.parent('.dropdown-menu').length) {
+            active = active
+                .closest('li.dropdown')
+                .addClass('active')
+        }
+
+        active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function() {
+        $(this.selector)
+            .parentsUntil(this.options.target, '.active')
+            .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+        return this.each(function() {
+            var $this = $(this)
+            var data = $this.data('bs.scrollspy')
+            var options = typeof option == 'object' && option
+
+            if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+            if (typeof option == 'string') data[option]()
+        })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function() {
+        $.fn.scrollspy = old
+        return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+    $["kui"]["scroll"] = {
+        init: function() {
+            $('[data-spy="scroll"]')["each"](function() {
+                var $spy = $(this)
+                Plugin.call($spy, $spy.data())
+            })
+        }
+    };
+
+    $(window).on('load.bs.scrollspy.data-api', function() {
+        $('[data-spy="scroll"]').each(function() {
+            var $spy = $(this)
+            Plugin.call($spy, $spy.data())
+        })
+    })
+
+}(jQuery);
 /*!
  * Bootstrap Context Menu
  * Author: @sydcanem
@@ -2687,49 +2871,104 @@ function($) {
  *
  * Licensed under MIT
  * ========================================================= */
-(function(b) { var a = '[data-toggle="context"]'; var c = function(e, d) { this.$element = b(e);
+(function(b) {
+    var a = '[data-toggle="context"]';
+    var c = function(e, d) {
+        this.$element = b(e);
         this.before = d.before || this.before;
         this.onItem = d.onItem || this.onItem;
-        this.scopes = d.scopes || null; if (d.target) { this.$element.data("target", d.target) }
-        this.listen() };
-    c.prototype = { constructor: c, show: function(i) { var h, f, j, g, d = { relatedTarget: this, target: i.currentTarget }; if (this.isDisabled()) { return }
-            this.closemenu(); if (this.before.call(this, i, b(i.currentTarget)) === false) { return }
+        this.scopes = d.scopes || null;
+        if (d.target) { this.$element.data("target", d.target) }
+        this.listen()
+    };
+    c.prototype = {
+        constructor: c,
+        show: function(i) {
+            var h, f, j, g, d = { relatedTarget: this, target: i.currentTarget };
+            if (this.isDisabled()) { return }
+            this.closemenu();
+            if (this.before.call(this, i, b(i.currentTarget)) === false) { return }
             h = this.getMenu();
             h.trigger(f = b.Event("show.bs.context", d));
             j = this.getPosition(i, h);
             g = "li:not(.divider)";
             h.attr("style", "").css(j).addClass("open").on("click.context.data-api", g, b.proxy(this.onItem, this, b(i.currentTarget))).trigger("shown.bs.context", d);
-            b("html").on("click.context.data-api", h.selector, b.proxy(this.closemenu, this)); return false }, closemenu: function(i) { var h, f, g, d;
-            h = this.getMenu(); if (!h.hasClass("open")) { return }
+            b("html").on("click.context.data-api", h.selector, b.proxy(this.closemenu, this));
+            return false
+        },
+        closemenu: function(i) {
+            var h, f, g, d;
+            h = this.getMenu();
+            if (!h.hasClass("open")) { return }
             d = { relatedTarget: this };
             h.trigger(f = b.Event("hide.bs.context", d));
             g = "li:not(.divider)";
             h.removeClass("open").off("click.context.data-api", g).trigger("hidden.bs.context", d);
-            b("html").off("click.context.data-api", h.selector); if (i && b(i.target).closest("a").length === 0) { i.stopPropagation() } }, keydown: function(d) { if (d.which == 27) { this.closemenu(d) } }, before: function(d) { return true }, onItem: function(d) { return true }, listen: function() { this.$element.on("contextmenu.context.data-api", this.scopes, b.proxy(this.show, this));
+            b("html").off("click.context.data-api", h.selector);
+            if (i && b(i.target).closest("a").length === 0) { i.stopPropagation() }
+        },
+        keydown: function(d) { if (d.which == 27) { this.closemenu(d) } },
+        before: function(d) { return true },
+        onItem: function(d) { return true },
+        listen: function() {
+            this.$element.on("contextmenu.context.data-api", this.scopes, b.proxy(this.show, this));
             b("html").on("click.context.data-api", b.proxy(this.closemenu, this));
-            b("html").on("keydown.context.data-api", b.proxy(this.keydown, this)) }, destroy: function() { this.$element.off(".context.data-api").removeData("context");
-            b("html").off(".context.data-api") }, isDisabled: function() { return this.$element.hasClass("disabled") || this.$element.attr("disabled") }, getMenu: function() { var d = this.$element.data("target"),
-                e; if (!d) { d = this.$element.attr("href");
-                d = d && d.replace(/.*(?=#[^\s]*$)/, "") }
-            e = b(d); return e && e.length ? e : this.$element.find(d) }, getPosition: function(o, f) { var k = o.clientX,
+            b("html").on("keydown.context.data-api", b.proxy(this.keydown, this))
+        },
+        destroy: function() {
+            this.$element.off(".context.data-api").removeData("context");
+            b("html").off(".context.data-api")
+        },
+        isDisabled: function() { return this.$element.hasClass("disabled") || this.$element.attr("disabled") },
+        getMenu: function() {
+            var d = this.$element.data("target"),
+                e;
+            if (!d) {
+                d = this.$element.attr("href");
+                d = d && d.replace(/.*(?=#[^\s]*$)/, "")
+            }
+            e = b(d);
+            return e && e.length ? e : this.$element.find(d)
+        },
+        getPosition: function(o, f) {
+            var k = o.clientX,
                 j = o.clientY,
                 m = b(window).width(),
                 l = b(window).height(),
                 n = f.find(".dropdown-menu").outerWidth(),
                 i = f.find(".dropdown-menu").outerHeight(),
                 p = { "position": "absolute", "z-index": 9999 },
-                g, h, d; if (j + i > l) { g = { "top": j - i + b(window).scrollTop() } } else { g = { "top": j + b(window).scrollTop() } } if ((k + n > m) && ((k - n) > 0)) { h = { "left": k - n + b(window).scrollLeft() } } else { h = { "left": k + b(window).scrollLeft() } }
+                g, h, d;
+            if (j + i > l) { g = { "top": j - i + b(window).scrollTop() } } else { g = { "top": j + b(window).scrollTop() } }
+            if ((k + n > m) && ((k - n) > 0)) { h = { "left": k - n + b(window).scrollLeft() } } else { h = { "left": k + b(window).scrollLeft() } }
             d = f.offsetParent().offset();
             h.left = h.left - d.left;
-            g.top = g.top - d.top; return b.extend(p, g, h) } };
-    b.fn.contextmenu = function(d, f) { return this.each(function() { var h = b(this),
+            g.top = g.top - d.top;
+            return b.extend(p, g, h)
+        }
+    };
+    b.fn.contextmenu = function(d, f) {
+        return this.each(function() {
+            var h = b(this),
                 g = h.data("context"),
-                e = (typeof d == "object") && d; if (!g) { h.data("context", (g = new c(h, e))) } if (typeof d == "string") { g[d].call(g, f) } }) };
+                e = (typeof d == "object") && d;
+            if (!g) { h.data("context", (g = new c(h, e))) }
+            if (typeof d == "string") { g[d].call(g, f) }
+        })
+    };
     b.fn.contextmenu.Constructor = c;
-    b(document).on("contextmenu.context.data-api", function() { b(a).each(function() { var d = b(this).data("context"); if (!d) { return }
-            d.closemenu() }) }).on("contextmenu.context.data-api", a, function(d) { b(this).contextmenu("show", d);
+    b(document).on("contextmenu.context.data-api", function() {
+        b(a).each(function() {
+            var d = b(this).data("context");
+            if (!d) { return }
+            d.closemenu()
+        })
+    }).on("contextmenu.context.data-api", a, function(d) {
+        b(this).contextmenu("show", d);
         d.preventDefault();
-        d.stopPropagation() }) }(jQuery));
+        d.stopPropagation()
+    })
+}(jQuery));
 /**
  * 工具类
  */

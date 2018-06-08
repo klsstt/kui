@@ -33,10 +33,6 @@ a:focus,
     color: #06c
 }
 
-.navbar {
-    background: #222
-}
-
 
 /* 主模块 */
 
@@ -75,6 +71,49 @@ main {
 }
 
 
+/* 导航条颜色设置 */
+
+.navbar-default {
+    background-color: #222;
+    border-color: #222;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+
 /*导航中的logo*/
 
 .navbar-brand:hover {
@@ -91,6 +130,46 @@ main {
 .navbar-nav>li>a {
     line-height: 41px;
     font-size: 14px
+}
+
+
+/* 导航中得搜索框 */
+
+.navbar-search-overlap .kui-form-control {
+    height: 62px!important;
+    background-color: transparent!important;
+    border-radius: 0!important;
+}
+
+
+/* 导航中的工具栏 */
+
+.navbar-default .navbar-toolbar>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-toggle .fa {
+    color: #fff;
+}
+
+.navbar-toolbar>li>a {
+    line-height: 41px
+}
+
+
+/* 按钮位置设置 */
+
+.navbar-btn {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+
+/* 导航中文本 */
+
+.navbar-text {
+    margin-top: 19px;
+    margin-bottom: 19px;
 }
 
 

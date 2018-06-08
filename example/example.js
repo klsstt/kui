@@ -80,6 +80,14 @@ $(function() {
                     html: "<a  data-pjax  href=\"/template/kui_page_raty.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 评分</a>"
                 }, {
                     html: "<a  data-pjax  href=\"/template/kui_page_mouse.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 右键</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_overlay.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 遮罩</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_step.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 步骤条</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_timeline.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 时间轴</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_navbars.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 导航条</a>"
                 }
 
             ]
