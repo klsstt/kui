@@ -61,11 +61,13 @@ $(function() {
                     html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_badges.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 徽章与标签</a>"
                 }, {
                     html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_progressbars.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 进度条</a>"
+                }, {
+                    html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>"
                 }
 
             ]
         }, {
-            html: '<a href="#"><i class=\"fa fa-plug fa-fw\"></i> 插件</a>',
+            html: '<a href="#"><i class=\"fa fa-plug fa-fw\"></i> 组件</a>',
             open: false,
             children: [{
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_carousel.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 轮播图</a>"
@@ -73,6 +75,18 @@ $(function() {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_prompt.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 弹出框</a>"
             }, {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_ribbon.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 多彩丝带</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_raty.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 评分</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_mouse.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 右键</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_overlay.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 遮罩</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_step.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 步骤条</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_timeline.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 时间轴</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_navbars.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 导航条</a>"
             }]
         }, {
             html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>',
