@@ -63,12 +63,14 @@ $(function() {
                     html: "<a  data-pjax  href=\"/template/kui_page_progressbars.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 进度条</a>"
                 }, {
                     html: "<a  data-pjax  href=\"/template/kui_page_animation.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> CSS动画</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>"
                 }
 
 
             ]
         }, {
-            html: '<a href="#"><i class=\"fa fa-plug fa-fw\"></i> 插件</a>',
+            html: '<a href="#"><i class=\"fa fa-plug fa-fw\"></i> 组件</a>',
             open: false,
             children: [{
                     html: "<a  data-pjax  href=\"/template/kui_page_carousel.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 轮播图</a>"
@@ -92,7 +94,7 @@ $(function() {
 
             ]
         }, {
-            html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>',
+            html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 综合展示</a>',
             open: false,
             children: [{
                 html: "<a   href=\"/login.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 登录页面</a>"

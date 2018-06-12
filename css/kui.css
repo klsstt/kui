@@ -2779,224 +2779,224 @@ margin的兼容性问题：div设置左浮动，margin-left在ie中会出现2倍
 */
 
 .mt-5 {
-    margin-top: 5px
+    margin-top: 5px!important;
 }
 
 
 /*距上5像素*/
 
 .mt-10 {
-    margin-top: 10px
+    margin-top: 10px!important;
 }
 
 
 /*距上10像素*/
 
 .mt-15 {
-    margin-top: 15px
+    margin-top: 15px!important;
 }
 
 
 /*距上15像素*/
 
 .mt-20 {
-    margin-top: 20px
+    margin-top: 20px!important;
 }
 
 
 /*距上20像素*/
 
 .mt-25 {
-    margin-top: 25px
+    margin-top: 25px!important;
 }
 
 
 /*距上25像素*/
 
 .mt-30 {
-    margin-top: 30px
+    margin-top: 30px!important;
 }
 
 
 /*距上30像素*/
 
 .mt-35 {
-    margin-top: 35px
+    margin-top: 35px!important;
 }
 
 
 /*距上35像素*/
 
 .mt-40 {
-    margin-top: 40px
+    margin-top: 40px!important;
 }
 
 
 /*距上40像素*/
 
 .mt-50 {
-    margin-top: 50px
+    margin-top: 50px!important;
 }
 
 
 /*距上50像素*/
 
 .mb-5 {
-    margin-bottom: 5px
+    margin-bottom: 5px!important;
 }
 
 
 /*距下5像素*/
 
 .mb-10 {
-    margin-bottom: 10px
+    margin-bottom: 10px!important;
 }
 
 
 /*距下10像素*/
 
 .mb-15 {
-    margin-bottom: 15px
+    margin-bottom: 15px!important;
 }
 
 
 /*距下15像素*/
 
 .mb-20 {
-    margin-bottom: 20px
+    margin-bottom: 20px!important;
 }
 
 
 /*距下20像素*/
 
 .mb-25 {
-    margin-bottom: 25px
+    margin-bottom: 25px!important;
 }
 
 
 /*距下25像素*/
 
 .mb-30 {
-    margin-bottom: 30px
+    margin-bottom: 30px!important;
 }
 
 
 /*距下30像素*/
 
 .mb-35 {
-    margin-bottom: 35px
+    margin-bottom: 35px!important;
 }
 
 
 /*距下35像素*/
 
 .mb-40 {
-    margin-bottom: 40px
+    margin-bottom: 40px!important;
 }
 
 
 /*距下40像素*/
 
 .mb-50 {
-    margin-bottom: 50px
+    margin-bottom: 50px!important;
 }
 
 
 /*距下50像素*/
 
 .ml-5 {
-    margin-left: 5px
+    margin-left: 5px!important;
 }
 
 
 /*距左5像素*/
 
 .ml-10 {
-    margin-left: 10px
+    margin-left: 10px!important;
 }
 
 
 /*距左10像素*/
 
 .ml-15 {
-    margin-left: 15px
+    margin-left: 15px!important;
 }
 
 
 /*距左15像素*/
 
 .ml-20 {
-    margin-left: 20px
+    margin-left: 20px!important;
 }
 
 
 /*距左20像素*/
 
 .ml-30 {
-    margin-left: 30px
+    margin-left: 30px!important;
 }
 
 
 /*距左30像素*/
 
 .ml-40 {
-    margin-left: 40px
+    margin-left: 40px!important;
 }
 
 
 /*距左40像素*/
 
 .ml-50 {
-    margin-left: 50px
+    margin-left: 50px!important;
 }
 
 
 /*距左50像素*/
 
 .mr-5 {
-    margin-right: 5px
+    margin-right: 5px!important;
 }
 
 
 /*距右5像素*/
 
 .mr-10 {
-    margin-right: 10px
+    margin-right: 10px!important;
 }
 
 
 /*距右10像素*/
 
 .mr-15 {
-    margin-right: 15px
+    margin-right: 15px!important;
 }
 
 
 /*距右15像素*/
 
 .mr-20 {
-    margin-right: 20px
+    margin-right: 20px!important;
 }
 
 
 /*距右20像素*/
 
 .mr-30 {
-    margin-right: 30px
+    margin-right: 30px!important;
 }
 
 
 /*距右30像素*/
 
 .mr-40 {
-    margin-right: 40px
+    margin-right: 40px!important;
 }
 
 
 /*距右40像素*/
 
 .mr-50 {
-    margin-right: 50px
+    margin-right: 50px!important;
 }
 
 
@@ -3726,6 +3726,14 @@ ul {
     text-shadow: none;
     background-color: transparent;
     border: 0;
+}
+
+.float-right {
+    float: right!important
+}
+
+.float-left {
+    float: left!important
 }
 
 
@@ -5594,6 +5602,44 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     background-color: transparent;
     background-image: none;
     filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.dropdown-item {
+    width: 100%;
+    clear: both;
+    font-weight: 400;
+    color: #373a3c;
+    text-align: inherit;
+    background: 0 0;
+    border: 0;
+}
+
+.dropdown-header,
+.dropdown-item {
+    display: block;
+    padding: 3px 20px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #2b2d2f;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-item input[type=checkbox],
+input[type=radio] {
+    margin: 0 0;
+    line-height: normal;
+}
+
+@media (min-width: 768px) {
+    .fixed-table-toolbar .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
 }
 
 .dropdown-hover .dropdown-menu {
@@ -16528,121 +16574,6 @@ table th[class*=col-] {
     float: none
 }
 
-.table>tbody>tr.active>td,
-.table>tbody>tr.active>th,
-.table>tbody>tr>td.active,
-.table>tbody>tr>th.active,
-.table>tfoot>tr.active>td,
-.table>tfoot>tr.active>th,
-.table>tfoot>tr>td.active,
-.table>tfoot>tr>th.active,
-.table>thead>tr.active>td,
-.table>thead>tr.active>th,
-.table>thead>tr>td.active,
-.table>thead>tr>th.active {
-    background-color: #f3f7f9
-}
-
-.table-hover>tbody>tr.active:hover>td,
-.table-hover>tbody>tr.active:hover>th,
-.table-hover>tbody>tr:hover>.active,
-.table-hover>tbody>tr>td.active:hover,
-.table-hover>tbody>tr>th.active:hover {
-    background-color: #e2ecf1
-}
-
-.table>tbody>tr.success>td,
-.table>tbody>tr.success>th,
-.table>tbody>tr>td.success,
-.table>tbody>tr>th.success,
-.table>tfoot>tr.success>td,
-.table>tfoot>tr.success>th,
-.table>tfoot>tr>td.success,
-.table>tfoot>tr>th.success,
-.table>thead>tr.success>td,
-.table>thead>tr.success>th,
-.table>thead>tr>td.success,
-.table>thead>tr>th.success {
-    background-color: #46be8a
-}
-
-.table-hover>tbody>tr.success:hover>td,
-.table-hover>tbody>tr.success:hover>th,
-.table-hover>tbody>tr:hover>.success,
-.table-hover>tbody>tr>td.success:hover,
-.table-hover>tbody>tr>th.success:hover {
-    background-color: #3dae7d
-}
-
-.table>tbody>tr.info>td,
-.table>tbody>tr.info>th,
-.table>tbody>tr>td.info,
-.table>tbody>tr>th.info,
-.table>tfoot>tr.info>td,
-.table>tfoot>tr.info>th,
-.table>tfoot>tr>td.info,
-.table>tfoot>tr>th.info,
-.table>thead>tr.info>td,
-.table>thead>tr.info>th,
-.table>thead>tr>td.info,
-.table>thead>tr>th.info {
-    background-color: #57c7d4
-}
-
-.table-hover>tbody>tr.info:hover>td,
-.table-hover>tbody>tr.info:hover>th,
-.table-hover>tbody>tr:hover>.info,
-.table-hover>tbody>tr>td.info:hover,
-.table-hover>tbody>tr>th.info:hover {
-    background-color: #43c0cf
-}
-
-.table>tbody>tr.warning>td,
-.table>tbody>tr.warning>th,
-.table>tbody>tr>td.warning,
-.table>tbody>tr>th.warning,
-.table>tfoot>tr.warning>td,
-.table>tfoot>tr.warning>th,
-.table>tfoot>tr>td.warning,
-.table>tfoot>tr>th.warning,
-.table>thead>tr.warning>td,
-.table>thead>tr.warning>th,
-.table>thead>tr>td.warning,
-.table>thead>tr>th.warning {
-    background-color: #f2a654
-}
-
-.table-hover>tbody>tr.warning:hover>td,
-.table-hover>tbody>tr.warning:hover>th,
-.table-hover>tbody>tr:hover>.warning,
-.table-hover>tbody>tr>td.warning:hover,
-.table-hover>tbody>tr>th.warning:hover {
-    background-color: #f09a3c
-}
-
-.table>tbody>tr.danger>td,
-.table>tbody>tr.danger>th,
-.table>tbody>tr>td.danger,
-.table>tbody>tr>th.danger,
-.table>tfoot>tr.danger>td,
-.table>tfoot>tr.danger>th,
-.table>tfoot>tr>td.danger,
-.table>tfoot>tr>th.danger,
-.table>thead>tr.danger>td,
-.table>thead>tr.danger>th,
-.table>thead>tr>td.danger,
-.table>thead>tr>th.danger {
-    background-color: #f96868
-}
-
-.table-hover>tbody>tr.danger:hover>td,
-.table-hover>tbody>tr.danger:hover>th,
-.table-hover>tbody>tr:hover>.danger,
-.table-hover>tbody>tr>td.danger:hover,
-.table-hover>tbody>tr>th.danger:hover {
-    background-color: #f84f4f
-}
-
 .table-responsive {
     min-height: .01%;
     overflow-x: auto
@@ -16696,8 +16627,411 @@ table th[class*=col-] {
 
 .table>thead>tr>th {
     vertical-align: bottom;
-    background-color: #94cce8;
+    background-color: #f1f1f1;
     border-bottom: 1px solid #ddd;
+}
+
+.table-section-arrow {
+    position: relative;
+    display: inline-block;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    -webkit-transition: -webkit-transform .15s;
+    -o-transition: -o-transform .15s;
+    transition: -webkit-transform .15s;
+    transition: transform .15s;
+    transition: transform .15s, -webkit-transform .15s, -o-transform .15s;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    text-rendering: auto;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.table-section-arrow:before {
+    content: "\f077"
+}
+
+.table-section.active tr {
+    background-color: #f3f7f9
+}
+
+.table-section.active+tbody {
+    display: table-row-group
+}
+
+.table-section+tbody {
+    display: none;
+}
+
+.table-section.active .table-section-arrow {
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg)
+}
+
+.table td> :only-child.checkbox-custom,
+.table th> :only-child.checkbox-custom {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+
+/* 动态表格样式 */
+
+.kui-table .table {
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #dddddd;
+    border-collapse: collapse !important;
+}
+
+.kui-table .table:not(.table-condensed),
+.kui-table .table:not(.table-condensed)>tbody>tr>th,
+.kui-table .table:not(.table-condensed)>tfoot>tr>th,
+.kui-table .table:not(.table-condensed)>thead>tr>td,
+.kui-table .table:not(.table-condensed)>tbody>tr>td,
+.kui-table .table:not(.table-condensed)>tfoot>tr>td {
+    padding: 8px;
+}
+
+.kui-table .table.table-no-bordered>thead>tr>th,
+.kui-table .table.table-no-bordered>tbody>tr>td {
+    border-right: 2px solid transparent;
+}
+
+.kui-table .table.table-no-bordered>tbody>tr>td:last-child {
+    border-right: none;
+}
+
+.fixed-table-container {
+    position: relative;
+    clear: both;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.fixed-table-container.table-no-bordered {
+    border: 1px solid transparent;
+}
+
+.fixed-table-footer,
+.fixed-table-header {
+    overflow: hidden;
+}
+
+.fixed-table-footer {
+    border-top: 1px solid #dddddd;
+}
+
+.fixed-table-body {
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.fixed-table-container table {
+    width: 100%;
+}
+
+.fixed-table-container thead th {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid #dddddd;
+}
+
+.fixed-table-container thead th:focus {
+    outline: 0 solid transparent;
+}
+
+.fixed-table-container thead th:first-child:not([data-not-first-th]) {
+    border-left: none;
+    border-top-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+.fixed-table-container thead th .th-inner,
+.fixed-table-container tbody td .th-inner {
+    padding: 8px;
+    line-height: 24px;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fixed-table-container thead th .sortable {
+    cursor: pointer;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+.fixed-table-container thead th .both {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');
+}
+
+.fixed-table-container thead th .asc {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg==');
+}
+
+.fixed-table-container thead th .desc {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII= ');
+}
+
+.fixed-table-container th.detail {
+    width: 30px;
+}
+
+.fixed-table-container tbody td {
+    border-left: 1px solid #dddddd;
+}
+
+.fixed-table-container tbody tr:first-child td {
+    border-top: none;
+}
+
+.fixed-table-container tbody td:first-child {
+    border-left: none;
+}
+
+
+/* the same color with .active */
+
+.fixed-table-container tbody .selected td {
+    background-color: #f5f5f5;
+}
+
+.fixed-table-container .bs-checkbox {
+    text-align: center;
+}
+
+.fixed-table-container input[type="radio"],
+.fixed-table-container input[type="checkbox"] {
+    margin: 0 auto !important;
+}
+
+.fixed-table-container .no-records-found {
+    text-align: center;
+}
+
+.fixed-table-pagination div.pagination,
+.fixed-table-pagination .pagination-detail {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fixed-table-pagination div.pagination .pagination {
+    margin: 0;
+}
+
+.fixed-table-pagination .pagination a {
+    padding: 6px 12px;
+    line-height: 1.428571429;
+}
+
+.fixed-table-pagination .pagination-info {
+    line-height: 34px;
+    margin-right: 5px;
+}
+
+.fixed-table-pagination .btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fixed-table-pagination .dropup .dropdown-menu {
+    margin-bottom: 0;
+}
+
+.fixed-table-pagination .page-list {
+    display: inline-block;
+}
+
+.fixed-table-toolbar .columns-left {
+    margin-right: 5px;
+}
+
+.fixed-table-toolbar .columns-right {
+    margin-left: 5px;
+}
+
+.fixed-table-toolbar .columns label {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+}
+
+.fixed-table-toolbar .bs-bars,
+.fixed-table-toolbar .search,
+.fixed-table-toolbar .columns {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fixed-table-pagination li.disabled a {
+    pointer-events: none;
+    cursor: default;
+}
+
+.fixed-table-loading {
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: #fff;
+    text-align: center;
+}
+
+.fixed-table-body .card-view .title {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 30%;
+    text-align: left !important;
+}
+
+
+/* support bootstrap 2 */
+
+.fixed-table-body thead th .th-inner {
+    box-sizing: border-box;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.fixed-table-toolbar .dropdown-menu {
+    text-align: left;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.fixed-table-toolbar .btn-group>.btn-group {
+    display: inline-block;
+    margin-left: -1px !important;
+}
+
+.fixed-table-toolbar .btn-group>.btn-group>.btn {
+    border-radius: 0;
+}
+
+.fixed-table-toolbar .btn-group>.btn-group:first-child>.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.fixed-table-toolbar .btn-group>.btn-group:last-child>.btn {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.table .table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* support bootstrap 3 */
+
+.table .table thead>tr>th {
+    padding: 0;
+    margin: 0;
+}
+
+.table .fixed-table-footer tbody>tr>td {
+    padding: 0 !important;
+}
+
+.table .fixed-table-footer .table {
+    border-bottom: none;
+    border-radius: 0;
+    padding: 0 !important;
+}
+
+.table .pull-right .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+
+/* table中的check样式 */
+
+.table .checkbox-custom label::before {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: -20px;
+    content: "";
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 3px;
+    -webkit-transition: all .3s ease-in-out 0s;
+    -o-transition: all .3s ease-in-out 0s;
+    transition: all .3s ease-in-out 0s;
+}
+
+.table input[type=checkbox]:checked+label::before,
+input[type=radio]:checked+label::before {
+    background-color: #545353;
+    border-color: #0a0a0a94;
+}
+
+
+/* calculate scrollbar width */
+
+p.fixed-table-scroll-inner {
+    width: 100%;
+    height: 200px;
+}
+
+div.fixed-table-scroll-outer {
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+}
+
+
+/* for get correct heights  */
+
+.fixed-table-toolbar:after,
+.fixed-table-pagination:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%!important;
+    background: #FFF;
 }
 
 
@@ -16728,8 +17062,8 @@ table th[class*=col-] {
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #62a8ea;
-    border-color: #62a8ea;
+    background-color: rgba(221, 221, 221, 0.98);
+    border-color: rgba(221, 221, 221, 0.98);
 }
 
 .pagination li>a,
