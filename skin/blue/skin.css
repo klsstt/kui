@@ -294,6 +294,7 @@ main {
     margin-top: 17px;
     font-size: 22px;
     content: "\f0d9";
+    color: #4e97d9;
 }
 
 .kui-tree-menu-arrow a.open:before {
@@ -305,6 +306,7 @@ main {
     font-size: 22px;
     margin-top: 17px;
     content: "\f0da";
+    color: #4e97d9;
 }
 
 .kui-tree-menu-arrow-a {
