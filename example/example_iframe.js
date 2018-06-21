@@ -87,6 +87,12 @@ $(function() {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_timeline.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 时间轴</a>"
             }, {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_navbars.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 导航条</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_code.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 代码着色</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_masonry.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 瀑布流</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_nestable.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 列表拖动</a>"
             }]
         }, {
             html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>',

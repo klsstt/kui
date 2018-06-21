@@ -4145,6 +4145,9 @@ ul {
     max-width: none;
 }
 
+
+/* 胶囊 */
+
 .nav-pills>li {
     float: left;
 }
@@ -4161,7 +4164,95 @@ ul {
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
     color: #fff;
-    background-color: #3280fc;
+    background-color: #222;
+}
+
+.nav .nav-pills>li>a:focus {
+    color: #333;
+}
+
+.nav-pills>li>a:focus,
+.nav-pills>li>a:hover {
+    text-decoration: none;
+    background-color: rgba(99, 94, 99, 0.2);
+}
+
+.nav-pills>li>a {
+    -webkit-transition: border .2s linear, color .2s linear, background-color .2s linear;
+    -o-transition: border .2s linear, color .2s linear, background-color .2s linear;
+    transition: border .2s linear, color .2s linear, background-color .2s linear
+}
+
+
+/* 菜单 */
+
+.nav-quick {
+    padding: 0;
+    margin-right: 0;
+    margin-bottom: 22px;
+    margin-left: 0;
+    background-color: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+}
+
+.nav-quick li {
+    position: relative;
+    display: block;
+    padding: 0;
+    text-align: center;
+    list-style: none
+}
+
+.nav-quick a {
+    display: block;
+    padding: 16px 0;
+    color: #76838f;
+    text-decoration: none
+}
+
+.nav-quick a .fa {
+    display: block;
+    margin-bottom: .2em;
+    font-size: 32px
+}
+
+.nav-quick a:hover {
+    background-color: #f3f7f9
+}
+
+.nav-quick .badge,
+.nav-quick .label {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+.nav-quick-sm a {
+    padding: 12px 0
+}
+
+.nav-quick-sm a .fa {
+    font-size: 24px
+}
+
+.nav-quick-lg a {
+    padding: 22px 0
+}
+
+.nav-quick-lg a .fa {
+    font-size: 40px
+}
+
+.nav-quick-bordered {
+    border-top: 1px solid #e4eaec;
+    border-left: 1px solid #e4eaec
+}
+
+.nav-quick-bordered li {
+    border-right: 1px solid #e4eaec;
+    border-bottom: 1px solid #e4eaec
 }
 
 .nav-primary>li {
@@ -16996,6 +17087,21 @@ table th[class*=col-] {
 input[type=radio]:checked+label::before {
     background-color: #545353;
     border-color: #0a0a0a94;
+}
+
+.table .checkbox-custom label::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-top: 1px;
+    margin-left: -20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
 }
 
 
