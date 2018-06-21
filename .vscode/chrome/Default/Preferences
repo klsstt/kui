@@ -1,6 +1,6 @@
 {
    "account_id_migration_state": 2,
-   "account_tracker_service_last_update": "13173519604729357",
+   "account_tracker_service_last_update": "13173933986393588",
    "adblock": {
       "cloud_tips_mode": 0
    },
@@ -20,8 +20,8 @@
    },
    "countryid_at_install": 21843,
    "data_reduction": {
-      "daily_original_length": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "4546656" ],
-      "daily_original_length_application": "800036",
+      "daily_original_length": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "4546656", "0", "0", "0", "0", "64055" ],
+      "daily_original_length_application": "0",
       "daily_original_length_unknown": "0",
       "daily_original_length_via_data_reduction_proxy": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
       "daily_original_length_via_data_reduction_proxy_application": "0",
@@ -32,8 +32,8 @@
       "daily_original_length_with_data_reduction_proxy_enabled_application": "0",
       "daily_original_length_with_data_reduction_proxy_enabled_unknown": "0",
       "daily_original_length_with_data_reduction_proxy_enabled_video": "0",
-      "daily_received_length": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "4546656" ],
-      "daily_received_length_application": "800036",
+      "daily_received_length": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "4546656", "0", "0", "0", "0", "64055" ],
+      "daily_received_length_application": "0",
       "daily_received_length_https_with_data_reduction_proxy_enabled": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
       "daily_received_length_long_bypass_with_data_reduction_proxy_enabled": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
       "daily_received_length_short_bypass_with_data_reduction_proxy_enabled": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
@@ -48,7 +48,7 @@
       "daily_received_length_with_data_reduction_proxy_enabled_application": "0",
       "daily_received_length_with_data_reduction_proxy_enabled_unknown": "0",
       "daily_received_length_with_data_reduction_proxy_enabled_video": "0",
-      "last_update_date": "13173465600000000"
+      "last_update_date": "13173897600000000"
    },
    "data_reduction_lo_fi": {
       "load_images_requests_per_session": 0,
@@ -57,7 +57,7 @@
    },
    "dns_prefetching": {
       "host_referral_list": [ 2, [ "https://hao.360.cn/", [ "https://gwtj.ssl.dhrest.com/", 2.34, "https://hao.ssl.dhrest.com/", 4.379999999999999, "https://p0.ssl.qhimg.com/", 13.219999999999995, "https://p1.ssl.qhimg.com/", 15.939999999999994, "https://query.rec.360.cn/", 2.34, "https://s.360.cn/", 2.34, "https://s0.ssl.qhimg.com/", 2.34, "https://s0.ssl.qhres.com/", 4.379999999999999, "https://s1.ssl.qhres.com/", 3.0199999999999996, "https://show-g.mediav.com/", 2.34 ] ], [ "http://localhost:81/", [ "http://localhost:81/", 12.423164805180582 ] ] ],
-      "startup_list": [ 1, "http://localhost:81/" ]
+      "startup_list": [ 1 ]
    },
    "download": {
       "directory_upgrade": true,
@@ -76,7 +76,7 @@
          "initialized": true
       },
       "autoupdate": {
-         "next_check": "13173521384945429"
+         "next_check": "13173934234539571"
       },
       "chrome_url_overrides": {
          "bookmarks": [ {
@@ -357,8 +357,8 @@
    "hmi": false,
    "homepage": "https://hao.360.cn/",
    "homepage_is_newtabpage": false,
-   "http_original_content_length": "4546656",
-   "http_received_content_length": "4546656",
+   "http_original_content_length": "4610711",
+   "http_received_content_length": "4610711",
    "invalidator": {
       "client_id": "5NWbypRrv5x8J9xJuJq9Kw=="
    },
@@ -547,18 +547,18 @@
             },
             "site_engagement": {
                "http://localhost:81,*": {
-                  "last_modified": "13173519908703252",
+                  "last_modified": "13173933988820601",
                   "setting": {
-                     "lastEngagementTime": 13173519908703184.0,
+                     "lastEngagementTime": 13173905188820426.0,
                      "lastShortcutLaunchTime": 0.0,
                      "pointsAddedToday": 6.299999999999999,
                      "rawScore": 6.299999999999999
                   }
                },
                "https://hao.360.cn:443,*": {
-                  "last_modified": "13173519837344928",
+                  "last_modified": "13173933988820507",
                   "setting": {
-                     "lastEngagementTime": 13173519837344908.0,
+                     "lastEngagementTime": 13173905117462150.0,
                      "lastShortcutLaunchTime": 0.0,
                      "pointsAddedToday": 3.0,
                      "rawScore": 3.0
@@ -584,9 +584,9 @@
          "pref_version": 1
       },
       "created_by_version": "9.5.0.132",
-      "exit_type": "Crashed",
+      "exit_type": "Normal",
       "exited_cleanly": true,
-      "last_engagement_time": "13173519908703184",
+      "last_engagement_time": "13173905188820426",
       "managed_user_id": "",
       "name": "用户1",
       "per_host_zoom_levels": {

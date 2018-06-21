@@ -26,7 +26,7 @@
    "profile": {
       "info_cache": {
          "Default": {
-            "active_time": 1529046005.209971,
+            "active_time": 1529460387.400335,
             "avatar_icon": "chrome://theme/IDR_PROFILE_AVATAR_0",
             "background_apps": false,
             "gaia_id": "",
@@ -39,7 +39,7 @@
             "user_name": ""
          }
       },
-      "last_active_profiles": [ "Default" ]
+      "last_active_profiles": [  ]
    },
    "rappor": {
       "cohort_seed": 503,
@@ -61,18 +61,18 @@
       "last_update": "13173519605318074"
    },
    "startup_metric": {
-      "last_startup_timestamp": "13173519885966181",
+      "last_startup_timestamp": "13173933985967585",
       "last_startup_version": "9.5.0.132",
-      "same_version_startup_count": 3
+      "same_version_startup_count": 4
    },
    "sync_login_info": {
       "filepath": "",
       "qid": ""
    },
    "tab_stats": {
-      "last_daily_sample": "13173519605222660",
-      "max_tabs_per_window": 2,
-      "total_tab_count_max": 2,
+      "last_daily_sample": "13173933987449995",
+      "max_tabs_per_window": 1,
+      "total_tab_count_max": 1,
       "window_count_max": 1
    },
    "ukm": {
@@ -80,29 +80,30 @@
    },
    "uninstall_metrics": {
       "installation_date2": "1529046004",
-      "launch_count": "3"
+      "launch_count": "4"
    },
    "user_experience_metrics": {
       "low_entropy_source2": 3849,
-      "session_id": 2,
+      "session_id": 3,
       "stability": {
          "breakpad_registration_fail": 0,
          "breakpad_registration_ok": 0,
-         "crash_count": 0,
-         "debugger_not_present": 3,
+         "crash_count": 1,
+         "debugger_not_present": 4,
          "debugger_present": 0,
          "deferred_count": 0,
          "discard_count": 1,
-         "execution_phase": 500,
-         "exited_cleanly": false,
+         "execution_phase": 700,
+         "exited_cleanly": true,
          "incomplete_session_end_count": 0,
-         "launch_count": 3,
+         "launch_count": 4,
          "session_end_completed": true,
          "stats_buildtime": "1526965200",
          "stats_version": "9.5.0.132",
          "version_mismatch_count": 0
       }
    },
+   "variations_crash_streak": 1,
    "was": {
       "restarted": false
    }

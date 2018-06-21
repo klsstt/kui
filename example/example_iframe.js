@@ -93,15 +93,25 @@ $(function() {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_masonry.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 瀑布流</a>"
             }, {
                 html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_nestable.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 列表拖动</a>"
+            }, {
+                html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_tour.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 新手指引</a>"
             }]
         }, {
             html: '<a href="#"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>',
             open: false,
             children: [{
-                html: "<a   href=\"../iframe.html?url=/login.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 登录页面</a>"
-            }, {
-                html: "<a    href=\"../iframe.html?url=/locked.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 锁屏页面</a>"
-            }]
+                    html: "<a href=\"../login.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 登录页面</a>"
+                }, {
+                    html: "<a href=\"../locked.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 锁屏页面</a>"
+                }, {
+                    html: "<a data-iframe  href=\"../iframe.html?url=/template/kui_page_tools.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 数字统计</a>"
+                }, {
+                    html: "<a data-iframe  href=\"../iframe.html?url=/template/kui_page_comments.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 消息列表</a>"
+                }, {
+                    html: "<a data-iframe  href=\"../iframe.html?url=/template/kui_page_social.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 交互名片</a>"
+                }
+
+            ]
         }
         /*  ,{
              title: '图片管理',
