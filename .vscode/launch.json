@@ -1,0 +1,21 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome localhost",
+            "url": "http://localhost:81/index.html",
+            "runtimeExecutable": "C:/Users/klsstt/AppData/Local/360Chrome/Chrome/Application/360chrome.exe",
+            "runtimeArgs": ["--remote-debugging-port=9222"],
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "webRoot": "${workspaceRoot}"
+          
+         
+        },
+    ]
+    
+}

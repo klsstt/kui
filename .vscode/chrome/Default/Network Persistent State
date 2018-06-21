@@ -1,0 +1,32 @@
+{
+   "net": {
+      "http_server_properties": {
+         "servers": [ {
+            "https://s1.ssl.qhres.com": {
+               "supports_spdy": true
+            }
+         }, {
+            "https://s0.ssl.qhimg.com": {
+               "supports_spdy": true
+            }
+         }, {
+            "https://s0.ssl.qhres.com": {
+               "supports_spdy": true
+            }
+         }, {
+            "https://hao.ssl.dhrest.com": {
+               "supports_spdy": true
+            }
+         }, {
+            "https://p1.ssl.qhimg.com": {
+               "supports_spdy": true
+            }
+         }, {
+            "https://p0.ssl.qhimg.com": {
+               "supports_spdy": true
+            }
+         } ],
+         "version": 5
+      }
+   }
+}
