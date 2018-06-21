@@ -1,0 +1,891 @@
+<style>
+    .comments {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .comment .comment {
+        padding-bottom: 15px;
+        margin-top: 15px;
+    }
+    
+    .comments .comment {
+        border: none;
+        border-bottom: 1px solid #e4eaec;
+    }
+    
+    .comments .comment :last-child.comment {
+        border-bottom: none;
+    }
+    
+    .comment-actions {
+        margin-top: 10px;
+        text-align: right;
+    }
+    
+    .name,
+    .list-group-item-heading,
+    .comment-author,
+    .comment-author:focus,
+    .comment-author:hover {
+        color: #37474f;
+        font-weight: 800;
+    }
+    
+    .comment-meta {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 12px;
+        color: #a3afb7;
+    }
+    
+    .comments .comment :first-child.comment {
+        border-top: 1px solid #e4eaec;
+    }
+    
+    .comment-actions a.icon {
+        text-decoration: none;
+    }
+    
+    a.text-like.active,
+    a.text-like:focus,
+    a.text-like:hover {
+        color: #f96868 !important;
+    }
+    
+    .comment-actions a {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    
+    a.text-like,
+    a.text-like:focus,
+    a.text-like:hover {
+        text-decoration: none;
+    }
+    
+    .list-task .task-done {
+        background-color: #f3f7f9;
+    }
+    
+    .list-task .task-done.list-group-item span {
+        text-decoration: line-through;
+    }
+    
+    hr {
+        margin-top: 22px;
+        margin-bottom: 22px;
+        border: 0;
+        border-top: 1px solid #e4eaec;
+    }
+</style>
+<div class="kui-header">
+    <h1 class="kui-title">消息列表</h1>
+</div>
+<div class="kui-content">
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="text-action" href="javascript:;"><i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                    </div>
+                    <h3 class="panel-title">留言</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="comments margin-horizontal-20">
+                        <div class="comment media">
+                            <div class="media-left">
+                                <a class="avatar avatar-lg" href="javascript:;">
+                                    <img src="images/portraits/5.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <div class="comment-body">
+                                    <a class="comment-author" href="javascript:;">一番</a>
+                                    <div class="comment-meta">
+                                        <span class="date">2017-02-21 15:11:27</span>
+                                    </div>
+                                    <div class="mt-5">
+                                        <p>
+                                            我在西安工作快三年了，月收入才2000多，结果每个月交了水电费房租，就剩不下多少钱了，虽然是国企工作,管早中饭,但是一年年下来存不下多少钱,纠结要不要换个工作,换一种人生。 </p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <a class="text-like active fa fa-heart" href="javascript:;" role="button"></a>
+                                        <a href="javascript:;" role="button">回复</a>
+                                    </div>
+                                </div>
+                                <div class="comments">
+                                    <div class="comment media">
+                                        <div class="media-left">
+                                            <a class="avatar avatar-lg" href="javascript:;">
+                                                <img src="images/portraits/6.jpg" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="comment-body media-body">
+                                            <a class="comment-author" href="javascript:;">kai121</a>
+                                            <div class="comment-meta">
+                                                <span class="date">刚刚</span>
+                                            </div>
+                                            <div class="mt-5">
+                                                <p>在哪儿其实都一样。。。哈哈</p>
+                                            </div>
+                                            <div class="comment-actions">
+                                                <a class="text-like fa fa-heart" href="javascript:;" role="button"></a>
+                                                <a href="javascript:;" role="button">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment media">
+                                        <div class="media-left">
+                                            <a class="avatar avatar-lg" href="javascript:;">
+                                                <img src="images/portraits/5.jpg" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="comment-body media-body">
+                                            <a class="comment-author" href="javascript:;">张若瑶</a>
+                                            <div class="comment-meta">
+                                                <span class="date">1 分钟前</span>
+                                            </div>
+                                            <div class="mt-5">
+                                                <p>再坚持坚持，干完明年再说。</p>
+                                            </div>
+                                            <div class="comment-actions">
+                                                <a class="text-like fa fa-heart" href="javascript:;" role="button"></a>
+                                                <a href="javascript:;" role="button">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment media">
+                            <div class="media-left">
+                                <a class="avatar avatar-lg" href="javascript:;">
+                                    <img src="images/portraits/7.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="comment-body media-body">
+                                <a class="comment-author" href="javascript:;">BAD</a>
+                                <div class="comment-meta">
+                                    <span class="date">2017-02-21 15:34:30</span>
+                                </div>
+                                <div class="mt-5">
+                                    <p>西安目前发展还不错,继续待着也挺安逸的呀,可以考虑换个工作,换个行业,最近IT行业发展的很不错啊,你可以去高新园附近看看有没有合适的工作,或者找个培训机构培训一下,当然你得对这个行业有兴趣,如果有兴趣可以联系我!</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <a class="text-like fa fa-heart" href="javascript:;" role="button"></a>
+                                    <a class="active" href="javascript:;" role="button">回复</a>
+                                </div>
+                                <form class="comment-reply" action="#" method="post">
+                                    <div class="kui-form-group">
+                                        <textarea class="kui-form-control" rows="5" placeholder="评论内容…"></textarea>
+                                    </div>
+                                    <div class="kui-form-group">
+                                        <button type="submit" class="btn btn-primary">发表评论</button>
+                                        <button type="button" class="btn btn-link blue-grey-500">取消</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="comment media">
+                            <div class="media-left">
+                                <a class="avatar avatar-lg" href="javascript:;">
+                                    <img src="images/portraits/8.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="comment-body media-body">
+                                <a class="comment-author" href="javascript:;">我是王大锤</a>
+                                <div class="comment-meta">
+                                    <span class="date">2017-02-21 16:47:11</span>
+                                </div>
+                                <div class="mt-5">
+                                    <p>楼上建议不错,顶一个</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <a class="text-like fa fa-heart" href="javascript:;" role="button"></a>
+                                    <a href="javascript:;" role="button">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="comments-add margin-top-35" action="#" method="post">
+                            <h3 class="mb-35">回复</h3>
+                            <div class="kui-form-group">
+                                <input type="text" class="kui-form-control" name="nickName" placeholder="昵称">
+                            </div>
+                            <div class="kui-form-group">
+                                <input type="email" class="kui-form-control" name="email" placeholder="邮件">
+                            </div>
+                            <div class="kui-form-group">
+                                <input type="url" class="kui-form-control" name="website" placeholder="网站">
+                            </div>
+                            <div class="kui-form-group">
+                                <textarea class="kui-form-control" rows="5" placeholder="评论内容…"></textarea>
+                            </div>
+                            <div class="kui-form-group">
+                                <button type="button" class="btn btn-primary">发表评论</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel" id="todo-list">
+                <div class="panel-heading">
+                    <h3 class="panel-title">待办事项</h3>
+                </div>
+                <ul class="list-task list-group" data-role="tasklist">
+                    <li class="list-group-item task-done" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule" checked>
+                            <label for="inputSchedule"><i class="fa fa-calendar" aria-hidden="true"></i> <span>处理禅道BUG</span>
+                        </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
+                            <label for="inputCall"><i class="fa fa-bell" aria-hidden="true"></i>
+                            <span>去机场接送客户</span> <span class="label label-danger">今天</span></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                            <label for="inputBook"><i class="fa fa-calendar" aria-hidden="true"></i> <span>开会讨论下半年项目进度和问题</span>
+                        </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
+                            <label for="inputForward"><span>来一局飞行棋</span>
+                            <span class="label label-primary">1小时</span></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
+                            <label for="inputRecieve"><span>出门需要一个拥抱</span></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel" id="messge">
+                <div class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="text-action" href="javascript:;"><i class="fa fa-edit" aria-hidden="true"></i>
+                                </a>
+                    </div>
+                    <h3 class="panel-title">消息</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-full">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <span class="avatar avatar-online">
+                                                <img src="images/portraits/1.jpg" alt="">
+                                                <i></i>
+                                            </span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="pull-right">3 天前</small> 康康
+                                    </h5>
+                                    <p class="list-group-item-text">嗨,你今天真美!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <span class="avatar avatar-online">
+                                                <img src="images/portraits/2.jpg" alt="">
+                                                <i></i>
+                                            </span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="pull-right">3 天前</small> 张老师
+                                    </h5>
+                                    <p class="list-group-item-text">同学们今天下午得体育课改数学了,体验老师生病了!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <span class="avatar avatar-busy">
+                                                <img src="images/portraits/3.jpg" alt="">
+                                                <i></i>
+                                            </span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="pull-right">3 天前</small> 冯宝宝
+                                    </h5>
+                                    <p class="list-group-item-text">我觉得我机智的一逼。。。</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <span class="avatar avatar-off">
+                                                <img src="images/portraits/4.jpg" alt="">
+                                                <i></i>
+                                            </span>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="pull-right">3 天前</small> 阿威
+                                    </h5>
+                                    <p class="list-group-item-text">发现一个神秘的家伙!</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel" id="daily-feed">
+                <div class="panel-heading">
+                    <h3 class="panel-title">每日推荐 <span class="pull-right label label-round label-warning">10</span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/5.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <small class="pull-right">5 分钟前</small>
+                                        <a class="name">康康</a> 发布了一篇新作品
+                                    </h4>
+                                    <small>今天 5:50</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-off" href="javascript:;">
+                                        <img src="images/portraits/6.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <small class="pull-right">2 小时前</small>
+                                        <a class="name">BAD</a> 今天完成了29个任务
+                                    </h4>
+                                    <small>今天 12:55</small>
+                                    <div class="actions margin-top-10">
+                                        <button type="button" class="btn btn-outline btn-default btn-xs">
+                                                    <i class="fa fa-thumb-up" aria-hidden="true"></i>Like
+                                                </button>
+                                        <button type="button" class="btn btn-outline btn-default btn-xs">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i>Love
+                                                </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-away" href="javascript:;">
+                                        <img src="images/portraits/7.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <small class="pull-right">6 小时前</small>
+                                        <a class="name">杜小白</a> 在
+                                        <a class="name">《徐志摩诗集》</a> 上
+                                    </h4>
+                                    <small>今天 12:00</small>
+                                    <div class="content well">
+                                        徐志摩是一位在中国文坛上曾经活跃一时并有一定影响的作家，他的世界观是没有主导思想的，或者说是个超阶级的“不含党派色彩的诗人”。他的思想、创作呈现的面貌，发展的趋势，都说明他是个布尔乔亚诗人。他的思想的发展变化，他的创作前后期的不同状况，是和当时社会历史特点关联着的。
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-busy" href="javascript:;">
+                                        <img src="images/portraits/8.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <small class="pull-right">20 小时前</small>
+                                        <a class="name">小芳</a> 关注了
+                                        <a class="name">康康</a> .
+                                    </h4>
+                                    <small>昨天 9:00</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-block btn-primary">
+                                <i class="fa fa-chevron-down margin-right-5" aria-hidden="true"></i> 显示更多
+                            </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel" id="followers">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-check" aria-hidden="true"></i> 关注 </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/3.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-outline btn-default btn-sm">关注</button>
+                                    </div>
+                                    <div>
+                                        <a class="name" href="javascript:;">康康</a>
+                                    </div>
+                                    <small>@klsstt</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-away" href="javascript:;">
+                                        <img src="images/portraits/1.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-success btn-default btn-sm">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>已关注
+                                                        </button>
+                                    </div>
+                                    <div>
+                                        <a class="name" href="javascript:;">夏天</a>
+                                    </div>
+                                    <small>@summer</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-busy" href="javascript:;">
+                                        <img src="images/portraits/1.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-outline btn-default btn-sm">关注</button>
+                                    </div>
+                                    <div>
+                                        <a class="name" href="javascript:;">王文龙</a>
+                                    </div>
+                                    <small>@wenlong</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-off" href="javascript:;">
+                                        <img src="images/portraits/2.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-outline btn-default btn-sm">关注</button>
+                                    </div>
+                                    <div>
+                                        <a class="name" href="javascript:;">沈路遥</a>
+                                    </div>
+                                    <small>@youLy</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="panel-title-icon fa fa-chat-group" aria-hidden="true"></i> 最新进度</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/5.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">新方案调研已确定</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">康康</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    竞品O2O解决方案
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-away" href="javascript:;">
+                                        <img src="images/portraits/6.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">[KUI]测试版快完成了</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">夏天</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    HTML5
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-busy" href="javascript:;">
+                                        <img src="images/portraits/7.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">经过测试发现还有一些BUG需要处理</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">王文龙</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    BUG提交
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-off" href="javascript:;">
+                                        <img src="images/portraits/8.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">KUI新增表格模块</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">张飞</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    KUI研发计划
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/1.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">搞定了这个夏天的客户调研</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">张飞</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    工作
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/2.jpg" alt="">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="pull-right">20 小时前</small>
+                                    <h4 class="media-heading">最近跟小芳相处的有些不愉快</h4>
+                                    <small>
+                                                <a href="javascript:;" title="">王文龙</a>
+                                                <a class="label label-outline label-default" href="javascript:;" title="">
+                                                    生活
+                                                </a>
+                                            </small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">发布帖子</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="kui-form-group">
+                        <textarea class="kui-form-control" placeholder="不超过140字…" rows="3"></textarea>
+                    </div>
+                    <a href="javascript:;" class="btn btn-primary btn-sm pull-right">发布</a>
+                    <div class="clearfix"></div>
+                    <hr class="mb-10">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/6.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted pull-right">刚刚</small>
+                                    <h4 class="media-heading">@康康</h4>
+                                    <div>KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。 您可以 KUI 为基础，快速开发各种后台系统，如CMS、OA、CRM、ERP、POS、GPS等。 KUI 涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-busy" href="javascript:;">
+                                        <img src="images/portraits/7.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted pull-right">38 分钟前</small>
+                                    <h4 class="media-heading">@夏天</h4>
+                                    <div>我勒个去,日本队居然赢了</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/8.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body">
+                                    <small class="text-muted pull-right">2 小时前</small>
+                                    <h4 class="media-heading">@王文龙</h4>
+                                    <div>红绿大厂发力了,国产很给力啊!</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="text-info">13 万条帖子</span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-lg-block"></div>
+        <div class="col-md-6 col-xs-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="panel-title-icon fa fa-chat" aria-hidden="true"></i> 最新评论
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <div class="media comment">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/6.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body comment-body">
+                                    <a class="comment-author">康康</a>
+                                    <div class="comment-meta">
+                                        <span class="date">昨天</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>公司要我转前端了</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media comment">
+                                <div class="media-left">
+                                    <a class="avatar avatar-busy" href="javascript:;">
+                                        <img src="images/portraits/7.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body comment-body">
+                                    <a class="comment-author">夏天</a>
+                                    <div class="comment-meta">
+                                        <span class="date">38 分钟前</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>
+                                            <a href="javascript:;">[徐志摩诗集]</a> 人们看待徐志摩及其创作总是把他与新月派连在一起的，认定他为新月派的代表作家，称他为新月派的“盟主”，这是因为新月派的形成直至消亡，都与他发生着密切的关系，他参与了新月派的整个活动，他的创作体现了新月流派鲜明特征。从成立新月社到逐步形成一个文学流派——新月派，历时约十年，徐志摩始终在其中起着重要的作用。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media comment">
+                                <div class="media-left">
+                                    <a class="avatar avatar-online" href="javascript:;">
+                                        <img src="images/portraits/8.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body comment-body">
+                                    <a class="comment-author">王文龙</a>
+                                    <div class="comment-meta">
+                                        <span class="date">2 小时前</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>自从来了深圳,就被深圳的气候环境吸引...
+                                            <a href="javascript:;">深圳生活</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media comment">
+                                <div class="media-left">
+                                    <a class="avatar avatar-away" href="javascript:;">
+                                        <img src="images/portraits/3.jpg" alt="...">
+                                        <i></i></a>
+                                </div>
+                                <div class="media-body comment-body">
+                                    <a class="comment-author">王大锤</a>
+                                    <div class="comment-meta">
+                                        <span class="date">1 天前</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>听说王尼玛得罪了一些人。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">BUG 跟踪</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+                        <li class="list-group-item">
+                            <small class="label label-round label-info pull-right">已修复</small>
+                            <p>
+                                <a href="javascript:;">车辆加载图标不出现</a>
+                                <span>[11020]</span>
+                            </p>
+                            <small>
+                                            <a  href="javascript:;">
+                                              <span class="avatar avatar-xs">
+                                                <img src="images/portraits/1.jpg" alt="">
+                                              </span> <span>王文龙</span></a>
+                                            提交于
+                                            <time datetime="2016-07-01T08:55">2 小时前</time>
+                                        </small>
+                        </li>
+                        <li class="list-group-item">
+                            <small class="label label-round label-warning pull-right">待解决</small>
+                            <p>
+                                <a href="javascript:;">设备报警,报警报表查询不出来</a>
+                                <span>[11021]</span>
+                            </p>
+                            <small>
+                                            <a  href="javascript:;">
+                                              <span class="avatar avatar-xs">
+                                                <img src="images/portraits/2.jpg" alt="">
+                                              </span> <span>李烈永</span></a>
+                                            提交于
+                                            <time datetime="2016-07-01T07:55">1 小时前</time>
+                                        </small>
+                        </li>
+                        <li class="list-group-item">
+                            <small class="label label-round label-primary pull-right">解决中</small>
+                            <p>
+                                <a href="javascript:;">谷歌地图KEY过期</a>
+                                <span>[11022]</span>
+                            </p>
+                            <small>
+                                            <a  href="javascript:;">
+                                              <span class="avatar avatar-xs">
+                                                <img src="images/portraits/3.jpg" alt="">
+                                              </span> <span>夏天</span></a>
+                                            提交于
+                                            <time datetime="2016-06-28T21:05">3 天前</time>
+                                        </small>
+                        </li>
+                        <li class="list-group-item">
+                            <small class="label label-round label-danger pull-right">已关闭</small>
+                            <p>
+                                <a href="javascript:;">百度地图聚合车辆图标漂移问题</a>
+                                <span>[11023]</span>
+                            </p>
+                            <small>
+                                            <a  href="javascript:;">
+                                              <span class="avatar avatar-xs">
+                                                <img src="images/portraits/4.jpg" alt="">
+                                              </span> <span>王文龙</span></a>
+                                            提交于
+                                            <time datetime="2016-06-27T13:05">4 天前</time>
+                                        </small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

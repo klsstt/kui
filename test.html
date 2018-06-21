@@ -27,259 +27,35 @@
     <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
     <link rel="stylesheet" href="example/example.css">
-    <link rel="stylesheet" href="js/lib/jquery.nestable/nestable.css">
+    <link rel="stylesheet" href="http://cdn.admui.com/demo/basic/1.2.0/vendor/intro-js/introjs.css">
 </head>
 
 <body>
-
     <div class="kui-header">
-        <h1 class="kui-title">列表拖动</h1>
+        <h1 class="kui-title">消息列表</h1>
     </div>
     <div class="kui-content">
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Nestable
-                    <small>
-                    <a class="example-plugin-link" href="https://github.com/RamonSmit/Nestable" target="_blank">官网
-                    </a>
-                </small>
-                </h3>
+        <div class="row pd-25">
+            <div id="div1" class="col-md-4 height-50">
+                这里出现第一步引导
             </div>
-            <div class="panel-body container-fluid">
-                <div class="row row-lg">
-                    <div class="col-md-6">
-
-                        <div class="example-wrap">
-                            <h4 class="example-title">基本</h4>
-                            <div class="example">
-                                <div class="dd" data-plugin="nestable">
-                                    <ol class="dd-list">
-                                        <li class="dd-item" data-id="1">
-                                            <div class="dd-handle">列表项 1 <span class="pull-right text-info">进行中</span>
-                                            </div>
-                                        </li>
-                                        <li class="dd-item" data-id="2">
-                                            <div class="dd-handle">列表项 2
-                                                <span class="pull-right text-success">已批准</span>
-                                            </div>
-                                        </li>
-                                        <li class="dd-item" data-id="3">
-                                            <div class="dd-handle">列表项 3
-                                                <span class="pull-right text-warning">待处理</span>
-                                            </div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item" data-id="4">
-                                                    <div class="dd-handle">列表项 4</div>
-                                                </li>
-                                                <li class="dd-item" data-id="5" data-foo="bar">
-                                                    <div class="dd-handle">列表项 5</div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                        <li class="dd-item" data-id="6">
-                                            <div class="dd-handle">列表项 6</div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item" data-id="7">
-                                                    <div class="dd-handle">列表项 7</div>
-                                                    <ol class="dd-list">
-                                                        <li class="dd-item" data-id="8">
-                                                            <div class="dd-handle">列表项 8</div>
-                                                        </li>
-                                                    </ol>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-
-                        <div class="example-wrap">
-                            <h4 class="example-title">手柄拖动</h4>
-                            <div class="example">
-                                <div class="dd" data-plugin="nestable">
-                                    <ol class="dd-list">
-                                        <li class="dd-item dd-item-alt" data-id="1">
-                                            <div class="dd-handle"></div>
-                                            <div class="dd-content">列表项 1 <span class="pull-right wb-wrench"></span>
-                                            </div>
-                                        </li>
-                                        <li class="dd-item dd-item-alt" data-id="2">
-                                            <div class="dd-handle"></div>
-                                            <div class="dd-content">列表项 2 <span class="pull-right wb-settings"></span>
-                                            </div>
-                                        </li>
-                                        <li class="dd-item dd-item-alt" data-id="3">
-                                            <div class="dd-handle"></div>
-                                            <div class="dd-content">列表项 3</div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item dd-item-alt" data-id="4">
-                                                    <div class="dd-handle"></div>
-                                                    <div class="dd-content">列表项 4</div>
-                                                </li>
-                                                <li class="dd-item dd-item-alt" data-id="5" data-foo="bar">
-                                                    <div class="dd-handle"></div>
-                                                    <div class="dd-content">列表项 5</div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                        <li class="dd-item dd-item-alt" data-id="6">
-                                            <div class="dd-handle"></div>
-                                            <div class="dd-content">列表项 6</div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item dd-item-alt" data-id="7">
-                                                    <div class="dd-handle"></div>
-                                                    <div class="dd-content">列表项 7</div>
-                                                    <ol class="dd-list">
-                                                        <li class="dd-item dd-item-alt" data-id="8">
-                                                            <div class="dd-handle"></div>
-                                                            <div class="dd-content">列表项 8</div>
-                                                        </li>
-                                                    </ol>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="clearfix visible-lg-block visible-md-block"></div>
-                    <div class="col-md-6">
-
-                        <div class="example-wrap margin-md-0">
-                            <h4 class="example-title">连接</h4>
-                            <p>列表项可在两个列表之间拖动。</p>
-                            <div class="example">
-                                <div class="dd" data-plugin="nestable">
-                                    <h5>第 1 个列表</h5>
-                                    <ol class="dd-list">
-                                        <li class="dd-item" data-id="1">
-                                            <div class="dd-handle">列表项 1</div>
-                                        </li>
-                                        <li class="dd-item" data-id="2">
-                                            <div class="dd-handle">列表项 2</div>
-                                        </li>
-                                        <li class="dd-item" data-id="3">
-                                            <div class="dd-handle">列表项 3</div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item" data-id="4">
-                                                    <div class="dd-handle">列表项 4</div>
-                                                </li>
-                                                <li class="dd-item" data-id="5" data-foo="bar">
-                                                    <div class="dd-handle">列表项 5</div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ol>
-                                    <h5>第 2 个列表</h5>
-                                    <ol class="dd-list">
-                                        <li class="dd-item" data-id="6">
-                                            <div class="dd-handle">列表项 6</div>
-                                        </li>
-                                        <li class="dd-item" data-id="7">
-                                            <div class="dd-handle">列表项 7</div>
-                                        </li>
-                                        <li class="dd-item" data-id="8">
-                                            <div class="dd-handle">列表项 8</div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-
-                        <div class="example-wrap">
-                            <h4 class="example-title">媒体</h4>
-                            <div class="example">
-                                <div class="dd" data-plugin="nestable">
-                                    <ol class="dd-list">
-                                        <li class="dd-item" data-id="1">
-                                            <div class="dd-handle">列表项 1</div>
-                                            <div class="dd-content">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <a class="avatar" href="javascript:;">
-                                                            <img class="img-responsive" src="http://cdn.admui.com/demo/iframe/1.1.0/images/portraits/3.jpg" alt="...">
-                                                        </a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">♫茉莉花</h4>
-                                                        <small>CTO</small>
-                                                    </div>
-                                                    <div class="media-right">
-                                                        <span class="status status-lg status-off"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="dd-item" data-id="2">
-                                            <div class="dd-handle">列表项 2</div>
-                                            <div class="dd-content">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <a class="avatar" href="javascript:;">
-                                                            <img class="img-responsive" src="http://cdn.admui.com/demo/iframe/1.1.0/images/portraits/4.jpg" alt="...">
-                                                        </a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">璇子</h4>
-                                                        <small>CVO</small>
-                                                    </div>
-                                                    <div class="media-right">
-                                                        <span class="status status-lg status-away"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <ol class="dd-list">
-                                                <li class="dd-item" data-id="3">
-                                                    <div class="dd-handle">列表项 3</div>
-                                                    <div class="dd-content">
-                                                        <div class="media">
-                                                            <div class="media-left">
-                                                                <a class="avatar" href="javascript:;">
-                                                                    <img class="img-responsive" src="http://cdn.admui.com/demo/iframe/1.1.0/images/portraits/2.jpg" alt="...">
-                                                                </a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <h4 class="media-heading">hanwen</h4>
-                                                                <small>CIO</small>
-                                                            </div>
-                                                            <div class="media-right">
-                                                                <span class="status status-lg status-busy"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                        <li class="dd-item" data-id="4">
-                                            <div class="dd-handle">列表项 4</div>
-                                            <div class="dd-content">
-                                                <div class="media">
-                                                    <div class="media-left">
-                                                        <a class="avatar avatar-online" href="javascript:;">
-                                                            <img class="img-responsive" src="http://cdn.admui.com/demo/iframe/1.1.0/images/portraits/4.jpg" alt="...">
-                                                            <i></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">李志文</h4>
-                                                        <small>CVO</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
+            <div id="div2" class="col-md-4 height-50">
+                这里出现第二步引导
+            </div>
+            <div class="col-md-4 div3 height-50">
+                这里出现第三步引导
+            </div>
+            <div class="col-md-6 div4 height-50">
+                <button type="button" class="btn btn-block btn-default">Default</button>
+            </div>
+            <div class="col-md-6 div5 height-50">
+                <input class="kui-form-control round" name="inputEmail" id="inputRounded" type="email">
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="page page-full vertical-align text-center animation-fade">
+                    <div class="page-content vertical-align-middle">
+                        <p class="margin-bottom-20">点击下面按钮显示新手指引</p>
+                        <button class="btn btn-primary btn-outline btn-round site-tour-trigger">显示新手指引</button>
                     </div>
                 </div>
             </div>
@@ -287,13 +63,70 @@
     </div>
 
 
-
     <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/kui.js"></script>
 
-    <script src="js/lib/jquery.nestable/jquery.nestable.js"></script>
+    <script src="js/lib/intro/intro.min.js"></script>
     <script>
-        $('[data-plugin=nestable]').nestable();
+        (function(win, $) {
+            'use strict';
+            var options = $["extend"](!![], {}, {
+                'skipLabel': "<i class='fa fa-close'></i>",
+                'doneLabel': "<i class='fa fa-close'></i>",
+                'nextLabel': "下一个<i class='fa fa-chevron-right'></i>",
+                'prevLabel': "<i class='fa fa-chevron-left'></i>上一个",
+                'showBullets': false,
+                'hintButtonLabel': '完成',
+                'steps': [{
+                    'element': "#div1",
+                    'position': "right",
+                    'intro': "第一步指引"
+                }, {
+                    'element': "#div2",
+                    'position': 'right',
+                    'intro': "第二步指引"
+                }, {
+                    'element': ".div3",
+                    'position': 'left',
+                    'intro': "第三步指引"
+                }, {
+                    'element': '.div4',
+                    'position': "right",
+                    'intro': "这是一个按钮"
+                }, {
+                    'element': ".div5",
+                    'position': "left",
+                    'intro': "这是一个输入框"
+                }]
+            });
+
+            $(function() {
+                var tour, of, ijs;
+                if (typeof introJs === 'undefined') {
+                    return;
+                }
+                tour = options;
+                of = $("body")['css']("overflow");
+                ijs = introJs();
+                ijs["onbeforechange"](function() {
+                    $("body")["css"]('overflow', 'hidden');
+                });
+                ijs['oncomplete'](function() {
+                    $("body")["css"]("overflow", of);
+                });
+                ijs['onexit'](function() {
+                    $("body")['css']('overflow', of);
+                });
+                ijs['setOptions'](tour);
+                $(".site-tour-trigger")['on']('click', function() {
+                    ijs["start"]();
+                });
+                if (!(win['localStorage'] && win["localStorage"]["getItem"]("startTour") && of !== !![])) {
+                    ijs["start"]();
+                    win["localStorage"]["setItem"]('startTour', !![]);
+                }
+            });
+        }(window, jQuery));
     </script>
 
 </body>
