@@ -1,39 +1,39 @@
-<link rel="stylesheet"  href="js/lib/bootstrap-select/bootstrap-select.css" />
-<link rel="stylesheet"  href="js/lib/bootstrap-tokenfield/css/typeahead.css" />
-<link rel="stylesheet"  href="js/lib/bootstrap-tokenfield/css/bootstrap-tokenfield.css" />
-<link rel="stylesheet"  href="js/lib/jquery.multi-select/css/kui-multi-select.css" />
+<link rel="stylesheet" href="js/lib/bootstrap-select/bootstrap-select.css" />
+<link rel="stylesheet" href="js/lib/bootstrap-tokenfield/css/typeahead.css" />
+<link rel="stylesheet" href="js/lib/bootstrap-tokenfield/css/bootstrap-tokenfield.css" />
+<link rel="stylesheet" href="js/lib/jquery.multi-select/css/kui-multi-select.css" />
 
 
-  <div class="kui-header">
-      <h1 class="kui-title">筛选表单</h1>
-  </div>
-  <div class="kui-content">
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">下拉选择
-                  <small>
+<div class="kui-header">
+    <h1 class="kui-title">筛选表单</h1>
+</div>
+<div class="kui-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">下拉选择
+                <small>
                       <a class="example-plugin-link" href="http://silviomoreto.github.io/bootstrap-select" target="_blank">
                           bootstrap-select官网
                       </a>
                   </small>
-              </h3>
-          </div>
-          <div class="panel-body container-fluid">
-              <div class="row row-lg">
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">基本</h4>
-                          <div class="example">
-                              <select data-plugin="selectpicker">
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">基本</h4>
+                        <div class="example">
+                            <select data-plugin="selectpicker">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <p>也可以使用分组</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker" title='请选择品牌'>
+                        </div>
+                        <p>也可以使用分组</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker" title='请选择品牌'>
                                   <optgroup label="A 字母开头">
                                       <option value="AC BMW">A AC宝马</option>
                                       <option value="Aston Martin">A 阿斯顿马丁</option>
@@ -44,87 +44,87 @@
                                       <option value="Porsche">B 保时捷</option>
                                   </optgroup>
                               </select>
-                          </div>
-                          <p>可以使用 <code>.show-tick</code> 来为 <code>select</code> 添加选中图标</p>
-                          <div class="example">
-                              <select class="show-tick" data-plugin="selectpicker">
+                        </div>
+                        <p>可以使用 <code>.show-tick</code> 来为 <code>select</code> 添加选中图标</p>
+                        <div class="example">
+                            <select class="show-tick" data-plugin="selectpicker">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <p>可以通过 <code>.show-menu-arrow</code> 让下拉列表显示箭头</p>
-                          <div class="example">
-                              <select class="show-menu-arrow" data-plugin="selectpicker">
+                        </div>
+                        <p>可以通过 <code>.show-menu-arrow</code> 让下拉列表显示箭头</p>
+                        <div class="example">
+                            <select class="show-menu-arrow" data-plugin="selectpicker">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">样式</h4>
-                          <p>可以通过 <code>data-style</code> 属性改变其样式</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker-outline" data-style="btn-outline btn-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">样式</h4>
+                        <p>可以通过 <code>data-style</code> 属性改变其样式</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker-outline" data-style="btn-outline btn-primary">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker-outline" data-style="btn-outline btn-info">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker-outline" data-style="btn-outline btn-info">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker-outline" data-style="btn-outline btn-success">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker-outline" data-style="btn-outline btn-success">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker-outline" data-style="btn-outline btn-warning">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker-outline" data-style="btn-outline btn-warning">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker-outline" data-style="btn-outline btn-danger">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker-outline" data-style="btn-outline btn-danger">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">选择多个</h4>
-                          <p>可以通过 <code>data-max-option</code> 属性设置最大选中项，也可以用于分组</p>
-                          <div class="example">
-                              <select multiple data-plugin="selectpicker" data-max-options="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">选择多个</h4>
+                        <p>可以通过 <code>data-max-option</code> 属性设置最大选中项，也可以用于分组</p>
+                        <div class="example">
+                            <select multiple data-plugin="selectpicker" data-max-options="2">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select multiple data-plugin="selectpicker">
+                        </div>
+                        <div class="example">
+                            <select multiple data-plugin="selectpicker">
                                   <optgroup label="A 字母开头" data-max-options="2">
                                       <option value="AC BMW">A AC宝马</option>
                                       <option value="Aston Martin">A 阿斯顿马丁</option>
@@ -135,226 +135,226 @@
                                       <option value="Porsche">B 保时捷</option>
                                   </optgroup>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="clearfix visible-lg-block"></div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">选中项显示格式</h4>
-                          <p>可以使用 <code>data-selected-text-format</code> 属性 来指定 <code>multiple select</code> 选中项如何显示
-                          </p>
-                          <div class="example">
-                              <select data-plugin="selectpicker" multiple data-selected-text-format="count">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix visible-lg-block"></div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">选中项显示格式</h4>
+                        <p>可以使用 <code>data-selected-text-format</code> 属性 来指定 <code>multiple select</code> 选中项如何显示
+                        </p>
+                        <div class="example">
+                            <select data-plugin="selectpicker" multiple data-selected-text-format="count">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker" multiple data-selected-text-format="count > 3">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker" multiple data-selected-text-format="count > 3">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">即时搜索</h4>
-                          <p>可以使用 <code>data-live-search="true"</code> 属性来实现即时搜索</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker" data-live-search="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">即时搜索</h4>
+                        <p>可以使用 <code>data-live-search="true"</code> 属性来实现即时搜索</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker" data-live-search="true">
                                   <option value="AC BMW">A AC宝马</option>
                                   <option value="Aston Martin">A 阿斯顿马丁</option>
                                   <option value="Audi">A 奥迪</option>
                                   <option value="Brabus">B 巴博斯</option>
                                   <option value="Porsche">B 保时捷</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">标题转换</h4>
-                          <p>可以使用 <code>title</code> 来改变选中项的显示标题 </p>
-                          <div class="example">
-                              <select data-plugin="selectpicker">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">标题转换</h4>
+                        <p>可以使用 <code>title</code> 来改变选中项的显示标题 </p>
+                        <div class="example">
+                            <select data-plugin="selectpicker">
                                   <option title="AC BMW">A AC宝马</option>
                                   <option title="Aston Martin">A 阿斯顿马丁</option>
                                   <option title="Audi">A 奥迪</option>
                                   <option title="Brabus">B 巴博斯</option>
                                   <option title="Porsche">B 保时捷</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="clearfix visible-lg-block"></div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">选项分割线</h4>
-                          <p>可以通过添加 <code>data-divider="true"</code> 的 <code>&lt;option&gt;</code> 来实现</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix visible-lg-block"></div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">选项分割线</h4>
+                        <p>可以通过添加 <code>data-divider="true"</code> 的 <code>&lt;option&gt;</code> 来实现</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker">
                                   <option value="Windows">Windows</option>
                                   <option value="Mac">macOS</option>
                                   <option value="Linux">Linux</option>
                                   <option value="" data-divider="true">&nbsp;</option>
                                   <option value="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">选项图标</h4>
-                          <p>为选项或者分组项添加 <code>data-icon</code> 属性</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">选项图标</h4>
+                        <p>为选项或者分组项添加 <code>data-icon</code> 属性</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker">
                                   <option data-icon="fa-windows" value="Windows">Windows</option>
                                   <option data-icon="fa-apple" value="Mac">macOS</option>
                                   <option data-icon="fa-linux" value="Linux">Linux</option>
                                   <option data-icon="fa-desktop" value="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                      <div class="example-wrap">
-                          <h4 class="example-title">选项副标题</h4>
-                          <p>为选项或者分组项添加 <code>data-subtext</code> 属性</p>
-                          <div class="example">
-                              <select data-plugin="selectpicker">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">选项副标题</h4>
+                        <p>为选项或者分组项添加 <code>data-subtext</code> 属性</p>
+                        <div class="example">
+                            <select data-plugin="selectpicker">
                                   <option data-subtext="Windows">Windows</option>
                                   <option data-subtext="Mac">macOS</option>
                                   <option data-subtext="Linux">Linux</option>
                                   <option data-subtext="other">其他</option>
                               </select>
-                          </div>
-                          <div class="example">
-                              <select data-plugin="selectpicker" data-show-subtext="true">
+                        </div>
+                        <div class="example">
+                            <select data-plugin="selectpicker" data-show-subtext="true">
                                   <option data-subtext="Windows">Windows</option>
                                   <option data-subtext="Mac">macOS</option>
                                   <option data-subtext="Linux">Linux</option>
                                   <option value="" data-divider="true">&nbsp;</option>
                                   <option data-subtext="other">其他</option>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">标签选择 
-                  <small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">标签选择
+                <small>
                       <a class="example-plugin-link" href="http://sliptree.github.io/bootstrap-tokenfield/" target="_blank">
                           bootstrap-tokenfield官网
                       </a>
                   </small>
-              </h3>
-          </div>
-          <div class="panel-body container-fluid">
-              <div class="row row-lg">
-                  <div class="col-md-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">基本</h4>
-                          <div class="example">
-                              <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
-                          </div>
-                          <p>禁用</p>
-                          <div class="example">
-                              <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝" disabled>
-                          </div>
-                          <p>包含搜索图标</p>
-                          <div class="kui-form-group example">
-                              <div class="input-search">
-                                  <input type="text" class="kui-form-control" name="" data-plugin="tokenfield" value="红,黄,蓝" placeholder="查找...">
-                                  <button type="submit" class="input-search-btn">
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">基本</h4>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
+                        </div>
+                        <p>禁用</p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝" disabled>
+                        </div>
+                        <p>包含搜索图标</p>
+                        <div class="kui-form-group example">
+                            <div class="input-search">
+                                <input type="text" class="kui-form-control" name="" data-plugin="tokenfield" value="红,黄,蓝" placeholder="查找...">
+                                <button type="submit" class="input-search-btn">
                                       <i class="fa fa-search" aria-hidden="true"></i>
                                   </button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">验证状态</h4>
-                          <p>Tokenfield 支持 Bootstrap 表单的验证状态</p>
-                          <div class="example">
-                              <div class="kui-form-group has-success">
-                                  <label class="control-label" for="inputTokenfieldSuccess">成功</label>
-                                  <input type="text" class="kui-form-control" id="inputTokenfieldSuccess" data-plugin="tokenfield" value="红,黄,蓝">
-                              </div>
-                              <div class="kui-form-group has-warning">
-                                  <label class="control-label" for="inputTokenfieldWarning">警告</label>
-                                  <input type="text" class="kui-form-control" id="inputTokenfieldWarning" data-plugin="tokenfield" value="红,黄,蓝">
-                              </div>
-                              <div class="kui-form-group has-error">
-                                  <label class="control-label" for="inputTokenfieldError">错误</label>
-                                  <input type="text" class="kui-form-control" id="inputTokenfieldError" data-plugin="tokenfield" value="红,黄,蓝">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="clearfix"></div>
-                  <div class="col-md-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">输入组</h4>
-                          <p>您可以通过 <code>data-max-option</code> 限制选项或分组的选中项数量</p>
-                          <div class="example">
-                              <div class="kui-form-group">
-                                  <div class="kui-input-group">
-                                      <span class="kui-input-group-addon">标签：</span>
-                                      <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
-                                  </div>
-                              </div>
-                              <div class="kui-form-group">
-                                  <div class="kui-input-group">
-                                      <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
-                                      <span class="kui-input-group-addon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">验证状态</h4>
+                        <p>Tokenfield 支持 Bootstrap 表单的验证状态</p>
+                        <div class="example">
+                            <div class="kui-form-group has-success">
+                                <label class="control-label" for="inputTokenfieldSuccess">成功</label>
+                                <input type="text" class="kui-form-control" id="inputTokenfieldSuccess" data-plugin="tokenfield" value="红,黄,蓝">
+                            </div>
+                            <div class="kui-form-group has-warning">
+                                <label class="control-label" for="inputTokenfieldWarning">警告</label>
+                                <input type="text" class="kui-form-control" id="inputTokenfieldWarning" data-plugin="tokenfield" value="红,黄,蓝">
+                            </div>
+                            <div class="kui-form-group has-error">
+                                <label class="control-label" for="inputTokenfieldError">错误</label>
+                                <input type="text" class="kui-form-control" id="inputTokenfieldError" data-plugin="tokenfield" value="红,黄,蓝">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">输入组</h4>
+                        <p>您可以通过 <code>data-max-option</code> 限制选项或分组的选中项数量</p>
+                        <div class="example">
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <span class="kui-input-group-addon">标签：</span>
+                                    <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
+                                </div>
+                            </div>
+                            <div class="kui-form-group">
+                                <div class="kui-input-group">
+                                    <input type="text" class="kui-form-control" data-plugin="tokenfield" value="红,黄,蓝">
+                                    <span class="kui-input-group-addon">
                                           <span class="fa fa-star"></span>
-                                      </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">高级用法</h4>
-                          <p>和 Typeahead 搭配使用</p>
-                          <div class="example">
-                              <input type="text" class="kui-form-control" id="inputTokenfieldTypeahead" value="红,黄,蓝" placeholder="请输入颜色">
-                          </div>
-                          <p>复杂示例中使用事件</p>
-                          <div class="example">
-                              <input type="text" class="kui-form-control" id="inputTokenfieldEvents" data-tokens="me|me@example.com,you@example.com,这不是一个邮箱地址">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">分组多选
-                  <small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">高级用法</h4>
+                        <p>和 Typeahead 搭配使用</p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" id="inputTokenfieldTypeahead" value="红,黄,蓝" placeholder="请输入颜色">
+                        </div>
+                        <p>复杂示例中使用事件</p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" id="inputTokenfieldEvents" data-tokens="me|me@example.com,you@example.com,这不是一个邮箱地址">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">分组多选
+                <small>
                       <a class="example-plugin-link" href="http://loudev.com/" target="_blank">Multi-Select官网</a>
                   </small>
-              </h3>
-          </div>
-          <div class="panel-body container-fluid">
-              <div class="row row-lg">
-                  <div class="col-md-6">
-                      <div class="example-wrap margin-md-0">
-                          <h4 class="example-title">简单示例</h4>
-                          <div class="example">
-                              <select class="kui-form-control" data-plugin="multiSelect">
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="example-wrap margin-md-0">
+                        <h4 class="example-title">简单示例</h4>
+                        <div class="example">
+                            <select class="kui-form-control" data-plugin="multiSelect">
                                   <optgroup label="A 字母开头">
                                       <option value="AC BMW">A AC宝马</option>
                                       <option value="Aston Martin">A 阿斯顿马丁</option>
@@ -370,14 +370,14 @@
                                       <option value="Benz">B 奔驰</option>
                                   </optgroup>
                               </select>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">公共方法</h4>
-                          <div class="example">
-                              <select class="multi-select-methods kui-form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">公共方法</h4>
+                        <div class="example">
+                            <select class="multi-select-methods kui-form-control">
                                   <optgroup label="A 字母开头">
                                       <option value="AC BMW">A AC宝马</option>
                                       <option value="Aston Martin">A 阿斯顿马丁</option>
@@ -393,205 +393,204 @@
                                       <option value="Benz">B 奔驰</option>
                                   </optgroup>
                               </select>
-                          </div>
-                          <div class="example-buttons">
-                              <button class="btn btn-primary btn-outline" id="buttonSelectAll" type="button">选择全部
+                        </div>
+                        <div class="example-buttons">
+                            <button class="btn btn-primary btn-outline" id="buttonSelectAll" type="button">选择全部
                               </button>
-                              <button class="btn btn-primary btn-outline" id="buttonDeselectAll" type="button">
+                            <button class="btn btn-primary btn-outline" id="buttonDeselectAll" type="button">
                                   取消全部选择
                               </button>
-                              <button class="btn btn-primary btn-outline" id="buttonAdd" type="button">添加一项</button>
-                              <button class="btn btn-primary btn-outline" id="buttonRefresh" type="button">刷新</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">
+                            <button class="btn btn-primary btn-outline" id="buttonAdd" type="button">添加一项</button>
+                            <button class="btn btn-primary btn-outline" id="buttonRefresh" type="button">刷新</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">
                 搜索自动补全提示
-                  <small>
+                <small>
                       <a class="example-plugin-link" href="http://twitter.github.com/typeahead.js" target="_blank">
                         Typeahead官网
                       </a>
                   </small>
-              </h3>
-          </div>
-          <div class="panel-body container-fluid">
-              <div class="row row-lg">
-                  <div class="col-sm-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">基本</h4>
-                          <div class="example">
-                              <form autocomplete="off">
-                                  <input type="text" class="kui-form-control" id="exampleTypeaheadBasic" placeholder="请填写国家">
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">建议提示</h4>
-                          <div class="example">
-                              <form autocomplete="off">
-                                  <input type="text" class="kui-form-control" id="exampleTypeaheadBloodhound" placeholder="请填写国家">
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="example-wrap margin-sm-0">
-                          <h4 class="example-title">异步加载</h4>
-                          <div class="example">
-                              <form autocomplete="off">
-                                  <input type="text" class="kui-form-control" id="exampleTypeaheadPrefetch" placeholder="请填写国家">
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="example-wrap">
-                          <h4 class="example-title">样式</h4>
-                          <div class="example">
-                              <form autocomplete="off">
-                                  <div class="input-search clearfix">
-                                      <input type="text" class="kui-form-control" id="exampleTypeaheadStyle" name="exampleTypeaheadStyle" placeholder="查找...">
-                                      <button type="submit" class="input-search-btn">
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">基本</h4>
+                        <div class="example">
+                            <form autocomplete="off">
+                                <input type="text" class="kui-form-control" id="exampleTypeaheadBasic" placeholder="请填写国家">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">建议提示</h4>
+                        <div class="example">
+                            <form autocomplete="off">
+                                <input type="text" class="kui-form-control" id="exampleTypeaheadBloodhound" placeholder="请填写国家">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="example-wrap margin-sm-0">
+                        <h4 class="example-title">异步加载</h4>
+                        <div class="example">
+                            <form autocomplete="off">
+                                <input type="text" class="kui-form-control" id="exampleTypeaheadPrefetch" placeholder="请填写国家">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">样式</h4>
+                        <div class="example">
+                            <form autocomplete="off">
+                                <div class="input-search clearfix">
+                                    <input type="text" class="kui-form-control" id="exampleTypeaheadStyle" name="exampleTypeaheadStyle" placeholder="查找...">
+                                    <button type="submit" class="input-search-btn">
                                           <i class="fa fa-search" aria-hidden="true"></i>
                                       </button>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    
 
-  </div>
-  <script type="text/javascript" src="js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-  <script type="text/javascript" src="js/lib/bootstrap-tokenfield/bootstrap-tokenfield.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.typeahead/bloodhound.min.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.typeahead/typeahead.jquery.min.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.multi-select/jquery.multi-select.js"></script>
 
-  <script>
-       
-      $(function(){
+</div>
+<script type="text/javascript" src="js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/lib/bootstrap-tokenfield/bootstrap-tokenfield.js"></script>
+<script type="text/javascript" src="js/lib/jquery.typeahead/bloodhound.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.typeahead/typeahead.jquery.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.multi-select/jquery.multi-select.js"></script>
+
+<script>
+    $(function() {
         $('[data-plugin=selectpicker]').selectpicker({
             'noneSelectedText': '没有选中任何项',
             'noneResultsText': "没有找到匹配项",
-            'countSelectedText':"已选中{1}项中的{0}项",
+            'countSelectedText': "已选中{1}项中的{0}项",
             'maxOptionsText': ['超出限制 (最多选择{n}项)', '组选择超出限制(最多选择{n}组)'],
             'selectAllText': "选择全部",
             'deselectAllText': "取消全部选择",
             'doneButtonText': '关闭',
             'style': "btn-select",
-            'iconBase':"fa",
+            'iconBase': "fa",
             'tickIcon': "fa-check"
         });
         $('[data-plugin=selectpicker-outline]').selectpicker({
             'noneSelectedText': '没有选中任何项',
             'noneResultsText': "没有找到匹配项",
-            'countSelectedText':"已选中{1}项中的{0}项",
+            'countSelectedText': "已选中{1}项中的{0}项",
             'maxOptionsText': ['超出限制 (最多选择{n}项)', '组选择超出限制(最多选择{n}组)'],
             'selectAllText': "选择全部",
             'deselectAllText': "取消全部选择",
             'doneButtonText': '关闭',
-            'iconBase':"fa",
+            'iconBase': "fa",
             'tickIcon': "fa-check"
         });
 
         var engine = new Bloodhound({
             'local': [{
-                    'value': "red-红色"
-                }, {
-                    'value': "blue-蓝色"
-                }, {
-                    'value': "blue-蓝色"
-                }, {
-                    'value': 'yellow-黄色'
-                }, {
-                    'value': 'violet-紫罗兰'
-                }, {
-                    'value': "brown-棕色"
-                }, {
-                    'value': "purple-紫色"
-                }, {
-                    'value': "black-黑色"
-                }, {
-                    'value': 'white-白色'
-                }
-            ],
+                'value': "red-红色"
+            }, {
+                'value': "blue-蓝色"
+            }, {
+                'value': "blue-蓝色"
+            }, {
+                'value': 'yellow-黄色'
+            }, {
+                'value': 'violet-紫罗兰'
+            }, {
+                'value': "brown-棕色"
+            }, {
+                'value': "purple-紫色"
+            }, {
+                'value': "black-黑色"
+            }, {
+                'value': 'white-白色'
+            }],
             'datumTokenizer': Bloodhound["tokenizers"]["obj"]["whitespace"]("value"),
             'queryTokenizer': Bloodhound["tokenizers"]["whitespace"]
         });
 
         $('#inputTokenfieldTypeahead')["tokenfield"]({
             'typeahead': [null, {
-                    'name': "engine",
-                    'displayKey': "value",
-                    'source': engine["ttAdapter"]()
-                }
-            ]
+                'name': "engine",
+                'displayKey': "value",
+                'source': engine["ttAdapter"]()
+            }]
         });
-        $("[data-plugin=tokenfield]").tokenfield({minWidth:60});
-        $("#inputTokenfieldEvents")['on']("tokenfield:createtoken", function (e) {
+        $("[data-plugin=tokenfield]").tokenfield({
+            minWidth: 60
+        });
+        $("#inputTokenfieldEvents")['on']("tokenfield:createtoken", function(e) {
             var array = e['attrs']["value"]["split"]('|');
             e["attrs"]["value"] = array[1] || array[0];
             e["attrs"]["label"] = array[1] ? array[0] + ' (' + array[1] + ')' : array[0];
-        })['on']('tokenfield:createdtoken', function (_1abda5) {
+        })['on']('tokenfield:createdtoken', function(_1abda5) {
             var reg = /\S+@\S+\.\S+/;
             var _0x369106 = reg["test"](_1abda5["attrs"]["value"]);
             if (!_0x369106) {
                 $(_1abda5["relatedTarget"])["addClass"]("invalid");
             }
-        })['on']("tokenfield:edittoken", function (value) {
+        })['on']("tokenfield:edittoken", function(value) {
             if (value['attrs']['label'] !== value['attrs']['value']) {
                 var _1311e2 = value["attrs"]["label"]["split"](' (');
                 value["attrs"]["value"] = _1311e2[0] + '|' + value["attrs"]["value"];
             }
-        })['on']("tokenfield:removedtoken", function (value) {
+        })['on']("tokenfield:removedtoken", function(value) {
             if (value["attrs"]["length"] > 1) {
-                var map = $["map"](value["attrs"], function (temp) {
-                        return temp["value"];
-                    });
-                    layer["msg"](value["attrs"]["length"] + "已删除：" + map['join'](', '));
+                var map = $["map"](value["attrs"], function(temp) {
+                    return temp["value"];
+                });
+                layer["msg"](value["attrs"]["length"] + "已删除：" + map['join'](', '));
             } else {
                 layer["msg"]("已删除：" + value["attrs"]["value"]);
             }
         })["tokenfield"]();
-      
-       
+
+
 
         $('[data-plugin=multiSelect]').multiSelect();
-        
+
         $(".multi-select-methods").multiSelect();
-        $("#buttonSelectAll")["click"](function () {
+        $("#buttonSelectAll")["click"](function() {
             $(".multi-select-methods")['multiSelect']("select_all");
             return ![];
         });
-        $("#buttonDeselectAll")['click'](function () {
+        $("#buttonDeselectAll")['click'](function() {
             $('.multi-select-methods')["multiSelect"]("deselect_all");
             return ![];
         });
-        $("#buttonSelectSome")["click"](function () {
+        $("#buttonSelectSome")["click"](function() {
             $(".multi-select-methods")["multiSelect"]("select", ["BMW", "Audi", "Benz"]);
             return ![];
         });
-        $("#buttonDeselectSome")["click"](function () {
+        $("#buttonDeselectSome")["click"](function() {
             $(".multi-select-methods")["multiSelect"]("select", ["BMW", "Audi", "Benz"]);
             return ![];
         });
-        $('#buttonRefresh')['on']("click", function () {
+        $('#buttonRefresh')['on']("click", function() {
             $(".multi-select-methods")["multiSelect"]("refresh");
             return ![];
         });
-        $("#buttonAdd")['on']('click', function () {
+        $("#buttonAdd")['on']('click', function() {
             $(".multi-select-methods")["multiSelect"]("addOption", {
                 'value': 42,
                 'text': '测试项',
@@ -601,54 +600,51 @@
         });
 
 
-        var array = ["Andorra , 安道尔", "Afghanistan , 阿富汗", 'Antigua安提瓜和巴布达',  'Angola安哥拉', 'Burundi 布隆迪', 'Beni 贝宁', ];
-			var getV = function (e) {
-				return function findMatches(v, f) {
-					var vals,reg;
-					vals = [];
-					reg = new RegExp(v, 'i');
-					$["each"](e, function (temp, value) {
-						if (reg["test"](value)) {
-							vals["push"](value);
-						}
-					});
-					f(vals);
-				};
-			};
-			$("#exampleTypeaheadBasic, #exampleTypeaheadStyle")["typeahead"]({
-				'hint': !![],
-				'highlight': !![],
-				'minLength': 0x1
-			}, {
-				'name': "states",
-				'source': getV(array)
-			});
-			var bh1 = new Bloodhound({
-					'datumTokenizer': Bloodhound['tokenizers']["whitespace"],
-					'queryTokenizer': Bloodhound["tokenizers"]["whitespace"],
-					'local': array
-				});
-			$("#exampleTypeaheadBloodhound")['typeahead']({
-				'hint': !![],
-				'highlight': !![],
-				'minLength': 0x1
-			}, {
-				'name': "states",
-				'source': bh1
-			});
-			var bh2 = new Bloodhound({
-					'datumTokenizer': Bloodhound['tokenizers']['whitespace'],
-					'queryTokenizer': Bloodhound['tokenizers']["whitespace"],
-					'prefetch': "/example/data.json"
-				});
-			$("#exampleTypeaheadPrefetch")["typeahead"](null, {
-				'name': "countries",
-				'source': bh2
-            });
-            
-            
+        var array = ["Andorra , 安道尔", "Afghanistan , 阿富汗", 'Antigua安提瓜和巴布达', 'Angola安哥拉', 'Burundi 布隆迪', 'Beni 贝宁', ];
+        var getV = function(e) {
+            return function findMatches(v, f) {
+                var vals, reg;
+                vals = [];
+                reg = new RegExp(v, 'i');
+                $["each"](e, function(temp, value) {
+                    if (reg["test"](value)) {
+                        vals["push"](value);
+                    }
+                });
+                f(vals);
+            };
+        };
+        $("#exampleTypeaheadBasic, #exampleTypeaheadStyle")["typeahead"]({
+            'hint': !![],
+            'highlight': !![],
+            'minLength': 0x1
+        }, {
+            'name': "states",
+            'source': getV(array)
+        });
+        var bh1 = new Bloodhound({
+            'datumTokenizer': Bloodhound['tokenizers']["whitespace"],
+            'queryTokenizer': Bloodhound["tokenizers"]["whitespace"],
+            'local': array
+        });
+        $("#exampleTypeaheadBloodhound")['typeahead']({
+            'hint': !![],
+            'highlight': !![],
+            'minLength': 0x1
+        }, {
+            'name': "states",
+            'source': bh1
+        });
+        var bh2 = new Bloodhound({
+            'datumTokenizer': Bloodhound['tokenizers']['whitespace'],
+            'queryTokenizer': Bloodhound['tokenizers']["whitespace"],
+            'prefetch': "/example/data.json"
+        });
+        $("#exampleTypeaheadPrefetch")["typeahead"](null, {
+            'name': "countries",
+            'source': bh2
+        });
+
+
     });
-  </script>
-
-
-
+</script>

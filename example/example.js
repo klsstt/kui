@@ -64,7 +64,12 @@ $(function() {
                 }, {
                     html: "<a  data-pjax  href=\"/template/kui_page_animation.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> CSS动画</a>"
                 }, {
-                    html: "<a  data-pjax  href=\"/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>"
+                    html: "<a href=\"#\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>",
+                    children: [{
+                        html: "<a  data-pjax  href=\"/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 静态表格</a>"
+                    }, {
+                        html: "<a  data-pjax  href=\"/template/kui_page_kuitable.html\" target=\"_blank\"><i class=\"fa fa-database fa-fw\"></i> 动态表格</a>"
+                    }]
                 }
 
 
@@ -96,6 +101,8 @@ $(function() {
                     html: "<a  data-pjax  href=\"/template/kui_page_masonry.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 瀑布流</a>"
                 }, {
                     html: "<a  data-pjax  href=\"/template/kui_page_nestable.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 列表拖动</a>"
+                }, {
+                    html: "<a  data-pjax  href=\"/template/kui_page_tour.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 新手指引</a>"
                 }
 
             ]
@@ -106,6 +113,12 @@ $(function() {
                 html: "<a   href=\"/login.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 登录页面</a>"
             }, {
                 html: "<a    href=\"/locked.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 锁屏页面</a>"
+            }, {
+                html: "<a data-pjax  href=\"/template/kui_page_tools.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 数字统计</a>"
+            }, {
+                html: "<a data-pjax  href=\"/template/kui_page_comments.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 消息列表</a>"
+            }, {
+                html: "<a data-pjax  href=\"/template/kui_page_social.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 交互名片</a>"
             }]
         }
         /*  ,{

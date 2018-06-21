@@ -3060,8 +3060,88 @@ margin的兼容性问题：div设置左浮动，margin-left在ie中会出现2倍
     margin: 50px!important;
 }
 
+.mv-5 {
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}
 
-/*剧中*/
+.mv-10 {
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+
+.mv-15 {
+    margin-top: 15px!important;
+    margin-bottom: 15px!important;
+}
+
+.mv-20 {
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.mv-25 {
+    margin-top: 25px!important;
+    margin-bottom: 25px!important;
+}
+
+.mv-30 {
+    margin-top: 30px!important;
+    margin-bottom: 30px!important;
+}
+
+.mv-35 {
+    margin-top: 35px!important;
+    margin-bottom: 35px!important;
+}
+
+.mv-40 {
+    margin-top: 40px!important;
+    margin-bottom: 40px!important;
+}
+
+.mh-5 {
+    margin-left: 5px!important;
+    margin-right: 5px!important;
+}
+
+.mh-10 {
+    margin-left: 10px!important;
+    margin-right: 10px!important;
+}
+
+.mh-15 {
+    margin-left: 15px!important;
+    margin-right: 15px!important;
+}
+
+.mh-20 {
+    margin-left: 20px!important;
+    margin-right: 20px!important;
+}
+
+.mh-25 {
+    margin-left: 25px!important;
+    margin-right: 25px!important;
+}
+
+.mh-30 {
+    margin-left: 30px!important;
+    margin-right: 30px!important;
+}
+
+.mh-35 {
+    margin-left: 35px!important;
+    margin-right: 35px!important;
+}
+
+.mh-40 {
+    margin-left: 40px!important;
+    margin-right: 40px!important;
+}
+
+
+/*局中*/
 
 .mc {
     display: block !important;
@@ -10882,7 +10962,7 @@ input[type=radio][disabled] {
     position: absolute;
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: -20px
+    margin-left: -20px;
 }
 
 .checkbox-custom.disabled label,
@@ -17017,15 +17097,42 @@ table th[class*=col-] {
 }
 
 .fixed-table-container thead th .both {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');
+    font-family: "FontAwesome";
+    /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC'); */
+}
+
+.fixed-table-container thead th .both:after {
+    display: inline-block;
+    width: 20px;
+    color: inherit;
+    text-align: right;
+    content: "\f0dc";
 }
 
 .fixed-table-container thead th .asc {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg==');
+    font-family: "FontAwesome";
+    /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg=='); */
+}
+
+.fixed-table-container thead th .asc:after {
+    display: inline-block;
+    width: 20px;
+    color: inherit;
+    text-align: right;
+    content: "\f0de";
 }
 
 .fixed-table-container thead th .desc {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII= ');
+    font-family: "FontAwesome";
+    /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII= '); */
+}
+
+.fixed-table-container thead th .desc:after {
+    display: inline-block;
+    width: 20px;
+    color: inherit;
+    text-align: right;
+    content: "\f0dd";
 }
 
 .fixed-table-container th.detail {
@@ -17058,6 +17165,13 @@ table th[class*=col-] {
 .fixed-table-container input[type="radio"],
 .fixed-table-container input[type="checkbox"] {
     margin: 0 auto !important;
+}
+
+.fixed-table-container .radio-custom input[type="radio"],
+.fixed-table-container .checkbox-custom input[type="checkbox"] {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    margin-left: -20px !important;
 }
 
 .fixed-table-container .no-records-found {

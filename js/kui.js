@@ -119,7 +119,12 @@
         if (!actions) return parentActions;
 
         if (actions === true) {
-            actions = { add: true, "delete": true, edit: true, sort: true };
+            actions = {
+                add: true,
+                "delete": true,
+                edit: true,
+                sort: true
+            };
         } else if (typeof actions === 'string') {
             actions = actions.split(',');
         }
@@ -139,7 +144,9 @@
             _actions = {};
             $.each(actions, function(name, action) {
                 if (action) {
-                    _actions[name] = $.extend({ type: name }, DETAULT_ACTIONS[name], $.isPlainObject(action) ? action : null);
+                    _actions[name] = $.extend({
+                        type: name
+                    }, DETAULT_ACTIONS[name], $.isPlainObject(action) ? action : null);
                 } else {
                     _actions[name] = false;
                 }
@@ -151,7 +158,10 @@
 
     function createActionEle(action, name, template) {
         name = name || action.type;
-        return $(template || action.template).addClass('tree-action').attr($.extend({ 'data-type': name, title: action.title || '' }, action.attr)).data('action', action);
+        return $(template || action.template).addClass('tree-action').attr($.extend({
+            'data-type': name,
+            title: action.title || ''
+        }, action.attr)).data('action', action);
     }
 
     // default options
@@ -191,7 +201,9 @@
                     var itemContent = that.options.itemCreator($li, item);
                     if (itemContent !== true && itemContent !== false) $wrapper.html(itemContent);
                 } else if (item.url) {
-                    $wrapper.append($('<a/>', { href: item.url }).text(item.title || item.name));
+                    $wrapper.append($('<a/>', {
+                        href: item.url
+                    }).text(item.title || item.name));
                 } else {
                     $wrapper.append($('<span/>').text(item.title || item.name));
                 }
@@ -260,7 +272,12 @@
                     trigger: '.sort-handler',
                     selector: 'li:not(.tree-action-item)',
                     finish: function(e) {
-                        that.callEvent('action', { action: actions.sort, $list: $list, target: e.target, item: data });
+                        that.callEvent('action', {
+                            action: actions.sort,
+                            $list: $list,
+                            target: e.target,
+                            item: data
+                        });
                     }
                 }, actions.sort.options, $.isPlainObject(this.options.sortable) ? this.options.sortable : null));
             }
@@ -337,7 +354,10 @@
         this.$.on('click', '.list-toggle,a[href="#"],.tree-toggle', function(e) {
             var $this = $(this);
             var $li = $this.parent('li');
-            that.callEvent('hit', { target: $li, item: $li.data() });
+            that.callEvent('hit', {
+                target: $li,
+                item: $li.data()
+            });
             that.toggle($li);
             if ($this.is('a')) e.preventDefault();
         }).on('click', '.tree-action', function() {
@@ -346,7 +366,12 @@
             if (action.action) action = action.action;
             if (action.type === 'sort') return;
             var $li = $action.closest('li:not(.tree-action-item)');
-            that.callEvent('action', { action: action, target: this, $item: $li, item: $li.data() });
+            that.callEvent('action', {
+                action: action,
+                target: this,
+                $item: $li,
+                item: $li.data()
+            });
         });
     };
 
@@ -1283,7 +1308,11 @@ function($) {
         this.$element = $(element)
         this.options = this.getOptions(options)
         this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
-        this.inState = { click: false, hover: false, focus: false }
+        this.inState = {
+            click: false,
+            hover: false,
+            focus: false
+        }
 
         if (this.$element[0] instanceof document.constructor && !this.options.selector) {
             throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
@@ -1306,7 +1335,10 @@ function($) {
         }
 
         this.options.selector ?
-            (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+            (this._options = $.extend({}, this.options, {
+                trigger: 'manual',
+                selector: ''
+            })) :
             this.fixTitle()
     }
 
@@ -1431,7 +1463,11 @@ function($) {
 
             $tip
                 .detach()
-                .css({ top: 0, left: 0, display: 'block' })
+                .css({
+                    top: 0,
+                    left: 0,
+                    display: 'block'
+                })
                 .addClass(placement)
                 .data('bs.' + this.type, this)
 
@@ -1591,26 +1627,52 @@ function($) {
         var elRect = el.getBoundingClientRect()
         if (elRect.width == null) {
             // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-            elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
+            elRect = $.extend({}, elRect, {
+                width: elRect.right - elRect.left,
+                height: elRect.bottom - elRect.top
+            })
         }
-        var elOffset = isBody ? { top: 0, left: 0 } : $element.offset()
-        var scroll = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
-        var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
+        var elOffset = isBody ? {
+            top: 0,
+            left: 0
+        } : $element.offset()
+        var scroll = {
+            scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop()
+        }
+        var outerDims = isBody ? {
+            width: $(window).width(),
+            height: $(window).height()
+        } : null
 
         return $.extend({}, elRect, scroll, outerDims, elOffset)
     }
 
     Tooltip.prototype.getCalculatedOffset = function(placement, pos, actualWidth, actualHeight) {
-        return placement == 'bottom' ? { top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-            placement == 'top' ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-            placement == 'left' ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+        return placement == 'bottom' ? {
+                top: pos.top + pos.height,
+                left: pos.left + pos.width / 2 - actualWidth / 2
+            } :
+            placement == 'top' ? {
+                top: pos.top - actualHeight,
+                left: pos.left + pos.width / 2 - actualWidth / 2
+            } :
+            placement == 'left' ? {
+                top: pos.top + pos.height / 2 - actualHeight / 2,
+                left: pos.left - actualWidth
+            } :
             /* placement == 'right' */
-            { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+            {
+                top: pos.top + pos.height / 2 - actualHeight / 2,
+                left: pos.left + pos.width
+            }
 
     }
 
     Tooltip.prototype.getViewportAdjustedDelta = function(placement, pos, actualWidth, actualHeight) {
-        var delta = { top: 0, left: 0 }
+        var delta = {
+            top: 0,
+            left: 0
+        }
         if (!this.$viewport) return delta
 
         var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
@@ -2747,7 +2809,9 @@ function($) {
                         [$href[offsetMethod]().top + offsetBase, href]
                     ]) || null
             })
-            .sort(function(a, b) { return a[0] - b[0] })
+            .sort(function(a, b) {
+                return a[0] - b[0]
+            })
             .each(function() {
                 that.offsets.push(this[0])
                 that.targets.push(this[1])
@@ -2878,16 +2942,25 @@ function($) {
         this.before = d.before || this.before;
         this.onItem = d.onItem || this.onItem;
         this.scopes = d.scopes || null;
-        if (d.target) { this.$element.data("target", d.target) }
+        if (d.target) {
+            this.$element.data("target", d.target)
+        }
         this.listen()
     };
     c.prototype = {
         constructor: c,
         show: function(i) {
-            var h, f, j, g, d = { relatedTarget: this, target: i.currentTarget };
-            if (this.isDisabled()) { return }
+            var h, f, j, g, d = {
+                relatedTarget: this,
+                target: i.currentTarget
+            };
+            if (this.isDisabled()) {
+                return
+            }
             this.closemenu();
-            if (this.before.call(this, i, b(i.currentTarget)) === false) { return }
+            if (this.before.call(this, i, b(i.currentTarget)) === false) {
+                return
+            }
             h = this.getMenu();
             h.trigger(f = b.Event("show.bs.context", d));
             j = this.getPosition(i, h);
@@ -2899,17 +2972,31 @@ function($) {
         closemenu: function(i) {
             var h, f, g, d;
             h = this.getMenu();
-            if (!h.hasClass("open")) { return }
-            d = { relatedTarget: this };
+            if (!h.hasClass("open")) {
+                return
+            }
+            d = {
+                relatedTarget: this
+            };
             h.trigger(f = b.Event("hide.bs.context", d));
             g = "li:not(.divider)";
             h.removeClass("open").off("click.context.data-api", g).trigger("hidden.bs.context", d);
             b("html").off("click.context.data-api", h.selector);
-            if (i && b(i.target).closest("a").length === 0) { i.stopPropagation() }
+            if (i && b(i.target).closest("a").length === 0) {
+                i.stopPropagation()
+            }
         },
-        keydown: function(d) { if (d.which == 27) { this.closemenu(d) } },
-        before: function(d) { return true },
-        onItem: function(d) { return true },
+        keydown: function(d) {
+            if (d.which == 27) {
+                this.closemenu(d)
+            }
+        },
+        before: function(d) {
+            return true
+        },
+        onItem: function(d) {
+            return true
+        },
         listen: function() {
             this.$element.on("contextmenu.context.data-api", this.scopes, b.proxy(this.show, this));
             b("html").on("click.context.data-api", b.proxy(this.closemenu, this));
@@ -2919,7 +3006,9 @@ function($) {
             this.$element.off(".context.data-api").removeData("context");
             b("html").off(".context.data-api")
         },
-        isDisabled: function() { return this.$element.hasClass("disabled") || this.$element.attr("disabled") },
+        isDisabled: function() {
+            return this.$element.hasClass("disabled") || this.$element.attr("disabled")
+        },
         getMenu: function() {
             var d = this.$element.data("target"),
                 e;
@@ -2937,10 +3026,29 @@ function($) {
                 l = b(window).height(),
                 n = f.find(".dropdown-menu").outerWidth(),
                 i = f.find(".dropdown-menu").outerHeight(),
-                p = { "position": "absolute", "z-index": 9999 },
+                p = {
+                    "position": "absolute",
+                    "z-index": 9999
+                },
                 g, h, d;
-            if (j + i > l) { g = { "top": j - i + b(window).scrollTop() } } else { g = { "top": j + b(window).scrollTop() } }
-            if ((k + n > m) && ((k - n) > 0)) { h = { "left": k - n + b(window).scrollLeft() } } else { h = { "left": k + b(window).scrollLeft() } }
+            if (j + i > l) {
+                g = {
+                    "top": j - i + b(window).scrollTop()
+                }
+            } else {
+                g = {
+                    "top": j + b(window).scrollTop()
+                }
+            }
+            if ((k + n > m) && ((k - n) > 0)) {
+                h = {
+                    "left": k - n + b(window).scrollLeft()
+                }
+            } else {
+                h = {
+                    "left": k + b(window).scrollLeft()
+                }
+            }
             d = f.offsetParent().offset();
             h.left = h.left - d.left;
             g.top = g.top - d.top;
@@ -2952,15 +3060,21 @@ function($) {
             var h = b(this),
                 g = h.data("context"),
                 e = (typeof d == "object") && d;
-            if (!g) { h.data("context", (g = new c(h, e))) }
-            if (typeof d == "string") { g[d].call(g, f) }
+            if (!g) {
+                h.data("context", (g = new c(h, e)))
+            }
+            if (typeof d == "string") {
+                g[d].call(g, f)
+            }
         })
     };
     b.fn.contextmenu.Constructor = c;
     b(document).on("contextmenu.context.data-api", function() {
         b(a).each(function() {
             var d = b(this).data("context");
-            if (!d) { return }
+            if (!d) {
+                return
+            }
             d.closemenu()
         })
     }).on("contextmenu.context.data-api", a, function(d) {
@@ -3244,7 +3358,9 @@ function($) {
         if (!Object.keys) {
             Object.keys = (function() {
                 var hasOwnProperty = Object.prototype.hasOwnProperty,
-                    hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+                    hasDontEnumBug = !({
+                        toString: null
+                    }).propertyIsEnumerable('toString'),
                     dontEnums = [
                         'toString',
                         'toLocaleString',
@@ -3866,7 +3982,7 @@ function($) {
                 if (column.checkbox) {
                     text = '';
                     if (!that.options.singleSelect && that.options.checkboxHeader) {
-                        text = '<input name="btSelectAll" type="checkbox" />';
+                        text = '<span class=\"checkbox-custom\"> <input name="btSelectAll" type="checkbox" /><label for=\"btSelectAll\"></label></span>';
                     }
                     that.header.stateField = column.field;
                 }
@@ -4183,7 +4299,7 @@ function($) {
 
                 if (column.switchable) {
                     html.push(sprintf(bs.toobarDropdowItemHtml,
-                        sprintf('<input type="checkbox" data-field="%s" value="%s"%s> %s',
+                        sprintf('<input type="checkbox" data-field="%s" value="%s"%s>%s',
                             column.field, i, checked, column.title)));
                     switchableCount++;
                 }
@@ -4816,19 +4932,17 @@ function($) {
             if (column.checkbox || column.radio) {
                 type = column.checkbox ? 'checkbox' : type;
                 type = column.radio ? 'radio' : type;
-
+                var c = type == "checkbox" ? "checkbox-custom" : "radio-custom";
                 text = [sprintf(that.options.cardView ?
                         '<div class="card-view %s">' : '<td class="bs-checkbox %s">', column['class'] || ''),
-                    '<input' +
+                    '<span class="' + c + '"><input' +
                     sprintf(' data-index="%s"', i) +
                     sprintf(' name="%s"', that.options.selectItemName) +
                     sprintf(' type="%s"', type) +
                     sprintf(' value="%s"', item[that.options.idField]) +
-                    sprintf(' checked="%s"', value === true ||
-                        (value_ || value && value.checked) ? 'checked' : undefined) +
-                    sprintf(' disabled="%s"', !column.checkboxEnabled ||
-                        (value && value.disabled) ? 'disabled' : undefined) +
-                    ' />',
+                    sprintf(' checked="%s"', value === true || (value_ || value && value.checked) ? 'checked' : undefined) +
+                    sprintf(' disabled="%s"', !column.checkboxEnabled || (value && value.disabled) ? 'disabled' : undefined) +
+                    ' /> <label></label> </span>',
                     that.header.formatters[j] && typeof value === 'string' ? value : '',
                     that.options.cardView ? '</div>' : '</td>'
                 ].join('');
@@ -5143,7 +5257,10 @@ function($) {
             if (this.options.searchText !== '') {
                 var $search = this.$toolbar.find('.search input');
                 $search.val(this.options.searchText);
-                this.onSearch({ currentTarget: $search, firedByInitSearchText: true });
+                this.onSearch({
+                    currentTarget: $search,
+                    firedByInitSearchText: true
+                });
             }
         }
     };
@@ -6101,7 +6218,9 @@ function($) {
     KuiTable.prototype.resetSearch = function(text) {
         var $search = this.$toolbar.find('.search input');
         $search.val(text || '');
-        this.onSearch({ currentTarget: $search });
+        this.onSearch({
+            currentTarget: $search
+        });
     };
 
     KuiTable.prototype.expandRow_ = function(expand, index) {
