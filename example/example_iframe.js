@@ -62,7 +62,12 @@ $(function() {
                 }, {
                     html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_progressbars.html\" target=\"_blank\"><i class=\"fa fa-sticky-note-o fa-fw\"></i> 进度条</a>"
                 }, {
-                    html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>"
+                    html: "<a href=\"#\"><i class=\"fa fa-table fa-fw\"></i> 表格</a>",
+                    children: [{
+                        html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_table.html\" target=\"_blank\"><i class=\"fa fa-table fa-fw\"></i> 静态表格</a>"
+                    }, {
+                        html: "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_kuitable.html\" target=\"_blank\"><i class=\"fa fa-database fa-fw\"></i> 动态表格</a>"
+                    }]
                 }
 
             ]
