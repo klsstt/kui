@@ -3590,6 +3590,27 @@ margin的兼容性问题：div设置左浮动，margin-left在ie中会出现2倍
 
 /*30像素行距*/
 
+.lh-35 {
+    line-height: 35px !important;
+}
+
+
+/*35像素行距*/
+
+.lh-40 {
+    line-height: 40px !important;
+}
+
+
+/*40像素行距*/
+
+.lh-45 {
+    line-height: 45px !important;
+}
+
+
+/*45像素行距*/
+
 
 /*文字对齐方式*/
 
