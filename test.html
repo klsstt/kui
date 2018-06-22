@@ -27,7 +27,12 @@
     <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
     <link rel="stylesheet" href="example/example.css">
-    <link rel="stylesheet" href="http://cdn.admui.com/demo/basic/1.2.0/vendor/intro-js/introjs.css">
+    <style>
+        .jqstooltip {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,27 +41,11 @@
     </div>
     <div class="kui-content">
         <div class="row pd-25">
-            <div id="div1" class="col-md-4 height-50">
-                这里出现第一步引导
-            </div>
-            <div id="div2" class="col-md-4 height-50">
-                这里出现第二步引导
-            </div>
-            <div class="col-md-4 div3 height-50">
-                这里出现第三步引导
-            </div>
-            <div class="col-md-6 div4 height-50">
-                <button type="button" class="btn btn-block btn-default">Default</button>
-            </div>
-            <div class="col-md-6 div5 height-50">
-                <input class="kui-form-control round" name="inputEmail" id="inputRounded" type="email">
-            </div>
-            <div class="col-lg-12 col-md-12">
-                <div class="page page-full vertical-align text-center animation-fade">
-                    <div class="page-content vertical-align-middle">
-                        <p class="margin-bottom-20">点击下面按钮显示新手指引</p>
-                        <button class="btn btn-primary btn-outline btn-round site-tour-trigger">显示新手指引</button>
-                    </div>
+            <div class="widget" style="overflow: hidden;">
+                <div class="widget-content">
+                    <h3>286</h3>
+                    <span>线上销售</span>
+                    <div class="sparkline" id="sparkline1"></div>
                 </div>
             </div>
         </div>
@@ -65,68 +54,15 @@
 
     <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/kui.js"></script>
-
-    <script src="js/lib/intro/intro.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.sparkline/jquery.sparkline.min.js"></script>
     <script>
-        (function(win, $) {
-            'use strict';
-            var options = $["extend"](!![], {}, {
-                'skipLabel': "<i class='fa fa-close'></i>",
-                'doneLabel': "<i class='fa fa-close'></i>",
-                'nextLabel': "下一个<i class='fa fa-chevron-right'></i>",
-                'prevLabel': "<i class='fa fa-chevron-left'></i>上一个",
-                'showBullets': false,
-                'hintButtonLabel': '完成',
-                'steps': [{
-                    'element': "#div1",
-                    'position': "right",
-                    'intro': "第一步指引"
-                }, {
-                    'element': "#div2",
-                    'position': 'right',
-                    'intro': "第二步指引"
-                }, {
-                    'element': ".div3",
-                    'position': 'left',
-                    'intro': "第三步指引"
-                }, {
-                    'element': '.div4',
-                    'position': "right",
-                    'intro': "这是一个按钮"
-                }, {
-                    'element': ".div5",
-                    'position': "left",
-                    'intro': "这是一个输入框"
-                }]
-            });
-
-            $(function() {
-                var tour, of, ijs;
-                if (typeof introJs === 'undefined') {
-                    return;
-                }
-                tour = options;
-                of = $("body")['css']("overflow");
-                ijs = introJs();
-                ijs["onbeforechange"](function() {
-                    $("body")["css"]('overflow', 'hidden');
-                });
-                ijs['oncomplete'](function() {
-                    $("body")["css"]("overflow", of);
-                });
-                ijs['onexit'](function() {
-                    $("body")['css']('overflow', of);
-                });
-                ijs['setOptions'](tour);
-                $(".site-tour-trigger")['on']('click', function() {
-                    ijs["start"]();
-                });
-                if (!(win['localStorage'] && win["localStorage"]["getItem"]("startTour") && of !== !![])) {
-                    ijs["start"]();
-                    win["localStorage"]["setItem"]('startTour', !![]);
-                }
-            });
-        }(window, jQuery));
+        $("#sparkline1").sparkline([34, 43, 43, 35, 44, 32, 44, 52], {
+            type: "line",
+            width: "300",
+            height: "100",
+            lineColor: "#1ab394",
+            fillColor: "#ffffff"
+        });
     </script>
 
 </body>

@@ -5,6 +5,21 @@
 
 /*全站默认字体颜色*/
 
+html {
+    height: 100%
+}
+
+body {
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    min-height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19.2px;
+    color: #333;
+    background-color: #fff;
+}
+
 a {
     color: #333
 }
@@ -437,10 +452,6 @@ main {
 
 .tree-menu li.active>.list-toggle {
     color: #62a8ea;
-}
-
-.text-center {
-    text-align: center!important;
 }
 
 
