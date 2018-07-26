@@ -125,10 +125,10 @@ function inittab(account, version) {
         //pjax加载
         $.kui.pjaxTabs.init();
     } else {
-        var ktab = ' <a title="首页" href="iframe/home.html" target="iframe-0"><span>首页</span></a>';
+        var ktab = ' <a title="首页" href="home.html" target="iframe-0"><span>首页</span></a>';
         $("#ktab").html(ktab);
 
-        var kpage = '<iframe name="iframe-0" class="page-frame animation-fade active" src="iframe/home.html" frameborder="0"></iframe>';
+        var kpage = '<iframe name="iframe-0" class="page-frame animation-fade active" src="home.html" frameborder="0"></iframe>';
         $(".kui-main").html(kpage);
 
         $.kui.iframeTabs.init();
