@@ -1,0 +1,26 @@
+{
+    "data": [{
+        "html": "<a href='#' title='数据管理' target='_blank' data-iframe=''><i class='fa-fw'></i>数据管理</a>",
+        "open": false,
+        "children": [{
+            "html": " <a  href='report/files.html' title='数据列表' target='_blank' data-iframe=''><i class='fa-fw'></i>数据列表</a>"
+        }, {
+            "html": " <a  href='statistics.html' title='数据统计' target='_blank' data-iframe=''><i class='fa-fw'></i>数据统计</a>"
+        }, {
+            "html": " <a  href='deldata.html' title='数据删除' target='_blank' data-iframe=''><i class='fa-fw'></i>数据删除</a>"
+        }, {
+            "html": " <a  href='dconfig.html' title='参数配置' target='_blank' data-iframe=''><i class='fa-fw'></i>参数配置</a>"
+        }]
+    }, {
+        "html": "<a href='#' title='常用报表' target='_blank' data-iframe=''><i class='fa-fw'></i>常用报表</a>",
+        "open": false,
+        "children": [{
+            "html": " <a  href='alarm.html' title='报警列表' target='_blank' data-iframe=''><i class='fa-fw'></i>报警列表</a>"
+        }, {
+            "html": " <a  href='cms/crime.html' title='设备上下线列表' target='_blank' data-iframe=''><i class='fa-fw'></i>设备上下线列表</a>"
+        }, {
+            "html": " <a  href='cms/group_crime.html' title='报警统计' target='_blank' data-iframe=''><i class='fa-fw'></i>报警统计</a>"
+        }]
+    }],
+    "result": 0
+}

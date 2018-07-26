@@ -7,6 +7,34 @@
     .alert {
         margin-bottom: 22px;
     }
+    
+    .example {
+        position: relative;
+        padding: 20px;
+        margin: 0 0 15px;
+        border: 1px solid #ddd;
+        border-style: solid;
+        outline: 0;
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }
+    
+    .example>.modal {
+        display: block;
+        position: static;
+    }
+    
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        border: 0;
+    }
 </style>
 <div class="kui-header">
     <h1 class="kui-title">弹出框</h1>
@@ -236,6 +264,288 @@
     <div class="panel">
         <div class="panel-body container-fluid">
             <div class="example-wrap">
+                <h4 class="example-title">Modal弹层 <small><a href="http://getbootstrap.com/javascript/#modals">官网</a></small></h4>
+                <div class="example">
+                    <div class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                                    <h4 class="modal-title">标题</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>主题内容...</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example example-buttons">
+                        <button type="button" class="btn" data-moveable="true" data-position="fit" data-toggle="modal" data-target="#myModal">默认位置</button>
+                        <button type="button" class="btn" data-moveable="true" data-position="center" data-toggle="modal" data-target="#myModal">窗口中间</button>
+                        <button type="button" class="btn" onclick="sdqd()">手动启动modal</button>
+                        <!-- 使用data-remote属性 -->
+                        <button type="button" class="btn btn-primary" data-remote="modal.html" data-toggle="modal">Ajax对话框</button>
+                        <!-- 使用data-type 和data-url属性 -->
+                        <button type="button" class="btn btn-primary" data-type="ajax" data-url="modal.html" data-toggle="modal">Ajax对话框</button>
+                        <!-- 使用data-iframe属性 -->
+                        <button type="button" class="btn btn-primary" data-iframe="modal.html" data-toggle="modal">iframe对话框</button>
+                        <!-- 使用data-type 和data-url属性 -->
+                        <button type="button" class="btn btn-primary" data-type="iframe" data-url="modal.html" data-toggle="modal">iframe对话框</button>
+                        <button type="button" class="btn" id="sdqd">通过jquery手动启动</button>
+                        <button type="button" class="btn" onclick="sdqd2()">通过javascript手动启动</button>
+                    </div>
+                    <div class="table-responsive">
+                        <h3>Modal参数</h3>
+                        <p>
+                            <code>#myModal</code>属于静态内容,使用<code> $('#myModal').modal(option);</code>或者使用属性<code>data-toggle="modal" data-target="#myModal"</code>初始化
+                        </p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th style="width: 80px">名称</th>
+                                    <th style="width: 300px">可选值</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>name</code></td>
+                                    <td>对话框名称</td>
+                                    <td>字符串，默认为<code>'triggerModal'</code></td>
+                                    <td>此参数会指定对话框DOM的id属性和iframe的id属性和name属性。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>backdrop</code></td>
+                                    <td>背景遮罩</td>
+                                    <td><em>   <code>'static'</code>
+                          </em> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td>使用布尔值来启用或禁用背景遮罩，如果指定为<code>'static'</code>则会启动背景遮罩，但点击背景遮罩时不会触发关闭对话框的过程。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>keyboard</code></td>
+                                    <td>按键</td>
+                                    <td> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td>当为<code>ture</code>时，按下<code>esc</code>键会关闭对话框。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>show</code></td>
+                                    <td>立即显示</td>
+                                    <td> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td>是否在对话框初始化之后立即显示出来。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>position</code></td>
+                                    <td>显示位置</td>
+                                    <td>
+                                        <ul>
+                                            <li><code>'fit'</code>：最佳位置（默认）；</li>
+                                            <li><code>'center'</code>：显示在窗口中间；</li>
+                                            <li><code>'0'</code>：显示在最顶部；</li>
+                                            <li><code>'200'</code>：数字用来指定距离顶部的像素；</li>
+                                            <li>CSS支持的所有表示位置的值，用来指定距离顶部的偏移。</li>
+                                        </ul>
+                                    </td>
+                                    <td>默认位置是在窗口中部稍偏上的地方。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>moveable</code></td>
+                                    <td>可移动的</td>
+                                    <td>
+                                        <ul>
+                                            <li><code>false</code>：不启用（默认）；</li>
+                                            <li><code>true</code>：启用；</li>
+                                            <li><code>'inside'</code>：启用并限制对话框只能移动到窗口内部。</li>
+                                        </ul>
+                                    </td>
+                                    <td>是否启用对话框拖拽移动功能</td>
+                                </tr>
+                                <tr>
+                                    <td><code>rememberPos</code></td>
+                                    <td>记住移动的位置</td>
+                                    <td> <code>false</code>（默认），不记住位置；
+                                        <em>   <code>true</code>，记住位置；
+                          </em> 页面内值唯一的字符串，使用本地存储记住位置；</td>
+                                    <td>启用该选项需要同时启用 <code>moveable</code> 选项，当该值为一个在页面范围内值唯一的字符串时，通过浏览器本地存储来存储数据，关闭页面或浏览器之后也不会忘记。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>Modal触发器</h3>
+                    <p>
+                        <code>#modalTrigger</code>异步加载内容,使用<code> $('#modalTrigger').modalTrigger(option);</code>或者使用属性<code>data-toggle="modal" data-remote="modal.html" data-iframe="modal.html"</code>初始化.
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>名称</th>
+                                    <th>可选值</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>name</code></td>
+                                    <td>对话框元素名称</td>
+                                    <td>可选，默认为 <code>'triggerModal'</code></td>
+                                    <td>该名称会作为内部表示此触发器实例使用，并且会作为最终生成的 <code>.modal</code> 元素的 ID 属性</td>
+                                </tr>
+                                <tr>
+                                    <td><code>className</code></td>
+                                    <td>对话框元素类名</td>
+                                    <td>可选，默认为 <code>''</code></td>
+                                    <td>添加到最终生成的 <code>.modal</code> 元素的 CLASS 属性上</td>
+                                </tr>
+                                <tr>
+                                    <td><code>type</code></td>
+                                    <td>对话框类型</td>
+                                    <td><em>   <code>'custom'</code>（默认），自定义类型
+                          </em> <code>'iframe'</code>
+                                        <em>   <code>'ajax'</code></em></td>
+                                    <td>通常该参数和参数<code>url</code>一起使用，当指定了<code>custom</code>、<code>remote</code>和<code>iframe</code>参数时该参数可以忽略</td>
+                                </tr>
+                                <tr>
+                                    <td><code>url</code></td>
+                                    <td>远程内容地址</td>
+                                    <td>远程地址字符串</td>
+                                    <td>通常该参数和<code>type</code>一起似乎用，当指定了<code>custom</code>、<code>remote</code>和<code>iframe</code>参数时该参数可以忽略</td>
+                                </tr>
+                                <tr>
+                                    <td><code>remote</code></td>
+                                    <td>Ajax内容地址</td>
+                                    <td>远程地址字符串</td>
+                                    <td>如果使用该参数，则参数<code>type</code>和<code>url</code>可以忽略</td>
+                                </tr>
+                                <tr>
+                                    <td><code>iframe</code></td>
+                                    <td>iframe页面地址</td>
+                                    <td>远程地址字符串</td>
+                                    <td>如果使用该参数，则参数<code>type</code>和<code>url</code>可以忽略</td>
+                                </tr>
+                                <tr>
+                                    <td><code>size</code></td>
+                                    <td>对话框大小</td>
+                                    <td> <code>''</code>（默认），默认大小
+                                        <em>   <code>'lg'</code>，大对话框
+                          </em> <code>'sm'</code>，小对话框
+                                        <em>   <code>'fullscreen'</code>，全屏显示</em></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>width</code></td>
+                                    <td>对话框宽度</td>
+                                    <td> <code>null</code>（默认），默认宽度
+                                        <em>   其他表示宽度的CSS值字符串</em></td>
+                                    <td>如果使用<code>size</code>参数，则可以忽略该参数</td>
+                                </tr>
+                                <tr>
+                                    <td><code>height</code></td>
+                                    <td>对话框高度</td>
+                                    <td> <code>'auto'</code>（默认），自动根据内容调整
+                                        <em>   其他表示高度的CSS值字符串</em></td>
+                                    <td>如果指定了高度不是<code>'auto'</code>则可能出现内容与高度不匹配的情况。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>showHeader</code></td>
+                                    <td>是否显示标题</td>
+                                    <td> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>title</code></td>
+                                    <td>对话框标题文本</td>
+                                    <td>字符串</td>
+                                    <td>当参数<code>showHeader</code>为<code>false</code>则此参数无效。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>icon</code></td>
+                                    <td>对话框标题图标</td>
+                                    <td>图标名称字符串</td>
+                                    <td>当参数<code>showHeader</code>为<code>false</code>则此参数无效。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>fade</code></td>
+                                    <td>是否使用淡入淡出动画</td>
+                                    <td> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>position</code></td>
+                                    <td>对话框位置</td>
+                                    <td> <code>'fit'</code>（默认），最佳位置
+                                        <em>   <code>'center'</code>，显示在窗口中间
+                          </em> 数字，按像素计算与顶部的距离
+                                        <em>   <code>''</code>，显示在顶部
+                          </em> 标识距离的CSS字符串，具体顶部的偏移</td>
+                                    <td>最佳位置在窗口中间稍偏上的位置。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>backdrop</code></td>
+                                    <td>背景遮罩</td>
+                                    <td><em>   <code>true</code>（默认）
+                          </em> <code>false</code>
+                                        <em>   <code>'static'</code></em></td>
+                                    <td>使用布尔值来启用或禁用背景遮罩，如果指定为<code>'static'</code>则会启动背景遮罩，但点击背景遮罩时不会触发关闭对话框的过程。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>keyboard</code></td>
+                                    <td>按键</td>
+                                    <td> <code>true</code>（默认）
+                                        <em>   <code>false</code></em></td>
+                                    <td>当为<code>ture</code>时，按下<code>esc</code>键会关闭对话框。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>moveable</code></td>
+                                    <td>可移动的</td>
+                                    <td>
+                                        <ul>
+                                            <li><code>false</code>：不启用（默认）；</li>
+                                            <li><code>true</code>：启用；</li>
+                                            <li><code>'inside'</code>：启用并限制对话框只能移动到窗口内部。</li>
+                                        </ul>
+                                    </td>
+                                    <td>是否启用对话框拖拽移动功能</td>
+                                </tr>
+                                <tr>
+                                    <td><code>rememberPos</code></td>
+                                    <td>记住移动的位置</td>
+                                    <td> <code>false</code>（默认），不记住位置；
+                                        <em>   <code>true</code>，记住位置；
+                          </em> 页面内值唯一的字符串，使用本地存储记住位置；</td>
+                                    <td>启用该选项需要同时启用 <code>moveable</code> 选项，当该值为一个在页面范围内值唯一的字符串时，通过浏览器本地存储来存储数据，关闭页面或浏览器之后也不会忘记。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>waittime</code></td>
+                                    <td>加载远程内容时的最大等待时间</td>
+                                    <td>整数，代表等待的毫秒数，默认为<code>0</code></td>
+                                    <td>在指定的时间之后会直接显示对话框，不管远程内容是否加载完毕；默认值为<code>0</code>，表示一直等待直到远程内容加载完毕才显示对话框。在等待时会显示正在加载的动画。</td>
+                                </tr>
+                                <tr>
+                                    <td><code>loadingIcon</code></td>
+                                    <td>加载时显示的动画所使用的图标</td>
+                                    <td>以`fa-*`定义的图标名称请参考。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <div class="example-wrap">
                 <h4 class="example-title">Layer弹层 <small><a href="http://layer.layui.com/?alone">layer官网</a></small></h4>
                 <div class="example example-buttons">
                     <button id="layerExample0" type="button" class="btn btn-outline btn-default">默认弹出</button>
@@ -252,8 +562,50 @@
         </div>
     </div>
 </div>
+<div class="modal modal-for-page fade" id="myModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="margin-top: 84.3333px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">对话框标题</h4>
+            </div>
+            <div class="modal-body">
+                <h4>虞美人·春花秋月何时了 <small>五代·李煜</small></h4>
+                <p>春花秋月何时了？往事知多少。小楼昨夜又东风，故国不堪回首月明中。<br>雕栏玉砌应犹在，只是朱颜改。问君能有几多愁？恰似一江春水向东流</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+    function sdqd() {
+        $('#myModal').modal();
+    }
+
+    function sdqd2() {
+        var myModalTrigger = new $.kui.ModalTrigger({
+            title: '新的标题',
+            type: 'ajax', //'custom'（默认），自定义类型 'iframe' 'ajax'
+            url: 'modal.html',
+            moveable: true,
+            rememberPos: true,
+            loadingIcon: 'fa fa-load'
+        });
+        myModalTrigger.show();
+    }
     $(function() {
+        $("#sdqd").modalTrigger({
+            title: '新的标题',
+            type: 'ajax', //'custom'（默认），自定义类型 'iframe' 'ajax'
+            url: 'modal.html',
+            moveable: true,
+            rememberPos: true,
+            loadingIcon: 'fa fa-load'
+        });
+
         $("#layerExample0")["click"](function() {
             layer.alert('默认弹出');
         });
@@ -350,6 +702,11 @@
             });
 
         });
+
+
+
+
+
 
     });
 </script>

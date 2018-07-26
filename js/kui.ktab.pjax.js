@@ -3,7 +3,8 @@
  */
 (function(win, doc, $) {
     'use strict';
-    $["kui"]["kTabs"] = {
+    var tabname = 'pjaxTabs';
+    $["kui"][tabname] = {
         '$instance': $(".kui-tree-menu"),
         'storageKey': "kui.pjax.kTabs",
         'relative': 0,
@@ -124,9 +125,9 @@
         'resize': function() {
             var sContabs = $(".kui-ktabs"),
                 cTabs = sContabs["find"]("ul.con-tabs");
-            $["kui"]['kTabs']['throttle'](function() {
-                $["kui"]['kTabs']["view"] = sContabs["find"](".contabs-scroll")["width"]();
-                $["kui"]["kTabs"]["labelEvent"](cTabs, 'media');
+            $["kui"][tabname]['throttle'](function() {
+                $["kui"][tabname]["view"] = sContabs["find"](".contabs-scroll")["width"]();
+                $["kui"][tabname]["labelEvent"](cTabs, 'media');
             }, 200)();
         },
         'enable': function(e) {
