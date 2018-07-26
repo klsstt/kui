@@ -4,8 +4,8 @@
 (function(win, doc, $) {
     'use strict';
 
-
-    $["kui"]["kTabs"] = {
+    var tabname = 'iframeTabs';
+    $["kui"][tabname] = {
         '$instance': $(".kui-tree-menu"),
         '$content': $(".kui-main"),
         'storageKey': "kui.iframe.kTabs",
@@ -188,7 +188,7 @@
             $['kui']['store']["set"](this["storageKey"], skey, this['tabTimeout']);
         },
         'resize': function() {
-            var ctabs = $["kui"]["kTabs"],
+            var ctabs = $["kui"][tabname],
                 sc = $(".kui-ktabs"),
                 ct = sc["find"]("ul.con-tabs");
             ctabs["_throttle"](function() {

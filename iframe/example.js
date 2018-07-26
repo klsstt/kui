@@ -1,15 +1,6 @@
 $(function() {
     $("#div_about").hide();
-    var account, version;
-    if (!$.kui.store.enable) {
-        account = $.trim($.kui.util.getUrlParam("account"));
-        version = $.trim($.kui.util.getUrlParam("version"));
-    } else {
-        account = $.trim($.kui.store.get("account"));
-        version = $.trim($.kui.store.get("version"));
-    }
-
-    version = !version ? 'iframe' : version;
+    var account = $.trim($.kui.util.getUrlParam("account"));
     $.ajax({
         url: '../data/top_menu.json?t=' + new Date().getTime(),
         success: function(obj) {
@@ -34,7 +25,7 @@ $(function() {
                     $.kui.kjax.atemplate('header', 'header', '../header.html', header_data, '#data');
                     //获取首页菜单
                     $.ajax({
-                        url: '../data/menu_' + version + '_' + obj.pid + '.json?t=' + new Date().getTime(),
+                        url: '../data/menu_iframe_' + obj.pid + '.json?t=' + new Date().getTime(),
                         success: function(obj) {
                             if (obj.result == 0) {
                                 var option = { animate: true, data: obj.data };
@@ -54,7 +45,6 @@ $(function() {
                                     $('#kui-tree-menu li.active').removeClass('active');
                                     $(this).closest('li').addClass('active');
                                 });
-                                inittab(account, version);
                             } else if (obj.result == 18) {
                                 window.location.href = "login.html";
                             }
@@ -75,19 +65,14 @@ $(function() {
             console.log(errorThrown);
         }
     });
-
-
-
-
 });
 
 function menu(pid, e) {
-    var version = $.trim($.kui.util.getUrlParam("version"));
     if (null != pid) {
         $('.navbar-left li').removeClass('active');
         $(e).parent().addClass('active');
         $.ajax({
-            url: '../data/menu_' + version + '_' + pid + '.json?t=' + new Date().getTime(),
+            url: '../data/menu_iframe_' + pid + '.json?t=' + new Date().getTime(),
             success: function(obj) {
                 if (obj.result == 0) {
                     var menu = $('#kui-tree-menu').data('kui.tree');
@@ -102,36 +87,6 @@ function menu(pid, e) {
                 console.log(errorThrown);
             }
         });
-    }
-}
-
-function inittab(account, version) {
-    if (version == "pjax") {
-        //初始化pjax
-        $('a[data-pjax]').pjax(null, null, {
-            changeAddress: true
-        });
-
-        $(document).on('pjax:send', function() {
-            //在pjax发送请求时，显示loading动画层
-            layer.load(1, {
-                shade: 0.5 //0.1透明度的白色背景
-            });
-        });
-        $(document).on('pjax:end', function() {
-            //在pjax发送请求时，显示loading动画层
-            layer.closeAll();
-        });
-        //pjax加载
-        $.kui.pjaxTabs.init();
-    } else {
-        var ktab = ' <a title="首页" href="iframe/home.html" target="iframe-0"><span>首页</span></a>';
-        $("#ktab").html(ktab);
-
-        var kpage = '<iframe name="iframe-0" class="page-frame animation-fade active" src="iframe/home.html" frameborder="0"></iframe>';
-        $(".kui-main").html(kpage);
-
-        $.kui.iframeTabs.init();
     }
 }
 

@@ -1,3 +1,33 @@
+html {
+    height: 100%
+}
+
+body {
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    min-height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19.2px;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-top: 61px;
+}
+
+.kui-main .page-frame {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: calc(-140px + 100vh);
+    overflow-x: hidden;
+}
+
+.kui-main .page-frame.active {
+    display: block;
+}
+
 .navbar .logoimg {
     height: 31px;
     line-height: 61px;

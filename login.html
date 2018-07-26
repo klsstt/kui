@@ -7,27 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录页面</title>
     <link rel="stylesheet" href="css/kui.css">
-    <link rel="stylesheet" href="css/lib/font-awesome-4.7/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
     <link rel="stylesheet" href="example/example.css">
-    <!--[if IE]>
-<script src="js/html5.js"></script>
-<![endif]-->
+
     <style>
-        .login:before {
-            background-image: url(../images/lockscreen.jpg)
-        }
-        
         .login {
             background: 0 0
         }
         
-        .login .avatar {
-            margin-bottom: 15px
-        }
-        
         .login .avatar.avatar-lg {
-            width: 160px;
+            width: 210px;
             height: 160px
         }
         
@@ -41,27 +31,9 @@
             margin: 22px auto
         }
         
-        .content {
-            padding: 20px 20px;
-        }
-        
-        .login .avatar.avatar-lg {
-            width: 160px;
-            height: 160px;
-        }
-        
-        .login .avatar {
-            margin-bottom: 15px;
-        }
-        
         .login .wecome {
             margin-bottom: 35px;
             color: #fff;
-        }
-        
-        .login form {
-            width: 300px;
-            margin: 22px auto;
         }
         
         .login-dark.layout-full::before {
@@ -78,7 +50,11 @@
         }
         
         .login::before {
-            background-image: url("images/photos/cropper.jpg");
+            background-image: url("images/photos/city-6.jpg");
+        }
+        
+        .login .avatar {
+            margin-bottom: 15px
         }
         
         .avatar {
@@ -88,6 +64,11 @@
             white-space: nowrap;
             vertical-align: bottom;
             border-radius: 1000px;
+        }
+        
+        .content {
+            margin: 8% auto 0;
+            padding: 20px 20px;
         }
         
         form {
@@ -102,37 +83,44 @@
     <div class="animation-fade v-align text-center animsition-fade height-full">
         <div class="content v-align-middle">
             <div class="avatar avatar-lg">
-                <img src="kui-logo.png">
+                <img src="images/kui-white.png">
             </div>
             <h4 class="wecome">欢迎登录</h4>
             <form action="/" role="form">
+                <div class="kui-form-group">
+                    <select class="kui-form-control" id="type" placeholder="请选择版本">
+                    <option value="">请选择版本</option>
+                    <option value="pjax">PJAX</option>
+                    <option value="iframe">IFRAME</option>
+                </select>
+                </div>
                 <input type="text" class="kui-form-control" name="account" id="k_account" placeholder="请输入账户登录">
                 <input type="password" class="kui-form-control  mt-10" name="password" id="k_password" placeholder="请输入您的密码登录">
                 <button id="btn_login" type="button" class="btn btn-primary btn-block mt-30" onclick="login()">登 录</button>
             </form>
         </div>
     </div>
-    <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="lib/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/kui.js"></script>
     <script>
         $(function() {
             if (!$.kui.store.enable) { //浏览器不支持本地存储
-                alert('浏览器不支持本地存储');
+                console.log('浏览器不支持本地存储');
             }
-
-
         });
-
-
 
         function login() {
             var account = $("#k_account").val();
+            var type = $("#type").val();
             if ($.trim(account).length > 0) {
                 $.kui.store.set("account", account);
-                $.kui.store.set("name", "康博磊");
-                window.location.href = "index.html";
+                $.kui.store.set("version", type);
+                window.location.href = 'index.html';
             }
 
         }
     </script>
+</body>cript>
+</body> }
+</script>
 </body>

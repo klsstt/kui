@@ -20,10 +20,10 @@
     <title>kui</title>
     <meta name="keywords" content="k+网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
     <meta name="description" content="k+，是一款轻量级扁平化网站后台模。">
-    <link rel="stylesheet" href="css/kui.css">
-    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
-    <link rel="stylesheet" href="skin/default/skin.css">
-    <link rel="stylesheet" href="example/example.css">
+    <link rel="stylesheet" href="../css/kui.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7/font-awesome.min.css">
+    <link rel="stylesheet" href="../skin/default/skin.css">
+    <link rel="stylesheet" href="../example/example.css">
 
 </head>
 
@@ -47,8 +47,8 @@
             </button>
             <div class="contabs-scroll pull-left">
                 <ul class="nav con-tabs">
-                    <li class="active" id="ktab">
-                        <a data-pjax=".kui-page" data-index="true" data-fragment=".kui-page" href="/index.html" rel="contents">
+                    <li class="active">
+                        <a data-pjax=".kui-page" data-index="true" data-fragment=".kui-page" href="/pjax/index.html" rel="contents">
                             <span>首页</span>
                         </a>
                     </li>
@@ -93,12 +93,12 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="row">
-                                        <div class="col-lg-2 col-md-2">
+                                        <div class="col-lg-2">
                                             <a href="javascript:;">
                                                 <img class="media-object" src="../images/logo.png" alt="...">
                                             </a>
                                         </div>
-                                        <div class="col-lg-10 col-md-10">
+                                        <div class="col-lg-10">
                                             <ul class="list-group list-group-full">
                                                 <li class="list-group-item">KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。
                                                 </li>
@@ -113,10 +113,12 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
+
         <nav class="kui-hover">
             <div class="kui-hover-nav bounceInUp animated">
                 <label for="" class="kui-hover-menu" title="按住拖动">操作</label>
@@ -164,20 +166,38 @@
 
     </div>
 
-    <script src="lib/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/kui.js"></script>
-    <script src="js/kui.ktab.iframe.js"></script>
-    <script src="js/kui.ktab.pjax.js"></script>
+    <script src="../lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../js/kui.js"></script>
+    <script src="../js/kui.ktab.pjax.js"></script>
 
-    <script src="lib/art-template/template-web.js"></script>
-    <script src="lib/layer/2.4/layer.js"></script>
-    <script src="lib/layer.date/laydate.js"></script>
-    <script src="example/example.js"></script>
+    <script src="../lib/art-template/template-web.js"></script>
+    <script src="../lib/layer/2.4/layer.js"></script>
+    <script src="../lib/layer.date/laydate.js"></script>
+    <script src="example.js"></script>
 
 
     <div id="data"></div>
     <!--/_header 作为公共模版分离出去-->
     <!--/请在上方写此页面业务相关的脚本-->
 </body>
+<script>
+    //初始化pjax
+    $('a[data-pjax]').pjax(null, null, {
+        changeAddress: true
+    });
+
+    $(document).on('pjax:send', function() {
+        //在pjax发送请求时，显示loading动画层
+        layer.load(1, {
+            shade: 0.5 //0.1透明度的白色背景
+        });
+    });
+    $(document).on('pjax:end', function() {
+        //在pjax发送请求时，显示loading动画层
+        layer.closeAll();
+    });
+    //pjax加载
+    $.kui.kTabs.init();
+</script>
 
 </html>
