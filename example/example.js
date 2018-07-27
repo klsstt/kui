@@ -132,6 +132,10 @@ function inittab(account, version) {
         $(".kui-main").html(kpage);
 
         $.kui.iframeTabs.init();
+        $('body').css({
+            "overflow-x": "hidden",
+            　　"overflow-y": "hidden"
+        });
     }
 }
 
@@ -142,4 +146,17 @@ function about() {
         area: ['820px', '340px'], //宽高
         content: $("#div_about").html()
     });
+}
+
+function skin(e) {
+    console.log($(e).attr('data-val'));
+    var dv = $(e).attr('data-val');
+    if (dv) {
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        link.href = 'skin/' + dv + '/skin.css';
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        head.appendChild(link);
+    }
 }
