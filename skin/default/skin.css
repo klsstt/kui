@@ -207,7 +207,6 @@ main {
     position: relative;
     top: 0px;
     min-height: 100vh;
-    overflow: visible;
     display: block;
     opacity: 1!important;
     -webkit-transform: none!important;

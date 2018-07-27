@@ -17102,7 +17102,7 @@ table th[class*=col-] {
 
 .fixed-table-container thead th .th-inner,
 .fixed-table-container tbody td .th-inner {
-    padding: 8px;
+    padding: 0px;
     line-height: 24px;
     vertical-align: top;
     overflow: hidden;
@@ -17286,6 +17286,13 @@ table th[class*=col-] {
 
 .fixed-table-body thead th .th-inner {
     box-sizing: border-box;
+}
+
+.fixed-table-body thead th .th-inner .radio-custom,
+.fixed-table-body thead th .th-inner .checkbox-custom {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
 }
 
 .table th,

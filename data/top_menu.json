@@ -3,18 +3,18 @@
         "title": "首页",
         "url": "",
         "icon": "fa fa-home",
-        "active": "active",
-        "id": "1"
+        "id": "0"
     }, {
         "title": "KUI",
         "url": "",
         "icon": "fa fa-desktop",
-        "id": "2"
+        "active": "active",
+        "id": "1"
     }, {
         "title": "案例展示",
         "url": "",
         "icon": "fa fa-chain-broken",
-        "id": "3"
+        "id": "2"
     }],
     "result": 0,
     "pid": "1"
