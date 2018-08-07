@@ -1,0 +1,132 @@
+<style>
+    .map-toolbar {
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    label {
+        max-width: none;
+    }
+</style>
+<div class="kui-header">
+    <h1 class="kui-title">地图工具</h1>
+    <div class="kui-header-actions">
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+          </button>
+        <button type="button" class="btn btn-icon btn-inverse btn-round">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+          </button>
+    </div>
+</div>
+<div class="kui-content">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">百度地图</h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="map-toolbar">
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="addMarker()"><i class="fa fa-plus"></i>添加标志</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="updateMarker()"><i class="fa fa-pencil"></i>改变标志位置</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="openHeatmap(this)">显示热力图</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="polyline()">折线</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="polygon()">多边形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="rectangle()">矩形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="circle()">圆形</button>
+                        <div class="columns columns-right btn-group float-right">
+                            <button class="btn btn-secondary btn-outline" type="button" onclick="findMarker()" title="定位"><i class="fa fa-search"></i>定位</button>
+                            <button class="btn btn-secondary btn-outline" type="button" onclick="deleteById()" title="删除"><i class="fa fa-refresh"></i>删除</button>
+                            <button class="btn btn-secondary btn-outline" type="button" onclick="clearMarker()" title="清空"><i class="fa fa-refresh"></i>清空</button>
+                        </div>
+                        <div class="float-right search"><input class="kui-form-control input-outline" id="mid" type="text" placeholder="请输入标志ID"></div>
+                    </div>
+                    <div id="map" data-type="baidu" data-key="tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF" data-lng="116.404" data-lat="39.915" data-zoom="11" data-width="100%" data-height="500px" data-clusterer="false" data-heat="true"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/kui.js"></script>
+<script src="js/kui.map.js"></script>
+
+<script type=text/javascript>
+    var index = 0;
+
+    function addMarker() {
+        var marker = {
+            id: "KUI" + index,
+            name: "标志" + index + '号',
+            lng: 113 + Math.random(),
+            lat: 22 + Math.random(),
+            zoom: 11,
+            icon: {
+                url: "images/logo_32x32.png",
+                width: 30,
+                height: 30
+            },
+        }
+        $.kui.kmap.insertMarker(marker);
+        index++;
+    }
+
+    function updateMarker() {
+        for (var i = 0; i < index; i++) {
+            var marker = {
+                id: "KUI" + i,
+                lng: 113 + Math.random(),
+                lat: 22 + Math.random(),
+            }
+            try {
+                $.kui.kmap.updateMarker(marker);
+            } catch {
+                console.log("id 没有找到对应的标志，请先添加标志");
+            }
+        }
+    }
+
+    function findMarker() {
+        var id = "KUI" + $("#mid").val();
+        try {
+            $.kui.kmap.toMarker(id, 11);
+        } catch {
+            console.log("id 没有找到对应的标志，请先添加标志");
+        }
+
+    }
+
+    function deleteById() {
+        var id = "KUI" + $("#mid").val();
+        $.kui.kmap.romoveById(id);
+    }
+
+    function clearMarker() {
+        $.kui.kmap.empty();
+    }
+
+    function openHeatmap(e) {
+        var on = $(e).text();
+        if (on == '显示热力图') {
+            $.kui.kmap.openHeat();
+            clearMarker();
+            $(e).text('关闭热力图');
+        } else {
+            $(e).text('显示热力图');
+            $.kui.kmap.closeHeat();
+        }
+    }
+
+    function polygon() {
+        $.kui.kmap.openDrawingMode(3);
+    }
+    $(function() {
+        $.kui.kmap.init("map");
+    });
+</script>
