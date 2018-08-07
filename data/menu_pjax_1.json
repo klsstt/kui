@@ -103,6 +103,8 @@
                 "html": "<a  data-pjax  href=\"/template/kui_page_nestable.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 列表拖动</a>"
             }, {
                 "html": "<a  data-pjax  href=\"/template/kui_page_tour.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 新手指引</a>"
+            }, {
+                "html": "<a  data-pjax  href=\"/template/kui_page_map.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 地图</a>"
             }
 
         ]

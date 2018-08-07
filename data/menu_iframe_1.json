@@ -97,6 +97,8 @@
                 "html": "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_nestable.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 列表拖动</a>"
             }, {
                 "html": "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_tour.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 新手指引</a>"
+            }, {
+                "html": "<a  data-iframe  href=\"../iframe.html?url=/template/kui_page_map.html\" target=\"_blank\"><i class=\"fa fa-image fa-fw\"></i> 地图</a>"
             }]
         }, {
             "html": "<a href=\"#\"><i class=\"fa fa-cubes fa-fw\"></i> 组合展示</a>",
