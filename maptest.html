@@ -84,6 +84,12 @@
                                 <button class="btn btn-secondary btn-outline" type="button" onclick="clearMarker()" title="清空"><i class="fa fa-refresh"></i>清空</button>
                             </div>
                             <div class="float-right search"><input class="kui-form-control input-outline" id="mid" type="text" placeholder="请输入标志ID"></div>
+                            <div class="float-right search">
+                                <select class="kui-form-control input-outline" onchange='changeMap(this)'>
+                                    <option value="baidu">百度地图</option>
+                                    <option value="google_zh">谷歌地图(中国大陆)</option>
+                                </select>
+                            </div>
                         </div>
                         <div id="map" data-type="baidu" data-key="tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF" data-lng="116.404" data-lat="39.915" data-zoom="11" data-width="100%" data-height="500px" data-clusterer="false" data-heat="true"></div>
                     </div>
@@ -102,9 +108,10 @@
     var index = 0;
 
     function addMarker() {
+        var text = '市值从3000亿到2万22222222222222222222222222222222222222222222222222222222222222222222222222222222亿，马化腾说腾讯将成为“大家的新生态”';
         var marker = {
             id: "KUI" + index,
-            name: "标志" + index + '号',
+            title: "标志" + index + '号',
             lng: 113 + Math.random(),
             lat: 22 + Math.random(),
             zoom: 11,
@@ -116,6 +123,7 @@
                 width: 30,
                 height: 30
             },
+            text: text
         }
         $.kui.kmap.insertMarker(marker);
         index++;
@@ -127,10 +135,11 @@
                 id: "KUI" + i,
                 lng: 113 + Math.random(),
                 lat: 22 + Math.random(),
+                text: '我是随机数' + Math.random()
             }
             try {
                 $.kui.kmap.updateMarker(marker);
-            } catch {
+            } catch (err) {
                 console.log("id 没有找到对应的标志，请先添加标志");
             }
         }
@@ -140,7 +149,7 @@
         var id = "KUI" + $("#mid").val();
         try {
             $.kui.kmap.toMarker(id, 11);
-        } catch {
+        } catch (err) {
             console.log("id 没有找到对应的标志，请先添加标志");
         }
 
@@ -195,10 +204,42 @@
             console.log("圆形半径：" + obj.radius);
         });
     }
+
+    function changeMap(e) {
+        $.kui.kmap.init(mapKey.get("option"), mapKey.get($(e).val()), $(e).val());
+    }
+
+
+
+
+    var mapKey = new Hashtable();
     $(function() {
-        $.kui.kmap.init("map");
+        var option = {
+            id: "map",
+            lng: "116.404",
+            lat: "39.915",
+            zoom: 11,
+            width: "100%",
+            height: "500px",
+            popup: false,
+            clusterer: false,
+            heat: true
+        };
+        var type = ["baidu", "google_zh"];
+        var key = ["tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF", "AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0"];
+        $.kui.kmap.init(option, key[0], type[0]);
+
+
+        mapKey.put("baidu", "tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF");
+        mapKey.put("google_zh", "AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0");
+        mapKey.put("option", option);
+
+
+
     });
 </script>
 
+
+</html>
 
 </html>

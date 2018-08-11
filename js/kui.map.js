@@ -516,7 +516,7 @@ var Hashtable = (function(UNDEFINED) {
                 if (isNaN(m) || isNaN(q)) {
                     return
                 }
-                return this._map.pixelToPoint(new BMap.Pixel(m, q))
+                return $.kui.kmap.pixelToPoint({ x: m, y: q });
             },
             hide: function() {
                 if (!this._map) {
@@ -550,32 +550,40 @@ var Hashtable = (function(UNDEFINED) {
             height: '100%',
             lng: 116.404,
             lat: 39.915,
+            popup: false,
             clusterer: false,
+            heat: false,
             zoom: 11
         },
         map: null,
-        init: function(option) {
+        iframe: null,
+        window_: null,
+        init: function(option, key, type) {
             var _this = this;
             this.urls.put('baidu', 'http://api.map.baidu.com/getscript?v=2.0&ak={key}');
             this.urls.put('baidu_clusterer', 'http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js');
             this.urls.put('google', 'http://maps.google.cn/maps/api/js?v=3&key={key}&libraries=places');
             this.urls.put('google_zh', 'http://ditu.google.cn/maps/api/js?v=3&key={key}&libraries=places');
-            if (typeof option == Object && option instanceof Object) {
+            if (typeof option == "object") {
                 //处理对象数据
                 _this.option = option;
-                this.url = this.urlBt(option.key, this.urls.get(option.type));
-                this.loadJs(_this.option.url)
+                _this.option.key = typeof key == "string" ? key : _this.option.key;
+                _this.option.type = typeof type == "string" ? type : _this.option.type;
+                _this.option.url = this.urlBt(option.key, this.urls.get(option.type));
+                this.loadJs(_this)
             } else if (typeof option == "string") {
                 //处理标签属性转换对象
                 var mapobj = $("#" + option);
                 _this.option = $["extend"](!![], {}, _this.option, mapobj['data']());
+                _this.option.key = typeof key == "string" ? key : _this.option.key;
+                _this.option.type = typeof type == "string" ? type : _this.option.type;
                 _this.option.id = option;
                 _this.option.url = this.urlBt(_this.option.key, this.urls.get(_this.option.type));
-                console.log(_this.option);
                 this.loadJs(_this);
             } else {
                 console.log("无效参数");
             }
+
         },
         urlBt: function(key, url) {
             var begin = url.indexOf('{'),
@@ -585,30 +593,38 @@ var Hashtable = (function(UNDEFINED) {
             }
             return url;
         },
-        initBMap: function(option) {
-            // 百度地图API功能
-            var map = new BMap.Map(option.id); // 创建Map实例
-            map.centerAndZoom(new BMap.Point(option.lng, option.lat), option.zoom); // 初始化地图,设置中心点坐标和地图级别
-            map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
-            console.log("已完百度地图初始化");
-            //初始化标志物对象begin
-            //自定义覆盖物拓展 定义kui map标志物
-            $.kui.kmap.marker.prototype = new BMap.Overlay();
-            $.kui.kmap.marker.IS_BAIDU_MAP = typeof BMap !== 'undefined';
-            if ($.kui.kmap.marker.IS_BAIDU_MAP) {
+        initMap: function(option) {
+            var map = null;
+            //初始化地图
+            if ("google_zh" == option.type || "google" == option.type) {
+                var mapobj = google.maps;
+                var googleOption = {
+                    zoom: option.zoom,
+                    scaleControl: true,
+                    panControl: true,
+                    center: new mapobj.LatLng(option.lat, option.lng),
+                    mapTypeId: mapobj.MapTypeId.ROADMAP,
+                    mapTypeControlOptions: { mapTypeIds: [mapobj.MapTypeId.ROADMAP, mapobj.MapTypeId.SATELLITE, 'OSM'] }
+                }
+                map = new mapobj.Map(document.getElementById(option.id), googleOption); // 创建Map实例
+                $.kui.kmap.overlay = new mapobj.OverlayView(); //谷歌自定义视图
+                $.kui.kmap.overlay.draw = function() {};
+                $.kui.kmap.overlay.setMap(map);
+                console.log("已完谷歌地图初始化");
+                //拓展 自定义覆盖物
+                $.kui.kmap.marker.prototype = new mapobj.OverlayView();
+            }
+
+            if ("baidu" == option.type) {
+                //自定义覆盖物拓展 定义kui map标志物
+                $.kui.kmap.marker.prototype = new BMap.Overlay();
+                // 百度地图API功能
+                map = new BMap.Map(option.id); // 创建Map实例
+                map.centerAndZoom(new BMap.Point(option.lng, option.lat), option.zoom); // 初始化地图,设置中心点坐标和地图级别
+                map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+                console.log("已完百度地图初始化");
                 $.kui.kmap.marker.prototype.initialize = function(map) {
-                    var div = document.createElement("div");
-                    div.id = Math.random().toString().replace('.', '');
-                    div.className = "kmarker";
-                    div.style.borderStyle = "none";
-                    div.style.borderWidth = "0px";
-                    div.style.position = "absolute";
-                    div.style.cursor = "pointer";
-                    div.innerHTML = this.getHtml();
-                    this.div_ = div;
-                    var panes = this.map_.getPanes();
-                    panes.floatShadow.appendChild(div);
-                    return div;
+                    return $.kui.kmap.marker.prototype.onAdd(this);
                 };
                 $.kui.kmap.marker.prototype.setMap = function(nativeMap) {
                     if (nativeMap == null)
@@ -617,31 +633,77 @@ var Hashtable = (function(UNDEFINED) {
                         nativeMap.addOverlay(this);
                     }
                 };
-            } else {
-                $.kui.kmap.marker.prototype.onAdd = function() {
-                    // 创建一个div，其中包含了当前文字
-                    var div = document.createElement("div");
-                    div.id = Math.random().toString().replace('.', '');
-                    div.className = "kmarker";
-                    div.style.borderStyle = "none";
-                    div.style.borderWidth = "0px";
-                    div.style.position = "absolute";
-                    div.innerHTML = this.getHtml();
-                    this.div_ = div;
-                    var panes = this.getPanes();
-                    panes.overlayImage.appendChild(div);
-
-                };
             }
+            //添加自定义标志物层
+            $.kui.kmap.marker.prototype.onAdd = function(e) {
+                var e = e != null ? e : this;
+                var div = document.createElement("div");
+                div.id = Math.random().toString().replace('.', '');
+                div.className = "kmarker";
+                div.style.borderStyle = "none";
+                div.style.borderWidth = "0px";
+                div.style.position = "absolute";
+                div.style.cursor = "pointer";
+                div.innerHTML = e.getMarker();
+                e.div_ = div;
+                e.appendChildMap(e, div);
+                //创建信息弹窗
+                if (e.text_) {
+                    var popup = document.createElement("div");
+                    popup.style.position = "absolute";
+                    popup.style.minWidth = "150px";
+                    if ($.kui.kmap.option.popup) { //是否默认显示弹窗
+                        popup.style.display = "black";
+                    } else {
+                        popup.style.display = "none";
+                    }
+                    var html = '<div class="panel">' +
+                        '<div class="panel-heading">' +
+                        '<h3 class="panel-title">' + e.title_ + '</h3>' +
+                        '<div class="panel-actions">' +
+                        '<a class="panel-action fa fa-close" data-toggle="panel-close" aria-hidden="true"></a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="panel-body">' +
+                        '<p>' + e.text_ + '</p>' +
+                        '</div>' +
+                        '</div>';
+                    div.parentNode.append(popup);
+                    popup.innerHTML = html;
+                    e.popup_ = popup;
+                    $(document).on("click", "[data-toggle=panel-close]", function() {
+                        var panel = $(this)['closest'](".panel").parent();
+                        $(panel).hide();
+                    });
 
+                } else if (e.html_) {
+                    var popup = document.createElement("div");
+                    popup.className = "kmarker-popup";
+                    popup.style.position = "absolute";
+                    popup.style.backgroundColor = "#fff";
+                    popup.style.minWidth = "150px";
+                    if ($.kui.kmap.option.popup) { //是否默认显示弹窗
+                        popup.style.display = "black";
+                    } else {
+                        popup.style.display = "none";
+                    }
+                    div.parentNode.append(popup);
+                    popup.innerHTML = e.html_;
+                    e.popup_ = popup;
+                }
+                return div;
+            };
+            //移动自定义标志物层
             $.kui.kmap.marker.prototype.draw = function() {
                 //var overlayProjection = this.getProjection();
                 //var center = overlayProjection.fromLatLngToDivPixel(this.point_);
                 // 利用projection获得当前视图的坐标
                 var _this = this;
-                var center = this.map_.pointToOverlayPixel(this.point_);
+                var center = $.kui.kmap.pointToPixel(this.point_);
                 // 为简单，长宽是固定的，实际应该根据文字改变
-                var div = this.div_;
+                var div = this.div_,
+                    marker_width = null,
+                    popup = this.popup_; //marker 弹窗信息
                 if (null != div) {
                     if (this.icon_ != null) {
                         div.style.left = center.x - 10 + "px";
@@ -653,22 +715,41 @@ var Hashtable = (function(UNDEFINED) {
                     if (this.icon_) {
                         width = this.icon_.width;
                     }
-                    var text_width = this.text_.length * 20 + width; //每个字20px 加上图标宽度
-                    div.style.width = text_width + "px";
+                    marker_width = this.title_.length * 20 + width; //每个字20px 加上图标宽度
+                    div.style.width = marker_width + "px";
                     //div.style.height = "10px";
-                    div.onclick = function() {
+                    div.onclick = function(e) {
                         console.log(div.id);
                         if (typeof _this.click_ == "function") {
-                            _this.click_(_this.point_);
+                            _this.click_({ point: _this.point_, id: div.id });
+                        }
+                        if (popup) {
+                            $(popup).show();
+                            var center = $.kui.kmap.pointToPixel(_this.point_);
+                            var x = marker_width / 2;
+                            this.offsetHeight_ = popup.offsetHeight == 0 ? this.offsetHeight_ : popup.offsetHeight;
+                            var y = this.offsetHeight_ + 10;
+                            popup.style.left = center.x + x + "px";
+                            popup.style.top = center.y - y + "px";
                         }
 
                     };
                 }
+                if (null != popup) {
+                    var x = marker_width / 2;
+                    this.offsetHeight_ = popup.offsetHeight == 0 ? this.offsetHeight_ : popup.offsetHeight;
+                    var y = this.offsetHeight_ + 10;
+                    popup.style.left = center.x + x + "px";
+                    popup.style.top = center.y - y + "px";
+                }
 
             };
+            //删除自定义标志物层
             $.kui.kmap.marker.prototype.onRemove = function() {
+                this.div_.parentNode.removeChild(this.popup_);
                 this.div_.parentNode.removeChild(this.div_);
                 this.div_ = null;
+                this.popup_ = null;
             };
 
             $.kui.kmap.marker.prototype.update = function(obj) {
@@ -678,8 +759,8 @@ var Hashtable = (function(UNDEFINED) {
                 if ((typeof obj.icon) != "undefined") {
                     this.setIcon(obj.icon);
                 }
-                if ((typeof obj.text) != "undefined") {
-                    this.setName(obj.text);
+                if ((typeof obj.title) != "undefined") {
+                    this.setTitle(obj.title);
                 }
             };
 
@@ -688,9 +769,25 @@ var Hashtable = (function(UNDEFINED) {
                     this.point_ = position;
                     if (this.div_) {
                         //var center = this.getProjection().fromLatLngToDivPixel(position);
-                        var center = this.map_.pointToOverlayPixel(position);
-                        this.div_.style.left = center.x + 16 + "px";
-                        this.div_.style.top = center.y - 8 + "px";
+                        var center = $.kui.kmap.pointToPixel(position);
+                        if (this.icon_ != null) {
+                            this.div_.style.left = center.x - 10 + "px";
+                        } else {
+                            this.div_.style.left = center.x + 28 + "px";
+                        }
+                        this.div_.style.top = center.y - 7 + "px";
+                        /*  this.div_.style.left = center.x + 16 + "px";
+                         this.div_.style.top = center.y - 8 + "px"; */
+                    }
+                    if (this.popup_) {
+                        //var center = this.getProjection().fromLatLngToDivPixel(position);
+                        var center = $.kui.kmap.pointToPixel(position);
+                        var marker_width = this.div_.offsetWidth;
+                        this.offsetHeight_ = this.popup_.offsetHeight == 0 ? this.offsetHeight_ : this.popup_.offsetHeight;
+                        var x = marker_width / 2;
+                        var y = this.offsetHeight_ + 10;
+                        this.popup_.style.left = center.x + x + "px";
+                        this.popup_.style.top = center.y - y + "px";
                     }
                 }
             };
@@ -713,17 +810,47 @@ var Hashtable = (function(UNDEFINED) {
                     this.click_ = cb;
                 }
             };
-            $.kui.kmap.marker.prototype.setPopup = function(html) {
-                if (this.popup_ != html) {
-                    this.popup_ = html;
-                    this.flash();
+
+            $.kui.kmap.marker.prototype.getText = function() {
+                return this.text_;
+            };
+
+            $.kui.kmap.marker.prototype.setText = function(text) {
+                if (text != this.text_) {
+                    this.text_ = text;
+                    if (this.popup_) {
+                        var html = '<div class="panel">' +
+                            '<div class="panel-heading">' +
+                            '<h3 class="panel-title">' + this.title_ + '</h3>' +
+                            '<div class="panel-actions">' +
+                            '<a class="panel-action fa fa-close" data-toggle="panel-close" aria-hidden="true"></a>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="panel-body">' +
+                            '<p>' + this.text_ + '</p>' +
+                            '</div>' +
+                            '</div>';
+                        this.popup_.innerHTML = html;
+                    }
                 }
             };
 
-            $.kui.kmap.marker.prototype.setName = function(text) {
-                if (this.text_ != text) {
-                    this.text_ = text;
+            $.kui.kmap.marker.prototype.getHtml = function() {
+                return this.html_;
+            }
 
+            $.kui.kmap.marker.prototype.setHtml = function(html) {
+                if (this.html_ != html) {
+                    this.html_ = html;
+                    if (this.popup_) {
+                        this.popup_.innerHTML = this.html_;
+                    }
+                }
+            };
+
+            $.kui.kmap.marker.prototype.setTitle = function(title) {
+                if (this.title_ != title) {
+                    this.title_ = title;
                     this.flash();
                 }
             };
@@ -732,7 +859,7 @@ var Hashtable = (function(UNDEFINED) {
                 return this.map_;
             };
 
-            $.kui.kmap.marker.prototype.getHtml = function() {
+            $.kui.kmap.marker.prototype.getMarker = function() {
                 if (this.icon_ != null) {
                     if (!this.icon_.width) {
                         this.icon_.width = '32';
@@ -740,50 +867,52 @@ var Hashtable = (function(UNDEFINED) {
                     if (!this.icon_.height) {
                         this.icon_.height = '32';
                     }
-                    return "<img style='width:" + this.icon_.width + "px;height:" + this.icon_.height + "px;' src='" + this.icon_.url + "'/><span>" + this.text_ + "</span>";
+                    return "<img style='width:" + this.icon_.width + "px;height:" + this.icon_.height + "px;' src='" + this.icon_.url + "'/><span>" + this.title_ + "</span>";
                 } else {
-                    return "<span >" + this.text_ + "</span>";
+                    return "<span >" + this.title_ + "</span>";
                 }
-            }
+            };
 
             $.kui.kmap.marker.prototype.flash = function() {
-                this.div_.innerHTML = this.getHtml(); //初始化标志物对象end
-            }
-
+                if (this.div_) {
+                    this.div_.innerHTML = this.getMarker(); //初始化标志物对象end
+                }
+            };
+            $.kui.kmap.marker.prototype.appendChildMap = function(e, div) { //将marker层输出至地图窗格上
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        var panes = e.map_.getPanes();
+                        panes.floatShadow.appendChild(div);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        var panes = e.getPanes();
+                        panes.overlayImage.appendChild(div);
+                        break;
+                }
+            };
+            //拓展map对象方法拓展map对象方法
+            map.getContainer = function() {
+                return document.getElementById($.kui.kmap.option.id);
+            };
+            $.kui.kmap.overlayDiv._map = null;
+            $.kui.kmap.overlayDiv._maskElement = null;
             $.kui.kmap.overlayDiv.getDom(map).addEventListener("mousedown", $.kui.kmap.mapMouseDown); //自定义图层事件
             $.kui.kmap.overlayDiv.getDom(map).addEventListener("mousemove", $.kui.kmap.mapMouseMove);
             $.kui.kmap.overlayDiv.getDom(map).addEventListener("dblclick", $.kui.kmap.mapDblClick);
 
             return map;
         },
-        initGoogle: function(option) {
-            var googleOption = {
-                zoom: e.option.zoom,
-                scaleControl: true,
-                panControl: true,
-                center: new mapobject.maps.LatLng(option.lat, option.lng),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE, 'OSM'] }
-            }
-            var map = new mapobject.maps.Map(option.id, googleOption); // 创建Map实例
-            console.log("已完谷歌地图初始化");
-
-            //拓展 自定义覆盖物
-            $.kui.kmap.marker.prototype = new google.maps.OverlayView();
-            return map;
-        },
         loadJs: function(e) { //加载地图文件
+            //清理已加载地图对象
+            window.google = window.BMap = null;
             $.getScript(e.option.url, function() {
                 console.log("已完成加载地图js文件");
-                var initOptions = {
-                    id: e.option.id,
-                    lng: e.option.lng,
-                    lat: e.option.lat,
-                    zoom: e.option.zoom,
+                if ("google_zh" == e.option.type || "google" == e.option.type) {
+
                 }
                 if ('baidu' == e.option.type) {
                     window.BMap_loadScriptTime = (new Date).getTime();
-                    e.map = e.initBMap(initOptions);
                     if (e.option.clusterer) { //加载聚合支持库
                         $.getScript('http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js');
                         $.getScript(e.urls.get('baidu_clusterer'), function() {
@@ -796,18 +925,17 @@ var Hashtable = (function(UNDEFINED) {
                         });
                     }
                 }
-                if ("google_zh" == e.option.type || "google" == e.option.type) {
-                    e.map = e.initGoogle(initOptions);
-                }
-                e.resize(e);
+                e.map = e.initMap(e.option);
+                e.resize();
             });
+
+
         },
-        resize: function(e) { //重置页面
-            $("#" + e.option.id).css("width", e.option.width);
-            $("#" + e.option.id).css("height", e.option.height);
-            $("#" + e.option.id).css("margin", "0");
-            $("#" + e.option.id).css("overflow", "hidden");
-            //$.kui.kmap.markerList.pop();
+        resize: function() { //重置页面
+            $("#" + $.kui.kmap.option.id).css("width", $.kui.kmap.option.width);
+            $("#" + $.kui.kmap.option.id).css("height", $.kui.kmap.option.height);
+            $("#" + $.kui.kmap.option.id).css("margin", "0");
+            $("#" + $.kui.kmap.option.id).css("overflow", "hidden");
         },
         isSupportCanvas: function() {
             var elem = document.createElement('canvas');
@@ -822,8 +950,11 @@ var Hashtable = (function(UNDEFINED) {
                 this.icon_ = null;
             }
             this.point_ = opts.position;
-            this.text_ = opts.text || "";
-            this.popup_ = opts.popup || ""; //弹窗信息
+            this.title_ = opts.title || ""; //标志标题
+            this.popup_ = opts.popup || null; //弹窗层对象
+            this.text_ = opts.text || null; //标志内容
+            this.html_ = opts.html || null; //标志html代码
+            this.offsetHeight_ = null; //弹窗高度
             this.click_ = opts.click || null; //点击事件
             this.map_ = opts.map;
             // 到onAdd时才需要创建div
@@ -840,98 +971,69 @@ var Hashtable = (function(UNDEFINED) {
             if (!option.id) {
                 throw new Error('insertMarker err :marker id not null');
             }
-            var markerOption = {
-                label: null,
-                icon: null
+            if (!option.lng) {
+                throw new Error('insertMarker err :marker lng not null');
             }
+            if (!option.lat) {
+                throw new Error('insertMarker err :marker lat not null');
+            }
+
+
             var type = $.kui.kmap.option.type,
-                point = null,
+                position = $.kui.kmap.getPoint(option),
                 marker = $.kui.kmap.findMarkerById(option.id);
             if (marker != null) {
                 throw new Error('insertMarker err : existing marker id:' + option.id);
             }
-            if (type == "baidu") {
-                point = new BMap.Point(option.lng, option.lat);
-                marker = new $.kui.kmap.marker({ position: point, map: $.kui.kmap.map });
-                if (option.icon) {
-                    marker.setIcon(option.icon);
-                }
-                if (option.name) {
-                    marker.setName(option.name);
-                }
-                if (option.click) {
-                    marker.setClick(option.click);
-                }
-                if (option.zoom) {
-                    $.kui.kmap.map.centerAndZoom(point, option.zoom);
-                }
-                if (option.popup) {
-                    marker.setPopup("click", option.popup);
-                }
+            option.position = position;
+            option.map = $.kui.kmap.map;
+            marker = new $.kui.kmap.marker(option);
 
-            }
-
-            if (type == "google_zh" || type == "google") {
-                point = new mapobject.maps.LatLng(option.lng, option.lat);
-                markerOption.position = point;
-                if (option.icon) {
-                    markerOption.icon = option.icon.url;
-                }
-                if (option.label) {
-                    markerOption.label = option.label.text;
-                }
-
-                marker = new google.maps.Marker(point, markerOption);
-                if (option.zoom) {
-                    $.kui.kmap.map.setZoom(option.zoom);
-                    $.kui.kmap.map.panTo(point);
-                }
-            }
             $.kui.kmap.markerList.put(option.id, marker);
-            if ($.kui.kmap.option.clusterer) //开启聚合
+
+            if (option.zoom) {
+                $.kui.kmap.toMarker(option.id, option.zoom);
+            }
+
+            if (type == "baidu" && $.kui.kmap.option.clusterer) //开启聚合
                 var markerClusterer = new BMapLib.MarkerClusterer($.kui.kmap.map, { markers: $.kui.kmap.markerList.values() });
+
+
+
         },
         updateMarker: function(option) { //更新标志信息
             if (!option.id) {
                 throw new Error('updateMarker err :marker id not null');
             }
-            var type = $.kui.kmap.option.type,
-                point = null,
+            if (!option.lng) {
+                throw new Error('insertMarker err :marker lng not null');
+            }
+            if (!option.lat) {
+                throw new Error('insertMarker err :marker lat not null');
+            }
+            var point = null,
                 marker = $.kui.kmap.findMarkerById(option.id);
             if (marker == null) {
                 throw new Error('updateMarker err : marker not null id:' + option.id);
             }
-            if (type == "baidu") {
-                point = new BMap.Point(option.lng, option.lat);
-                if (option.icon) {
-                    marker.setIcon(option.icon);
-                }
-                if (option.label) {
-                    marker.setName(option.name);
-                }
-                marker.setPosition(point);
-                if (option.zoom) {
-                    $.kui.kmap.map.centerAndZoom(point, option.zoom);
-                }
+            point = $.kui.kmap.getPoint(option);
+            if (option.icon) {
+                marker.setIcon(option.icon);
+            }
+            if (option.title) {
+                marker.setTitle(option.title);
+            }
+            if (option.text) {
+                marker.setText(option.text);
+            }
+            if (option.html) {
+                marker.setHtml(option.html);
+            }
+            marker.setPosition(point);
+            if (option.zoom) {
+                $.kui.kmap.toMarker(option.id, option.zoom);
+            }
 
-            }
-            if (type == "google_zh" || type == "google") {
-                point = new mapobject.maps.LatLng(option.lng, option.lat);
-                markerOption.position = point;
-                if (option.icon) {
-                    markerOption.icon = option.icon.url;
-                    marker.setIcon(markerOption.icon);
-                }
-                if (option.label) {
-                    markerOption.label = option.label.text;
-                    marker.setLabel(markerOption.label);
-                }
-                marker.setPosition(point);
-                if (option.zoom) {
-                    $.kui.kmap.map.setZoom(option.zoom);
-                    $.kui.kmap.map.panTo(point);
-                }
-            }
         },
         toMarker: function(id, zoom) { //定位标志
             var type = $.kui.kmap.option.type,
@@ -1096,7 +1198,7 @@ var Hashtable = (function(UNDEFINED) {
                     $.kui.kmap.drawingModeResult = temp;
                 }
                 if (null != $.kui.kmap.markerPolyline) {
-                    $.kui.kmap.map.removeOverlay($.kui.kmap.markerPolyline);
+                    $.kui.kmap.removeOverlay($.kui.kmap.markerPolyline);
                     $.kui.kmap.markerPolyline = null;
                     $.kui.kmap.markerPolyPoint = [];
                     $.kui.kmap.markerPolyPointBaidu = null;
@@ -1106,11 +1208,14 @@ var Hashtable = (function(UNDEFINED) {
             if ($.kui.kmap.addMarkerType == 2) { //矩形 
 
                 if (null != $.kui.kmap.markerRectBounds) {
-                    var temp = $.kui.kmap.getLatLngString($.kui.kmap.markerRectBounds);
+                    var latlngList = new Array();
+                    latlngList.push($.kui.kmap.markerRectBounds.getSouthWest());
+                    latlngList.push($.kui.kmap.markerRectBounds.getNorthEast());
+                    var temp = $.kui.kmap.getLatLngString(latlngList);
                     $.kui.kmap.drawingModeResult = temp;
                 }
                 if (null != $.kui.kmap.markerRectangle) {
-                    $.kui.kmap.map.removeOverlay($.kui.kmap.markerRectangle);
+                    $.kui.kmap.removeOverlay($.kui.kmap.markerRectangle);
                     $.kui.kmap.markerRectangle = null;
                     $.kui.kmap.markerRectStart = null;
                     $.kui.kmap.markerRectBounds = null;
@@ -1118,13 +1223,13 @@ var Hashtable = (function(UNDEFINED) {
             }
             if ($.kui.kmap.addMarkerType == 3) { //多边形 
                 if ($.kui.kmap.markerPolyPoint.length > 2) {
-                    console.log($.kui.kmap.distinct($.kui.kmap.markerPolyPoint));
+                    //console.log($.kui.kmap.distinct($.kui.kmap.markerPolyPoint));
                     var temp = $.kui.kmap.getLatLngString($.kui.kmap.distinct($.kui.kmap.markerPolyPoint));
                     $.kui.kmap.drawingModeResult = temp;
                 }
                 //绘制结束，删除事件 清理对象
                 if (null != $.kui.kmap.markerPolygon) {
-                    $.kui.kmap.map.removeOverlay($.kui.kmap.markerPolygon);
+                    $.kui.kmap.removeOverlay($.kui.kmap.markerPolygon);
                     $.kui.kmap.markerPolygon = null;
                     $.kui.kmap.markerPolyPoint = [];
                     $.kui.kmap.markerPolyPointBaidu = null;
@@ -1132,11 +1237,12 @@ var Hashtable = (function(UNDEFINED) {
             }
             if ($.kui.kmap.addMarkerType == 4) { //圆形 
                 if ($.kui.kmap.markerCenterPoint && $.kui.kmap.markerRadius) {
-                    $.kui.kmap.markerCenterPoint.radius = $.kui.kmap.markerRadius;
-                    $.kui.kmap.drawingModeResult = $.kui.kmap.markerCenterPoint;
+                    var temp = $.kui.kmap.getLatLngString([$.kui.kmap.markerCenterPoint]);
+                    temp.radius = $.kui.kmap.markerRadius;
+                    $.kui.kmap.drawingModeResult = temp;
                 }
                 if (null != $.kui.kmap.markerCircle) {
-                    $.kui.kmap.map.removeOverlay($.kui.kmap.markerCircle);
+                    $.kui.kmap.removeOverlay($.kui.kmap.markerCircle);
                     $.kui.kmap.markerCircle = null;
                     $.kui.kmap.markerCenterPoint = null;
                 }
@@ -1145,8 +1251,7 @@ var Hashtable = (function(UNDEFINED) {
             $.kui.kmap.addMarkerType = null;
             $.kui.kmap.overlayDiv.hide();
             $('#tip').hide();
-            $.kui.kmap.map.enableDoubleClickZoom();
-            $.kui.kmap.map.enableDragging();
+            $.kui.kmap.setMapOptions({ doubleClickZoom: true, dragging: true }); //禁止地图双击放大和拖拽
         },
         getLatLngBounds: function(start, end) { //根据起点终点绘制矩形
             var type = $.kui.kmap.option.type;
@@ -1158,24 +1263,38 @@ var Hashtable = (function(UNDEFINED) {
                 ];
             }
             if (type == "google_zh" || type == "google") {
-                var startPt_ = overlay.getProjection().fromLatLngToDivPixel(start);
-                var endPt_ = overlay.getProjection().fromLatLngToDivPixel(end);
+                var startPt_ = $.kui.kmap.pointToPixel(start);
+                var endPt_ = $.kui.kmap.pointToPixel(end);
                 var left = Math.min(startPt_.x, endPt_.x);
                 var top = Math.min(startPt_.y, endPt_.y);
                 var width = Math.abs(startPt_.x - endPt_.x);
                 var height = Math.abs(startPt_.y - endPt_.y);
-                var sw = overlay.getProjection().fromDivPixelToLatLng(new google.maps.Point(left, top + height));
-                var ne = overlay.getProjection().fromDivPixelToLatLng(new google.maps.Point(left + width, top));
+                var sw = $.kui.kmap.pixelToPoint(new google.maps.Point(left, top + height));
+                var ne = $.kui.kmap.pixelToPoint(new google.maps.Point(left + width, top));
                 $.kui.kmap.markerRectBounds = new google.maps.LatLngBounds(sw, ne);
             }
             return $.kui.kmap.markerRectBounds;
         },
+        /**
+         * points 入参必须是数组
+         */
         getLatLngString: function(points) { //把经纬度转换成用逗号隔开的字符串
             var lat = new Array();
             var lng = new Array();
-            for (var i = 0; i < points.length; i += 1) {
-                lat.push(points[i].lat.toFixed(6));
-                lng.push(points[i].lng.toFixed(6));
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    for (var i = 0; i < points.length; i += 1) {
+                        lat.push(points[i].lat.toFixed(6));
+                        lng.push(points[i].lng.toFixed(6));
+                    }
+                    break;
+                case 'google':
+                case 'google_zh':
+                    for (var i = 0; i < points.length; i += 1) {
+                        lat.push(points[i].lat().toFixed(6));
+                        lng.push(points[i].lng().toFixed(6));
+                    }
+                    break;
             }
             return { lat: lat.toString(), lng: lng.toString() };
         },
@@ -1190,24 +1309,185 @@ var Hashtable = (function(UNDEFINED) {
             var d = R * c;
             return d + len;
         },
-        distinct: function(arr) { //多坐标去重
-            var res = [];
-            var json = {};
-            for (var i = 0; i < arr.length; i++) {　　　　
-                if (!json[arr[i].lng.toString()]) {　　　　　　
-                    res.push(arr[i]);
-                    json[arr[i].lng.toString()] = 1;　　　　
-                }　　
+        // 坐标转像素点
+        latLng2Pixel: function(latLng) {
+            var scale = Math.pow(2, $.kui.kmap.map.zoom);
+            var proj = $.kui.kmap.map.getProjection();
+            var bounds = $.kui.kmap.map.getBounds();
+            var nw = proj.fromLatLngToPoint(new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getSouthWest().lng()));
+            var point = proj.fromLatLngToPoint(latLng);
+
+            return new google.maps.Point(Math.floor((point.x - nw.x) * scale), Math.floor((point.y - nw.y) * scale));
+        },
+        pixel2LatLng: function(pixel) {
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    var m = pixel.layerX || pixel.offsetX || 0;
+                    var q = pixel.layerY || pixel.offsetY || 0;
+                    var o = pixel.target || pixel.srcElement;
+                    if (o != $.kui.kmap.overlayDiv.getDom(this._map)) {
+                        while (o && o != this._map.getContainer()) {
+                            if (!(o.clientWidth == 0 && o.clientHeight == 0 && o.offsetParent && o.offsetParent.nodeName.toLowerCase() == "td")) {
+                                m += o.offsetLeft;
+                                q += o.offsetTop
+                            }
+                            o = o.offsetParent
+                        }
+                    }
+                    if (o != $.kui.kmap.overlayDiv.getDom(this._map) && o != this._map.getContainer()) {
+                        return
+                    }
+                    if (typeof m === "undefined" || typeof q === "undefined") {
+                        return
+                    }
+                    if (isNaN(m) || isNaN(q)) {
+                        return
+                    }
+                    return $.kui.kmap.pixelToPoint({ x: m, y: q });
+                case 'google':
+                case 'google_zh':
+                    var scale = Math.pow(2, $.kui.kmap.map.zoom);
+                    var proj = $.kui.kmap.map.getProjection();
+                    var bounds = $.kui.kmap.map.getBounds();
+                    var nw = proj.fromLatLngToPoint(new google.maps.LatLng(bounds.getNorthEast().lat(), bounds.getSouthWest().lng()));
+                    var point = new google.maps.Point();
+                    point.x = pixel.layerX / scale + nw.x;
+                    point.y = pixel.layerY / scale + nw.y;
+                    return proj.fromPointToLatLng(point);
+
             }
+
+        },
+        pixelToPoint: function(pixel) { //根据覆盖物容器的坐标获取对应的地理坐标
+            if (!pixel) {
+                return;
+            }
+            var point = null;
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    point = $.kui.kmap.map.overlayPixelToPoint(pixel);
+                    //var temp = $.kui.kmap.map.pixelToPoint(pixel);
+                    //console.log('pixelToPoint:' + temp.lng + ',' + temp.lat);
+                    //console.log('overlayPixelToPoint:' + point.lng + ',' + point.lat);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    point = $.kui.kmap.overlay.getProjection().fromDivPixelToLatLng(pixel);
+                    break;
+
+            }
+            return point;
+        },
+        pointToPixel: function(point) { //根据地理坐标获取对应的覆盖物容器的坐标，此方法用于自定义覆盖物
+            if (!point) {
+                return;
+            }
+            var pixel = null;
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    pixel = $.kui.kmap.map.pointToOverlayPixel(point);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    if (typeof point.lat == "function") {
+                        pixel = $.kui.kmap.overlay.getProjection().fromLatLngToDivPixel(point);
+                    } else {
+                        pixel = $.kui.kmap.overlay.getProjection().fromLatLngToDivPixel(new google.maps.LatLng(point.lat, point.lng));
+                    }
+                    break;
+
+            }
+            return pixel;
+        },
+        getPoint: function(point) {
+            //根据地图类型返回对应的经纬度
+            var point_ = null;
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    point_ = point == null ? null : new BMap.Point(point.lng, point.lat);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    point_ = point == null ? null : new google.maps.LatLng(point.lat, point.lng);
+                    break;
+
+            }
+            return point_;
+        },
+        distinct: function(arr) { //多坐标去重
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    var res = [];
+                    var json = {};
+                    for (var i = 0; i < arr.length; i++) {　　　　
+                        if (!json[arr[i].lng.toString()]) {　　　　　　
+                            res.push(arr[i]);
+                            json[arr[i].lng.toString()] = 1;　　　　
+                        }　　
+                    }
+                    break;
+                case 'google':
+                case 'google_zh':
+                    var res = [];
+                    var json = {};
+                    for (var i = 0; i < arr.length; i++) {　　　　
+                        if (!json[arr[i].lng().toString()]) {　　　　　　
+                            res.push(arr[i]);
+                            json[arr[i].lng().toString()] = 1;　　　　
+                        }　　
+                    }
+                    break;
+            }
+
             return res;
+        },
+        removeOverlay: function(overlay) {
+            if (overlay) {
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        $.kui.kmap.map.removeOverlay(overlay);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        overlay.setMap(null);
+                        break;
+                }
+            }
+
+        },
+        setMapOptions: function(options) { //修改地图属性
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    if (options && options.doubleClickZoom)
+                        $.kui.kmap.map.enableDoubleClickZoom(); //启用地图双击放大
+                    else
+                        $.kui.kmap.map.disableDoubleClickZoom();
+
+                    if (options && options.dragging)
+                        $.kui.kmap.map.enableDragging(); //启用地图拖拽
+                    else
+                        $.kui.kmap.map.disableDragging(); //禁止地图拖拽
+                    break;
+                case 'google':
+                case 'google_zh':
+                    var googleOptions = {};
+                    if (options && null != options.doubleClickZoom)
+                        googleOptions.disableDoubleClickZoom = options.doubleClickZoom; //true启用地图双击放大 
+
+                    if (options && null != options.dragging)
+                        googleOptions.draggable = options.dragging; //true启用地图拖拽
+
+                    $.kui.kmap.map.setOptions(googleOptions);
+                    break;
+
+            }
         },
         openDrawingMode: function(drawingType, callback, option) { //打开绘图模式
             if (!$.kui.kmap.drawingMode) {
                 $.kui.kmap.drawingMode = true; //开启绘图模式
                 $.kui.kmap.overlayDiv.show($.kui.kmap.map);
                 $.kui.kmap.overlayDiv.setCursor("crosshair");
-                $.kui.kmap.map.disableDoubleClickZoom(); //禁止地图双击放大
-                $.kui.kmap.map.disableDragging(); //禁止地图拖拽
+                $.kui.kmap.setMapOptions({ doubleClickZoom: false, dragging: false }); //禁止地图双击放大和拖拽
                 $.kui.kmap.addMarkerType = drawingType;
                 if (option) { //如果存在自定义图像样式，否则默认
                     $.kui.kmap.drawingModeOptions = $["extend"](!![], {}, option, $.kui.kmap.drawingModeOptions);
@@ -1235,6 +1515,7 @@ var Hashtable = (function(UNDEFINED) {
                 }, 1000);
             }
         },
+
         addPolyline: function(e) { //添加折线
             var q = /msie (\d+\.\d)/i.test(navigator.userAgent); //判断是否ie
             e = window.event || e;
@@ -1244,16 +1525,34 @@ var Hashtable = (function(UNDEFINED) {
             if (q && $.kui.kmap.overlayDiv.getDom($.kui.kmap.map).setCapture) {
                 $.kui.kmap.overlayDiv.getDom(p).setCapture(); //将鼠标事件锁定在指定的元素上
             }
-            e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
-            //console.log(e.point);
+            //e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+            e.point = $.kui.kmap.pixel2LatLng(e);
             $.kui.kmap.markerPolyPoint.push(e.point);
             $.kui.kmap.markerPolyPointBaidu = $.kui.kmap.markerPolyPoint.concat($.kui.kmap.markerPolyPoint[$.kui.kmap.markerPolyPoint.length - 1]);
             if ($.kui.kmap.markerPolyline == null) {
-                //添加多边形
-                $.kui.kmap.markerPolyline = new BMap.Polyline($.kui.kmap.markerPolyPointBaidu, $.kui.kmap.drawingModeOptions);
-                $.kui.kmap.map.addOverlay($.kui.kmap.markerPolyline);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        //添加多边形
+                        $.kui.kmap.markerPolyline = new BMap.Polyline($.kui.kmap.markerPolyPointBaidu, $.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.map.addOverlay($.kui.kmap.markerPolyline);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        $.kui.kmap.markerPolyline = new google.maps.Polyline($.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.markerPolyline.setMap($.kui.kmap.map);
+                        break;
+                }
             } else {
-                $.kui.kmap.markerPolyline.setPath($.kui.kmap.markerPolyPointBaidu);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        $.kui.kmap.markerPolyline.setPath($.kui.kmap.markerPolyPointBaidu);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        $.kui.kmap.markerPolyline.setPath($.kui.kmap.markerPolyPoint);
+                        break;
+                }
+
             }
         },
         addRectangle: function(e) { //添加矩形
@@ -1266,13 +1565,25 @@ var Hashtable = (function(UNDEFINED) {
                 $.kui.kmap.overlayDiv.getDom(p).setCapture(); //将鼠标事件锁定在指定的元素上
             }
             if (null == $.kui.kmap.markerRectangle) {
-                $.kui.kmap.markerRectStart = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+                $.kui.kmap.markerRectStart = $.kui.kmap.pixel2LatLng(e); // $.kui.kmap.overlayDiv.getDrawPoint(e, true);
                 //根据起点终点获取矩形四个顶点
                 var endPoint = $.kui.kmap.markerRectStart;
-                //添加矩形
-                $.kui.kmap.markerRectangle = new BMap.Polygon($.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, endPoint), $.kui.kmap.drawingModeOptions);
-                //console.log($.kui.kmap.markerRectBounds);
-                $.kui.kmap.map.addOverlay($.kui.kmap.markerRectangle);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        //添加矩形
+                        $.kui.kmap.markerRectangle = new BMap.Polygon($.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, endPoint), $.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.map.addOverlay($.kui.kmap.markerRectangle);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        //添加矩形
+                        $.kui.kmap.drawingModeOptions.map = $.kui.kmap.map;
+                        $.kui.kmap.drawingModeOptions.clickable = false;
+                        $.kui.kmap.markerRectangle = new google.maps.Rectangle($.kui.kmap.drawingModeOptions);
+                        //$.kui.kmap.markerRectangle.setBounds($.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, endPoint));
+                        //$.kui.kmap.markerRectangle.setMap($.kui.kmap.map);
+                        break;
+                }
             }
 
         },
@@ -1285,19 +1596,35 @@ var Hashtable = (function(UNDEFINED) {
             if (q && $.kui.kmap.overlayDiv.getDom($.kui.kmap.map).setCapture) {
                 $.kui.kmap.overlayDiv.getDom(p).setCapture(); //将鼠标事件锁定在指定的元素上
             }
-            e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+            //e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+            e.point = $.kui.kmap.pixel2LatLng(e);
             //console.log(e.point);
             $.kui.kmap.markerPolyPoint.push(e.point);
-            $.kui.kmap.markerPolyPointBaidu = $.kui.kmap.markerPolyPoint.concat($.kui.kmap.markerPolyPoint[$.kui.kmap.markerPolyPoint.length - 1]);
-            if ($.kui.kmap.markerPolygon == null) {
-                //添加多边形
-                $.kui.kmap.markerPolygon = new BMap.Polygon($.kui.kmap.markerPolyPointBaidu, $.kui.kmap.drawingModeOptions);
-                $.kui.kmap.map.addOverlay($.kui.kmap.markerPolygon);
-            } else {
-                $.kui.kmap.markerPolygon.setPath($.kui.kmap.markerPolyPointBaidu);
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    $.kui.kmap.markerPolyPointBaidu = $.kui.kmap.markerPolyPoint.concat($.kui.kmap.markerPolyPoint[$.kui.kmap.markerPolyPoint.length - 1]);
+                    if ($.kui.kmap.markerPolygon == null) {
+                        //添加多边形
+                        $.kui.kmap.markerPolygon = new BMap.Polygon($.kui.kmap.markerPolyPointBaidu, $.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.map.addOverlay($.kui.kmap.markerPolygon);
+                    } else {
+                        $.kui.kmap.markerPolygon.setPath($.kui.kmap.markerPolyPointBaidu);
+                    }
+                    break;
+                case 'google':
+                case 'google_zh':
+                    if ($.kui.kmap.markerPolygon == null) {
+                        //添加多边形
+                        $.kui.kmap.markerPolygon = new google.maps.Polygon($.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.markerPolygon.setMap($.kui.kmap.map);
+                    } else {
+                        $.kui.kmap.markerPolygon.setPath($.kui.kmap.markerPolyPoint);
+                    }
+
+                    break;
             }
         },
-        addCircle: function(e) { //添加多边形
+        addCircle: function(e) { //添加圆形
             var q = /msie (\d+\.\d)/i.test(navigator.userAgent); //判断是否ie
             e = window.event || e;
             if (e.button != 1 && q || e.button != 0 && !q) {
@@ -1306,38 +1633,98 @@ var Hashtable = (function(UNDEFINED) {
             if (q && $.kui.kmap.overlayDiv.getDom($.kui.kmap.map).setCapture) {
                 $.kui.kmap.overlayDiv.getDom(p).setCapture(); //将鼠标事件锁定在指定的元素上
             }
-            $.kui.kmap.markerCenterPoint = $.kui.kmap.overlayDiv.getDrawPoint(e, true); //圆形中心点
-            if ($.kui.kmap.markerCircle == null) {
-                $.kui.kmap.markerCircle = new BMap.Circle($.kui.kmap.markerCenterPoint, 0, $.kui.kmap.drawingModeOptions);
-                $.kui.kmap.map.addOverlay($.kui.kmap.markerCircle);
+            $.kui.kmap.markerCenterPoint = $.kui.kmap.pixel2LatLng(e); //废弃方法： $.kui.kmap.overlayDiv.getDrawPoint(e, true); //圆形中心点
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    if ($.kui.kmap.markerCircle == null) {
+                        $.kui.kmap.markerCircle = new BMap.Circle($.kui.kmap.markerCenterPoint, 0, $.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.map.addOverlay($.kui.kmap.markerCircle);
+                    }
+                    break;
+                case 'google':
+                case 'google_zh':
+                    if ($.kui.kmap.markerCircle == null) {
+                        $.kui.kmap.drawingModeOptions.center = $.kui.kmap.markerCenterPoint;
+                        $.kui.kmap.drawingModeOptions.radius = 0;
+                        $.kui.kmap.markerCircle = new google.maps.Circle($.kui.kmap.drawingModeOptions);
+                        $.kui.kmap.markerCircle.setMap($.kui.kmap.map);
+                    }
+                    break;
             }
-
         },
         movePolyline: function(e) { //移动折线
             if ($.kui.kmap.markerPolyline != null) {
-                e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
-                $.kui.kmap.markerPolyline.setPositionAt($.kui.kmap.markerPolyPointBaidu.length - 1, e.point);
+                //e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+                e.point = $.kui.kmap.pixel2LatLng(e);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        $.kui.kmap.markerPolyline.setPositionAt($.kui.kmap.markerPolyPointBaidu.length - 1, e.point);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        var point = new Array();
+                        for (var i = 0; i < $.kui.kmap.markerPolyPoint.length; i += 1) {
+                            point.push($.kui.kmap.markerPolyPoint[i]);
+                        }
+                        point.push(e.point);
+                        $.kui.kmap.markerPolyline.setPath(point);
+                        break;
+                }
             }
         },
         moveRectangle: function(e) { //移动矩形
             if ($.kui.kmap.markerRectangle != null) {
-                e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
-                //根据起点终点获取矩形四个顶点
-                $.kui.kmap.markerRectangle.setPath($.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, e.point));
+                e.point = $.kui.kmap.pixel2LatLng(e);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        //e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+                        //根据起点终点获取矩形四个顶点
+                        $.kui.kmap.markerRectangle.setPath($.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, e.point));
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        var bounds = $.kui.kmap.getLatLngBounds($.kui.kmap.markerRectStart, e.point);
+                        //console.log(bounds);
+                        $.kui.kmap.markerRectangle.setBounds(bounds);
+                        break;
+                }
             }
         },
         movePolygon: function(e) { //移动多边形
             if ($.kui.kmap.markerPolygon != null) {
-                e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
-                $.kui.kmap.markerPolygon.setPositionAt($.kui.kmap.markerPolyPointBaidu.length - 1, e.point);
+                e.point = $.kui.kmap.pixel2LatLng(e);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        $.kui.kmap.markerPolygon.setPositionAt($.kui.kmap.markerPolyPointBaidu.length - 1, e.point);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        var point = new Array();
+                        for (var i = 0; i < $.kui.kmap.markerPolyPoint.length; i += 1) {
+                            point.push($.kui.kmap.markerPolyPoint[i]);
+                        }
+                        point.push(e.point);
+                        $.kui.kmap.markerPolygon.setPath(point);
+                        break;
+                }
             }
         },
         moveCircle: function(e) { //移动圆形
             if ($.kui.kmap.markerCircle != null) {
-                e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
-                //$.kui.kmap.map.getDistance($.kui.kmap.markerCenterPoint, e.point) 百度自带测距方法，已注销
-                $.kui.kmap.markerRadius = $.kui.kmap.distance($.kui.kmap.markerCenterPoint.lat, $.kui.kmap.markerCenterPoint.lng, e.point.lat, e.point.lng, 0)
-                $.kui.kmap.markerCircle.setRadius($.kui.kmap.markerRadius);
+                e.point = $.kui.kmap.pixel2LatLng(e);
+                //e.point = $.kui.kmap.overlayDiv.getDrawPoint(e, true);
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        //$.kui.kmap.map.getDistance($.kui.kmap.markerCenterPoint, e.point) 百度自带测距方法，已注销
+                        $.kui.kmap.markerRadius = $.kui.kmap.distance($.kui.kmap.markerCenterPoint.lat, $.kui.kmap.markerCenterPoint.lng, e.point.lat, e.point.lng, 0)
+                        $.kui.kmap.markerCircle.setRadius($.kui.kmap.markerRadius);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        $.kui.kmap.markerRadius = $.kui.kmap.distance($.kui.kmap.markerCenterPoint.lat(), $.kui.kmap.markerCenterPoint.lng(), e.point.lat(), e.point.lng(), 0)
+                        $.kui.kmap.markerCircle.setRadius($.kui.kmap.markerRadius);
+                        break;
+                }
             }
         },
     }
