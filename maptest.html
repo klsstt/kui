@@ -172,7 +172,7 @@
             $(e).text('关闭热力图');
         } else {
             $(e).text('显示热力图');
-            $.kui.kmap.closeHeat();
+            $.kui.kmap.closeHeat(true);
         }
     }
 
@@ -206,6 +206,7 @@
     }
 
     function changeMap(e) {
+        index = 0;
         $.kui.kmap.init(mapKey.get("option"), mapKey.get($(e).val()), $(e).val());
     }
 
@@ -223,7 +224,7 @@
             height: "500px",
             popup: false,
             clusterer: false,
-            heat: true
+            heat: false
         };
         var type = ["baidu", "google_zh"];
         var key = ["tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF", "AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0"];

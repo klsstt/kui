@@ -401,6 +401,7 @@ var Hashtable = (function(UNDEFINED) {
     return Hashtable;
 })();
 
+
 /**
  * 地图工具类
  */
@@ -540,6 +541,1452 @@ var Hashtable = (function(UNDEFINED) {
                 }
             }
         },
+        /**
+         * 包含标记的群集。
+         *
+         * @param {MarkerClusterer} markerClusterer The markerclusterer that this
+         *     cluster is associated with.
+         * @constructor
+         * @ignore
+         */
+        Cluster: function(markerClusterer) {
+            this.markerClusterer_ = markerClusterer;
+            this.map_ = markerClusterer.getMap();
+            this.gridSize_ = markerClusterer.getGridSize();
+            this.minClusterSize_ = markerClusterer.getMinClusterSize();
+            this.averageCenter_ = markerClusterer.isAverageCenter();
+            this.center_ = null;
+            this.markers_ = [];
+            this.bounds_ = null;
+            this.clusterIcon_ = new $.kui.kmap.ClusterIcon(this, markerClusterer.getStyles(),
+                markerClusterer.getGridSize());
+        },
+        /**
+         *一个群集图标
+         *
+         * @param {Cluster} cluster 要关联的群集。
+         * @param {Object} styles 具有样式属性的对象：
+         *     'url':(字符串）图片网址。
+         *'height':(数字）图像高度。
+         *'width':(数字）图像宽度。
+         *'anchor':( Array）标签文本的锚位置。
+         *'textColor':(字符串）文本颜色。
+         *'textSize':(数字）文字大小。
+         *'backgroundPosition：（string）背景信息x，y。
+         * @param {number=} opt_padding 可选填充以应用于群集图标。
+         * @constructor
+         * @extends google.maps.OverlayView
+         * @ignore
+         */
+        ClusterIcon: function(cluster, styles, opt_padding) {
+            this.styles_ = styles;
+            this.padding_ = opt_padding || 0;
+            this.cluster_ = cluster;
+            this.center_ = null;
+            this.map_ = cluster.getMap();
+            this.div_ = null;
+            this.sums_ = null;
+            this.visible_ = false;
+
+            this.setMap(this.map_);
+        },
+        /**
+         * A Marker Clusterer that clusters markers.
+         *
+         * @param  map 要附加到的Google地图。
+         * @param {Array.<$.kui.Marker>=} opt_markers 要添加的可选标记
+         * @param {Object=} opt_options 支持以下选项：
+         *'gridSize':( number）簇的网格大小（以像素为单位）。
+         *'maxZoom':(数字）标记可以作为a的一部分的最大缩放级别集群。
+         *'zoomOnClick':( boolean）是否单击a的默认行为群集是放大它。
+         *'averageCenter':(布尔值）每个群集的中心是否应该是群集中所有标记的平均值。
+         *'minimumClusterSize':( number）要在a中的最小标记数标记隐藏之前的簇和计数显示。
+         *'styles':( object）具有样式属性的对象：
+         *'url':(字符串）图片网址。
+         *'height':(数字）图像高度。
+         *'width':(数字）图像宽度。
+         *'anchor':( Array）标签文本的锚位置。
+         *'textColor':(字符串）文本颜色。
+         *'textSize':(数字）文字大小。
+         *'backgroundPosition':(字符串）背景x，y的位置。
+         * @constructor
+         * @extends OverlayView
+         */
+        MarkerClusterer: function(map, opt_markers, opt_options) {
+            //MarkerClusterer实现了google.maps.OverlayView接口。 我们使用
+                 //使用google.maps.OverlayView扩展功能以扩展MarkerClusterer
+                 //因为在定义代码时它可能并不总是可用，所以我们
+                 //在最后一刻寻找它。 如果它现在不存在那么
+                 //没有必要继续:)
+
+            this.map_ = map;
+
+            /**
+             * @type {Array.<google.maps.Marker>}
+             * @private
+             */
+            this.markers_ = [];
+
+            /**
+             *  @type {Array.<Cluster>}
+             */
+            this.clusters_ = [];
+
+            this.sizes = [53, 56, 66, 78, 90];
+
+            /**
+             * @private
+             */
+            this.styles_ = [];
+
+            /**
+             * @type {boolean}
+             * @private
+             */
+            this.ready_ = false;
+
+            var options = opt_options || {};
+
+            /**
+             * @type {number}
+             * @private
+             */
+            this.gridSize_ = options['gridSize'] || 60;
+
+            /**
+             * @private
+             */
+            this.minClusterSize_ = options['minimumClusterSize'] || 2;
+
+
+            /**
+             * @type {?number}
+             * @private
+             */
+            this.maxZoom_ = options['maxZoom'] || null;
+
+            this.styles_ = options['styles'] || [];
+
+            /**
+             * @type {string}
+             * @private
+             */
+            this.imagePath_ = options['imagePath'] ||
+                this.MARKER_CLUSTER_IMAGE_PATH_;
+
+            /**
+             * @type {string}
+             * @private
+             */
+            this.imageExtension_ = options['imageExtension'] ||
+                this.MARKER_CLUSTER_IMAGE_EXTENSION_;
+
+            /**
+             * @type {boolean}
+             * @private
+             */
+            this.zoomOnClick_ = true;
+
+            if (options['zoomOnClick'] != undefined) {
+                this.zoomOnClick_ = options['zoomOnClick'];
+            }
+
+            /**
+             * @type {boolean}
+             * @private
+             */
+            this.averageCenter_ = false;
+
+            if (options['averageCenter'] != undefined) {
+                this.averageCenter_ = options['averageCenter'];
+            }
+
+            this.setupStyles_();
+
+            this.setMap2(map);
+            this.setMap(map);
+
+            /**
+             * @type {number}
+             * @private
+             */
+            this.prevZoom_ = this.map_.getZoom();
+
+            //添加地图事件侦听器
+            var that = this;
+            if ("google_zh" == $.kui.kmap.option.type || "google" == $.kui.kmap.option.type) {
+                google.maps.event.addListener(this.map_, 'zoom_changed', function() {
+                    //确定地图类型并防止非法缩放级别
+                    var zoom = that.map_.getZoom();
+                    var minZoom = that.map_.minZoom || 0;
+                    var maxZoom = Math.min(that.map_.maxZoom || 100,
+                        that.map_.mapTypes[that.map_.getMapTypeId()].maxZoom);
+                    zoom = Math.min(Math.max(zoom, minZoom), maxZoom);
+
+                    if (that.prevZoom_ != zoom) {
+                        that.prevZoom_ = zoom;
+                        that.resetViewport();
+                    }
+                });
+
+                google.maps.event.addListener(this.map_, 'idle', function() {
+                    that.redraw();
+                });
+
+            }
+            if ("baidu" == $.kui.kmap.option.type) {
+                this.map_.addEventListener('zoomstart', function() {
+                    //确定地图类型并防止非法缩放级别
+                    var zoom = that.map_.getZoom();
+                    var minZoom = that.map_.minZoom || 0;
+                    var maxZoom = Math.min(that.map_.maxZoom || 100,
+                        that.map_.getMapType().getMaxZoom());
+                    zoom = Math.min(Math.max(zoom, minZoom), maxZoom);
+
+                    if (that.prevZoom_ != zoom) {
+                        that.prevZoom_ = zoom;
+                        that.resetViewport();
+                    }
+                });
+                this.map_.addEventListener('zoomend', function(type, target) {
+                    //console.log(type);
+                    that.redraw();
+                });
+            }
+            // 最后，添加标记
+            if (opt_markers && (opt_markers.length || Object.keys(opt_markers).length)) {
+                this.addMarkers(opt_markers, false);
+            }
+        },
+        initMc: function() {
+            //初始化Cluster
+
+            /**
+             * 确定是否已将标记添加到群集。
+             *
+             * @param {google.maps.Marker} marker 要检查的标记。
+             * @return {boolean} 如果已添加标记，则为True。
+             */
+            $.kui.kmap.Cluster.prototype.isMarkerAlreadyAdded = function(marker) {
+                if (this.markers_.indexOf) {
+                    return this.markers_.indexOf(marker) != -1;
+                } else {
+                    for (var i = 0, m; m = this.markers_[i]; i++) {
+                        if (m == marker) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            };
+
+
+            /**
+             * 在集群中添加标记。
+             *
+             * @param {google.maps.Marker} marker 要添加的标记。
+             * @return {boolean} 如果添加了标记，则为True。
+             */
+            $.kui.kmap.Cluster.prototype.addMarker = function(marker) {
+                if (this.isMarkerAlreadyAdded(marker)) {
+                    return false;
+                }
+
+                if (!this.center_) {
+                    this.center_ = marker.getPosition();
+                    this.calculateBounds_();
+                } else {
+                    if (this.averageCenter_) {
+                        var l = this.markers_.length + 1;
+                        var lat = (this.center_.lat() * (l - 1) + marker.getPosition().lat()) / l;
+                        var lng = (this.center_.lng() * (l - 1) + marker.getPosition().lng()) / l;
+                        this.center_ = new google.maps.LatLng(lat, lng);
+                        this.calculateBounds_();
+                    }
+                }
+
+                marker.isAdded = true;
+                this.markers_.push(marker);
+
+                var len = this.markers_.length;
+                if (len < this.minClusterSize_) {
+                    //未达到最小簇大小，因此显示标记。 && marker.getMap() != this.map_
+                    marker.show();
+                }
+
+                if (len == this.minClusterSize_) {
+                    //隐藏正在显示的标记。
+                    for (var i = 0; i < len; i++) {
+                        this.markers_[i].hide();
+                    }
+                }
+
+                if (len >= this.minClusterSize_) {
+                    //marker.setMap(null);
+                    marker.hide();
+                }
+
+                this.updateIcon();
+                return true;
+            };
+
+
+            /**
+             * 返回与集群关联的标记clusterer。
+             *
+             * @return {MarkerClusterer} 关联的标记聚类器。
+             */
+            $.kui.kmap.Cluster.prototype.getMarkerClusterer = function() {
+                return this.markerClusterer_;
+            };
+
+
+            /**
+             * 返回集群的边界。
+             *
+             * @return {google.maps.LatLngBounds} 群集边界。
+             */
+            $.kui.kmap.Cluster.prototype.getBounds = function() {
+                var bounds = null;
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        bounds = new BMap.Bounds(this.center_, this.center_);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        bounds = new google.maps.LatLngBounds(this.center_, this.center_);
+                        break;
+                }
+                var markers = this.getMarkers();
+                for (var i = 0, marker; marker = markers[i]; i++) {
+                    bounds.extend(marker.getPosition());
+                }
+                return bounds;
+            };
+
+
+            /**
+             * 删除群集
+             */
+            $.kui.kmap.Cluster.prototype.remove = function() {
+                this.clusterIcon_.remove();
+                this.markers_.length = 0;
+                delete this.markers_;
+            };
+
+
+            /**
+             * 返回集群的中心。
+             *
+             * @return {number} The cluster center.
+             */
+            $.kui.kmap.Cluster.prototype.getSize = function() {
+                return this.markers_.length;
+            };
+
+
+            /**
+             * 返回集群的中心。
+             *
+             * @return {Array.<google.maps.Marker>} The cluster center.
+             */
+            $.kui.kmap.Cluster.prototype.getMarkers = function() {
+                return this.markers_;
+            };
+
+
+            /**
+             * 返回集群的中心。
+             *
+             * @return {google.maps.LatLng} The cluster center.
+             */
+            $.kui.kmap.Cluster.prototype.getCenter = function() {
+                return this.center_;
+            };
+
+
+            /**
+             * 使用网格计算集群的扩展边界。
+             *
+             * @private
+             */
+            $.kui.kmap.Cluster.prototype.calculateBounds_ = function() {
+                var type = $.kui.kmap.option.type;
+                var bounds = null;
+                if ('baidu' == type) {
+                    bounds = new BMap.Bounds(this.center_, this.center_);
+                }
+                if (type == "google_zh" || type == "google") {
+                    bounds = new google.maps.LatLngBounds(this.center_, this.center_);
+                }
+                this.bounds_ = this.markerClusterer_.getExtendedBounds(bounds);
+            };
+
+
+            /**
+             * 确定标记是否位于簇边界中。
+             *
+             * @param {google.maps.Marker} marker 要检查的标记。
+             * @return {boolean} 如果标记位于边界内，则为True。
+             */
+            $.kui.kmap.Cluster.prototype.isMarkerInClusterBounds = function(marker) {
+                var isb = false;
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        isb = this.bounds_.containsPoint(marker.getPosition());
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        isb = this.bounds_.contains(marker.getPosition());
+                        break;
+                }
+                return isb;
+            };
+
+
+            /**
+             * 返回与集群关联的映射。
+             *
+             * @return {google.maps.Map} 地图。
+             */
+            $.kui.kmap.Cluster.prototype.getMap = function() {
+                return this.map_;
+            };
+
+
+            /**
+             * 更新群集图标
+             */
+            $.kui.kmap.Cluster.prototype.updateIcon = function() {
+                var zoom = this.map_.getZoom();
+                var mz = this.markerClusterer_.getMaxZoom();
+
+                if (mz && zoom > mz) {
+                    //缩放大于我们的最大缩放，因此显示群集中的所有标记。
+                    for (var i = 0, marker; marker = this.markers_[i]; i++) {
+                        marker.setMap(this.map_);
+                    }
+                    return;
+                }
+
+                if (this.markers_.length < this.minClusterSize_) {
+                    //尚未达到最小簇大小。
+                    this.clusterIcon_.hide();
+                    return;
+                }
+
+                var numStyles = this.markerClusterer_.getStyles().length;
+                var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
+                this.clusterIcon_.setCenter(this.center_);
+                this.clusterIcon_.setSums(sums);
+                this.clusterIcon_.show();
+            };
+
+
+            //初始化ClusterIcon
+            if ("google_zh" == $.kui.kmap.option.type || "google" == $.kui.kmap.option.type) {
+                $.kui.kmap.ClusterIcon.prototype = new google.maps.OverlayView();
+            }
+
+
+            if ("baidu" == $.kui.kmap.option.type) {
+                $.kui.kmap.ClusterIcon.prototype = new BMap.Overlay();
+                $.kui.kmap.ClusterIcon.prototype.initialize = function() {
+                    return this.onAdd(this);
+                };
+                $.kui.kmap.ClusterIcon.prototype.setMap = function(nativeMap) {
+                    if (nativeMap == null)
+                        this.map_.removeOverlay(this);
+                    else {
+                        nativeMap.addOverlay(this);
+                    }
+                };
+            }
+
+
+
+            /**
+             * 如果设置了该选项，则触发clusterclick事件并缩放。
+             */
+            $.kui.kmap.ClusterIcon.prototype.triggerClusterClick = function() {
+                var markerClusterer = this.cluster_.getMarkerClusterer();
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        //this.map_.trigger("zoomend", this.cluster_);
+
+                        if (markerClusterer.isZoomOnClick()) {
+                            //放大群集。
+                            this.map_.setViewport(this.cluster_.getBounds(), { enableAnimation: true });
+                            this.map_.zoomIn();
+                        }
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        //触发 clusterclick 事件。
+                        google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_);
+                        if (markerClusterer.isZoomOnClick()) {
+                            //放大群集。
+                            this.map_.fitBounds(this.cluster_.getBounds());
+                        }
+                        break;
+                }
+
+
+            };
+            /**
+             * 将群集图标添加到dom。
+             * @ignore
+             */
+            $.kui.kmap.ClusterIcon.prototype.onAdd = function(e) {
+                var e = e != null ? e : this;
+                e.div_ = document.createElement('DIV');
+                if (e.visible_) {
+                    var pos = e.getPosFromLatLng_(e.center_);
+                    e.div_.style.cssText = e.createCss(pos);
+                    e.div_.innerHTML = e.sums_.text;
+                }
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        var panes = e.map_.getPanes();
+                        panes.floatShadow.appendChild(e.div_);
+                        e.div_.addEventListener('click', function() {
+                            e.triggerClusterClick();
+                        });
+                        break;
+                    case 'google':
+                    case 'google_zh':
+
+                        var panes = e.getPanes();
+                        panes.overlayMouseTarget.appendChild(e.div_);
+                        google.maps.event.addDomListener(e.div_, 'click', function() {
+                            e.triggerClusterClick();
+                        });
+                        break;
+                }
+
+            };
+
+
+            /**
+             * 返回在divlng上放置div dending的位置。
+             *
+             * @param {google.maps.LatLng} latlng 在latlng的位置。
+             * @return {google.maps.Point} 位置以像素为单位。
+             * @private
+             */
+            $.kui.kmap.ClusterIcon.prototype.getPosFromLatLng_ = function(latlng) {
+                var pos = null;
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        pos = this.map_.pointToOverlayPixel(latlng);
+                        pos.x -= parseInt(this.width_ / 2, 10);
+                        pos.y -= parseInt(this.height_ / 2, 10);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        pos = this.getProjection().fromLatLngToDivPixel(latlng);
+                        pos.x -= parseInt(this.width_ / 2, 10);
+                        pos.y -= parseInt(this.height_ / 2, 10);
+                        break;
+                }
+                return pos;
+            };
+
+
+            /**
+             * 画出图标。
+             * @ignore
+             */
+            $.kui.kmap.ClusterIcon.prototype.draw = function() {
+                if (this.visible_) {
+                    var pos = this.getPosFromLatLng_(this.center_);
+                    this.div_.style.top = pos.y + 'px';
+                    this.div_.style.left = pos.x + 'px';
+                }
+            };
+
+
+            /**
+             * 隐藏图标。
+             */
+            $.kui.kmap.ClusterIcon.prototype.hide = function() {
+                if (this.div_) {
+                    this.div_.style.display = 'none';
+                }
+                this.visible_ = false;
+            };
+
+
+            /**
+             * 定位并显示图标。
+             */
+            $.kui.kmap.ClusterIcon.prototype.show = function() {
+                if (this.div_) {
+                    var pos = this.getPosFromLatLng_(this.center_);
+                    this.div_.style.cssText = this.createCss(pos);
+                    this.div_.style.display = '';
+                }
+                this.visible_ = true;
+            };
+
+
+            /**
+             * 从地图中删除图标
+             */
+            $.kui.kmap.ClusterIcon.prototype.remove = function() {
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        this.onRemove();
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        this.setMap(null);
+                        break;
+                }
+            };
+
+
+            /**
+             * onRemove接口的实现。
+             * @ignore
+             */
+            $.kui.kmap.ClusterIcon.prototype.onRemove = function() {
+                if (this.div_ && this.div_.parentNode) {
+                    this.hide();
+                    this.div_.parentNode.removeChild(this.div_);
+                    this.div_ = null;
+                }
+            };
+
+
+            /**
+             * 设置图标的总和。
+             *
+             * @param {Object} sums 总和包含：
+             *   'text': (string) 要在图标中显示的文本。
+             *   'index': (number) 图标的样式索引。
+             */
+            $.kui.kmap.ClusterIcon.prototype.setSums = function(sums) {
+                this.sums_ = sums;
+                this.text_ = sums.text;
+                this.index_ = sums.index;
+                if (this.div_) {
+                    this.div_.innerHTML = sums.text;
+                }
+
+                this.useStyle();
+            };
+
+
+            /**
+             * 将图标设置为样式。
+             */
+            $.kui.kmap.ClusterIcon.prototype.useStyle = function() {
+                var index = Math.max(0, this.sums_.index - 1);
+                index = Math.min(this.styles_.length - 1, index);
+                var style = this.styles_[index];
+                this.url_ = style['url'];
+                this.height_ = style['height'];
+                this.width_ = style['width'];
+                this.textColor_ = style['textColor'];
+                this.anchor_ = style['anchor'];
+                this.textSize_ = style['textSize'];
+                this.backgroundPosition_ = style['backgroundPosition'];
+            };
+
+
+            /**
+             * 设置图标的中心。
+             *
+             * @param {google.maps.LatLng} center The latlng to set as the center.
+             */
+            $.kui.kmap.ClusterIcon.prototype.setCenter = function(center) {
+                this.center_ = center;
+            };
+
+
+            /**
+             * 根据图标的位置创建css文本。
+             * @param {google.maps.Point} pos The position.
+             * @return {string} The css style text.
+             */
+            $.kui.kmap.ClusterIcon.prototype.createCss = function(pos) {
+                var style = [];
+                style.push('background-image:url(' + this.url_ + ');');
+                var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
+                style.push('background-position:' + backgroundPosition + ';');
+
+                if (typeof this.anchor_ === 'object') {
+                    if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&
+                        this.anchor_[0] < this.height_) {
+                        style.push('height:' + (this.height_ - this.anchor_[0]) +
+                            'px; padding-top:' + this.anchor_[0] + 'px;');
+                    } else {
+                        style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
+                            'px;');
+                    }
+                    if (typeof this.anchor_[1] === 'number' && this.anchor_[1] > 0 &&
+                        this.anchor_[1] < this.width_) {
+                        style.push('width:' + (this.width_ - this.anchor_[1]) +
+                            'px; padding-left:' + this.anchor_[1] + 'px;');
+                    } else {
+                        style.push('width:' + this.width_ + 'px; text-align:center;');
+                    }
+                } else {
+                    style.push('height:' + this.height_ + 'px; line-height:' +
+                        this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
+                }
+
+                var txtColor = this.textColor_ ? this.textColor_ : 'black';
+                var txtSize = this.textSize_ ? this.textSize_ : 11;
+
+                style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
+                    pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +
+                    txtSize + 'px; font-family:Arial,sans-serif; font-weight:bold');
+                return style.join('');
+            };
+
+
+            //初始化MarkerClusterer
+
+
+            if ("google_zh" == $.kui.kmap.option.type || "google" == $.kui.kmap.option.type) {
+                $.kui.kmap.MarkerClusterer.prototype = new google.maps.OverlayView();
+            }
+            if ("baidu" == $.kui.kmap.option.type) {
+                $.kui.kmap.MarkerClusterer.prototype = new BMap.Overlay();
+                $.kui.kmap.MarkerClusterer.prototype.initialize = function() {
+                    return this.onAdd(this);
+                };
+                $.kui.kmap.MarkerClusterer.prototype.setMap = function(nativeMap) {
+                    if (nativeMap == null)
+                        this.map_.removeOverlay(this);
+                    else {
+                        nativeMap.addOverlay(this);
+                    }
+                };
+            }
+            /**
+             * 标记群集图像路径。
+             *
+             * @type {string}
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = '../images/m';
+
+
+            /**
+             * 标记群集图像路径。
+             *
+             * @type {string}
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_EXTENSION_ = 'png';
+
+
+            /**
+             * 由其他人扩展对象原型。
+             *
+             * @param {Object} obj1 要扩展的对象。
+             * @param {Object} obj2 用于扩展的对象。
+             * @return {Object} 新的扩展对象。
+             * @ignore
+             */
+            $.kui.kmap.MarkerClusterer.prototype.extend = function(obj1, obj2) {
+                return (function(object) {
+                    for (var property in object.prototype) {
+                        this.prototype[property] = object.prototype[property];
+                    }
+                    return this;
+                }).apply(obj1, [obj2]);
+            };
+
+
+            /**
+             * 接口方法的实现。
+             * @ignore
+             */
+            $.kui.kmap.MarkerClusterer.prototype.onAdd = function() {
+                this.setReady_(true);
+            };
+            /**
+             * 接口方法的实现。
+             * @ignore
+             */
+            $.kui.kmap.MarkerClusterer.prototype.draw = function() {};
+
+            /**
+             * 设置样式对象。
+             *
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setupStyles_ = function() {
+                if (this.styles_.length) {
+                    return;
+                }
+
+                for (var i = 0, size; size = this.sizes[i]; i++) {
+                    this.styles_.push({
+                        url: this.imagePath_ + (i) + '.' + this.imageExtension_,
+                        height: size,
+                        width: size
+                    });
+                }
+            };
+
+            /**
+             * 使地图适合群集器中标记的边界。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.fitMapToMarkers = function() {
+                var markers = this.getMarkers();
+                var bounds = new google.maps.LatLngBounds();
+                for (var i = 0, marker; marker = markers[i]; i++) {
+                    bounds.extend(marker.getPosition());
+                }
+
+                this.map_.fitBounds(bounds);
+            };
+
+
+            /**
+             * 设置样式。
+             *
+             *  @param {Object} styles 要设置的样式。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setStyles = function(styles) {
+                this.styles_ = styles;
+            };
+
+
+            /**
+             *  Gets the styles.
+             *
+             *  @return {Object} The styles object.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getStyles = function() {
+                return this.styles_;
+            };
+
+
+            /**
+             * 是否设置了放大点击。
+             *
+             * @return {boolean} True if zoomOnClick_ is set.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.isZoomOnClick = function() {
+                return this.zoomOnClick_;
+            };
+
+            /**
+             *是否设定了平均中心。
+             *
+             * @return {boolean} True if averageCenter_ is set.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.isAverageCenter = function() {
+                return this.averageCenter_;
+            };
+
+
+            /**
+             *  返回clusterer中的标记数组。
+             *
+             *  @return {Array.<google.maps.Marker>} The markers.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getMarkers = function() {
+                return this.markers_;
+            };
+
+
+            /**
+             *  返回聚类器中的标记数
+             *
+             *  @return {Number} The number of markers.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getTotalMarkers = function() {
+                return this.markers_.length;
+            };
+
+
+            /**
+             * 设置clusterer的最大缩放。
+             *
+             *  @param {number} maxZoom The max zoom level.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setMaxZoom = function(maxZoom) {
+                this.maxZoom_ = maxZoom;
+            };
+
+
+            /**
+             * 获取clusterer的最大缩放。
+             *
+             *  @return {number} The max zoom level.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getMaxZoom = function() {
+                return this.maxZoom_;
+            };
+
+
+            /**
+             *  用于计算群集图标图像的功能。
+             *
+             *  @param {Array.<google.maps.Marker>} markers 群集中的标记。
+             *  @param {number} numStyles 可用的样式数量。
+             *  @return {Object} 对象属性：'text'（字符串）和'index'（数字）。
+             *  @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
+                var index = 0;
+                var count = markers.length;
+                var dv = count;
+                while (dv !== 0) {
+                    dv = parseInt(dv / 10, 10);
+                    index++;
+                }
+
+                index = Math.min(index, numStyles);
+                return {
+                    text: count,
+                    index: index
+                };
+            };
+
+
+            /**
+             *设置计算器功能。
+             *
+             * @param {function(Array, number)} calculator The function to set as the
+             *     calculator. The function should return a object properties:
+             *     'text' (string) and 'index' (number).
+             *
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setCalculator = function(calculator) {
+                this.calculator_ = calculator;
+            };
+
+
+            /**
+             *获得计算器功能。
+             *
+             * @return {function(Array, number)} the calculator function.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getCalculator = function() {
+                return this.calculator_;
+            };
+
+
+            /**
+             * 将一组标记添加到clusterer。
+             *
+             * @param {Array.<google.maps.Marker>} markers 要添加的标记。
+             * @param {boolean=} opt_nodraw 是否重绘群集。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.addMarkers = function(markers, opt_nodraw) {
+                if (markers.length) {
+                    for (var i = 0, marker; marker = markers[i]; i++) {
+                        this.pushMarkerTo_(marker);
+                    }
+                } else if (Object.keys(markers).length) {
+                    for (var marker in markers) {
+                        this.pushMarkerTo_(markers[marker]);
+                    }
+                }
+                if (!opt_nodraw) {
+                    this.redraw();
+                }
+            };
+            /**
+             * 更新标记
+             *
+             * @param {Array.<google.maps.Marker>} markers 要更新的标记。
+             * @param {boolean=} opt_nodraw 是否重绘群集。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.updateMarkers = function(markers, opt_nodraw) {
+
+                this.markers_ = markers;
+                this.resetViewport();
+                if (!opt_nodraw) {
+                    this.redraw();
+                }
+            };
+
+            /**
+             * 将标记推送到群集器。
+             *
+             * @param {google.maps.Marker} marker 要添加的标记。
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.pushMarkerTo_ = function(marker) {
+                marker.isAdded = false;
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        if (marker['draggable']) {
+                            //如果标记是可拖动的，则添加一个监听器，以便我们更新集群
+                                     //拖动结束
+                            var that = this;
+                            google.maps.event.addListener(marker, 'dragend', function() {
+                                marker.isAdded = false;
+                                that.repaint();
+                            });
+                        }
+                        break;
+                }
+                this.markers_.push(marker);
+            };
+
+
+            /**
+             * 将标记添加到群集器并根据需要重绘。
+             *
+             * @param {google.maps.Marker} marker 要添加的标记。
+             * @param {boolean=} opt_nodraw 是否重绘群集。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.addMarker = function(marker, opt_nodraw) {
+                this.pushMarkerTo_(marker);
+                if (!opt_nodraw) {
+                    this.redraw();
+                }
+            };
+
+
+            /**
+             * 删除标记，如果删除则返回true，否则返回false
+             *
+             * @param {google.maps.Marker} marker 要删除的标记
+             * @return {boolean} 是否删除了标记
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.removeMarker_ = function(marker) {
+                var index = -1;
+                if (this.markers_.indexOf) {
+                    index = this.markers_.indexOf(marker);
+                } else {
+                    for (var i = 0, m; m = this.markers_[i]; i++) {
+                        if (m == marker) {
+                            index = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (index == -1) {
+                    //标记不在我们的标记列表中。
+                    return false;
+                }
+
+                marker.setMap(null);
+
+                this.markers_.splice(index, 1);
+
+                return true;
+            };
+
+
+            /**
+             * 从群集中删除标记。
+             *
+             * @param {google.maps.Marker} marker 要删除的标记。
+             * @param {boolean=} opt_nodraw 可选布尔值，不强制重绘。
+             * @return {boolean} 如果删除了标记，则为True。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.removeMarker = function(marker, opt_nodraw) {
+                var removed = this.removeMarker_(marker);
+
+                if (!opt_nodraw && removed) {
+                    this.resetViewport();
+                    this.redraw();
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+
+            /**
+             * 从群集中删除一系列标记。
+             *
+             * @param {Array.<google.maps.Marker>} markers 要删除的标记。
+             * @param {boolean=} opt_nodraw 可选布尔值，不强制重绘。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.removeMarkers = function(markers, opt_nodraw) {
+                var removed = false;
+
+                for (var i = 0, marker; marker = markers[i]; i++) {
+                    var r = this.removeMarker_(marker);
+                    removed = removed || r;
+                }
+
+                if (!opt_nodraw && removed) {
+                    this.resetViewport();
+                    this.redraw();
+                    return true;
+                }
+            };
+
+
+            /**
+             * 设置clusterer的就绪状态。
+             *
+             * @param {boolean} ready The state.
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setReady_ = function(ready) {
+                if (!this.ready_) {
+                    this.ready_ = ready;
+                    this.createClusters_();
+                }
+            };
+
+
+            /**
+             * 返回聚类器中的聚类数。
+             *
+             * @return {number} The number of clusters.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getTotalClusters = function() {
+                return this.clusters_.length;
+            };
+
+
+            /**
+             * 返回与群集器关联的Google地图。
+             *
+             * @return {google.maps.Map} The map.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getMap = function() {
+                return this.map_;
+            };
+
+
+            /**
+             * 设置与群集器关联的Google地图。
+             *
+             * @param {google.maps.Map} map The map.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setMap2 = function(map) {
+                this.map_ = map;
+            };
+
+
+            /**
+             * 返回网格的大小。
+             *
+             * @return {number} The grid size.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getGridSize = function() {
+                return this.gridSize_;
+            };
+
+
+            /**
+             * 设置网格的大小。
+             *
+             * @param {number} size The grid size.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setGridSize = function(size) {
+                this.gridSize_ = size;
+                console.log('size:' + size);
+            };
+
+
+            /**
+             * 返回最小簇大小。
+             *
+             * @return {number} The grid size.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getMinClusterSize = function() {
+                return this.minClusterSize_;
+            };
+
+            /**
+             * 设置最小簇大小。
+             *
+             * @param {number} size The grid size.
+             */
+            $.kui.kmap.MarkerClusterer.prototype.setMinClusterSize = function(size) {
+                this.minClusterSize_ = size;
+            };
+
+            /**
+ 
+                * 对单个值进行边界处理。
+            
+                * @param {Number} i 要处理的数值
+            
+                * @param {Number} min 下边界值
+            
+                * @param {Number} max 上边界值
+            
+                *
+            
+                * @return {Number} 返回不越界的数值
+            
+                */
+
+            $.kui.kmap.MarkerClusterer.prototype.getRange = function(i, mix, max) {
+
+                mix && (i = Math.max(i, mix));
+
+                max && (i = Math.min(i, max));
+
+                return i;
+
+            };
+            /**
+ 
+                * 按照百度地图支持的世界范围对bounds进行边界处理
+ 
+                * @param {BMap.Bounds} bounds BMap.Bounds的实例化对象
+ 
+                *
+ 
+                * @return {BMap.Bounds} 返回不越界的视图范围
+ 
+                */
+
+            $.kui.kmap.MarkerClusterer.prototype.cutBoundsInRange = function(bounds) {
+
+                var maxX = this.getRange(bounds.getNorthEast().lng, -180, 180);
+
+                var minX = this.getRange(bounds.getSouthWest().lng, -180, 180);
+
+                var maxY = this.getRange(bounds.getNorthEast().lat, -74, 74);
+
+                var minY = this.getRange(bounds.getSouthWest().lat, -74, 74);
+
+                return new BMap.Bounds(new BMap.Point(minX, minY), new BMap.Point(maxX, maxY));
+
+            };
+            /**
+             * 按网格大小扩展边界对象。
+             *
+             * @param {google.maps.LatLngBounds} bounds 扩展的界限。
+             * @return {google.maps.LatLngBounds} 扩展范围。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.getExtendedBounds = function(bounds) {
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        bounds = this.cutBoundsInRange(bounds);
+
+                        var pixelNE = this.getMap().pointToPixel(bounds.getNorthEast());
+
+                        var pixelSW = this.getMap().pointToPixel(bounds.getSouthWest());
+
+                        pixelNE.x += this.gridSize_;
+
+                        pixelNE.y -= this.gridSize_;
+
+                        pixelSW.x -= this.gridSize_;
+
+                        pixelSW.y += this.gridSize_;
+
+                        var newNE = this.getMap().pixelToPoint(pixelNE);
+
+                        var newSW = this.getMap().pixelToPoint(pixelSW);
+
+                        bounds = new BMap.Bounds(newSW, newNE);
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        var projection = this.getProjection() == null ? $.kui.kmap.overlay.getProjection() : this.getProjection();
+                        //将边界转换为latlng。
+                        var tr = new google.maps.LatLng(bounds.getNorthEast().lat(),
+                            bounds.getNorthEast().lng());
+                        var bl = new google.maps.LatLng(bounds.getSouthWest().lat(),
+                            bounds.getSouthWest().lng());
+
+                        //将点转换为像素，并按网格大小扩展。
+                        var trPix = projection.fromLatLngToDivPixel(tr);
+                        trPix.x += this.gridSize_;
+                        trPix.y -= this.gridSize_;
+
+                        var blPix = projection.fromLatLngToDivPixel(bl);
+                        blPix.x -= this.gridSize_;
+                        blPix.y += this.gridSize_;
+
+                        //将像素点转换回LatLng
+                        var ne = projection.fromDivPixelToLatLng(trPix);
+                        var sw = projection.fromDivPixelToLatLng(blPix);
+
+                        //扩展边界以包含新边界。
+                        bounds.extend(ne);
+                        bounds.extend(sw);
+                        break;
+                }
+                return bounds;
+            };
+
+
+            /**
+             * 确定标记是否包含在边界中。
+             *
+             * @param {google.maps.Marker} marker 要检查的标记。
+             * @param {google.maps.LatLngBounds} bounds 要检查的界限。
+             * @return {boolean} 如果标记位于边界内，则为True。
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.isMarkerInBounds_ = function(marker, bounds) {
+                return bounds.contains(marker.getPosition());
+            };
+
+
+            /**
+             * 清除群集器中的所有群集和标记。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.clearMarkers = function() {
+                this.resetViewport(true);
+
+                // 将标记设置为空数组。
+                this.markers_ = [];
+            };
+
+
+            /**
+             * 清除所有现有集群并重新创建它们。
+             * @param {boolean} opt_hide 还要隐藏标记。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.resetViewport = function(opt_hide) {
+                //删除所有群集
+                for (var i = 0, cluster; cluster = this.clusters_[i]; i++) {
+                    cluster.remove();
+                }
+
+                //将标记重置为不添加且不可见。
+                for (var i = 0, marker; marker = this.markers_[i]; i++) {
+                    marker.isAdded = false;
+                    if (opt_hide) {
+                        marker.setMap(null);
+                    }
+                }
+
+                this.clusters_ = [];
+            };
+
+            /**
+             *
+             */
+            $.kui.kmap.MarkerClusterer.prototype.repaint = function() {
+                var oldClusters = this.clusters_.slice();
+                this.clusters_.length = 0;
+                this.resetViewport();
+                this.redraw();
+
+                //删除旧群集。
+                     //在超时时间执行此操作，以便首先绘制其他群集。
+                window.setTimeout(function() {
+                    for (var i = 0, cluster; cluster = oldClusters[i]; i++) {
+                        cluster.remove();
+                    }
+                }, 0);
+            };
+
+
+            /**
+             * 重绘群集。
+             */
+            $.kui.kmap.MarkerClusterer.prototype.redraw = function() {
+                this.createClusters_();
+            };
+
+
+            /**
+             * 以km为单位计算两个latlng位置之间的距离。
+             * @see http://www.movable-type.co.uk/scripts/latlong.html
+             *
+             * @param {google.maps.LatLng} p1 The first lat lng point.
+             * @param {google.maps.LatLng} p2 The second lat lng point.
+             * @return {number} 两点之间的距离以km为单位。
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
+                if (!p1 || !p2) {
+                    return 0;
+                }
+                var d = 0;
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        d = $.kui.kmap.distance(p1.lat, p1.lng, p2.lat, p2.lng, 0) / 1000;
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        d = $.kui.kmap.distance(p1.lat(), p1.lng(), p2.lat(), p2.lng(), 0) / 1000;
+                        break;
+                }
+                return d;
+            };
+
+
+            /**
+             * 将标记添加到群集，或创建新群集。
+             *
+             * @param {google.maps.Marker} marker 要添加的标记。
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
+                var distance = 40000; //有些人数众多
+                var clusterToAddTo = null;
+                var pos = marker.getPosition();
+                for (var i = 0, cluster; cluster = this.clusters_[i]; i++) {
+                    var center = cluster.getCenter();
+                    if (center) {
+                        var d = this.distanceBetweenPoints_(center, marker.getPosition());
+                        if (d < distance) {
+                            distance = d;
+                            clusterToAddTo = cluster;
+                        }
+                    }
+                }
+
+                if (clusterToAddTo && clusterToAddTo.isMarkerInClusterBounds(marker)) {
+                    clusterToAddTo.addMarker(marker);
+                } else {
+                    var cluster = new $.kui.kmap.Cluster(this);
+                    cluster.addMarker(marker);
+                    this.clusters_.push(cluster);
+                }
+            };
+
+
+            /**
+             *创建群集。
+             *
+             * @private
+             */
+            $.kui.kmap.MarkerClusterer.prototype.createClusters_ = function() {
+                if (!this.ready_) {
+                    return;
+                }
+                switch ($.kui.kmap.option.type) {
+                    case 'baidu':
+                        var mapBounds = new BMap.Bounds(this.getMap().getBounds().getSouthWest(),
+                            this.getMap().getBounds().getNorthEast());
+                        var bounds = this.getExtendedBounds(mapBounds);
+                        for (var i = 0, marker; marker = this.markers_[i]; i++) {
+                            if (!marker.isAdded && bounds.containsPoint(marker.getPosition())) {
+                                this.addToClosestCluster_(marker);
+                            }
+                        }
+                        break;
+                    case 'google':
+                    case 'google_zh':
+                        //获取我们当前的地图视图边界。
+                             //创建一个新的边界对象，这样我们就不会影响地图。
+                        var mapBounds = new google.maps.LatLngBounds(this.getMap().getBounds().getSouthWest(),
+                            this.getMap().getBounds().getNorthEast());
+                        var bounds = this.getExtendedBounds(mapBounds);
+
+                        for (var i = 0, marker; marker = this.markers_[i]; i++) {
+                            if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
+                                this.addToClosestCluster_(marker);
+                            }
+                        }
+                        break;
+                }
+            }
+        },
         urls: new Hashtable(),
         option: {
             id: null,
@@ -561,7 +2008,6 @@ var Hashtable = (function(UNDEFINED) {
         init: function(option, key, type) {
             var _this = this;
             this.urls.put('baidu', 'http://api.map.baidu.com/getscript?v=2.0&ak={key}');
-            this.urls.put('baidu_clusterer', 'http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js');
             this.urls.put('google', 'http://maps.google.cn/maps/api/js?v=3&key={key}&libraries=places');
             this.urls.put('google_zh', 'http://ditu.google.cn/maps/api/js?v=3&key={key}&libraries=places');
             if (typeof option == "object") {
@@ -613,6 +2059,7 @@ var Hashtable = (function(UNDEFINED) {
                 console.log("已完谷歌地图初始化");
                 //拓展 自定义覆盖物
                 $.kui.kmap.marker.prototype = new mapobj.OverlayView();
+
             }
 
             if ("baidu" == option.type) {
@@ -746,12 +2193,23 @@ var Hashtable = (function(UNDEFINED) {
             };
             //删除自定义标志物层
             $.kui.kmap.marker.prototype.onRemove = function() {
-                this.div_.parentNode.removeChild(this.popup_);
-                this.div_.parentNode.removeChild(this.div_);
-                this.div_ = null;
-                this.popup_ = null;
+                if (this.div_ && this.div_.parentNode) {
+                    this.div_.parentNode.removeChild(this.popup_);
+                    this.div_.parentNode.removeChild(this.div_);
+                    this.div_ = null;
+                    this.popup_ = null;
+                }
             };
-
+            $.kui.kmap.marker.prototype.hide = function() {
+                if (this.div_) {
+                    this.div_.style.visibility = "hidden";
+                }
+            };
+            $.kui.kmap.marker.prototype.show = function() {
+                if (this.div_) {
+                    this.div_.style.visibility = "visible";
+                }
+            };
             $.kui.kmap.marker.prototype.update = function(obj) {
                 if ((typeof obj.position) != "undefined") {
                     this.setPosition(obj.position);
@@ -904,31 +2362,48 @@ var Hashtable = (function(UNDEFINED) {
             return map;
         },
         loadJs: function(e) { //加载地图文件
-            //清理已加载地图对象
+            //清理已加载地图对象 &libraries=visualization
             window.google = window.BMap = null;
-            $.getScript(e.option.url, function() {
-                console.log("已完成加载地图js文件");
-                if ("google_zh" == e.option.type || "google" == e.option.type) {
-
+            $.kui.kmap.empty(); //清空标志物
+            $.kui.kmap.markerListClusterer = null; //重置聚合
+            if ("google_zh" == e.option.type || "google" == e.option.type) {
+                if (e.option.heat) { //加载热力图支持库
+                    e.option.url = e.option.url + '&libraries=visualization';
+                    console.log("google地图开启热力图支持库");
                 }
-                if ('baidu' == e.option.type) {
-                    window.BMap_loadScriptTime = (new Date).getTime();
+
+                $.getScript(e.option.url, function() {
+                    console.log("已完成google地图js文件加载");
+                    e.map = e.initMap(e.option);
                     if (e.option.clusterer) { //加载聚合支持库
-                        $.getScript('http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js');
-                        $.getScript(e.urls.get('baidu_clusterer'), function() {
-                            console.log("百度地图聚合文件：已完成加载clusterer.js文件");
-                        });
+                        e.initMc();
                     }
+                    e.resize();
+                });
+            }
+            if ('baidu' == e.option.type) {
+                $.getScript(e.option.url, function() {
+                    console.log("已完成百度地图js文件加载");
+                    window.BMap_loadScriptTime = (new Date).getTime();
+                    /* if (e.option.clusterer) { //加载聚合支持库
+                        $.getScript('http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js');
+                        $.getScript('http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js');
+                        console.log("百度地图热开启聚合支持库");
+                    } */
                     if (e.option.heat) { //加载热力图支持库
                         $.getScript('http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js', function() {
-                            console.log("百度地图热力图文件：已完成加载热力图支持库Heatmap_min.js文件");
+                            console.log("百度地图热开启热力图支持库");
                         });
                     }
-                }
-                e.map = e.initMap(e.option);
-                e.resize();
-            });
 
+                    e.map = e.initMap(e.option);
+
+                    if (e.option.clusterer) { //加载聚合支持库
+                        e.initMc();
+                    }
+                    e.resize();
+                });
+            }
 
         },
         resize: function() { //重置页面
@@ -943,6 +2418,7 @@ var Hashtable = (function(UNDEFINED) {
         },
         //自定义覆盖物-标志
         marker: function(opts) {
+            this.overlay = this;
             // 初始化参数：坐标、文字、地图
             if ((typeof opts.icon) != "undefined") {
                 this.icon_ = opts.icon;
@@ -963,6 +2439,7 @@ var Hashtable = (function(UNDEFINED) {
             this.setMap(this.map_);
         },
         markerList: new Hashtable(), //地图上的标记信息
+        markerListClusterer: null, //聚合图层
         heatOverlay: null, //热力图图层
         findMarkerById: function(id) { //根据id查询数组中的点
             return $.kui.kmap.markerList.get(id);
@@ -995,10 +2472,14 @@ var Hashtable = (function(UNDEFINED) {
                 $.kui.kmap.toMarker(option.id, option.zoom);
             }
 
-            if (type == "baidu" && $.kui.kmap.option.clusterer) //开启聚合
-                var markerClusterer = new BMapLib.MarkerClusterer($.kui.kmap.map, { markers: $.kui.kmap.markerList.values() });
 
-
+            if ($.kui.kmap.option.clusterer) { //开启聚合
+                if ($.kui.kmap.markerListClusterer == null) {
+                    $.kui.kmap.markerListClusterer = new $.kui.kmap.MarkerClusterer($.kui.kmap.map, $.kui.kmap.markerList.values(), { imagePath: 'images/kmap/m' });
+                } else {
+                    $.kui.kmap.markerListClusterer.addMarkers($.kui.kmap.markerList.values(), false);
+                }
+            }
 
         },
         updateMarker: function(option) { //更新标志信息
@@ -1033,7 +2514,10 @@ var Hashtable = (function(UNDEFINED) {
             if (option.zoom) {
                 $.kui.kmap.toMarker(option.id, option.zoom);
             }
+            if ($.kui.kmap.option.clusterer) { //开启聚合
+                $.kui.kmap.markerListClusterer.updateMarkers($.kui.kmap.markerList.values(), false);
 
+            }
         },
         toMarker: function(id, zoom) { //定位标志
             var type = $.kui.kmap.option.type,
@@ -1065,27 +2549,69 @@ var Hashtable = (function(UNDEFINED) {
             });
             $.kui.kmap.markerList.clear();
         },
-        closeHeat: function() {
-            $.kui.kmap.heatOverlay.hide();
+        closeHeat: function(isEmpty) {
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    if (isEmpty) {
+                        $.kui.kmap.removeOverlay($.kui.kmap.heatOverlay);
+                        $.kui.kmap.heatOverlay = null;
+                    } else {
+                        $.kui.kmap.heatOverlay.hide();
+                    }
+
+                    break;
+                case 'google':
+                case 'google_zh':
+                    if (isEmpty) {
+                        $.kui.kmap.removeOverlay($.kui.kmap.heatOverlay);
+                        $.kui.kmap.heatOverlay = null;
+                    } else {
+                        $.kui.kmap.heatOverlay.setMap($.kui.kmap.heatOverlay.getMap() ? null : $.kui.kmap.map);
+                    }
+                    break;
+            }
         },
         openHeat: function() {
             //开启热力图
             if ($.kui.kmap.option.heat) {
                 if ($.kui.kmap.isSupportCanvas()) {
-                    if (null == $.kui.kmap.heatOverlay) {
-                        //开启热力图
-                        $.kui.kmap.heatOverlay = new BMapLib.HeatmapOverlay({ "radius": 20 });
-                        $.kui.kmap.map.addOverlay($.kui.kmap.heatOverlay);
-                        var options = [];
-                        $.kui.kmap.markerList.each(function(key, marker) {
-                            var option = marker.getPosition();
-                            //option.count = parseInt(Math.random() * 100);
-                            options.push(option);
+                    switch ($.kui.kmap.option.type) {
+                        case 'baidu':
+                            if (null == $.kui.kmap.heatOverlay) {
+                                //开启热力图
+                                $.kui.kmap.heatOverlay = new BMapLib.HeatmapOverlay({ "radius": 20 });
+                                $.kui.kmap.map.addOverlay($.kui.kmap.heatOverlay);
+                                var options = [];
+                                $.kui.kmap.markerList.each(function(key, marker) {
+                                    var option = marker.getPosition();
+                                    //option.count = parseInt(Math.random() * 100);
+                                    options.push(option);
 
-                        });
-                        $.kui.kmap.heatOverlay.setDataSet({ data: options });
+                                });
+                                $.kui.kmap.heatOverlay.setDataSet({ data: options });
+                            }
+                            $.kui.kmap.heatOverlay.show();
+                            break;
+                        case 'google':
+                        case 'google_zh':
+                            if (null == $.kui.kmap.heatOverlay) {
+                                var options = [];
+                                $.kui.kmap.markerList.each(function(key, marker) {
+                                    var option = marker.getPosition();
+                                    //option.count = parseInt(Math.random() * 100);
+                                    options.push(option);
+
+                                });
+                                $.kui.kmap.heatOverlay = new google.maps.visualization.HeatmapLayer({
+                                    data: options,
+                                    map: $.kui.kmap.map
+                                });
+                            } else {
+                                $.kui.kmap.heatOverlay.setMap($.kui.kmap.heatOverlay.getMap() ? null : $.kui.kmap.map);
+                            }
+
+                            break;
                     }
-                    $.kui.kmap.heatOverlay.show();
                 } else {
                     console.log('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
                 }
@@ -1299,7 +2825,7 @@ var Hashtable = (function(UNDEFINED) {
             return { lat: lat.toString(), lng: lng.toString() };
         },
         distance: function(lat1, lon1, lat2, lon2, len) { //获取地图上俩个点之间的距离
-            var R = 6371 * 1000; // km (change this constant to get miles)
+            var R = 6371 * 1000; // 单位是m (change this constant to get miles)
             var dLat = (lat2 - lat1) * Math.PI / 180;
             var dLon = (lon2 - lon1) * Math.PI / 180;
             var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
