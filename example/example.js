@@ -11,12 +11,14 @@ $(function() {
 
     version = !version ? 'iframe' : version;
     $.ajax({
-        url: '../data/top_menu.json?t=' + new Date().getTime(),
+        url: '../kui/data/top_menu.json?t=' + new Date().getTime(),
+        type: 'post',
         success: function(obj) {
             if ("string" == typeof obj && obj.indexOf('html') > 0) {
                 window.location.href = "login.html";
                 return;
             } else {
+                obj=Object.prototype.toString.call(obj) === '[object Object]'?obj:$.parseJSON(obj);
                 if (obj.result == 18) {
                     window.location.href = "login.html";
                 } else {
@@ -28,14 +30,16 @@ $(function() {
                         userinfo: '个人信息',
                         upaw: '修改密码',
                         esc: '退出',
-                        logoimg: "../images/logo-while.png",
+                        logoimg: "./images/logo-while.png",
                         list: obj.data
                     };
-                    $.kui.kjax.atemplate('header', 'header', '../header.html', header_data, '#data');
+                    $.kui.kjax.atemplate('header', 'header', './header.html', header_data, '#data');
                     //获取首页菜单
                     $.ajax({
-                        url: '../data/menu_' + version + '_' + obj.pid + '.json?t=' + new Date().getTime(),
+                        url: './data/menu_' + version + '_' + obj.pid + '.json?t=' + new Date().getTime(), 
+                        type: 'post',
                         success: function(obj) {
+                            obj=Object.prototype.toString.call(obj) === '[object Object]'?obj:$.parseJSON(obj);
                             if (obj.result == 0) {
                                 var option = { animate: true, data: obj.data };
                                 $('#kui-tree-menu').tree(option);
@@ -82,12 +86,17 @@ $(function() {
 });
 
 function menu(pid, e) {
-    var version = $.trim($.kui.util.getUrlParam("version"));
-    if (null != pid) {
+    var version = "";
+    if (!$.kui.store.enable) {
+        version = $.trim($.kui.util.getUrlParam("version"));
+    } else {
+        version = $.trim($.kui.store.get("version"));
+    }
+    if (null != pid && pid!=0) {
         $('.navbar-left li').removeClass('active');
         $(e).parent().addClass('active');
         $.ajax({
-            url: '../data/menu_' + version + '_' + pid + '.json?t=' + new Date().getTime(),
+            url: './data/menu_' + version + '_' + pid + '.json?t=' + new Date().getTime(),
             success: function(obj) {
                 if (obj.result == 0) {
                     var menu = $('#kui-tree-menu').data('kui.tree');
