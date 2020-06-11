@@ -10,7 +10,7 @@
     }
 </style>
 <div class="kui-header">
-    <h1 class="kui-title">地图工具</h1>
+    <h1 class="kui-title">地图控件</h1>
     <div class="kui-header-actions">
         <button type="button" class="btn btn-icon btn-inverse btn-round">
               <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -27,7 +27,7 @@
 
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">百度地图</h3>
+            <h3 class="panel-title">地图控件</h3>
         </div>
         <div class="panel-body container-fluid">
             <div class="row">
@@ -40,12 +40,25 @@
                         <button class="btn btn-icon btn-secondary btn-outline" onclick="polygon()">多边形</button>
                         <button class="btn btn-icon btn-secondary btn-outline" onclick="rectangle()">矩形</button>
                         <button class="btn btn-icon btn-secondary btn-outline" onclick="circle()">圆形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="show('polyline')">显示折线</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="show('rectangle')">显示矩形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="show('polygon')">显示多边形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="show('circle')">显示圆形</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="track()">折线轨迹</button>
+                        <button class="btn btn-icon btn-secondary btn-outline" onclick="trackStop()">暂停轨迹</button>
                         <div class="columns columns-right btn-group float-right">
                             <button class="btn btn-secondary btn-outline" type="button" onclick="findMarker()" title="定位"><i class="fa fa-search"></i>定位</button>
                             <button class="btn btn-secondary btn-outline" type="button" onclick="deleteById()" title="删除"><i class="fa fa-refresh"></i>删除</button>
                             <button class="btn btn-secondary btn-outline" type="button" onclick="clearMarker()" title="清空"><i class="fa fa-refresh"></i>清空</button>
                         </div>
                         <div class="float-right search"><input class="kui-form-control input-outline" id="mid" type="text" placeholder="请输入标志ID"></div>
+                        <div class="float-right search">
+                            <select class="kui-form-control input-outline" onchange='changeMap(this)'>
+                                <option value="baidu">百度地图</option>
+                                <option value="google_zh">谷歌地图(中国大陆)</option>
+                                <option value="google">谷歌地图</option>
+                            </select>
+                        </div>
                     </div>
                     <div id="map" data-type="baidu" data-key="tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF" data-lng="116.404" data-lat="39.915" data-zoom="11" data-width="100%" data-height="500px" data-clusterer="false" data-heat="true"></div>
                 </div>
@@ -56,22 +69,26 @@
 </div>
 <script src="js/kui.js"></script>
 <script src="js/kui.map.js"></script>
-
 <script type=text/javascript>
     var index = 0;
 
     function addMarker() {
+        var text = '这是一个KUI的地图控件，集合了百度与谷歌地图！';
         var marker = {
             id: "KUI" + index,
-            name: "标志" + index + '号',
+            title: "标志" + index + '号',
             lng: 113 + Math.random(),
             lat: 22 + Math.random(),
             zoom: 11,
+            click: function(obj) {
+                console.log(obj);
+            },
             icon: {
                 url: "images/logo_32x32.png",
                 width: 30,
                 height: 30
             },
+            text: text
         }
         $.kui.kmap.insertMarker(marker);
         index++;
@@ -83,10 +100,11 @@
                 id: "KUI" + i,
                 lng: 113 + Math.random(),
                 lat: 22 + Math.random(),
+                text: '我是随机数' + Math.random()
             }
             try {
                 $.kui.kmap.updateMarker(marker);
-            } catch {
+            } catch (err) {
                 console.log("id 没有找到对应的标志，请先添加标志");
             }
         }
@@ -96,7 +114,7 @@
         var id = "KUI" + $("#mid").val();
         try {
             $.kui.kmap.toMarker(id, 11);
-        } catch {
+        } catch (err) {
             console.log("id 没有找到对应的标志，请先添加标志");
         }
 
@@ -119,14 +137,216 @@
             $(e).text('关闭热力图');
         } else {
             $(e).text('显示热力图');
-            $.kui.kmap.closeHeat();
+            $.kui.kmap.closeHeat(true);
         }
     }
 
-    function polygon() {
-        $.kui.kmap.openDrawingMode(3);
+    function polyline() {
+        $.kui.kmap.openDrawingMode(1, function(obj) {
+            console.log("折线经度：" + obj.lng);
+            console.log("折线纬度：" + obj.lat);
+        });
     }
+
+    function polygon() {
+        $.kui.kmap.openDrawingMode(3, function(obj) {
+            console.log("多边形经度：" + obj.lng);
+            console.log("多边形纬度：" + obj.lat);
+        });
+    }
+
+    function rectangle() {
+        $.kui.kmap.openDrawingMode(2, function(obj) {
+            console.log("矩形经度：" + obj.lng);
+            console.log("矩形纬度：" + obj.lat);
+        });
+    }
+
+    function circle() {
+        $.kui.kmap.openDrawingMode(4, function(obj) {
+            if (obj) {
+                console.log("圆形中心点经度：" + obj.lng);
+                console.log("圆形中心点纬度：" + obj.lat);
+                console.log("圆形半径：" + obj.radius);
+            }
+
+        });
+    }
+
+    function changeMap(e) {
+        index = 0;
+        $.kui.kmap.init(mapKey.get("option"), mapKey.get($(e).val()), $(e).val());
+    }
+
+    var timeout = false;
+    var count = 0;
+
+    function track() {
+        var points = new Array();
+        $.kui.kmap.drawingModeOptions = { //绘图初始化
+            fillColor: "#FF0000", // 填充色
+            fillOpacity: 0.3, // 填充色透明度
+            strokeColor: "#FF0000", // 线条颜色 黑色
+            strokeOpacity: 0.8, // 透明度 70%
+            strokeStyle: "solid",
+            strokeWeight: 1 // 宽度 5像素
+        };
+        for (var i = 0; i < 30; i++) {
+            var point = {
+                lat: 22 + Math.random(),
+                lng: 113 + Math.random()
+            };
+            points.push($.kui.kmap.getPoint(point));
+            if (i == 0) {
+                var marker = {
+                    id: "KUI_",
+                    title: "轨迹标志",
+                    lng: point.lng,
+                    lat: point.lat,
+                    zoom: 11,
+                    click: function(obj) {
+                        console.log(obj);
+                    },
+                    icon: {
+                        url: "images/logo_32x32.png",
+                        width: 30,
+                        height: 30
+                    }
+                }
+                if (!$.kui.kmap.findMarkerById('KUI_'))
+                    $.kui.kmap.insertMarker(marker);
+            }
+        }
+        var markerPolyline = $.kui.kmap.showPolyline(points);
+        var time = 2000 - 20 * 50;
+        if (time < 50) time = 50;
+        var timer = setInterval(function() {
+            if (timeout == true) {
+                console.log("轨迹暂停");
+            } else if (count == points.length) {
+                clearInterval(timer);
+                count = 0;
+                console.log("轨迹执行完毕");
+            } else {
+
+                var marker = {
+                    id: "KUI_",
+                    lng: points[count].lng,
+                    lat: points[count].lat
+                }
+                try {
+                    $.kui.kmap.toPoint(points[count], 10);
+                    $.kui.kmap.updateMarker(marker);
+                    count++;
+                } catch (err) {
+                    console.log("id 没有找到对应的标志，请先添加标志");
+                }
+            }
+        }, time);
+
+    }
+
+    function trackStop() {
+        if (timeout) {
+            timeout = false;
+        } else {
+            timeout = true;
+        }
+
+    }
+
+
+
+    function show(type) {
+        $.kui.kmap.drawingModeOptions = { //绘图初始化
+            fillColor: "#FF0000", // 填充色
+            fillOpacity: 0.3, // 填充色透明度
+            strokeColor: "#FF0000", // 线条颜色 黑色
+            strokeOpacity: 0.8, // 透明度 70%
+            strokeStyle: "solid",
+            strokeWeight: 1 // 宽度 5像素
+        };
+        if (type == 'polyline') {
+            var points = new Array();
+
+            for (var i = 0; i < 30; i++) {
+                var point = {
+                    lat: 22 + Math.random(),
+                    lng: 113 + Math.random()
+                };
+                points.push($.kui.kmap.getPoint(point));
+            }
+            $.kui.kmap.toPoint(points[0], 10);
+            var marker = $.kui.kmap.showPolyline(points);
+        }
+
+        if (type == 'rectangle') {
+            var points = new Array();
+            for (var i = 0; i < 2; i++) {
+                var point = {
+                    lat: 22 + Math.random(),
+                    lng: 113 + Math.random()
+                };
+                points.push($.kui.kmap.getPoint(point));
+            }
+            $.kui.kmap.toPoint(points[0], 10);
+            var marker = $.kui.kmap.showRectangle(points[0], points[1]);
+        }
+
+        if (type == 'polygon') {
+            var points = new Array();
+
+            for (var i = 0; i < 30; i++) {
+                var point = {
+                    lat: 22 + Math.random(),
+                    lng: 113 + Math.random()
+                };
+                points.push($.kui.kmap.getPoint(point));
+            }
+            $.kui.kmap.toPoint(points[0], 10);
+            var marker = $.kui.kmap.showPolygon(points);
+
+        }
+
+        if (type == 'circle') {
+            var point = {
+                lat: 22 + Math.random(),
+                lng: 113 + Math.random()
+            };
+            var point2 = {
+                lat: 22 + Math.random(),
+                lng: 113 + Math.random()
+            };
+            var radius = $.kui.kmap.distance(point.lat, point.lng, point2.lat, point2.lng, 0)
+            var marker = $.kui.kmap.showCircle(point, radius);
+            $.kui.kmap.toPoint($.kui.kmap.getPoint(point), 10);
+        }
+    }
+
+
+
+    var mapKey = new Hashtable();
     $(function() {
-        $.kui.kmap.init("map");
+        var option = {
+            id: "map",
+            lng: "116.404",
+            lat: "39.915",
+            zoom: 11,
+            width: "100%",
+            height: "500px",
+            popup: false,
+            clusterer: false,
+            heat: false
+        };
+        var type = ["baidu", "google_zh"];
+        var key = ["tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF", "AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0"];
+        $.kui.kmap.init(option, key[0], type[0]);
+
+        mapKey.put("baidu", "tvHuXuAZBhfHow4apFpmgSYs4cgdGgHF");
+        mapKey.put("google_zh", "AIzaSyA_p3PJiPd-kBAhKm9ck2BeFi0WNQrA8d0");
+        mapKey.put("option", option);
+
+
+
     });
 </script>

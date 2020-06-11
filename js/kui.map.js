@@ -2008,7 +2008,7 @@ var Hashtable = (function(UNDEFINED) {
         init: function(option, key, type) {
             var _this = this;
             this.urls.put('baidu', 'http://api.map.baidu.com/getscript?v=2.0&ak={key}');
-            this.urls.put('google', 'http://maps.google.cn/maps/api/js?v=3&key={key}&libraries=places');
+            this.urls.put('google', 'http://maps.google.com/maps/api/js?v=3&key={key}&libraries=places');
             this.urls.put('google_zh', 'http://ditu.google.cn/maps/api/js?v=3&key={key}&libraries=places');
             if (typeof option == "object") {
                 //处理对象数据
@@ -2081,6 +2081,7 @@ var Hashtable = (function(UNDEFINED) {
                     }
                 };
             }
+
             //添加自定义标志物层
             $.kui.kmap.marker.prototype.onAdd = function(e) {
                 var e = e != null ? e : this;
@@ -2194,10 +2195,12 @@ var Hashtable = (function(UNDEFINED) {
             //删除自定义标志物层
             $.kui.kmap.marker.prototype.onRemove = function() {
                 if (this.div_ && this.div_.parentNode) {
-                    this.div_.parentNode.removeChild(this.popup_);
+                    if (this.popup_) {
+                        this.div_.parentNode.removeChild(this.popup_);
+                        this.popup_ = null;
+                    }
                     this.div_.parentNode.removeChild(this.div_);
                     this.div_ = null;
-                    this.popup_ = null;
                 }
             };
             $.kui.kmap.marker.prototype.hide = function() {
@@ -2534,6 +2537,25 @@ var Hashtable = (function(UNDEFINED) {
 
             }
         },
+        toPoint: function(point, zoom) { //定位 根据经纬度
+            var type = $.kui.kmap.option.type;
+            if (point == null) {
+                throw new Error('updateMarker err : point not null ');
+            }
+            if (type == "baidu") {
+                $.kui.kmap.map.panTo(point, { noAnimation: false });
+                if (zoom) {
+                    $.kui.kmap.map.setZoom(zoom);
+                }
+
+            }
+            if (type == "google_zh" || type == "google") {
+                if (zoom) {
+                    $.kui.kmap.map.setZoom(zoom);
+                }
+                $.kui.kmap.map.panTo(point);
+            }
+        },
         romoveById: function(id) { //删除指定标志物
             var marker = $.kui.kmap.findMarkerById(id);
             if (marker == null) {
@@ -2665,12 +2687,12 @@ var Hashtable = (function(UNDEFINED) {
                         } catch (e) {}
                     });
 
-                    if (num > 0) {
-                        $('#tip').css({ "left": mousePos.x + "px", "top": mousePos.y + "px" });
-                        $('#tip').html(num > 10 ? strHtml + "......." : strHtml);
-                    } else {
-                        $('#tip').hide();
-                    }
+                    /*  if (num > 0) {
+                         $('#tip').css({ "left": mousePos.x + "px", "top": mousePos.y + "px" });
+                         $('#tip').html(num > 10 ? strHtml + "......." : strHtml);
+                     } else {
+                         $('#tip').hide();
+                     } */
                 }
             }
             if ($.kui.kmap.addMarkerType == 1) { //画线 移动时
@@ -2734,10 +2756,19 @@ var Hashtable = (function(UNDEFINED) {
             if ($.kui.kmap.addMarkerType == 2) { //矩形 
 
                 if (null != $.kui.kmap.markerRectBounds) {
-                    var latlngList = new Array();
-                    latlngList.push($.kui.kmap.markerRectBounds.getSouthWest());
-                    latlngList.push($.kui.kmap.markerRectBounds.getNorthEast());
-                    var temp = $.kui.kmap.getLatLngString(latlngList);
+                    var temp = "";
+                    switch ($.kui.kmap.option.type) {
+                        case 'baidu':
+                            temp = $.kui.kmap.getLatLngString($.kui.kmap.markerRectBounds);
+                            break;
+                        case 'google':
+                        case 'google_zh':
+                            var latlngList = new Array();
+                            latlngList.push($.kui.kmap.markerRectBounds.getSouthWest());
+                            latlngList.push($.kui.kmap.markerRectBounds.getNorthEast());
+                            temp = $.kui.kmap.getLatLngString(latlngList);
+                            break;
+                    }
                     $.kui.kmap.drawingModeResult = temp;
                 }
                 if (null != $.kui.kmap.markerRectangle) {
@@ -2776,7 +2807,7 @@ var Hashtable = (function(UNDEFINED) {
             $.kui.kmap.drawingMode = false; //关闭绘图模式 
             $.kui.kmap.addMarkerType = null;
             $.kui.kmap.overlayDiv.hide();
-            $('#tip').hide();
+            //$('#tip').hide();
             $.kui.kmap.setMapOptions({ doubleClickZoom: true, dragging: true }); //禁止地图双击放大和拖拽
         },
         getLatLngBounds: function(start, end) { //根据起点终点绘制矩形
@@ -3028,15 +3059,15 @@ var Hashtable = (function(UNDEFINED) {
                     } : $.kui.kmap.drawingModeOptions;
                 }
                 //添加鼠标提示工具
-                var tipDiv = "<div id=\"tip\" class=\"tooltip right\" style=\"position: absolute; z-index: 10; \" role=\"tooltip\">" +
-                    "<div class=\"tooltip-arrow\"></div>" +
-                    "<div class=\"tooltip-inner\"></div></div>";
-                $("#" + $.kui.kmap.option.id).append(tipDiv);
+                //var tipDiv = "<div id=\"tip\" class=\"tooltip right\" style=\"position: absolute; z-index: 10; \" role=\"tooltip\">" +
+                //   "<div class=\"tooltip-arrow\"></div>" +
+                //    "<div class=\"tooltip-inner\"></div></div>";
+                // $("#" + $.kui.kmap.option.id).append(tipDiv);
                 //通过计时器 结束绘图时调用回调
                 var cb = setInterval(function() {
                     if (!$.kui.kmap.drawingMode) { //绘图结束
-                        callback($.kui.kmap.drawingModeResult);
                         clearInterval(cb);
+                        callback($.kui.kmap.drawingModeResult);
                     }
                 }, 1000);
             }
@@ -3159,7 +3190,10 @@ var Hashtable = (function(UNDEFINED) {
             if (q && $.kui.kmap.overlayDiv.getDom($.kui.kmap.map).setCapture) {
                 $.kui.kmap.overlayDiv.getDom(p).setCapture(); //将鼠标事件锁定在指定的元素上
             }
-            $.kui.kmap.markerCenterPoint = $.kui.kmap.pixel2LatLng(e); //废弃方法： $.kui.kmap.overlayDiv.getDrawPoint(e, true); //圆形中心点
+
+            if (null == $.kui.kmap.markerCenterPoint) {
+                $.kui.kmap.markerCenterPoint = $.kui.kmap.pixel2LatLng(e); //废弃方法： $.kui.kmap.overlayDiv.getDrawPoint(e, true); //圆形中心点
+            }
             switch ($.kui.kmap.option.type) {
                 case 'baidu':
                     if ($.kui.kmap.markerCircle == null) {
@@ -3252,6 +3286,103 @@ var Hashtable = (function(UNDEFINED) {
                         break;
                 }
             }
+        },
+        showPolyline: function(points) { //展示折线
+            var markerPolyline = null;
+            if (!points || points.length < 2) {
+                console.log("points not null or points size < 2 ");
+                return markerPolyline;
+            }
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    //添加多边形
+                    markerPolyline = new BMap.Polyline(points, $.kui.kmap.drawingModeOptions);
+                    $.kui.kmap.map.addOverlay(markerPolyline);
+                    //markerPolyline.setPath(points);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    markerPolyline = new google.maps.Polyline($.kui.kmap.drawingModeOptions);
+                    markerPolyline.setMap($.kui.kmap.map);
+                    markerPolyline.setPath(points);
+                    break;
+            }
+            return markerPolyline;
+        },
+        showRectangle: function(start, end) { //展示矩形
+            var markerRectangle = null;
+            if (!start || !end) {
+                console.log("start and end not null ");
+                return markerRectangle;
+            }
+            var bounds = $.kui.kmap.getLatLngBounds(start, end);
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    //添加矩形
+                    markerRectangle = new BMap.Polygon(bounds, $.kui.kmap.drawingModeOptions);
+                    $.kui.kmap.map.addOverlay(markerRectangle);
+                    //markerRectangle.setPath(bounds);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    //添加矩形
+                    $.kui.kmap.drawingModeOptions.map = $.kui.kmap.map;
+                    $.kui.kmap.drawingModeOptions.clickable = false;
+                    markerRectangle = new google.maps.Rectangle($.kui.kmap.drawingModeOptions);
+                    markerRectangle.setBounds(bounds);
+                    break;
+            }
+            return markerRectangle;
+        },
+        showPolygon: function(points) { //展示多边形
+            var markerPolygon = null;
+            if (!points || points.length < 3) {
+                console.log("points not null or points size < 2 ");
+                return markerPolygon;
+            }
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    //添加多边形
+                    markerPolygon = new BMap.Polygon(points, $.kui.kmap.drawingModeOptions);
+                    $.kui.kmap.map.addOverlay(markerPolygon);
+                    //markerPolygon.setPath(points);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    //添加多边形
+                    markerPolygon = new google.maps.Polygon($.kui.kmap.drawingModeOptions);
+                    markerPolygon.setMap($.kui.kmap.map);
+                    markerPolygon.setPath(points);
+                    break;
+            }
+            return markerPolygon;
+        },
+        showCircle: function(center, radius) { //展示圆形
+            var markerCircle = null;
+            if (radius <= 0) {
+                console.log("radius 必须大于0");
+                return markerCircle;
+            }
+            if (!center) {
+                console.log("center not null");
+                return markerCircle;
+            }
+            switch ($.kui.kmap.option.type) {
+                case 'baidu':
+                    markerCircle = new BMap.Circle(center, 0, $.kui.kmap.drawingModeOptions);
+                    $.kui.kmap.map.addOverlay(markerCircle);
+                    markerCircle.setRadius(radius);
+                    break;
+                case 'google':
+                case 'google_zh':
+                    $.kui.kmap.drawingModeOptions.center = center;
+                    $.kui.kmap.drawingModeOptions.radius = 0;
+                    markerCircle = new google.maps.Circle($.kui.kmap.drawingModeOptions);
+                    markerCircle.setMap($.kui.kmap.map);
+                    markerCircle.setRadius(radius);
+                    break;
+            }
+            return markerCircle;
         },
     }
 })(jQuery);
