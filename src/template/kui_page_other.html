@@ -1,0 +1,1335 @@
+<link rel="stylesheet" href="lib/bootstrap-colorpicker/colorpicker.css" />
+<link rel="stylesheet" href="lib/bootstrap-slider/css/bootstrap-slider.css" />
+<link rel="stylesheet" href="lib/bootstrap-validation/formvalidation.css" />
+<link rel="stylesheet" href="lib/jquery.strength/jquery-strength.css" />
+<link rel="stylesheet" href="lib/jquery.wizard/jquery-wizard.css" />
+<div class="kui-header">
+    <h1 class="kui-title">表单控件</h1>
+</div>
+<div class="kui-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                日期与时间组件
+                <small>
+                    <a class="example-plugin-link" href="http://www.layui.com/laydate/?alone" target="_blank">
+                        layDate官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="example-wrap">
+                    <div class="example">
+                        <form autocomplete="off">
+                            <div class="col-sm-2">
+                                <h4 class="example-title">基本用法</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata1" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">日期范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata3" placeholder="日期范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">年范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata4" placeholder="年范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">年月范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata5" placeholder="年月范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">时间范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata6" placeholder="时间范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">日期时间范围</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata7" placeholder="日期时间范围">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">限定可选日期</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata2" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">前后若干天可选</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata8" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">限定可选时间</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata9" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义日期格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata10" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义时间格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata11" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-2">
+                                <h4 class="example-title">自定义范围格式</h4>
+                                <input type="text" class="kui-form-control" id="exampleLaydata12" placeholder="请填时间">
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">公历嵌套显示</h4>
+                                <div id="exampleLaydata16"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">自定义重要日嵌套显示</h4>
+                                <div id="exampleLaydata17"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">嵌套显示月份</h4>
+                                <div id="exampleLaydata14"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4 class="example-title">嵌套显示时间</h4>
+                                <div id="exampleLaydata15"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">拾色器
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/itsjavi/bootstrap-colorpicker" target="_blank">
+                      Color Picker官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">基本模式</h4>
+                        <p>添加 <code>data-plugin="colorpicker"</code></p>
+                        <div class="example">
+                            <input id="cp1" type="text" class="kui-form-control" value="#5367ce" data-plugin="colorpicker"><br/>
+                            <div class="kui-input-group colorpicker-component" data-plugin="colorpicker">
+                                <input type="text" value="#00AABB" class="kui-form-control">
+                                <span class="kui-input-group-addon"><i></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">自定义选项</h4>
+                        <p>如通过 <code>data-format="rgb"</code> 将当前颜色值格式化为RGB模式</code>
+                        </p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" data-plugin="colorpicker" data-format="rgb" value="#79d1c9">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">事件</h4>
+                        <p>下面示例演示演示改变后显示提示信息</code>
+                        </p>
+                        <div class="example">
+                            <button class="btn btn-primary btn-outline" id="colorpickerEvent">改变颜色</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix visible-lg-block"></div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">颜色透明</h4>
+                        <p>添加 <code>data-color="transparent"</code> 及 <code>data-format="hex"</code> 实现</p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" data-plugin="colorpicker" data-color="transparent" data-format="hex">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">水平模式</h4>
+                        <p>添加 <code>data-color="transparent"</code> 实现</p>
+                        <div class="example">
+                            <input type="text" class="kui-form-control" value="#88cc33" data-plugin="colorpicker" data-horizontal="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="example-wrap">
+                        <h4 class="example-title">内联模式</h4>
+                        <p>添加 <code>data-container="true"</code> 及 <code>data-inline="true"</code> 实现</p>
+                        <div class="example">
+                            <div class="inline-block" data-plugin="colorpicker" data-color="#ffaa00" data-container="true" data-inline="true"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">范围选择
+                <small>
+                    <a class="example-plugin-link" href="http://seiyria.com/bootstrap-slider/" target="_blank">
+                    Bootstrap Slider官网
+                    </a>
+                </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 col-md-5">
+                    <p>使用 <code>data-plugin="bootstrapSlider"</code> 创建</p>
+                    <div class="example-wrap">
+                        <h4 class="example-title">默认</h4>
+                        <div class="example">
+                            <input type="text" data-plugin="bootstrapSlider" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14">
+                        </div>
+                        <h4 class="example-title">范围</h4>
+                        <div class="example">
+                            <input type="text" data-plugin="bootstrapSlider" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[150,850]">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5">
+                    <div class="example-wrap">
+                        <h4 class="example-title">刻度标记</h4>
+                        <div class="example">
+                            <input type="text" id="slider-ticks1" data-slider-ticks-snap-bounds="30" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'>
+                        </div>
+                        <h4 class="example-title">指定刻度</h4>
+                        <div class="example">
+                            <input type="text" id="slider-ticks2" data-provide="slider" data-slider-min="0" data-slider-max="400" data-slider-step="100" data-slider-value="300" data-slider-ticks-snap-bounds="30" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-2">
+                    <div class="example-wrap">
+                        <h4 class="example-title">竖向显示</h4>
+                        <div class="example ml-30" style="height:170px">
+                            <input type="text" data-plugin="bootstrapSlider" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14" data-slider-orientation="vertical">
+                            <input type="text" data-plugin="bootstrapSlider" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[150,850]" data-slider-orientation="vertical">
+                            <input type="text" id="slider-ticks3" data-slider-ticks-snap-bounds="200" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-tooltip="true" data-slider-value="300" data-slider-orientation="vertical">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">密码强度验证
+                <small>
+                <a class="example-plugin-link" href="https://github.com/amazingSurge/jquery-strength" target="_blank">
+                    Jquery Strength官网
+                </a>
+            </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <p>使用 <code>data-plugin="strength"</code> 创建 </p>
+            <div class="example-wrap">
+                <form class="example pd-10">
+                    <div class="kui-form-group">
+                        <label class="control-label" for="inputPassword1">密码</label>
+                        <input type="password" class="password-strength-example1 kui-form-control" id="inputPassword1" name="inputPasswords" data-plugin="strength" value="">
+                    </div>
+                    <div class="kui-form-group margin-bottom-15">
+                        <label class="control-label" for="inputPassword2">使用 <code>data-show-toggle="true"</code>显示密码</label>
+                        <input type="password" class="password-strength-example2 kui-form-control" id="inputPassword2" name="inputPasswords" data-plugin="strength" data-show-toggle="true" value="123456">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">表单验证
+                <small>
+                    <a class="example-plugin-link" href="http://formvalidation.io" target="_blank">
+                        Form Validation官网
+                    </a>
+                </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="example-wrap margin-md-0">
+                        <h4 class="example-title">基本</h4>
+                        <div class="example">
+                            <form class="kui-form-horizontal" id="exampleConstraintsForm" autocomplete="off">
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">必填</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="requiredInput" data-fv-notempty="true" data-fv-notempty-message="必填项">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <select class="kui-form-control" name="requiredSelect" data-fv-notempty="true">
+                                                    <option value="">请选择</option>
+                                                    <option value="foo">Foo</option>
+                                                    <option value="bar">Bar</option>
+                                                </select>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="input-group">
+                                            <div class="checkbox-custom checkbox-primary">
+                                                <input type="checkbox" id="requiredCheckbox" name="requiredCheckbox" data-fv-notempty="true" data-fv-notempty-message="必填项">
+                                                <label for="requiredCheckbox">我同意注册协议</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最小长度</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMinLength" data-fv-stringlength="true" data-fv-stringlength-min="8" data-fv-notempty-message="必填项" data-fv-stringlength-message="请输入8个以上的字符" placeholder="minlength = 8">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最大长度</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMaxLength" data-fv-stringlength="true" data-fv-stringlength-max="5" data-fv-stringlength-message="请输入不超过5个的字符" placeholder="maxlength = 3">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">长度区间</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vBetweenLength" data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-min="5" data-fv-stringlength-message="请输入5到10个字符" placeholder="data-rangelength = [5,10]">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最小值</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMin" data-fv-greaterthan="true" data-fv-greaterthan-value="6" data-fv-greaterthan-message="请输入大于6的数字" placeholder="min = 6">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">最大值</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vMax" data-fv-lessthan="true" data-fv-lessthan-value="50" data-fv-greaterthan-message="请输入小于50的数字" placeholder="max = 50">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">区间</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vRange" data-fv-between="true" data-fv-between-min="6" data-fv-between-max="50" data-fv-between-message="请输入6-50之间的数字" placeholder="range = [6, 50]">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">正则表达式</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="vRegExp" data-fv-regexp="true" data-fv-regexp-regexp="#[A-Fa-f0-9]{6}" data-fv-regexp-message="请输入正确的HEXA颜色值" placeholder="请输入HEXA颜色值">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">等于（确认）</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="kui-form-control" name="foo_one" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-identical="true" data-fv-identical-field="foo_two" data-fv-identical-message="两次输入内容不一致">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="kui-form-control" name="foo_two" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-identical="true" data-fv-identical-field="foo_one" data-fv-identical-message="两次输入内容不一致">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="example-wrap">
+                        <h4 class="example-title">类型</h4>
+                        <div class="example">
+                            <form class="kui-form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">邮箱</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_email" placeholder="email">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">链接</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_url" placeholder="url">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">数字</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_digits" placeholder="012">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">数字</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_numberic" placeholder="120">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">颜色</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_color" placeholder="color">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">日期</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_date" placeholder="YYYY-MM-DD">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">手机</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_phone" placeholder="13012345678">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">信用卡</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_credit_card" placeholder="信用卡">
+                                    </div>
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="col-sm-3 control-label">IP</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="kui-form-control" name="type_ip" placeholder="ip">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="example-wrap">
+                        <h4 class="example-title">示例</h4>
+                        <div class="example pd-5" style="border:1px dashed #ddd">
+                            <form id="exampleFullForm" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-lg-6 form-horizontal">
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">用户名 <span class="required">*</span>
+                                            </label>
+                                            <div class=" col-lg-12 col-sm-9">
+                                                <input type="text" class="kui-form-control" name="username" placeholder="请输入用户名" required="">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">邮箱 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="email" class="kui-form-control" name="email" placeholder="email@email.com" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">密码 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="password" class="kui-form-control" name="password" placeholder="8个字符以上" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">生日 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <input type="text" class="kui-form-control" name="birthday" placeholder="YYYY/MM/DD" required="">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">GitHub</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <input type="url" class="kui-form-control" name="github" placeholder="https://github.com/admui">
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">公司</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <select class="kui-form-control" id="company" name="company" required="">
+                                                    <option value="">选择公司</option>
+                                                    <option value="baidu">百度</option>
+                                                    <option value="alibaba">阿里巴巴</option>
+                                                    <option value="jingdong">京东</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 form-horizontal">
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">管理员： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <div>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="inputAwesome" name="porto_is" value="awesome" required="">
+                                                            <label for="inputAwesome">高富帅</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="inputVeryAwesome" name="porto_is" value="very-awesome">
+                                                            <label for="inputVeryAwesome">以上全部</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">用途： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <div class="input-group">
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForProject" name="for[]" value="项目" required="">
+                                                            <label for="inputForProject">项目</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForWebsite" name="for[]" value="网站">
+                                                            <label for="inputForWebsite">网站</label>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="checkbox-custom checkbox-primary">
+                                                            <input type="checkbox" id="inputForAll" name="for[]" value="其他">
+                                                            <label for="inputForAll">所有</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">技能： <span class="required">*</span>
+                                            </label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <textarea class="kui-form-control" name="skills" rows="3" placeholder="填写技能" required=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="col-lg-12 col-sm-3 control-label">浏览器</label>
+                                            <div class="col-lg-12 col-sm-9">
+                                                <select class="kui-form-control" id="browsers" name="browsers" title="请选择浏览器" size="5" multiple="multiple" required="">
+                                                    <option value="chrome">Chrome / Safari</option>
+                                                    <option value="ff">Firefox</option>
+                                                    <option value="ie">Internet Explorer</option>
+                                                    <option value="opera">Opera</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 text-right mt-15">
+                                        <button type="submit" class="btn btn-primary" id="validateButton1">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <header class="panel-heading">
+            <h3 class="panel-title">输入向导
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/amazingSurge/jquery-wizard" target="_blank">
+                        jquery Wizard官网
+                    </a>
+                </small>
+            </h3>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>使用 <code>.steps</code> 创建 </p>
+                    <div class="example-wrap" id="exampleWizardForm">
+                        <form class="example">
+                            <div class="steps steps-sm row" data-plugin="matchHeight" data-by-row="true" role="tablist">
+                                <div class="step col-md-4 current" data-target="#exampleAccount" role="tab">
+                                    <span class="step-number">1</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">账户</span>
+                                        <p>请登录您的账户</p>
+                                    </div>
+                                </div>
+                                <div class="step col-md-4" data-target="#exampleBilling" role="tab">
+                                    <span class="step-number">2</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">订单</span>
+                                        <p>完成订单支付</p>
+                                    </div>
+                                </div>
+                                <div class="step col-md-4" data-target="#exampleGetting" role="tab">
+                                    <span class="step-number">3</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">完成</span>
+                                        <p>等待发货</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="wizard-content">
+                                <div class="wizard-pane active" id="exampleAccount" role="tabpanel">
+                                    <form id="exampleAccountForm">
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputUserName">用户名</label>
+                                            <input type="text" class="kui-form-control" id="inputUserName" name="username" required="required">
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputPassword">密码</label>
+                                            <input type="password" class="kui-form-control" id="inputPassword" name="password" required="required">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="wizard-pane" id="exampleBilling" role="tabpanel">
+                                    <form id="exampleBillingForm">
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputCardNumber">信用卡</label>
+                                            <input type="text" class="kui-form-control" id="inputCardNumber" name="number" placeholder="卡号">
+                                        </div>
+                                        <div class="kui-form-group">
+                                            <label class="control-label" for="inputCVV">CVV码</label>
+                                            <input type="text" class="kui-form-control" id="inputCVV" name="cvv" placeholder="CVV码">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="wizard-pane" id="exampleGetting" role="tabpanel">
+                                    <div class="text-center margin-vertical-20">
+                                        <i class="fa fa-check fa-4x" aria-hidden="true"></i>
+                                        <h4>我们已经收到您的订单，稍后会为您安排发货</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <p>使用 <code>.pearls</code> 创建 </p>
+                    <div class="example-wrap" id="exampleWizardFormContainer">
+                        <div class="pearls row">
+                            <div class="pearl current col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                                <span class="pearl-title">账户信息</span>
+                            </div>
+                            <div class="pearl col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-cc-paypal" aria-hidden="true"></i></div>
+                                <span class="pearl-title">订单信息</span>
+                            </div>
+                            <div class="pearl col-xs-4">
+                                <div class="pearl-icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                <span class="pearl-title">完成</span>
+                            </div>
+                        </div>
+
+
+                        <form class="wizard-content" id="exampleFormContainer">
+                            <div class="wizard-pane active" role="tabpanel">
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputUserNameOne">用户名</label>
+                                    <input type="text" class="kui-form-control" id="inputUserNameOne" name="username" required="required">
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputPasswordOne">密码</label>
+                                    <input type="password" class="kui-form-control" id="inputPasswordOne" name="password" required="required">
+                                </div>
+                            </div>
+                            <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputCardNumberOne">信用卡</label>
+                                    <input type="text" class="kui-form-control" id="inputCardNumberOne" name="number" placeholder="卡号">
+                                </div>
+                                <div class="kui-form-group">
+                                    <label class="control-label" for="inputCVVOne">CVV码</label>
+                                    <input type="text" class="kui-form-control" id="inputCVVOne" name="cvv" placeholder="CVV码">
+                                </div>
+                            </div>
+                            <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                                <div class="text-center margin-vertical-20">
+                                    <h4>请确认您的订单</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover text-right">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">序号</th>
+                                                    <th>产品</th>
+                                                    <th class="text-right">重量</th>
+                                                    <th class="text-right">运费</th>
+                                                    <th class="text-right">总计</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-left">三星Note炸弹</td>
+                                                    <td>32</td>
+                                                    <td>&yen;75</td>
+                                                    <td>&yen;2152</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2</td>
+                                                    <td class="text-left">U盘</td>
+                                                    <td>15</td>
+                                                    <td>&yen;169</td>
+                                                    <td>&yen;4169</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">3</td>
+                                                    <td class="text-left">2T移动硬盘</td>
+                                                    <td>69</td>
+                                                    <td>&yen;49</td>
+                                                    <td>&yen;1260</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">格式预设
+                <small>
+                    <a class="example-plugin-link" href="https://github.com/firstopinion/formatter.js" target="_blank">
+                        jquery formatter 官网
+                    </a>
+                </small>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <p>基本 </p>
+                <form class="kui-form-horizontal">
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputDate1" data-plugin="formatter" data-pattern="[[9999]]-[[99]]-[[99]]">
+                            <p class="help-block">2016-01-01</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputDate2" data-plugin="formatter" data-pattern="[[9999]]/[[99]]/[[99]]">
+                            <p class="help-block">2017/01/01</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">时间</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputTime" data-plugin="formatter" data-pattern="[[99]]:[[99]]">
+                            <p class="help-block">00:00</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">日期时间</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputTimeDate" data-plugin="formatter" data-pattern="[[9999]]/[[99]]/[[99]] [[99]]:[[99]]">
+                            <p class="help-block">00:00 01/01/2016</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">字符串</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputCharacters" data-plugin="formatter" data-pattern="[[aaaaaaaaa]]">
+                            <p class="help-block">abcdefghk（最大长度为9）</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="button" class="btn-primary btn">提交</button>
+                            <button type="button" class="btn-default btn">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p>其他用法</p>
+                <form class="kui-form-horizontal">
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">手机号</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputPhone" data-plugin="formatter" data-pattern="[[999]]-[[9999]]-[[9999]]">
+                            <p class="help-block">138-1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">手机号</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputPhone2" data-plugin="formatter" data-pattern="+86 [[999]]-[[9999]]-[[9999]]">
+                            <p class="help-block">+86 138-1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">电话分机</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputPhoneExt" data-plugin="formatter" data-pattern="([[9999]]) [[9999999]] -[[99999]]">
+                            <p class="help-block">(0123) 1234567 -12345</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">信用卡</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputCredit" data-plugin="formatter" data-pattern="[[9999]]-[[9999]]-[[9999]]-[[9999]]">
+                            <p class="help-block">1234-1234-1234-1234</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">产品序列号</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputProduct" data-plugin="formatter" data-pattern="a[[*]]-[[9999]]-C[[999]]">
+                            <p class="help-block">a*-1234-C123</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">百分比</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputPercent" data-plugin="formatter" data-pattern="[[99]].[[99]]%">
+                            <p class="help-block">99.99%</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">金额</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control" id="inputCurrency" data-plugin="formatter" data-pattern="&yen;[[999]],[[999]],[[999]].[[99]]">
+                            <p class="help-block">&yen;999,999,999.99</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <label class="col-sm-3 control-label">金额</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="kui-form-control text-right" id="inputCurrency2" data-plugin="formatter" data-pattern="&yen;[[999]],[[999]],[[999]].[[99]]">
+                            <p class="help-block">&yen;999,999,999.99</p>
+                        </div>
+                    </div>
+                    <div class="kui-form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="button" class="btn-primary btn">提交</button>
+                            <button type="button" class="btn-default btn">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script type="text/javascript" src="lib/jquery.strength/jquery-strength.min.js"></script>
+<script type="text/javascript" src="lib/jquery.wizard/jquery-wizard.min.js"></script>
+<script type="text/javascript" src="lib/jquery.formatter/jquery-formatter.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap-slider/bootstrap-slider.js"></script>
+<script type="text/javascript" src="lib/bootstrap-validation/formvalidation.min.js"></script>
+<script>
+    $(function() {
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#exampleLaydata1' //指定元素
+                ,
+            theme: '#393D49',
+            lang: 'zh' //指定语言
+        });
+
+        //日期范围
+        laydate.render({
+            elem: '#exampleLaydata3',
+            theme: '#393D49',
+            range: true
+        });
+        //年范围
+        laydate.render({
+            elem: '#exampleLaydata4',
+            theme: '#393D49',
+            type: 'year',
+            range: true
+        });
+        //年月范围
+        laydate.render({
+            elem: '#exampleLaydata5',
+            theme: '#393D49',
+            type: 'month',
+            range: true
+        });
+        //时间范围
+        laydate.render({
+            elem: '#exampleLaydata6',
+            theme: '#393D49',
+            type: 'time',
+            range: true
+        });
+        //日期时间范围
+        laydate.render({
+            elem: '#exampleLaydata7',
+            theme: '#393D49',
+            type: 'datetime',
+            range: true
+        });
+        var ins22 = laydate.render({
+            elem: '#exampleLaydata2',
+            theme: '#393D49',
+            min: '2016-10-14',
+            max: '2080-10-14',
+            ready: function() {
+                ins22.hint('日期可选值设定在 <br> 2016-10-14 到 2080-10-14');
+            }
+        });
+        //前后若干天可选，这里以7天为例
+        laydate.render({
+            elem: '#exampleLaydata8',
+            theme: '#393D49',
+            min: -7,
+            max: 7
+        });
+        //限定可选时间
+        laydate.render({
+            elem: '#exampleLaydata9',
+            theme: '#393D49',
+            type: 'time',
+            min: '09:30:00',
+            max: '17:30:00',
+            btns: ['clear', 'confirm']
+        });
+        //自定义日期格式
+        laydate.render({
+            elem: '#exampleLaydata10',
+            theme: '#393D49',
+            format: 'yyyy年MM月dd日'
+        });
+        //自定义时间格式
+        laydate.render({
+            elem: '#exampleLaydata11',
+            theme: '#393D49',
+            type: 'time',
+            format: 'H点M分'
+        });
+        laydate.render({
+            elem: '#exampleLaydata12',
+            theme: '#393D49',
+            type: 'datetime',
+            range: '到',
+            format: 'yyyy年M月d日'
+        });
+        //嵌套显示
+        laydate.render({
+            elem: '#exampleLaydata14',
+            theme: '#393D49',
+            type: 'month',
+            position: 'static'
+        });
+        laydate.render({
+            elem: '#exampleLaydata15',
+            theme: '#393D49',
+            type: 'time',
+            position: 'static'
+        });
+        laydate.render({
+            elem: '#exampleLaydata16',
+            theme: '#393D49',
+            calendar: true,
+            position: 'static'
+        });
+        laydate.render({
+            elem: '#exampleLaydata17',
+            theme: '#393D49',
+            position: 'static',
+            mark: {
+                '0-10-14': '生日',
+                '0-12-31': '跨年' //每年的日期
+                    ,
+                '0-0-10': '工资' //每月某天
+                    ,
+                '0-0-15': '月中',
+                '2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+                    ,
+                '2099-10-14': '呵呵'
+            },
+            done: function(value, date) {
+                if (date.year === 2017 && date.month === 8 && date.date === 15) { //点击2017年8月15日，弹出提示语
+                    alert('这一天是：中国人民抗日战争胜利72周年');
+                }
+            }
+        });
+        $('[data-plugin=colorpicker]').colorpicker();
+        $("#colorpickerEvent")["colorpicker"]()['on']("changeColor", function(e) {
+            console.info("颜色值已改变");
+            e["stopPropagation"]();
+        });
+
+        var option_slider = {
+            reversed: true
+
+        }
+        $('[data-plugin=bootstrapSlider]').slider(option_slider);
+
+        $("#slider-ticks1").slider({
+            ticks: [0, 100, 200, 300, 400],
+            ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+            ticks_snap_bounds: 30
+        });
+        $("#slider-ticks2").slider({
+            ticks: [0, 100, 200, 300, 400],
+            //ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+            ticks_snap_bounds: 30
+        });
+        $("#slider-ticks3").slider({
+            ticks: [0, 100, 200, 300, 400],
+            ticks_snap_bounds: 30
+        });
+        $("#slider-ticks4").slider({
+            ticks: [0, 100, 200, 300, 400],
+            ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+            ticks_snap_bounds: 30
+        });
+
+        var defaults_strength = {
+            'showMeter': true,
+            'showToggle': false,
+            'templates': {
+                main: "<div class=\"{containerClass}\">{input}{meter}{toggle}</div>",
+                meter: "<div class=\"{meterClass}\">{score}</div>",
+                score: "<div class=\"{scoreClass}\"></div>",
+                toggle: "<div class=\"checkbox-custom checkbox-primary show-password-wrap\"><input type=\"checkbox\" class=\"{toggleClass}\" title=\"显示/隐藏密码\" id=\"show_password\" /><label for=\"show_password\">显示密码</label></div>"
+            },
+            'classes': {
+                container: "strength-container",
+                input: "strength-input",
+                meter: "strength-meter",
+                score: "strength-score",
+                status: "strength-{status}",
+                toggle: "strength-toggle"
+            },
+            'scoreLables': {
+                good: "Good",
+                invalid: "Invalid",
+                strong: "Strong",
+                weak: "Weak"
+            },
+            'scoreClasses': {
+                good: "strength-good",
+                invalid: "strength-invalid",
+                strong: "strength-strong",
+                weak: "strength-weak"
+            }
+        }
+
+        $('[data-plugin=strength]').strength(defaults_strength);
+
+
+
+
+
+
+
+    });
+
+    //jquery-wizard
+    (function($) {
+        'use strict';
+        //普通向导
+        var defaults = {
+            'step': ".steps .step, .pearls .pearl",
+            'buttonsAppendTo': ".example",
+            'buttonLabels': {
+                'back': '上一步',
+                'next': "下一步",
+                'finish': '完成'
+            },
+            'templates': {
+                'buttons': function() {
+                    var op = this["options"];
+                    return '<div class=\"wizard-buttons\">' +
+                        "<a class=\"btn btn-default btn-outline\" href=\"#" + this['id'] + "\" data-wizard=\"back\" role=\"button\">" + op['buttonLabels']['back'] + "</a>" +
+                        "<a class=\"btn btn-primary btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"next\" role=\"button\">" + op['buttonLabels']["next"] + "</a>" +
+                        "<a class=\"btn btn-success btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"finish\" role=\"button\">" + op['buttonLabels']["finish"] + "</a>" +
+                        "</div>";
+                }
+            }
+        };
+
+        var bat = $('#exampleWizardForm').wizard(defaults)["data"]('wizard');
+        bat["get"]("#exampleAccount")['setValidator'](function() {
+            //表单验证
+            return $("#inputUserName").val() == "" ? false : true;
+        });
+        //链式向导
+        $("#exampleWizardFormContainer").wizard({
+            'step': ".steps .step, .pearls .pearl",
+            'buttonLabels': {
+                'back': '上一步',
+                'next': "下一步",
+                'finish': '完成'
+            },
+            'templates': {
+                'buttons': function() {
+                    var op = this["options"];
+                    return '<div class=\"wizard-buttons\">' +
+                        "<a class=\"btn btn-default btn-outline\" href=\"#" + this['id'] + "\" data-wizard=\"back\" role=\"button\">" + op['buttonLabels']['back'] + "</a>" +
+                        "<a class=\"btn btn-primary btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"next\" role=\"button\">" + op['buttonLabels']["next"] + "</a>" +
+                        "<a class=\"btn btn-success btn-outline pull-right\" href=\"#" + this['id'] + "\"  data-wizard=\"finish\" role=\"button\">" + op['buttonLabels']["finish"] + "</a>" +
+                        "</div>";
+                }
+            },
+            'onInit': function() {
+
+            },
+            'validator': function() { //表单验证
+                return $("#inputUserNameOne").val() == "" ? false : true;;
+            },
+            'onFinish': function() {},
+            'buttonsAppendTo': ".wizard-content"
+        });
+
+        //格式预设
+        var persistent = {
+                'persistent': true
+            },
+            ua = navigator["userAgent"]["toLowerCase"]();
+        if (/msie/i ['test'](ua) && !/opera/ ["test"](ua)) {
+            persistent = {
+                'persistent': false
+            }
+        }
+
+        $("[data-plugin=formatter]")["each"](function() {
+            var opts = $.extend({}, persistent, $(this)["data"]());
+            if (opts["pattern"]) {
+                opts["pattern"] = opts["pattern"]['replace'](/\[\[/g, '{{')['replace'](/\]\]/g, '}}');
+                //console.log(opts);
+                $(this).formatter(opts);
+            }
+
+        });
+        $("[data-plugin=formatter]").on
+            //$('[data-plugin=formatter]').formatter().resetPattern();
+    }(jQuery));
+    //表单验证
+    $(function() {
+        $("#exampleConstraintsForm, #exampleConstraintsFormTypes")["formValidation"]({
+            'excluded': ":disabled",
+            'framework': "bootstrap",
+            'icon': {
+                'invalid': "fa fa-close",
+                'valid': "fa fa-check",
+                'validating': "fa fa-refresh"
+            },
+            'locale': "zh_CN",
+            'fields': {
+                'type_email': {
+                    'validators': {
+                        'emailAddress': {
+                            'message': "邮箱格式不正确"
+                        }
+                    }
+                },
+                'type_url': {
+                    'validators': {
+                        'url': {
+                            'message': "链接格式错误"
+                        }
+                    }
+                },
+                'type_digits': {
+                    'validators': {
+                        'digits': {
+                            'message': "输入值不是一个数"
+                        }
+                    }
+                },
+                'type_numberic': {
+                    'validators': {
+                        'integer': {
+                            'message': "请输入数字"
+                        }
+                    }
+                },
+                'type_phone': {
+                    'validators': {
+                        'phone': {
+                            'message': '请输入正确的手机号'
+                        }
+                    }
+                },
+                'type_credit_card': {
+                    'validators': {
+                        'creditCard': {
+                            'message': '信用卡卡号错误'
+                        }
+                    }
+                },
+                'type_date': {
+                    'validators': {
+                        'date': {
+                            'format': "YYYY/MM/DD"
+                        }
+                    }
+                },
+                'type_color': {
+                    'validators': {
+                        'color': {
+                            'type': ["hex", "hsl", "hsla", 'keyword', "rgb", 'rgba'],
+                            'message': "颜色值错误"
+                        }
+                    }
+                },
+                'type_ip': {
+                    'validators': {
+                        'ip': {
+                            'ipv4': !![],
+                            'ipv6': !![],
+                            'message': "IP格式有误"
+                        }
+                    }
+                }
+            }
+        });
+        //完整示例
+        $('#exampleFullForm')["formValidation"]({
+            'excluded': ":disabled",
+            'framework': "bootstrap",
+            'icon': {
+                'invalid': "fa fa-close",
+                'valid': "fa fa-check",
+                'validating': "fa fa-refresh"
+            },
+            'locale': "zh_CN",
+            'button': {
+                'selector': "#validateButton1",
+                'disabled': "disabled"
+            },
+            'fields': {
+                'username': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写用户名"
+                        },
+                        'stringLength': {
+                            'min': 6,
+                            'max': 30,
+                            'message': "用户名长度是大于6位小于30位的字母数字组合!"
+                        },
+                        'regexp': {
+                            'regexp': /^[a-zA-Z0-9]+$/
+                        }
+                    }
+                },
+                'email': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写邮箱"
+                        },
+                        'emailAddress': {
+                            'message': "邮箱格式错误"
+                        }
+                    }
+                },
+                'password': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写密码"
+                        },
+                        'stringLength': {
+                            'min': 8
+                        }
+                    }
+                },
+                'birthday': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请填写生日"
+                        },
+                        'date': {
+                            'format': 'YYYY/MM/DD'
+                        }
+                    }
+                },
+                'github': {
+                    'validators': {
+                        'url': {
+                            'message': "请填写URL"
+                        }
+                    }
+                },
+                'skills': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': '请填写技能'
+                        },
+                        'stringLength': {
+                            'max': 300
+                        }
+                    }
+                },
+                'porto_is': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请至少选择一项"
+                        }
+                    }
+                },
+                'for[]': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请至少选择一项"
+                        }
+                    }
+                },
+                'company': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请选择公司"
+                        }
+                    }
+                },
+                'browsers': {
+                    'validators': {
+                        'notEmpty': {
+                            'message': "请选择浏览器"
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
