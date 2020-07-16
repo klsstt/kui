@@ -1,0 +1,6 @@
+# 忽略node_modules
+node_modules
+# 忽略dist
+dist
+# 忽略vscode
+.vscode

@@ -1,0 +1,36 @@
+{
+  "name": "kui",
+  "version": "1.0.0",
+  "description": "KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klsstt/kui.git"
+  },
+  "keywords": [
+    "kui"
+  ],
+  "author": "kangbolei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klsstt/kui/issues"
+  },
+  "homepage": "https://github.com/klsstt/kui#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "gulp-clean-css": "^4.3.0"
+  }
+}
