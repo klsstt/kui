@@ -236,3 +236,182 @@ pre code {
     width: 100px;
     height: 100px;
 }
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 400px;
+    min-height: 1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.slick-slide {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff;
+    min-height: 100%;
+}
+/**字体跳动**/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInDown {
+    from {
+      transform: translate3d(0, -100%, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInDown {
+    animation-name: slideInDown;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInLeft {
+    animation-name: slideInLeft;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInRight {
+    animation-name: slideInRight;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInUp {
+    animation-name: slideInUp;
+  }
+  
+  @keyframes slideOutDown {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  
+  .slideOutDown {
+    animation-name: slideOutDown;
+  }
+  
+  @keyframes slideOutLeft {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  
+  .slideOutLeft {
+    animation-name: slideOutLeft;
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  
+  .slideOutRight {
+    animation-name: slideOutRight;
+  }
+  
+  @keyframes slideOutUp {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  
+  .slideOutUp {
+    animation-name: slideOutUp;
+  }
+
+  .ipad {
+    padding: 140px 0 100px;
+}
+.ipad .ipad-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+.ipad .ipad-header h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.ipad .ipad-body {
+    max-width: 1204px;
+    margin: 0 auto;
+}
+
+.ipad .ipad-body .ipad-bg {
+    z-index: 0;
+}
+.ipad-main{
+  width: 1024px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 20;
+}
+.ipad-bg {
+    background-image: url(../images/index/index_ipad.png);
+    background-position: 0 0;
+    background-size: 1024px 592px;
+    width: 1024px;
+    height: 592px;
+}
+
+.ipad .ipad-body .gallery {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 975px;
+    height: 324px;
+    box-sizing: border-box;
+    margin: 29px 0 0 24px;
+    border: solid 1px #f0f3fa;
+    list-style: none;
+}
