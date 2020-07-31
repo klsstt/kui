@@ -115,12 +115,6 @@ pre,
 
 pre,
 .pre {
-    background-color: #fafafa;
-    padding: 8px 15px;
-}
-
-pre,
-.pre {
     display: block;
     padding: 9.5px;
     margin: 0 0 10px;
@@ -129,7 +123,7 @@ pre,
     word-break: break-all;
     word-wrap: break-word;
     color: #333333;
-    background-color: #f5f5f5;
+    background-color: #f5f5f500;
     border: 1px solid #eeeeee;
     border-radius: 4px;
 }
@@ -140,7 +134,25 @@ pre code {
     padding: 0px;
     font-size: 90%;
 }
-
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+  text-align: left;
+  font-size: .55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .3);
+  background-color:none;
+}
+user agent stylesheet
+pre {
+  font-family: monospace;
+  white-space: pre;
+  overflow: none;
+}
 .tokenfield {
     height: auto!important;
     min-height: 32px!important;
