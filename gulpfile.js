@@ -73,6 +73,7 @@ function build_watch () {
     watch('src/fonts/*',build_fonts);
     watch('src/skin/*',build_skin);
     watch('src/data/*',build_data);
+    watch('src/lib/**/*',build_lib);
     watch('src/template/*',build_template);
 }
 var dev=[copyHtml,build_image, build_js,build_sass,build_css,build_fonts,build_skin,build_lib,build_data,build_template,build_watch]
