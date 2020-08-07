@@ -1388,7 +1388,7 @@
     $.extend($.fn.kuiTable.defaults, $.fn.kuiTable.locales['zh-CN']);
 
     $('[data-toggle="table"]').kuiTable();
-    var url = "/example/table.json?t=" + new Date().getTime();
+    var url = "data/table.json?t=" + new Date().getTime();
     var table = $("#example_table").kuiTable({
         search: true,
         striped: true,

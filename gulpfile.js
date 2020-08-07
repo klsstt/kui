@@ -29,6 +29,7 @@ function build_image(){
 function build_sass(){
     return src(app.srcPath + 'sass/*') // 获取sass文件（*.scss）
         .pipe(sass().on('error',sass.logError)) // 执行sass插件，并检查错误
+        //.pipe(css()) // 执行cleanCSS插件，并检查错误
         .pipe(dest(app.distPath + 'css')); // 输出css文件的路径
 }
 // 压缩css 
