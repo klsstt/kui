@@ -1,0 +1,292 @@
+
+//气泡框
+.tooltip {
+  position: absolute;
+  z-index: 1900;
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  opacity: 0;
+  line-break: auto;
+  &.top {
+    padding: 4px 0;
+    margin-top: -3px;
+    .tooltip-arrow {
+      bottom: 0px;
+      left: 50%;
+      margin-left: -4px;
+      border-width: 4px 4px 0;
+      border-top-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  &.bottom {
+    padding: 4px 0;
+    margin-top: 3px;
+    .tooltip-arrow {
+      top: 0px;
+      left: 50%;
+      margin-left: -4px;
+      border-width: 0 4px 4px;
+      border-bottom-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  &.left {
+    padding: 0 4px;
+    margin-left: -3px;
+    .tooltip-arrow {
+      top: 50%;
+      right: 0px;
+      margin-top: -4px;
+      border-width: 4px 0 4px 4px;
+      border-left-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  &.right {
+    padding: 0 4px;
+    margin-left: 3px;
+    .tooltip-arrow {
+      top: 50%;
+      left: 0px;
+      margin-top: -4px;
+      border-width: 4px 4px 4px 0;
+      border-right-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+}
+.tooltip-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0px, 0px, 0px, 0px);
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-bottom-color: currentColor;
+  border-left-color: currentColor;
+}
+
+
+
+// 气泡颜色方案
+
+.tooltip-primary+.tooltip .tooltip-inner {
+    color: #fff;
+    background-color: #62a8ea;
+}
+
+.tooltip-primary+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #62a8ea;
+}
+
+.tooltip-primary+.tooltip.left .tooltip-arrow {
+    border-left-color: #62a8ea;
+}
+
+.tooltip-primary+.tooltip.top .tooltip-arrow {
+    border-top-color: #62a8ea;
+}
+
+.tooltip-primary+.tooltip.right .tooltip-arrow {
+    border-right-color: #62a8ea;
+}
+
+.tooltip-success+.tooltip .tooltip-inner {
+    color: #fff;
+    background-color: #46be8a;
+}
+
+.tooltip-success+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #46be8a;
+}
+
+.tooltip-success+.tooltip.left .tooltip-arrow {
+    border-left-color: #46be8a;
+}
+
+.tooltip-success+.tooltip.top .tooltip-arrow {
+    border-top-color: #46be8a;
+}
+
+.tooltip-success+.tooltip.right .tooltip-arrow {
+    border-right-color: #46be8a;
+}
+
+.tooltip-info+.tooltip .tooltip-inner {
+    color: #fff;
+    background-color: #57c7d4;
+}
+
+.tooltip-info+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #57c7d4;
+}
+
+.tooltip-info+.tooltip.left .tooltip-arrow {
+    border-left-color: #57c7d4;
+}
+
+.tooltip-info+.tooltip.top .tooltip-arrow {
+    border-top-color: #57c7d4;
+}
+
+.tooltip-info+.tooltip.right .tooltip-arrow {
+    border-right-color: #57c7d4;
+}
+
+.tooltip-warning+.tooltip .tooltip-inner {
+    color: #fff;
+    background-color: #f2a654;
+}
+
+.tooltip-warning+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #f2a654;
+}
+
+.tooltip-warning+.tooltip.left .tooltip-arrow {
+    border-left-color: #f2a654;
+}
+
+.tooltip-warning+.tooltip.top .tooltip-arrow {
+    border-top-color: #f2a654;
+}
+
+.tooltip-warning+.tooltip.right .tooltip-arrow {
+    border-right-color: #f2a654;
+}
+
+.tooltip-danger+.tooltip .tooltip-inner {
+    color: #fff;
+    background-color: #f96868;
+}
+
+.tooltip-danger+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #f96868;
+}
+
+.tooltip-danger+.tooltip.left .tooltip-arrow {
+    border-left-color: #f96868;
+}
+
+.tooltip-danger+.tooltip.top .tooltip-arrow {
+    border-top-color: #f96868;
+}
+
+.tooltip-danger+.tooltip.right .tooltip-arrow {
+    border-right-color: #f96868;
+}
+
+
+// 气泡动画 
+
+.tooltip-rotate+.tooltip {
+    opacity: 0;
+    -webkit-animation: tooltip-rotate3d 1s ease .1s forwards;
+    -o-animation: tooltip-rotate3d 1s ease .1s forwards;
+    animation: tooltip-rotate3d 1s ease .1s forwards
+}
+
+@-webkit-keyframes tooltip-rotate3d {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@-o-keyframes tooltip-rotate3d {
+    0% {
+        opacity: 0;
+        -o-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+    100% {
+        opacity: 1;
+        -o-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@keyframes tooltip-rotate3d {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(15deg);
+        -o-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+.tooltip-scale+.tooltip {
+    -webkit-animation: tooltip-scale3d 1s ease 0s forwards;
+    -o-animation: tooltip-scale3d 1s ease 0s forwards;
+    animation: tooltip-scale3d 1s ease 0s forwards
+}
+
+@-webkit-keyframes tooltip-scale3d {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.7, .3, 1) translate(50%, 50%);
+        transform: scale3d(.7, .3, 1) translate(50%, 50%)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(50%, 50%);
+        transform: scale3d(1, 1, 1) translate(50%, 50%)
+    }
+}
+
+@-o-keyframes tooltip-scale3d {
+    0% {
+        opacity: 0;
+        transform: scale3d(.7, .3, 1) translate(50%, 50%)
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) translate(50%, 50%)
+    }
+}
+
+@keyframes tooltip-scale3d {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.7, .3, 1) translate(50%, 50%);
+        transform: scale3d(.7, .3, 1) translate(50%, 50%)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(50%, 50%);
+        transform: scale3d(1, 1, 1) translate(50%, 50%)
+    }
+}

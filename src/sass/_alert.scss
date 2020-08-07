@@ -1,0 +1,77 @@
+
+// 弹出框
+.alert {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+  .alert-link {
+    font-weight: 700;
+  }
+  & > p {
+    & + p {
+      margin-top: 5px;
+    }
+  }
+}
+.alert>p,
+.alert>ul {
+  margin-bottom: 0;
+}
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 30px;
+}
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+.alert-dismissible {
+  .close {
+    top: -2px;
+    text-decoration: none;
+    opacity: 0.6;
+  }
+}
+.alert-social {
+  position: relative;
+  padding-left: 65px;
+  & > .fa {
+    position: absolute;
+    top: 17px;
+    bottom: 0;
+    left: 15px;
+    width: 1em;
+    font-size: 30px;
+    text-align: center;
+  }
+}
+.alert-icon {
+  position: relative;
+  padding-left: 40px;
+  & > .fa {
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    width: 1em;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.alert-avatar {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 70px;
+  & > .avatar {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+  }
+}
