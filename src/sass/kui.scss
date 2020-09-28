@@ -948,57 +948,54 @@ ul {
 
 @for $i from 1 through 8 {
   .primary-#{$i * 100} {
-    color: mix(#e8f1f8, #3583ca, $i / 8 * 100%) !important;
+    color: mix(#0a6dee, #b8d2f7, $i / 8 * 100%) !important;
   }
   .red-#{$i * 100} {
-    color: mix(#ffeaea, #d6494b, $i / 8 * 100%) !important;
+    color: mix(#eb0404, #fac6c7, $i / 8 * 100%) !important;
   }
   .pink-#{$i * 100} {
-    color: mix(#fce4ec, #e3dbf4, $i / 8 * 100%) !important;
+    color: mix(#d4024c, #ffcbdd, $i / 8 * 100%) !important;
   }
   .purple-#{$i * 100} {
-    color: mix(#f6f2ff, #6d45bc, $i / 8 * 100%) !important;
+    color: mix(#5d11f7, #e4d7fd, $i / 8 * 100%) !important;
   }
   .indigo-#{$i * 100} {
-    color: mix(#edeff9, #465bd4, $i / 8 * 100%) !important;
+    color: mix(#1834ec, #d2d7fa, $i / 8 * 100%) !important;
   }
   .blue-#{$i * 100} {
-    color: mix(#e8f1f8, #d3eff2, $i / 8 * 100%) !important;
+    color: mix(#086bec, #cbdef8, $i / 8 * 100%) !important;
   }
   .cyan-#{$i * 100} {
-    color: mix(#e8f1f8, #37a9b7, $i / 8 * 100%) !important;
+    color: mix(#016a80, #b6edf8, $i / 8 * 100%) !important;
   }
   .teal-#{$i * 100} {
-    color: mix(#ecfdfc, #178d81, $i / 8 * 100%) !important;
+    color: mix(#04756a, #c0f5f0, $i / 8 * 100%) !important;
   }
   .green-#{$i * 100} {
-    color: mix(#e7faf2, #279566, $i / 8 * 100%) !important;
+    color: mix(#016438, #b9f7d6, $i / 8 * 100%) !important;
   }
   .light-green-#{$i * 100} {
-    color: mix(#f1f7ea, #70a532, $i / 8 * 100%) !important;
+    color: mix(#345301, #d7f5a7, $i / 8 * 100%) !important;
   }
   .yellow-#{$i * 100} {
-    color: mix(#fffae7, #fbc02d, $i / 8 * 100%) !important;
+    color: mix(#f89603, #faf0a8, $i / 8 * 100%) !important;
   }
   .orange-#{$i * 100} {
-    color: mix(#fff3e6, #e98f2e, $i / 8 * 100%) !important;
+    color: mix(#912c01, #fad6b5, $i / 8 * 100%) !important;
   }
   .brown-#{$i * 100} {
-    color: mix(#fae6df, #715146, $i / 8 * 100%) !important;
+    color: mix(#583e37, #f8ded3, $i / 8 * 100%) !important;
   }
   .grey-#{$i * 100} {
-    color: mix(#fafafa, #424242, $i / 8 * 100%) !important;
+    color: mix(#474747, #fcfcfc, $i / 8 * 100%) !important;
   }
   .blue-grey-#{$i * 100} {
-    color: mix(#f3f7f9, #263238, $i / 8 * 100%) !important;
+    color: mix(#414c5a, #f3f8fa, $i / 8 * 100%) !important;
   }
 }
-
 .white {
-    color: #FFF !important
+  color: #FFF !important
 }
-
-
 //
 //  Module:基础
 //  Explain:背景颜色
