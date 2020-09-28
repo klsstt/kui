@@ -375,10 +375,10 @@ pre {
 // 
 @for $i from 1 through 9 {
     .width-#{$i * 50}  {
-        font-weight: $i * 50px
+        width: $i * 50px
     }
     .height-#{$i * 50}  {
-        font-weight: $i * 50px
+        height: $i * 50px
     }
 }
 .width-full {
@@ -398,7 +398,7 @@ pre {
     
 @for $i from 1 through 10 {
     .mt-#{$i * 5}  {
-        font-weight: $i * 5px!important; //距上i*5像素
+        margin-top: $i * 5px!important; //距上i*5像素
     }
     .mb-#{$i * 5} {
         margin-bottom: $i * 5px!important; //距下i*5像素
@@ -1007,49 +1007,49 @@ ul {
 
 @for $i from 1 through 8 {
   .bg-primary-#{$i * 100} {
-    background-color: mix(#e8f1f8, #3583ca, $i / 8 * 100%) !important;
+    background-color: mix(#0a6dee, #b8d2f7, $i / 8 * 100%) !important;
   }
   .bg-red-#{$i * 100} {
-    background-color: mix(#ffeaea, #d6494b, $i / 8 * 100%) !important;
+    background-color: mix(#eb0404, #fac6c7, $i / 8 * 100%) !important;
   }
   .bg-pink-#{$i * 100} {
-    background-color: mix(#fce4ec, #e3dbf4, $i / 8 * 100%) !important;
+    background-color: mix(#d4024c, #ffcbdd, $i / 8 * 100%) !important;
   }
   .bg-purple-#{$i * 100} {
-    background-color: mix(#f6f2ff, #6d45bc, $i / 8 * 100%) !important;
+    background-color: mix(#5d11f7, #e4d7fd, $i / 8 * 100%) !important;
   }
   .bg-indigo-#{$i * 100} {
-    background-color: mix(#edeff9, #465bd4, $i / 8 * 100%) !important;
+    background-color: mix(#1834ec, #d2d7fa, $i / 8 * 100%) !important;
   }
   .bg-blue-#{$i * 100} {
-    background-color: mix(#e8f1f8, #d3eff2, $i / 8 * 100%) !important;
+    background-color: mix(#086bec, #cbdef8, $i / 8 * 100%) !important;
   }
   .bg-cyan-#{$i * 100} {
-    background-color: mix(#e8f1f8, #37a9b7, $i / 8 * 100%) !important;
+    background-color: mix(#016a80, #b6edf8, $i / 8 * 100%) !important;
   }
   .bg-teal-#{$i * 100} {
-    background-color: mix(#ecfdfc, #178d81, $i / 8 * 100%) !important;
+    background-color: mix(#04756a, #c0f5f0, $i / 8 * 100%) !important;
   }
   .bg-green-#{$i * 100} {
-    background-color: mix(#e7faf2, #279566, $i / 8 * 100%) !important;
+    background-color: mix(#016438, #b9f7d6, $i / 8 * 100%) !important;
   }
   .bg-light-green-#{$i * 100} {
-    background-color: mix(#f1f7ea, #70a532, $i / 8 * 100%) !important;
+    background-color: mix(#345301, #d7f5a7, $i / 8 * 100%) !important;
   }
   .bg-yellow-#{$i * 100} {
-    background-color: mix(#fffae7, #fbc02d, $i / 8 * 100%) !important;
+    background-color: mix(#f89603, #faf0a8, $i / 8 * 100%) !important;
   }
   .bg-orange-#{$i * 100} {
-    background-color: mix(#fff3e6, #e98f2e, $i / 8 * 100%) !important;
+    background-color: mix(#912c01, #fad6b5, $i / 8 * 100%) !important;
   }
   .bg-brown-#{$i * 100} {
-    background-color: mix(#fae6df, #715146, $i / 8 * 100%) !important;
+    background-color: mix(#583e37, #f8ded3, $i / 8 * 100%) !important;
   }
   .bg-grey-#{$i * 100} {
-    background-color: mix(#fafafa, #424242, $i / 8 * 100%) !important;
+    background-color: mix(#474747, #fcfcfc, $i / 8 * 100%) !important;
   }
   .bg-blue-grey-#{$i * 100} {
-    background-color: mix(#f3f7f9, #263238, $i / 8 * 100%) !important;
+    background-color: mix(#414c5a, #f3f8fa, $i / 8 * 100%) !important;
   }
 }
 .bg-primary {
