@@ -32,7 +32,7 @@ a:focus,
 }
 
 
-/* 主模块 */
+/* 主模��?*/
 
 main {
     position: relative;
@@ -69,7 +69,7 @@ main {
 }
 
 
-/* 导航条颜色设置 */
+/* 导航条颜色设��?*/
 
 .navbar-default {
     background-color: #4e97d9;
@@ -126,12 +126,12 @@ main {
 
 .navbar-nav>li,
 .navbar-nav>li>a {
-    line-height: 41px;
+    line-height: 61px;
     font-size: 14px
 }
 
 
-/* 导航中得搜索框 */
+/* 导航中得搜索��?*/
 
 .navbar-search-overlap .kui-form-control {
     height: 62px!important;
@@ -140,7 +140,7 @@ main {
 }
 
 
-/* 导航中的工具栏 */
+/* 导航中的工具��?*/
 
 .navbar-default .navbar-toolbar>li>a {
     color: #fff;
@@ -151,7 +151,7 @@ main {
 }
 
 .navbar-toolbar>li>a {
-    line-height: 41px
+    line-height: 61px
 }
 
 
@@ -163,7 +163,7 @@ main {
 }
 
 
-/* 导航中文本 */
+/* 导航中文��?*/
 
 .navbar-text {
     margin-top: 19px;
@@ -171,7 +171,7 @@ main {
 }
 
 
-/* 移动端显示方式 */
+/* 移动端显示方��?*/
 
 @media (max-width: 767px) {
     .navbar-nav>li,
@@ -182,7 +182,7 @@ main {
 }
 
 
-/* 导航条中的下拉菜单样式 */
+/* 导航条中的下拉菜单样��?*/
 
 .dropdown-menu>li>a:hover,
 .dropdown-menu>li>a:focus {
@@ -228,7 +228,7 @@ main {
 }
 
 
-/* 移动端显示方式 */
+/* 移动端显示方��?*/
 
 @media (max-width: 767px) {
     .kui-main {
@@ -378,8 +378,13 @@ main {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* 修复标签栏定位 - 添加 position: absolute 使 top 属性生效 */
 .kui-ktabs {
-    margin-left: 200px
+    position: absolute !important;
+    top: 61px !important;
+    right: 0;
+    left: 0;
+    z-index: 1980;
 }
 
 .kui-tree-menu,
@@ -554,4 +559,15 @@ input[type=radio]:checked+label::before {
     cursor: default;
     background-color: #62a8ea;
     border-color: #62a8ea;
+}
+
+/* 主内容容器 - 防止被 header 遮挡 */
+.kui-container {
+    padding: 61px 0 0;
+    margin-top: -101px;  /* 负 margin 上移内容 */
+}
+
+/* 为标签栏预留空间 */
+.kui-ktabs-open {
+    margin-top: 81px;  /* 增加顶部间距 */
 }

@@ -1,0 +1,94 @@
+/**
+ * KUI 空状态组件
+ * 用于展示页面为空、错误、加载中等状态
+ */
+
+@import 'tokens';
+
+.kui-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-spacing-10);
+  text-align: center;
+  
+  &__icon {
+    margin-bottom: var(--ds-spacing-5);
+    color: var(--ds-color-text-tertiary);
+    font-size: 64px;
+    line-height: 1;
+    
+    .fa {
+      font-size: inherit;
+    }
+    
+    img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+  }
+  
+  &__title {
+    margin-bottom: var(--ds-spacing-3);
+    font-size: var(--ds-font-size-xl);
+    font-weight: 500;
+    color: var(--ds-color-text-primary);
+  }
+  
+  &__description {
+    max-width: 480px;
+    margin-bottom: var(--ds-spacing-5);
+    font-size: var(--ds-font-size-sm);
+    line-height: var(--ds-line-height-md);
+    color: var(--ds-color-text-secondary);
+  }
+  
+  &__actions {
+    display: flex;
+    gap: var(--ds-spacing-3);
+    flex-wrap: wrap;
+  }
+  
+  // 状态变体
+  &--success &__icon {
+    color: var(--ds-color-success-6);
+  }
+  
+  &--warning &__icon {
+    color: var(--ds-color-warning-6);
+  }
+  
+  &--error &__icon {
+    color: var(--ds-color-error-6);
+  }
+  
+  &--info &__icon {
+    color: var(--ds-color-primary-6);
+  }
+}
+
+// 响应式优化
+@media (max-width: --ds-breakpoint-sm - 1) {
+  .kui-empty-state {
+    padding: var(--ds-spacing-6);
+    
+    &__icon {
+      font-size: 48px;
+      
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    
+    &__title {
+      font-size: var(--ds-font-size-lg);
+    }
+    
+    &__description {
+      font-size: var(--ds-font-size-xs);
+    }
+  }
+}

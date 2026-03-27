@@ -1,0 +1,236 @@
+/**
+ * Design Tokens - 基础层
+ * 包含颜色、间距、阴影、圆角等基础变量
+ */
+
+:root {
+  /* ========================================
+   * 颜色系统 - 16 色阶
+   * ======================================== */
+  
+  /* 品牌色 - 主色调 */
+  --ds-color-primary-1: #e6f7ff;
+  --ds-color-primary-2: #bae7ff;
+  --ds-color-primary-3: #91d5ff;
+  --ds-color-primary-4: #69c0ff;
+  --ds-color-primary-5: #40a9ff;
+  --ds-color-primary-6: #1890ff; /* 主色 */
+  --ds-color-primary-7: #096dd9;
+  --ds-color-primary-8: #0050b3;
+  --ds-color-primary-9: #003a8c;
+  --ds-color-primary-10: #002766;
+  
+  /* 成功色 */
+  --ds-color-success-1: #f6ffed;
+  --ds-color-success-2: #d9f7be;
+  --ds-color-success-3: #b7eb8f;
+  --ds-color-success-4: #95de64;
+  --ds-color-success-5: #73d13d;
+  --ds-color-success-6: #52c41a;
+  --ds-color-success-7: #389e0d;
+  --ds-color-success-8: #237804;
+  --ds-color-success-9: #135200;
+  --ds-color-success-10: #092b00;
+  
+  /* 警告色 */
+  --ds-color-warning-1: #fffbe6;
+  --ds-color-warning-2: #fff1b8;
+  --ds-color-warning-3: #ffe58f;
+  --ds-color-warning-4: #ffd666;
+  --ds-color-warning-5: #ffc53d;
+  --ds-color-warning-6: #faad14;
+  --ds-color-warning-7: #d48806;
+  --ds-color-warning-8: #ad6800;
+  --ds-color-warning-9: #874d00;
+  --ds-color-warning-10: #613400;
+  
+  /* 错误色 */
+  --ds-color-error-1: #fff1f0;
+  --ds-color-error-2: #ffccc7;
+  --ds-color-error-3: #ffa39e;
+  --ds-color-error-4: #ff7875;
+  --ds-color-error-5: #ff4d4f;
+  --ds-color-error-6: #f5222d;
+  --ds-color-error-7: #cf1322;
+  --ds-color-error-8: #a8071a;
+  --ds-color-error-9: #820014;
+  --ds-color-error-10: #5c0011;
+  
+  /* 中性色 */
+  --ds-color-neutral-1: #ffffff;
+  --ds-color-neutral-2: #fafafa;
+  --ds-color-neutral-3: #f5f5f5;
+  --ds-color-neutral-4: #f0f0f0;
+  --ds-color-neutral-5: #d9d9d9;
+  --ds-color-neutral-6: #bfbfbf;
+  --ds-color-neutral-7: #8c8c8c;
+  --ds-color-neutral-8: #595959;
+  --ds-color-neutral-9: #262626;
+  --ds-color-neutral-10: #000000;
+  
+  /* ========================================
+   * 语义化颜色
+   * ======================================== */
+  --ds-color-text-primary: var(--ds-color-neutral-9);
+  --ds-color-text-secondary: var(--ds-color-neutral-8);
+  --ds-color-text-tertiary: var(--ds-color-neutral-7);
+  --ds-color-text-disabled: var(--ds-color-neutral-6);
+  
+  --ds-color-border-primary: var(--ds-color-neutral-5);
+  --ds-color-border-secondary: var(--ds-color-neutral-4);
+  
+  --ds-color-bg-primary: var(--ds-color-neutral-1);
+  --ds-color-bg-secondary: var(--ds-color-neutral-2);
+  --ds-color-bg-tertiary: var(--ds-color-neutral-3);
+  
+  /* ========================================
+   * 间距系统 - 基于 4px 格栅
+   * ======================================== */
+  --ds-spacing-0: 0;
+  --ds-spacing-1: 4px;
+  --ds-spacing-2: 8px;
+  --ds-spacing-3: 12px;
+  --ds-spacing-4: 16px;
+  --ds-spacing-5: 24px;
+  --ds-spacing-6: 32px;
+  --ds-spacing-7: 40px;
+  --ds-spacing-8: 48px;
+  --ds-spacing-9: 64px;
+  --ds-spacing-10: 80px;
+  
+  /* ========================================
+   * 圆角系统
+   * ======================================== */
+  --ds-radius-none: 0;
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px; /* 默认 */
+  --ds-radius-lg: 12px;
+  --ds-radius-xl: 16px;
+  --ds-radius-full: 9999px;
+  
+  /* ========================================
+   * 阴影系统
+   * ======================================== */
+  --ds-shadow-none: none;
+  --ds-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  --ds-shadow-md: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  --ds-shadow-lg: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
+  --ds-shadow-xl: 0 18px 52px 0 rgba(0, 0, 0, 0.12), 0 10px 32px 8px rgba(0, 0, 0, 0.08);
+  
+  /* ========================================
+   * 字体系统
+   * ======================================== */
+  --ds-font-size-xs: 12px;
+  --ds-font-size-sm: 14px;
+  --ds-font-size-md: 16px; /* 默认 */
+  --ds-font-size-lg: 20px;
+  --ds-font-size-xl: 24px;
+  --ds-font-size-2xl: 32px;
+  
+  --ds-line-height-none: 1;
+  --ds-line-height-sm: 1.5;
+  --ds-line-height-md: 1.6;
+  --ds-line-height-lg: 1.8;
+  
+  --ds-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  
+  /* ========================================
+   * 动画系统
+   * ======================================== */
+  --ds-duration-fast: 120ms;
+  --ds-duration-normal: 200ms;
+  --ds-duration-slow: 300ms;
+  --ds-duration-slower: 360ms;
+  
+  --ds-easing-linear: linear;
+  --ds-easing-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ds-easing-out: cubic-bezier(0, 0, 0.55, 1);
+  --ds-easing-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ds-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ========================================
+   * 容器高度
+   * ======================================== */
+  --ds-height-sm: 32px;
+  --ds-height-md: 40px;
+  --ds-height-lg: 48px;
+  --ds-height-xl: 56px;
+  --ds-height-xxl: 64px;
+  
+  /* ========================================
+   * Z-Index 层级
+   * ======================================== */
+  --ds-z-index-base: 0;
+  --ds-z-index-dropdown: 1000;
+  --ds-z-index-sticky: 1020;
+  --ds-z-index-fixed: 1030;
+  --ds-z-index-modal-backdrop: 1040;
+  --ds-z-index-modal: 1050;
+  --ds-z-index-popover: 1060;
+  --ds-z-index-tooltip: 1070;
+  
+  /* ========================================
+   * 响应式断点
+   * ======================================== */
+  --ds-breakpoint-xs: 576px;
+  --ds-breakpoint-sm: 768px;
+  --ds-breakpoint-md: 992px;
+  --ds-breakpoint-lg: 1200px;
+  --ds-breakpoint-xl: 1400px;
+  --ds-breakpoint-xxl: 1600px;
+}
+
+/* ========================================
+ * 暗黑模式主题
+ * ======================================== */
+[data-theme='dark'] {
+  /* 品牌色 - 暗色调整 */
+  --ds-color-primary-1: #002766;
+  --ds-color-primary-2: #003a8c;
+  --ds-color-primary-3: #0050b3;
+  --ds-color-primary-4: #096dd9;
+  --ds-color-primary-5: #1890ff;
+  --ds-color-primary-6: #40a9ff;
+  --ds-color-primary-7: #69c0ff;
+  --ds-color-primary-8: #91d5ff;
+  --ds-color-primary-9: #bae7ff;
+  --ds-color-primary-10: #e6f7ff;
+  
+  /* 语义化颜色 - 暗色调整 */
+  --ds-color-text-primary: var(--ds-color-neutral-2);
+  --ds-color-text-secondary: var(--ds-color-neutral-4);
+  --ds-color-text-tertiary: var(--ds-color-neutral-6);
+  --ds-color-text-disabled: var(--ds-color-neutral-7);
+  
+  --ds-color-border-primary: var(--ds-color-neutral-8);
+  --ds-color-border-secondary: var(--ds-color-neutral-9);
+  
+  --ds-color-bg-primary: var(--ds-color-neutral-10);
+  --ds-color-bg-secondary: var(--ds-color-neutral-9);
+  --ds-color-bg-tertiary: var(--ds-color-neutral-8);
+  
+  /* 阴影 - 暗色使用更深的阴影 */
+  --ds-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --ds-shadow-md: 0 3px 6px -4px rgba(0, 0, 0, 0.48);
+  --ds-shadow-lg: 0 6px 16px -8px rgba(0, 0, 0, 0.56);
+}
+
+/* ========================================
+ * 减少动画偏好支持
+ * ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-duration-fast: 0ms;
+    --ds-duration-normal: 0ms;
+    --ds-duration-slow: 0ms;
+    --ds-duration-slower: 0ms;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

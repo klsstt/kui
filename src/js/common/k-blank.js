@@ -129,6 +129,12 @@ $(function(){
 		$.cookie("Huiskin", v);
 		var hrefStr=$("#skin").attr("href");
 		var hrefRes=hrefStr.substring(0,hrefStr.lastIndexOf('skin/'))+'skin/'+v+'/skin.css';
-		$(window.frames.document).contents().find("#skin").attr("href",hrefRes);
+		
+		// 修复：同时更新父窗口和 iframe 的皮肤
+		// 1. 更新父窗口的皮肤 CSS
+		$("#skin").attr("href", hrefRes);
+		
+		// 2. 更新 iframe 内部的皮肤 CSS
+		$(window.frames.document).contents().find("#skin").attr("href", hrefRes);
 	});
 }); 

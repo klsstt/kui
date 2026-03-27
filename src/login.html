@@ -1,126 +1,311 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="zh-CN" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KUI</title>
+    <title>KUI - 登录</title>
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
     <link rel="stylesheet" href="css/kui.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
-    <link rel="stylesheet" href="css/example.css">
 
     <style>
+        /* Design Token 变量定义 */
+        :root {
+            /* 品牌色 */
+            --ds-color-primary-6: #1890ff;
+            --ds-color-primary-7: #096dd9;
+            --ds-color-primary-8: #0050b3;
+            --ds-color-primary-9: #003a8c;
+            
+            /* 中性色 */
+            --ds-color-neutral-1: #ffffff;
+            --ds-color-neutral-2: #fafafa;
+            --ds-color-neutral-3: #f5f5f5;
+            --ds-color-neutral-4: #f0f0f0;
+            --ds-color-neutral-5: #d9d9d9;
+            --ds-color-neutral-6: #bfbfbf;
+            --ds-color-neutral-7: #8c8c8c;
+            --ds-color-neutral-8: #595959;
+            --ds-color-neutral-9: #262626;
+            --ds-color-neutral-10: #000000;
+            
+            /* 语义化颜色 */
+            --ds-color-text-primary: var(--ds-color-neutral-9);
+            --ds-color-text-secondary: var(--ds-color-neutral-8);
+            --ds-color-text-tertiary: var(--ds-color-neutral-7);
+            --ds-color-text-disabled: var(--ds-color-neutral-6);
+            
+            --ds-color-border-primary: var(--ds-color-neutral-5);
+            --ds-color-border-secondary: var(--ds-color-neutral-4);
+            
+            --ds-color-bg-primary: var(--ds-color-neutral-1);
+            --ds-color-bg-secondary: var(--ds-color-neutral-2);
+            --ds-color-bg-tertiary: var(--ds-color-neutral-3);
+            
+            /* 间距系统 */
+            --ds-spacing-0: 0;
+            --ds-spacing-1: 4px;
+            --ds-spacing-2: 8px;
+            --ds-spacing-3: 12px;
+            --ds-spacing-4: 16px;
+            --ds-spacing-5: 24px;
+            --ds-spacing-6: 32px;
+            --ds-spacing-7: 40px;
+            --ds-spacing-8: 48px;
+            --ds-spacing-9: 64px;
+            --ds-spacing-10: 80px;
+            
+            /* 圆角系统 */
+            --ds-radius-sm: 2px;
+            --ds-radius-md: 4px;
+            --ds-radius-lg: 8px;
+            --ds-radius-xl: 12px;
+            --ds-radius-2xl: 16px;
+            
+            /* 阴影系统 */
+            --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --ds-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --ds-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --ds-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --ds-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+            
+            /* 动画系统 */
+            --ds-duration-normal: 0.3s;
+            --ds-easing-smooth: cubic-bezier(0.645, 0.047, 0.365, 1);
+            
+            /* 字体大小 */
+            --ds-font-size-sm: 12px;
+            --ds-font-size-md: 14px;
+            --ds-font-size-lg: 16px;
+            --ds-font-size-xl: 20px;
+            --ds-font-size-2xl: 24px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0 !important;  /* 强制覆盖 skin.css 的 padding-top */
+            font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", sans-serif;
+            background-color: var(--ds-color-bg-primary);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
         .login {
-            background: 0 0
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--ds-color-primary-6) 0%, var(--ds-color-primary-8) 100%);
         }
         
-        .login .avatar.avatar-lg {
-            width: 210px;
-            height: 160px
-        }
-        
-        .login .locked-user {
-            margin-bottom: 35px;
-            color: #fff
-        }
-        
-        .login form {
-            width: 300px;
-            margin: 22px auto
-        }
-        
-        .login .wecome {
-            margin-bottom: 35px;
-            color: #fff;
-        }
-        
-        .login-dark.layout-full::before {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            z-index: -1;
+        .login-container {
             width: 100%;
-            height: 100%;
-            content: "";
-            background-position: center top;
-            -webkit-background-size: cover;
-            background-size: cover;
+            max-width: 420px;
+            padding: var(--ds-spacing-6);
         }
         
-        .login::before {
-            background-image: url("images/photos/city-6.jpg");
+        .login-card {
+            background-color: var(--ds-color-bg-primary);
+            border-radius: var(--ds-radius-xl);
+            box-shadow: var(--ds-shadow-xl);
+            padding: var(--ds-spacing-8);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
         }
         
-        .login .avatar {
-            margin-bottom: 15px
+        .login-card:hover {
+            box-shadow: var(--ds-shadow-2xl);
         }
         
-        .avatar {
+        .logo-container {
+            text-align: center;
+            margin-bottom: var(--ds-spacing-6);
+        }
+        
+        .logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--ds-radius-lg);
+            margin-bottom: var(--ds-spacing-4);
+        }
+        
+        .login-title {
+            margin: 0;
+            font-size: var(--ds-font-size-2xl);
+            font-weight: 600;
+            color: var(--ds-color-text-primary);
+        }
+        
+        .login-subtitle {
+            margin-top: var(--ds-spacing-2);
+            font-size: var(--ds-font-size-sm);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .form-group {
+            margin-bottom: var(--ds-spacing-4);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--ds-spacing-3) var(--ds-spacing-4);
+            font-size: var(--ds-font-size-md);
+            border: 1px solid var(--ds-color-border-primary);
+            border-radius: var(--ds-radius-md);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ds-color-primary-6);
+            box-shadow: 0 0 0 3px rgba(var(--ds-color-primary-6), 0.1);
+        }
+        
+        .input-group {
             position: relative;
-            display: inline-block;
-            width: 40px;
-            white-space: nowrap;
-            vertical-align: bottom;
-            border-radius: 1000px;
         }
         
-        .content {
-            margin: 8% auto 0;
-            padding: 20px 20px;
+        .input-icon {
+            position: absolute;
+            left: var(--ds-spacing-3);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ds-color-text-tertiary);
+            pointer-events: none;
         }
         
-        form {
-            width: 350px;
-            margin: 45px 0 20px;
+        .input-with-icon {
+            padding-left: var(--ds-spacing-10);
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: var(--ds-spacing-3);
+            font-size: var(--ds-font-size-md);
+            font-weight: 600;
+            color: var(--ds-color-neutral-1);
+            background-color: var(--ds-color-primary-6);
+            border: none;
+            border-radius: var(--ds-radius-md);
+            cursor: pointer;
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
+        .btn-login:hover {
+            background-color: var(--ds-color-primary-7);
+            transform: translateY(-2px);
+            box-shadow: var(--ds-shadow-lg);
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--ds-spacing-4);
+            font-size: var(--ds-font-size-sm);
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: var(--ds-spacing-2);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .forgot-password {
+            color: var(--ds-color-primary-6);
+            text-decoration: none;
+            transition: color var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
+        .forgot-password:hover {
+            color: var(--ds-color-primary-7);
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: var(--ds-spacing-4);
+            }
+            
+            .login-card {
+                padding: var(--ds-spacing-5);
+            }
         }
     </style>
 </head>
 
-<body class="login layout-full login-dark">
-
-    <div class="animation-fade v-align text-center animsition-fade height-full">
-        <div class="content v-align-middle">
-            <div class="avatar avatar-lg">
-                <img src="images/kui-white.png">
-            </div>
-            <h4 class="wecome">欢迎登录</h4>
-            <form action="/" role="form">
-                <div class="kui-form-group">
-                    <select class="kui-form-control" id="type" placeholder="请选择版本">
-                    <option value="">请选择版本</option>
-                    <option value="pjax">PJAX</option>
-                    <option value="iframe">IFRAME</option>
-                </select>
+<body>
+    <div class="login">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="logo-container">
+                    <img src="./images/logo.png" alt="KUI Logo" class="logo-img">
+                    <h1 class="login-title">KUI ADMIN</h1>
+                    <p class="login-subtitle">轻量级扁平化响应式 UI 框架</p>
                 </div>
-                <input type="text" class="kui-form-control" name="account" id="k_account" placeholder="请输入账户登录">
-                <input type="password" class="kui-form-control  mt-10" name="password" id="k_password" placeholder="请输入您的密码登录">
-                <button id="btn_login" type="button" class="btn btn-primary btn-block mt-30" onclick="login()">登 录</button>
-            </form>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <i class="fa fa-user input-icon"></i>
+                            <input type="text" class="form-control input-with-icon" placeholder="用户名" id="username" value="admin">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <i class="fa fa-lock input-icon"></i>
+                            <input type="password" class="form-control input-with-icon" placeholder="密码" id="password" value="admin">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-login">
+                        <i class="fa fa-sign-in"></i> 登录
+                    </button>
+                    
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> 记住我
+                        </label>
+                        <a href="javascript:;" class="forgot-password">忘记密码？</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <script src="lib/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/kui.js"></script>
+    
+    <!-- 引入 jQuery -->
+    <script type="text/javascript" src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    
     <script>
-        $(function() {
-            if (!$.kui.store.enable) { //浏览器不支持本地存储
-                console.log('浏览器不支持本地存储');
-            }
+        $(document).ready(function() {
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var username = $('#username').val();
+                var password = $('#password').val();
+                
+                // 模拟登录（实际项目中需要调用后端 API）
+                if (username === 'admin' && password === 'admin') {
+                    // 保存用户信息
+                    $.kui.store.set('account', username);
+                    
+                    // 跳转到首页
+                    window.location.href = 'index.html';
+                } else {
+                    layer.msg('用户名或密码错误', {
+                        icon: 2,
+                        time: 2000
+                    });
+                }
+            });
+            
+            console.log('✅ 登录页面已加载');
         });
-
-        function login() {
-            var account = $("#k_account").val();
-            var type = $("#type").val();
-            if ($.trim(account).length > 0) {
-                $.kui.store.set("account", account);
-                $.kui.store.set("version", type);
-                window.location.href = 'index.html';
-            }
-
-        }
     </script>
-</body>cript>
-</body> }
-</script>
 </body>
+</html>

@@ -1,0 +1,465 @@
+/**
+ * KUI 按钮组件 - 基于 Design Token 重构
+ * 遵循设计规范，支持多状态、多尺寸、可访问性
+ */
+
+@import 'tokens';
+
+/* ========================================
+ * 基础按钮样式
+ * ======================================== */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-2);
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  margin-bottom: 0;
+  
+  font-size: var(--ds-font-size-sm);
+  font-weight: 400;
+  line-height: var(--ds-line-height-sm);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  
+  transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+  
+  // 默认状态
+  color: var(--ds-color-text-primary);
+  background-color: var(--ds-color-bg-secondary);
+  border-color: var(--ds-color-border-primary);
+  
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: var(--ds-shadow-sm);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--ds-color-primary-6);
+    outline-offset: 2px;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  // 禁用状态
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    transform: none;
+  }
+  
+  // 图标支持
+  .fa,
+  .icon {
+    width: 1em;
+    margin: 0;
+    line-height: inherit;
+    text-align: center;
+  }
+}
+
+/* ========================================
+ * 按钮尺寸
+ * ======================================== */
+.btn-xs {
+  padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  font-size: var(--ds-font-size-xs);
+  line-height: var(--ds-line-height-none);
+  border-radius: var(--ds-radius-sm);
+  height: var(--ds-height-sm);
+}
+
+.btn-sm {
+  padding: var(--ds-spacing-1) var(--ds-spacing-3);
+  font-size: var(--ds-font-size-xs);
+  line-height: var(--ds-line-height-sm);
+  border-radius: var(--ds-radius-sm);
+  height: auto;
+}
+
+.btn-md {
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height-sm);
+  border-radius: var(--ds-radius-md);
+  height: var(--ds-height-md);
+}
+
+.btn-lg {
+  padding: var(--ds-spacing-3) var(--ds-spacing-5);
+  font-size: var(--ds-font-size-md);
+  line-height: var(--ds-line-height-md);
+  border-radius: var(--ds-radius-lg);
+  height: var(--ds-height-lg);
+}
+
+.btn-xl {
+  padding: var(--ds-spacing-4) var(--ds-spacing-6);
+  font-size: var(--ds-font-size-lg);
+  line-height: var(--ds-line-height-lg);
+  border-radius: var(--ds-radius-xl);
+  height: var(--ds-height-xl);
+}
+
+/* ========================================
+ * 按钮类型 - 语义化颜色
+ * ======================================== */
+.btn-primary {
+  color: var(--ds-color-neutral-1);
+  background-color: var(--ds-color-primary-6);
+  border-color: var(--ds-color-primary-6);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-primary-7);
+    border-color: var(--ds-color-primary-7);
+    box-shadow: 0 0 0 3px rgba(var(--ds-color-primary-6), 0.2);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-primary-8);
+    border-color: var(--ds-color-primary-8);
+  }
+}
+
+.btn-success {
+  color: var(--ds-color-neutral-1);
+  background-color: var(--ds-color-success-6);
+  border-color: var(--ds-color-success-6);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-success-7);
+    border-color: var(--ds-color-success-7);
+    box-shadow: 0 0 0 3px rgba(var(--ds-color-success-6), 0.2);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-success-8);
+    border-color: var(--ds-color-success-8);
+  }
+}
+
+.btn-info {
+  color: var(--ds-color-neutral-1);
+  background-color: var(--ds-color-primary-5);
+  border-color: var(--ds-color-primary-5);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-primary-6);
+    border-color: var(--ds-color-primary-6);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-primary-7);
+    border-color: var(--ds-color-primary-7);
+  }
+}
+
+.btn-warning {
+  color: var(--ds-color-neutral-1);
+  background-color: var(--ds-color-warning-6);
+  border-color: var(--ds-color-warning-6);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-warning-7);
+    border-color: var(--ds-color-warning-7);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-warning-8);
+    border-color: var(--ds-color-warning-8);
+  }
+}
+
+.btn-danger {
+  color: var(--ds-color-neutral-1);
+  background-color: var(--ds-color-error-6);
+  border-color: var(--ds-color-error-6);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-error-7);
+    border-color: var(--ds-color-error-7);
+    box-shadow: 0 0 0 3px rgba(var(--ds-color-error-6), 0.2);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-error-8);
+    border-color: var(--ds-color-error-8);
+  }
+}
+
+.btn-default {
+  color: var(--ds-color-text-primary);
+  background-color: var(--ds-color-bg-secondary);
+  border-color: var(--ds-color-border-primary);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-bg-tertiary);
+    border-color: var(--ds-color-border-secondary);
+  }
+  
+  &:active {
+    background-color: var(--ds-color-neutral-4);
+    border-color: var(--ds-color-neutral-5);
+  }
+}
+
+/* ========================================
+ * 按钮变体
+ * ======================================== */
+
+// 轮廓按钮
+.btn-outline {
+  background-color: transparent;
+  
+  &.btn-primary {
+    color: var(--ds-color-primary-6);
+    border-color: var(--ds-color-primary-6);
+    
+    &:hover,
+    &:focus {
+      color: var(--ds-color-neutral-1);
+      background-color: var(--ds-color-primary-6);
+    }
+  }
+  
+  &.btn-success {
+    color: var(--ds-color-success-6);
+    border-color: var(--ds-color-success-6);
+    
+    &:hover,
+    &:focus {
+      color: var(--ds-color-neutral-1);
+      background-color: var(--ds-color-success-6);
+    }
+  }
+  
+  &.btn-danger {
+    color: var(--ds-color-error-6);
+    border-color: var(--ds-color-error-6);
+    
+    &:hover,
+    &:focus {
+      color: var(--ds-color-neutral-1);
+      background-color: var(--ds-color-error-6);
+    }
+  }
+}
+
+// 链接按钮
+.btn-link {
+  color: var(--ds-color-primary-6);
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  
+  &:hover,
+  &:focus {
+    color: var(--ds-color-primary-7);
+    text-decoration: underline;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  &:active {
+    transform: none;
+  }
+  
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    color: var(--ds-color-text-disabled);
+  }
+}
+
+// 幽灵按钮
+.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--ds-color-text-primary);
+  
+  &:hover,
+  &:focus {
+    background-color: var(--ds-color-bg-secondary);
+    box-shadow: var(--ds-shadow-sm);
+  }
+}
+
+/* ========================================
+ * 特殊形状
+ * ======================================== */
+.btn-squared {
+  border-radius: var(--ds-radius-none);
+}
+
+.btn-round {
+  border-radius: var(--ds-radius-full);
+}
+
+.btn-circle {
+  width: var(--ds-height-md);
+  height: var(--ds-height-md);
+  padding: 0;
+  border-radius: var(--ds-radius-full);
+  
+  &.btn-xs {
+    width: var(--ds-height-sm);
+    height: var(--ds-height-sm);
+  }
+  
+  &.btn-sm {
+    width: var(--ds-height-md);
+    height: var(--ds-height-md);
+  }
+  
+  &.btn-lg {
+    width: var(--ds-height-lg);
+    height: var(--ds-height-lg);
+  }
+  
+  &.btn-xl {
+    width: var(--ds-height-xl);
+    height: var(--ds-height-xl);
+  }
+}
+
+/* ========================================
+ * 按钮块
+ * ======================================== */
+.btn-block {
+  display: flex;
+  width: 100%;
+  
+  + .btn-block {
+    margin-top: var(--ds-spacing-2);
+  }
+}
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
+/* ========================================
+ * 加载状态
+ * ======================================== */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.75s linear infinite;
+  }
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+ * 按钮组
+ * ======================================== */
+.btn-group {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  
+  > .btn {
+    position: relative;
+    flex: 1;
+    
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+    
+    &:first-child:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  
+  > .btn + .btn,
+  > .btn + .btn-group,
+  > .btn-group + .btn,
+  > .btn-group + .btn-group {
+    margin-left: -1px;
+  }
+}
+
+.btn-group-vertical {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  > .btn {
+    width: 100%;
+    
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+    
+    &:first-child:not(:last-child) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+/* ========================================
+ * 响应式优化
+ * ======================================== */
+@media (max-width: --ds-breakpoint-sm - 1) {
+  .btn-responsive-sm {
+    width: 100%;
+    margin-bottom: var(--ds-spacing-2);
+  }
+}
+
+@media (max-width: --ds-breakpoint-md - 1) {
+  .btn-responsive-md {
+    width: 100%;
+    margin-bottom: var(--ds-spacing-2);
+  }
+}

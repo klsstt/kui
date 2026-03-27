@@ -1,21 +1,47 @@
 {
   "name": "kui",
-  "version": "1.0.0",
-  "description": "KUI 不仅继承了Bootstrap 3 中的大部分基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "KUI 不仅继承了 Bootstrap 3 中的基础内容，还汲取了大量开源框架/控件精华于一身，能让我们更便捷的进行敏捷开发。现已升级至 Vite 构建系统。",
+  "type": "module",
+  "main": "./dist/js/kui.cjs.js",
+  "module": "./dist/js/kui.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/js/kui.esm.js",
+      "require": "./dist/js/kui.cjs.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "directories": {
-    "example": "example",
-    "lib": "lib"
+    "lib": "dist"
   },
   "scripts": {
-    "test": "test"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:watch": "vite build --watch",
+    "clean": "rimraf dist",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src/**/*.js --ext .js",
+    "format": "prettier --write \"src/**/*.{js,scss,css,html,json}\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/klsstt/kui.git"
   },
   "keywords": [
-    "kui"
+    "kui",
+    "ui-framework",
+    "jquery",
+    "bootstrap",
+    "admin-template"
   ],
   "author": "kangbolei",
   "license": "ISC",
@@ -23,14 +49,22 @@
     "url": "https://github.com/klsstt/kui/issues"
   },
   "homepage": "https://github.com/klsstt/kui#readme",
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-uglify": "^3.0.2"
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   },
-  "dependencies": {
-    "gulp-clean-css": "^4.3.0"
-  }
+  "devDependencies": {
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "jsdom": "^23.0.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
+    "terser": "^5.26.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {}
 }

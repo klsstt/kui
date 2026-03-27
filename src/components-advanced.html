@@ -1,0 +1,242 @@
+    <!--/meta 作为公共模版分离出去-->
+    <title>KUI - 高级组件</title>
+    <meta name="keywords" content="KUI, Advanced Components, Dropdown, Collapse, Carousel">
+    <meta name="description" content="KUI 高级组件演示，包含下拉菜单、折叠、手风琴、轮播等。">
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
+    <link rel="stylesheet" href="css/kui.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
+    <link rel="stylesheet" href="skin/default/skin.css">
+    <style>
+        body {
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+        }
+        
+        .demo-section {
+            max-width: 1400px;
+            margin: 0 auto var(--ds-spacing-8);
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+            border-radius: var(--ds-radius-lg);
+            box-shadow: var(--ds-shadow-md);
+        }
+        
+        .demo-title {
+            margin-bottom: var(--ds-spacing-5);
+            font-size: var(--ds-font-size-2xl);
+            font-weight: 600;
+            color: var(--ds-color-text-primary);
+            border-bottom: 2px solid var(--ds-color-border-primary);
+            padding-bottom: var(--ds-spacing-3);
+        }
+        
+        .demo-subtitle {
+            margin: var(--ds-spacing-5) 0 var(--ds-spacing-4);
+            font-size: var(--ds-font-size-lg);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .component-wrapper {
+            margin-bottom: var(--ds-spacing-6);
+        }
+        
+        .carousel-demo {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 主题切换工具栏 -->
+    <div data-provide="theme-toolbar"></div>
+    
+    <div class="container-fluid">
+        <!-- Dropdown 下拉菜单演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">📂 高级组件系统</h1>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Dropdown 下拉菜单</h3>
+                <div class="mb-4">
+                    <div class="dropdown d-inline-block mr-3">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            下拉菜单
+                        </button>
+                        <ul class="dropdown-menu show">
+                            <li><a href="#" class="dropdown-item">选项 1</a></li>
+                            <li><a href="#" class="dropdown-item">选项 2</a></li>
+                            <li><a href="#" class="dropdown-item active">选项 3（当前）</a></li>
+                            <li><a href="#" class="dropdown-item disabled">选项 4（禁用）</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item">分隔线后</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown d-inline-block mr-3">
+                        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                            带图标
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-edit"></i> 编辑</a></li>
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-copy"></i> 复制</a></li>
+                            <li><a href="#" class="dropdown-item"><i class="fa fa-trash"></i> 删除</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropup d-inline-block mr-3">
+                        <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                            向上展开
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">选项 1</a></li>
+                            <li><a href="#" class="dropdown-item">选项 2</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropright d-inline-block mr-3">
+                        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                            向右展开
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">选项 1</a></li>
+                            <li><a href="#" class="dropdown-item">选项 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Collapse 折叠演示 -->
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Collapse 折叠</h3>
+                
+                <div class="mb-4">
+                    <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#collapse-demo">
+                        切换折叠内容
+                    </button>
+                    
+                    <div id="collapse-demo" class="collapse show">
+                        <div class="card card-body">
+                            <p>这是可以折叠的内容区域。点击上面的按钮可以显示或隐藏此内容。</p>
+                            <p>折叠组件支持平滑的动画效果，并且可以通过 JavaScript 进行控制。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accordion 手风琴演示 -->
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Accordion 手风琴</h3>
+                
+                <div class="accordion" id="accordion-example">
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true">
+                                <span class="title">问题一：什么是 KUI？</span>
+                                <span class="icon"></span>
+                            </button>
+                        </div>
+                        <div id="collapse-1" class="collapse show" data-parent="#accordion-example">
+                            <div class="card-body">
+                                <p>KUI 是一个基于 Design Token 的现代化 UI 框架，提供丰富的组件和响应式设计支持。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn-link" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false">
+                                <span class="title">问题二：如何使用？</span>
+                                <span class="icon"></span>
+                            </button>
+                        </div>
+                        <div id="collapse-2" class="collapse" data-parent="#accordion-example">
+                            <div class="card-body">
+                                <p>引入 CSS 和 JS 文件后即可使用所有组件。每个组件都有详细的文档和示例代码。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn-link" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false">
+                                <span class="title">问题三：支持暗黑模式吗？</span>
+                                <span class="icon"></span>
+                            </button>
+                        </div>
+                        <div id="collapse-3" class="collapse" data-parent="#accordion-example">
+                            <div class="card-body">
+                                <p>是的！KUI 完全支持暗黑模式，并且可以通过主题切换工具栏一键切换。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel 轮播演示 -->
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Carousel 轮播</h3>
+                
+                <div class="carousel-demo">
+                    <div id="carousel-example" data-provide="carousel" data-interval="3000" data-pause="hover">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1%20%7B%20fill%3A%23373940%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A40pt%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23373940%22%3E%3C%2Frect%3E%3Ctext%20x%3D%22235%22%20y%3D%22218%22%3ESlide%201%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="First slide">
+                                <div class="carousel-caption">
+                                    <h3>第一张幻灯片</h3>
+                                    <p>这是轮播的第一张内容，可以放置图片或任何 HTML 内容。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_2%20%7B%20fill%3A%234e525a%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A40pt%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_2%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%234e525a%22%3E%3C%2Frect%3E%3Ctext%20x%3D%22235%22%20y%3D%22218%22%3ESlide%202%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Second slide">
+                                <div class="carousel-caption">
+                                    <h3>第二张幻灯片</h3>
+                                    <p>轮播支持自动播放、键盘控制和指示器导航。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_3%20%7B%20fill%3A%236d717a%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A40pt%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_3%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%236d717a%22%3E%3C%2Frect%3E%3Ctext%20x%3D%22235%22%20y%3D%22218%22%3ESlide%203%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Third slide">
+                                <div class="carousel-caption">
+                                    <h3>第三张幻灯片</h3>
+                                    <p>悬停可以暂停自动播放，移开后继续播放。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-control-prev" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                        
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example" data-slide-to="1"></li>
+                            <li data-target="#carousel-example" data-slide-to="2"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 引入 jQuery -->
+    <script src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/common/theme-toolbar.js"></script>
+    <script src="./js/common/advanced.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-provide="theme-toolbar"]').themeToolbar();
+            
+            console.log('✅ 高级组件已加载');
+        });
+    </script>
+</body>
+</html>

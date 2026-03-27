@@ -1,6 +1,5 @@
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
@@ -9,219 +8,183 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="Bookmark" href="favicon.ico">
-    <title>KUI</title>
-    <meta name="keywords" content="KUI ADMIN，网站后台模版,上手简单,扩展方便,为企业级平台提供高效解决方案！">
-    <meta name="description" content="KUI，是一款轻量级扁平化响应式UI框架。">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <title>KUI - 产品介绍</title>
+    <meta name="keywords" content="KUI ADMIN，网站后台模版，上手简单，扩展方便，为企业级平台提供高效解决方案！">
+    <meta name="description" content="KUI，是一款轻量级扁平化响应式 UI 框架。">
+    
     <link rel="stylesheet" href="css/kui.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
-    <link rel="stylesheet" href="lib/slick-carousel/slick.css">
-    <link rel="stylesheet" href="css/example.css">
-    <link rel="stylesheet" href="lib/reveal/css/reveal.css">
-    <link rel="stylesheet" href="lib/reveal/css/default.css" id="theme">
+    
     <style>
-        .kui-index{
-            position: relative;
-            width: 100%;
-            height: 100%;
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
         }
         
-
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero-title {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1890ff;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-color: #1890ff;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #1890ff;
+        }
+        
+        .feature-title {
+            margin: 20px 0 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .feature-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
-
-    <header class="navbar navbar-default navbar-fixed-top"></header>
-    <div class="kui-index">
-        <div class="reveal">
-            <div class="slides">
-                <section>
-                    <section>
-                        <h1>KUI</h1>
-                        <h3>基于bootstrap3多项优化改进，使用更加方便简洁，文档更详实。</h3>
-                    </section>
-                    <section>
-                        <h2>KUI具备以下特色</h2>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h3>免费开源</h3>
-                                <p>在开源协议范围内免费使用KUI。</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3>方便使用</h3>
-                                <p>引入kui.css即可。</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3>组件齐全</h3>
-                                <p>基于jQuery实现，使用简单。</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3>容易定制</h3>
-                                <p>开放sass参数，便于定制。</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="present">
-                        <h3>KUI使用方式</h3>
-                        <pre><code data-trim="" contenteditable="" style="font-size: 18px; margin-top: 20px;" class="javascript"><!-- 引入KUI -->
-<link rel="stylesheet" href="css/kui.css">
-<!-- 引入KUI 默认皮肤样式 可选-->
-<link rel="stylesheet" href="skin/default/skin.css"></code>
-                        </pre>
-                      
-                    </section>
-                </section>
-                <section data-background="#007777">
-                    <section>
-                    <h1>KUI ADMIN</h1>
-                    <p>一款由KUI架构实现的的经典模块化前端框架,覆盖全端场景，紧贴业务需求，助力企业快速发展。  </p> 
-                    </section>
-                    <section class="index-question">
-                        <h2 class="text-c">多种选择</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h3>经典iframe结构</h3>
-                                <p>适用于规模相对庞大的应用系统</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h3>单页面模板技术</h3>
-                                <p>适用于多场景，前后分离的应用系统</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="index-question">
-                        <h3>多种风格</h3>
-                        <p>引入了sass技术，可以根据开放的参数自定义风格，默认自带六种风格。</p>
-                        <div class="row">
-                            <div class="col-md-2">天蓝</div>
-                            <div class="col-md-2">浅绿</div>
-                            <div class="col-md-2">深红</div>
-                            <div class="col-md-2">明橙</div>
-                            <div class="col-md-2">灿黄</div>
-                            <div class="col-md-2">深黑</div>
-                        </div>
-                    </section>
-                    <section class="index-question">
-                        <h3>目录结构</h3>
-                        <pre><code style="color: #333;"> kui
-    ├── src/	
-    |    ├── sass/                      
-    │    │    ├── kui.css               kui核心库
-    │    │    ├── _*.css                kui样式分片
-    │    ├── css/				
-    │    │    ├── example.css			示例使用css
-    │    │    ├── style.css			    拓展使用css
-    │    ├── fonts/			            字体资源 
-    │    ├── images/			        图片资源 
-    │    ├── js/                        kui 脚本
-    │    │    ├── kui.js		   		kui核心脚本
-    │    │    ├── example.js			kui示例脚本
-    │    │    ├── index.js			    kui首页脚本
-    │    ├── lib/                       第三方插件库
-    │    ├── skin/                      kuiadmin风格样式目录
-    │    ├── template/                  kuiadmin模板目录
-    │    ├── index.html/                kuiadmin首页面
-                            </code>
-                        </pre>
-                    </section>
-                </section>
-                <section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-                    <h2>欢迎赞助，定制</h2>
-                    
-                </section>
+    <div class="container-fluid">
+        <section class="hero-section">
+            <h1 class="hero-title">🚀 KUI 通用管理系统</h1>
+            <p class="hero-subtitle">
+                基于 Bootstrap 3 优化改进的轻量级扁平化响应式 UI 框架<br>
+                现已升级至 Vite 5 构建系统，支持 Design Token 和暗黑模式
+            </p>
+        </section>
+        
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-code"></i>
+                </div>
+                <h3 class="feature-title">免费开源</h3>
+                <p class="feature-description">在 MIT 开源协议下完全免费使用，代码透明，社区驱动。</p>
             </div>
-        </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">快速开发</h3>
+                <p class="feature-description">丰富的组件库和模板，开箱即用，大幅提升开发效率。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-mobile"></i>
+                </div>
+                <h3 class="feature-title">响应式设计</h3>
+                <p class="feature-description">完美适配 PC、平板、手机等各种设备，一次开发多端适用。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-paint-brush"></i>
+                </div>
+                <h3 class="feature-title">多主题支持</h3>
+                <p class="feature-description">内置多种配色方案，支持一键切换暗黑模式。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-plug"></i>
+                </div>
+                <h3 class="feature-title">插件丰富</h3>
+                <p class="feature-description">集成 zTree、UEditor、ECharts 等大量第三方优质插件。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa fa-book"></i>
+                </div>
+                <h3 class="feature-title">文档完善</h3>
+                <p class="feature-description">详细的使用文档和示例代码，快速上手无门槛。</p>
+            </div>
+        </section>
     </div>
     
+    <!-- 引入 jQuery -->
+    <script type="text/javascript" src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/kui.js"></script>
     
-    <script src="lib/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/kui.js"></script>
-    <script src="lib/slick-carousel/slick.min.js"></script>
-    <script src="lib/art-template/template-web.js"></script>
-    <script src="lib/reveal/js/head.min.js"></script>
-    <script src="lib/reveal/js/reveal.min.js"></script>
-    <div id="data"></div>
     <script>
-        var account, version
-        if (!$.kui.store.enable) {
-            account = $.trim($.kui.util.getUrlParam("account"))
-            version = $.trim($.kui.util.getUrlParam("version"))
-        } else {
-            account = $.trim($.kui.store.get("account"))
-            version = $.trim($.kui.store.get("version"))
-        }
-        version = !version ? 'iframe' : version
-        $.ajax({
-            url: './data/top_menu.json?t=' + new Date().getTime(),
-            type: 'get',
-            success: function(obj) {
-                if ("string" == typeof obj && obj.indexOf('html') > 0) {
-                    window.location.href = "login.html"
-                    return
-                } else {
-                    obj=Object.prototype.toString.call(obj) === '[object Object]'?obj:$.parseJSON(obj)
-                    if (obj.result == 18) {
-                        window.location.href = "login.html"
-                    } else {
-                        obj.data[0].active="active"
-                        //加载header模块
-                        var header_data = {
-                            add: '增加',
-                            welcome: '欢迎光临',
-                            account: account ? account : 'admin',
-                            userinfo: '个人信息',
-                            upaw: '修改密码',
-                            esc: '退出',
-                            logoimg: "./images/logo-while.png",
-                            list: obj.data
-                        }
-                        $.kui.kjax.atemplate('header', 'header', './header.html', header_data, '#data')
-                    }
-                }
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.responseText)
-                console.log(textStatus)
-                console.log(errorThrown)
-            }
-        })
-
-
-Reveal.initialize({
-    controls: true,
-    progress: true,
-    history: true,
-    center: true,
-    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-    // Optional libraries used to extend on reveal.js
-    dependencies: [
-        { src: 'lib/reveal/js/classList.js', condition: function() { return !document.body.classList; } },
-        { src: 'lib/reveal/js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'lib/reveal/js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-        { src: 'lib/reveal/js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-        { src: 'lib/reveal/js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-        { src: 'lib/reveal/js/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-    ]
-})
-
-        
-function menu(pid, e) {
-    if(pid==="0"){
-       window.location.href="introduction.html"
-    }
-    if(pid==="2"){
-        $(".kui-ktabs-open").hide()
-    }
-    if (pid==="1") {
-        window.location.href="index.html"
-    }
-}
-$("[data-plugin=slick]")["each"](function() {
-        $(this)["slick"]();
-    })
+        $(document).ready(function() {
+            console.log('✅ 产品介绍页面已加载');
+        });
     </script>
 </body>
-
 </html>

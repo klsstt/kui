@@ -1,126 +1,286 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="zh-CN" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KUI</title>
+    <title>KUI - 锁屏</title>
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
     <link rel="stylesheet" href="css/kui.css">
-    <link rel="stylesheet" href="fonts/font-awesome-4.7/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
     <link rel="stylesheet" href="skin/default/skin.css">
-    <link rel="stylesheet" href="css/example.css">
-    <!--[if IE]>
-<script src="js/html5.js"></script>
-<![endif]-->
+    
     <style>
-        .page-locked:before {
-            background-image: url(../images/lockscreen.jpg)
+        /* Design Token 变量定义 */
+        :root {
+            /* 品牌色 */
+            --ds-color-primary-6: #1890ff;
+            --ds-color-primary-7: #096dd9;
+            --ds-color-primary-8: #0050b3;
+            --ds-color-primary-9: #003a8c;
+            
+            /* 中性色 */
+            --ds-color-neutral-1: #ffffff;
+            --ds-color-neutral-2: #fafafa;
+            --ds-color-neutral-3: #f5f5f5;
+            --ds-color-neutral-4: #f0f0f0;
+            --ds-color-neutral-5: #d9d9d9;
+            --ds-color-neutral-6: #bfbfbf;
+            --ds-color-neutral-7: #8c8c8c;
+            --ds-color-neutral-8: #595959;
+            --ds-color-neutral-9: #262626;
+            --ds-color-neutral-10: #000000;
+            
+            /* 语义化颜色 */
+            --ds-color-text-primary: var(--ds-color-neutral-9);
+            --ds-color-text-secondary: var(--ds-color-neutral-8);
+            --ds-color-text-tertiary: var(--ds-color-neutral-7);
+            --ds-color-text-disabled: var(--ds-color-neutral-6);
+            
+            --ds-color-border-primary: var(--ds-color-neutral-5);
+            --ds-color-border-secondary: var(--ds-color-neutral-4);
+            
+            --ds-color-bg-primary: var(--ds-color-neutral-1);
+            --ds-color-bg-secondary: var(--ds-color-neutral-2);
+            --ds-color-bg-tertiary: var(--ds-color-neutral-3);
+            
+            /* 间距系统 */
+            --ds-spacing-0: 0;
+            --ds-spacing-1: 4px;
+            --ds-spacing-2: 8px;
+            --ds-spacing-3: 12px;
+            --ds-spacing-4: 16px;
+            --ds-spacing-5: 24px;
+            --ds-spacing-6: 32px;
+            --ds-spacing-7: 40px;
+            --ds-spacing-8: 48px;
+            --ds-spacing-9: 64px;
+            --ds-spacing-10: 80px;
+            
+            /* 圆角系统 */
+            --ds-radius-sm: 2px;
+            --ds-radius-md: 4px;
+            --ds-radius-lg: 8px;
+            --ds-radius-xl: 12px;
+            --ds-radius-2xl: 16px;
+            
+            /* 阴影系统 */
+            --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --ds-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --ds-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --ds-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+            --ds-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+            
+            /* 动画系统 */
+            --ds-duration-normal: 0.3s;
+            --ds-easing-smooth: cubic-bezier(0.645, 0.047, 0.365, 1);
+            
+            /* 字体大小 */
+            --ds-font-size-sm: 12px;
+            --ds-font-size-md: 14px;
+            --ds-font-size-lg: 16px;
+            --ds-font-size-xl: 20px;
+            --ds-font-size-2xl: 24px;
         }
         
-        .page-locked .page {
-            background: 0 0
+        body {
+            margin: 0;
+            padding: 0 !important;  /* 强制覆盖 skin.css 的 padding-top */
+            font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", sans-serif;
+            min-height: 100vh;
+            background-color: var(--ds-color-bg-primary);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
         }
         
-        .page-locked .page .avatar {
-            margin-bottom: 15px
-        }
-        
-        .page-locked .page .avatar.avatar-lg {
-            width: 160px;
-            height: 160px
-        }
-        
-        .page-locked .page .locked-user {
-            margin-bottom: 35px;
-            color: #fff
-        }
-        
-        .page-locked .page form {
-            width: 300px;
-            margin: 22px auto
-        }
-        
-        .page-content {
-            padding: 20px 20px;
-        }
-        
-        .page-locked .page .avatar.avatar-lg {
-            width: 160px;
-            height: 160px;
-        }
-        
-        .page-locked .page .avatar {
-            margin-bottom: 15px;
-        }
-        
-        .page-locked .page .locked-user {
-            margin-bottom: 35px;
-            color: #fff;
-        }
-        
-        .page-locked .page form {
-            width: 300px;
-            margin: 22px auto;
-        }
-        
-        .page-dark.layout-full::before {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            content: "";
-            background-position: center top;
-            -webkit-background-size: cover;
-            background-size: cover;
+        .page-locked {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .page-locked::before {
-            background-image: url("images/photos/cropper.jpg");
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--ds-color-primary-7) 0%, var(--ds-color-primary-9) 100%);
+            z-index: -1;
+        }
+        
+        .lock-card {
+            width: 100%;
+            max-width: 360px;
+            padding: var(--ds-spacing-8);
+            background-color: rgba(var(--ds-color-bg-primary), 0.95);
+            border-radius: var(--ds-radius-xl);
+            box-shadow: var(--ds-shadow-2xl);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .avatar-container {
+            margin-bottom: var(--ds-spacing-5);
         }
         
         .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--ds-color-primary-6);
+            box-shadow: var(--ds-shadow-lg);
+            object-fit: cover;
+        }
+        
+        .locked-user {
+            margin: var(--ds-spacing-3) 0;
+            font-size: var(--ds-font-size-xl);
+            font-weight: 600;
+            color: var(--ds-color-text-primary);
+        }
+        
+        .locked-role {
+            margin-bottom: var(--ds-spacing-5);
+            font-size: var(--ds-font-size-sm);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .unlock-form {
+            width: 100%;
+            text-align: center;  /* 让表单内容居中 */
+        }
+        
+        .input-group {
             position: relative;
-            display: inline-block;
-            width: 40px;
-            white-space: nowrap;
-            vertical-align: bottom;
-            border-radius: 1000px;
+            margin-bottom: var(--ds-spacing-4);
+            width: 100%;  /* 明确设置宽度 */
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--ds-spacing-3) var(--ds-spacing-4);
+            font-size: var(--ds-font-size-md);
+            border: 1px solid var(--ds-color-border-primary);
+            border-radius: var(--ds-radius-md);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+            box-sizing: border-box;  /* 确保 padding 不会增加元素宽度 */
+            display: block;  /* 强制设为块级元素 */
+            margin: 0 auto;  /* 居中显示 */
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ds-color-primary-6);
+            box-shadow: 0 0 0 3px rgba(var(--ds-color-primary-6), 0.1);
+        }
+        
+        .btn-unlock {
+            width: 100%;
+            padding: var(--ds-spacing-3);
+            font-size: var(--ds-font-size-md);
+            font-weight: 600;
+            color: var(--ds-color-neutral-1);
+            background-color: var(--ds-color-primary-6);
+            border: none;
+            border-radius: var(--ds-radius-md);
+            cursor: pointer;
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+            box-sizing: border-box;  /* 确保 padding 不会增加元素宽度 */
+            display: block;  /* 强制设为块级元素 */
+            margin: 0 auto;  /* 居中显示 */
+        }
+        
+        .btn-unlock:hover {
+            background-color: var(--ds-color-primary-7);
+            transform: translateY(-2px);
+            box-shadow: var(--ds-shadow-lg);
+        }
+        
+        .back-link {
+            display: block;
+            margin-top: var(--ds-spacing-4);
+            font-size: var(--ds-font-size-sm);
+            color: var(--ds-color-primary-6);
+            text-decoration: none;
+            transition: color var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
+        .back-link:hover {
+            color: var(--ds-color-primary-7);
+        }
+        
+        @media (max-width: 480px) {
+            .lock-card {
+                padding: var(--ds-spacing-5);
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 
-<body class="page-locked layout-full page-dark">
-
-    <div class=" page animation-fade v-align text-center animsition-fade height-full">
-        <div class="page-content v-align-middle">
-            <div class="avatar avatar-lg">
-                <img src="kui-logo.png" alt="klsstt">
-            </div>
-            <h4 class="locked-user">klsstt</h4>
-            <form action="/" role="form">
-                <div class="kui-input-group">
-                    <input type="password" class="kui-form-control last" name="password" placeholder="请输入您的密码继续登录">
-                    <span class="input-group-btn">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-unlock" aria-hidden="true"></i>
-                                <span class="sr-only">登录</span>
-                    </button>
-                    </span>
-                </div>
-            </form>
-            <p>
-                <a href="/login">或者使用其他账号登录</a>
-            </p>
+<body class="page-locked">
+    <div class="lock-card">
+        <div class="avatar-container">
+            <img src="./images/portraits/1.jpg" alt="User Avatar" class="avatar">
         </div>
+        
+        <h2 class="locked-user">KUI Admin</h2>
+        <p class="locked-role">系统管理员</p>
+        
+        <form class="unlock-form" id="unlockForm">
+            <div class="input-group">
+                <input type="password" class="form-control" placeholder="请输入密码解锁" id="password" required>
+            </div>
+            
+            <button type="submit" class="btn-unlock">
+                <i class="fa fa-unlock-alt"></i> 解锁
+            </button>
+        </form>
+        
+        <a href="login.html" class="back-link">
+            <i class="fa fa-sign-out"></i> 退出登录
+        </a>
     </div>
-    <script src="js/lib/jquery/1.9.1/jquery.min.js"></script>
-    <script language="javascript">
-        if (top !== self) {
-            top.location.href = location.href;
-        }
+    
+    <!-- 引入 jQuery -->
+    <script type="text/javascript" src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#unlockForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var password = $('#password').val();
+                
+                // 模拟解锁（实际项目中需要验证密码）
+                if (password === 'admin') {
+                    layer.msg('解锁成功', {
+                        icon: 1,
+                        time: 1000
+                    }, function() {
+                        window.location.href = 'index.html';
+                    });
+                } else {
+                    layer.msg('密码错误，请重试', {
+                        icon: 2,
+                        time: 2000
+                    });
+                }
+            });
+            
+            console.log('✅ 锁屏页面已加载');
+        });
     </script>
 </body>
 

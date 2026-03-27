@@ -1,6 +1,5 @@
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
@@ -12,47 +11,241 @@
     <script type="text/javascript" src="lib/html5.js"></script>
     <script type="text/javascript" src="lib/respond.min.js"></script>
     <![endif]-->
-    <!--[if IE 6]>
-    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-    <script>DD_belatedPNG.fix('*');</script>
-    <![endif]-->
-    <!--/meta 作为公共模版分离出去-->
-    <title>KUI</title>
+    <title>KUI - 内容页</title>
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
     <link rel="stylesheet" href="css/kui.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
-    <link rel="stylesheet" href="skin/blue/skin.css">
-    <link rel="stylesheet" href="css/example.css">
-
-</head>
-<style>
-    html {
-        overflow-y: scroll;
-    }
+    <link rel="stylesheet" href="skin/default/skin.css">
     
-    body {
-        font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-        font-size: 14px;
-        line-height: 1.6;
-        color: #333;
-        background-color: #fff;
-        margin: 0;
-        padding-top: 0px;
-    }
-</style>
+    <style>
+        html {
+            overflow-y: scroll;
+            background-color: #fff;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, "Microsoft Yahei", sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* 欢迎面板样式 */
+        .welcome-panel {
+            padding: 40px;
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-title {
+            margin: 0 0 10px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .welcome-subtitle {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 15px 0 10px;
+            color: #333;
+        }
+        
+        .card-text {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        
+        .row::before, .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        [class*="col-"] {
+            float: left;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .col-md-4 {
+            width: 33.333333%;
+        }
+        
+        .col-sm-6 {
+            width: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .col-md-4, .col-sm-6 {
+                width: 100%;
+                float: none;
+            }
+        }
+    </style>
+</head>
 
 <body>
-    <div class="kui-page"></div>
-    <script src="lib/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/kui.js"></script>
-    <script src="lib/art-template/template-web.js"></script>
-    <script src="lib/layer/2.4/layer.js"></script>
-    <script src="lib/layer.date/laydate.js"></script>
+    <!-- 内容容器 -->
+    <div id="content-container" class="container-fluid">
+        <!-- 默认显示欢迎面板，如果加载了 URL 参数则隐藏 -->
+        <div id="welcome-panel" class="welcome-panel">
+            <h1 class="welcome-title">欢迎使用 KUI 通用管理系统</h1>
+            <p class="welcome-subtitle">基于现代技术栈构建的现代化 UI 框架</p>
+            
+            <div style="margin-top: 40px;">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-dashboard" style="font-size: 48px; color: #1890ff; margin-bottom: 15px;"></i>
+                                <h4 class="card-title">快速开发</h4>
+                                <p class="card-text">丰富的组件库，开箱即用</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-mobile" style="font-size: 48px; color: #52c41a; margin-bottom: 15px;"></i>
+                                <h4 class="card-title">响应式设计</h4>
+                                <p class="card-text">完美适配各种设备</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fa fa-moon-o" style="font-size: 48px; color: #595959; margin-bottom: 15px;"></i>
+                                <h4 class="card-title">暗黑模式</h4>
+                                <p class="card-text">支持主题切换</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 动态加载的内容容器 -->
+        <div id="dynamic-content" style="display:none;"></div>
+    </div>
+    
+    <!-- 引入 jQuery -->
+    <script type="text/javascript" src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/kui.js"></script>
+    <script type="text/javascript" src="./lib/art-template/template-web.js"></script>
+    <script type="text/javascript" src="./lib/layer/2.4/layer.js"></script>
+    
     <script>
-        var host = location.protocol + '//' + location.hostname + ':' + location.port;
-        var path=location.pathname.substring(0,location.pathname.lastIndexOf('/'))
-        var url = host + path + $.kui.util.getUrlParam("url");
-        console.log(url);
-        $.kui.kjax.atemplateUrl(url, '.kui-page');
+        $(document).ready(function() {
+            // 获取 URL 参数
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURIComponent(r[2]);
+                return null;
+            }
+            
+            // 获取模板 URL 参数
+            var templateUrl = getUrlParam('url');
+            
+            if (templateUrl) {
+                console.log('加载模板:', templateUrl);
+                
+                // 隐藏欢迎面板
+                $('#welcome-panel').hide();
+                
+                // 显示内容容器
+                $('#dynamic-content').show();
+                
+                // 确保模板路径是相对于当前页面的
+                // 如果 templateUrl 以 ./ 或 / 开头，需要正确处理
+                var finalUrl = templateUrl;
+                if (templateUrl.indexOf('/') === 0) {
+                    // 绝对路径，直接使用
+                    finalUrl = '.' + templateUrl;
+                }
+                
+                console.log('最终模板路径:', finalUrl);
+                
+                // 加载模板内容
+                $.ajax({
+                    url: finalUrl,
+                    type: 'get',
+                    success: function(html) {
+                        $('#dynamic-content').html(html);
+                        console.log('✅ 模板加载成功:', finalUrl);
+                        
+                        // 如果模板中有 script 标签，需要执行
+                        $('#dynamic-content').find('script').each(function() {
+                            try {
+                                eval($(this).html());
+                            } catch (e) {
+                                console.error('执行模板脚本失败:', e);
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('模板加载失败:', finalUrl, error);
+                        $('#dynamic-content').html(
+                            '<div class="alert alert-error" style="padding: 20px; background: #fff1f0; border: 1px solid #ffa39e; border-radius: 4px; margin-top: 20px;">' +
+                            '<h4 style="color: #f04142; margin-bottom: 10px;">加载失败</h4>' +
+                            '<p>无法加载模板文件：' + finalUrl + '</p>' +
+                            '<p>错误信息：' + error + '</p>' +
+                            '<p>状态码：' + xhr.status + '</p>' +
+                            '</div>'
+                        );
+                    }
+                });
+            } else {
+                console.log('✅ iframe 页面已加载（无 URL 参数，显示欢迎面板）');
+            }
+        });
     </script>
 </body>
 

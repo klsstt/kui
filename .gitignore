@@ -1,6 +1,39 @@
-# 忽略node_modules
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
 node_modules
-# 忽略dist
 dist
-# 忽略vscode
+.DS_Store
+
+# Editors
+.idea
 .vscode
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Test
+coverage
+.temp
+
+# Build outputs
+build
+*.min.js
+*.min.css
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache

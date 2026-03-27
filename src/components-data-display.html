@@ -1,0 +1,346 @@
+    <!--/meta 作为公共模版分离出去-->
+    <title>KUI - 数据展示组件</title>
+    <meta name="keywords" content="KUI, Data Display, Card, Badge, Tag, List">
+    <meta name="description" content="KUI 数据展示组件演示，包含卡片、徽章、标签、列表等组件。">
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
+    <link rel="stylesheet" href="css/kui.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
+    <link rel="stylesheet" href="skin/default/skin.css">
+    <style>
+        body {
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+        }
+        
+        .demo-section {
+            max-width: 1400px;
+            margin: 0 auto var(--ds-spacing-8);
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+            border-radius: var(--ds-radius-lg);
+            box-shadow: var(--ds-shadow-md);
+        }
+        
+        .demo-title {
+            margin-bottom: var(--ds-spacing-5);
+            font-size: var(--ds-font-size-2xl);
+            font-weight: 600;
+            color: var(--ds-color-text-primary);
+            border-bottom: 2px solid var(--ds-color-border-primary);
+            padding-bottom: var(--ds-spacing-3);
+        }
+        
+        .demo-subtitle {
+            margin: var(--ds-spacing-5) 0 var(--ds-spacing-4);
+            font-size: var(--ds-font-size-lg);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .component-wrapper {
+            margin-bottom: var(--ds-spacing-6);
+        }
+        
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--ds-spacing-5);
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 主题切换工具栏 -->
+    <div data-provide="theme-toolbar"></div>
+    
+    <div class="container-fluid">
+        <!-- 卡片组件演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">🎴 卡片组件系统</h1>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">基础卡片</h3>
+                <div class="grid-demo">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">卡片标题</h3>
+                            <p class="card-subtitle">卡片的副标题</p>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">内容标题</h4>
+                            <p class="card-text">这是一个基础的卡片示例，可以包含标题、文本、链接等内容。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-primary">操作</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">主要卡片</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">使用主题色的卡片，适合强调重要内容。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">成功卡片</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">表示成功状态的卡片。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">警告卡片</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">表示警告或注意的卡片。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">危险卡片</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">表示错误或危险状态的卡片。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">带图片的卡片</h3>
+                <div class="grid-demo">
+                    <div class="card" style="max-width: 360px;">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22360%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20360%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1%20%7B%20fill%3A%23eaeaea%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A18pt%20%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1%22%3E%3Crect%20width%3D%22360%22%20height%3D%22200%22%20fill%3D%22%23eaeaea%22%3E%3C%2Frect%3E%3Ctext%20x%3D%22115%22%20y%3D%22107%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap" class="card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">这是一张带顶部图片的卡片，适合展示产品、文章等内容。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 徽章和标签演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">🏷️ 徽章与标签</h1>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Badge 徽章</h3>
+                <div style="margin-bottom: var(--ds-spacing-4);">
+                    <span class="badge badge-primary mr-2">Primary</span>
+                    <span class="badge badge-success mr-2">Success</span>
+                    <span class="badge badge-warning mr-2">Warning</span>
+                    <span class="badge badge-danger mr-2">Danger</span>
+                    <span class="badge badge-info mr-2">Info</span>
+                    <span class="badge badge-secondary mr-2">Secondary</span>
+                    <span class="badge badge-light mr-2">Light</span>
+                    <span class="badge badge-dark mr-2">Dark</span>
+                </div>
+                
+                <div style="margin-bottom: var(--ds-spacing-4);">
+                    <span class="badge badge-pill badge-primary mr-2">Pill Primary</span>
+                    <span class="badge badge-pill badge-success mr-2">Pill Success</span>
+                    <span class="badge badge-pill badge-danger mr-2">Pill Danger</span>
+                </div>
+                
+                <div>
+                    <span class="badge badge-dot badge-primary mr-2"></span>
+                    <span class="badge badge-dot badge-success mr-2"></span>
+                    <span class="badge badge-dot badge-warning mr-2"></span>
+                    <span class="badge badge-dot badge-danger mr-2"></span>
+                    <span class="badge badge-dot badge-info mr-2"></span>
+                </div>
+            </div>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">Tag 标签</h3>
+                <div style="margin-bottom: var(--ds-spacing-4);">
+                    <span class="tag tag-primary mr-2 mb-2">
+                        JavaScript
+                        <span class="tag-close"></span>
+                    </span>
+                    <span class="tag tag-success mr-2 mb-2">
+                        React
+                        <span class="tag-close"></span>
+                    </span>
+                    <span class="tag tag-warning mr-2 mb-2">
+                        Vue
+                        <span class="tag-close"></span>
+                    </span>
+                    <span class="tag tag-danger mr-2 mb-2">
+                        Angular
+                        <span class="tag-close"></span>
+                    </span>
+                    <span class="tag tag-info mr-2 mb-2">
+                        TypeScript
+                        <span class="tag-close"></span>
+                    </span>
+                </div>
+                
+                <div>
+                    <a href="#" class="tag tag-primary mr-2 mb-2">可点击标签</a>
+                    <a href="#" class="tag tag-success mr-2 mb-2">另一个标签</a>
+                    <a href="#" class="tag tag-info mr-2 mb-2">查看更多</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 列表组件演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">📋 列表组件</h1>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">基础列表组</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div class="list-group-item-heading">项目一</div>
+                                <div class="list-group-item-text">这是第一个项目的描述信息。</div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-group-item-heading">项目二</div>
+                                <div class="list-group-item-text">这是第二个项目的描述信息。</div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="list-group-item-heading">项目三</div>
+                                <div class="list-group-item-text">这是第三个项目的描述信息。</div>
+                            </li>
+                            <li class="list-group-item disabled">
+                                <div class="list-group-item-heading">项目四（禁用）</div>
+                                <div class="list-group-item-text">这是被禁用的项目。</div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active">
+                                <span>可点击项目一</span>
+                                <span class="badge badge-light">New</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span>可点击项目二</span>
+                                <span class="badge badge-primary">Hot</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <span>可点击项目三</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">状态列表</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-success">成功的项目</li>
+                            <li class="list-group-item list-group-item-warning">需要注意的项目</li>
+                            <li class="list-group-item list-group-item-danger">失败的项目</li>
+                            <li class="list-group-item list-group-item-info">信息提示</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 面板组件演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">📊 面板组件</h1>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">基础面板</h3>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">面板标题</h3>
+                        <div class="panel-actions">
+                            <button class="btn btn-xs btn-default"><i class="fa fa-cog"></i></button>
+                            <button class="btn btn-xs btn-default"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <p>这是面板的主体内容区域，可以在这里放置任何内容，如表格、表单、图表等。</p>
+                        <p>面板适合用于组织相关的内容，使页面结构更加清晰。</p>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-sm btn-primary">保存</button>
+                        <button class="btn btn-sm btn-default">取消</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="component-wrapper">
+                <h3 class="demo-subtitle">状态面板</h3>
+                <div class="grid-demo">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">主要面板</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>使用主题色的面板，适合强调重要内容。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">成功面板</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>表示成功状态的面板。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">警告面板</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>表示警告或注意的面板。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">危险面板</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>表示错误或危险状态的面板。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 引入 jQuery -->
+    <script src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/common/theme-toolbar.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-provide="theme-toolbar"]').themeToolbar();
+            
+            // Tag 删除功能演示
+            $(document).on('click', '.tag-close', function(e) {
+                e.preventDefault();
+                $(this).closest('.tag').fadeOut(300, function() {
+                    $(this).remove();
+                });
+            });
+            
+            console.log('✅ 数据展示组件已加载');
+        });
+    </script>
+</body>
+</html>

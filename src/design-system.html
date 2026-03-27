@@ -1,0 +1,248 @@
+    <!--/meta 作为公共模版分离出去-->
+    <title>KUI - 设计系统演示</title>
+    <meta name="keywords" content="KUI, Design System, Design Token, UI Components">
+    <meta name="description" content="KUI 设计系统演示页面，展示 Design Token、响应式布局、主题切换等新特性。">
+    
+    <!-- 主题初始化 -->
+    <script src="./js/common/theme.js"></script>
+    
+    <link rel="stylesheet" href="css/kui.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7/font-awesome.min.css">
+    <link rel="stylesheet" href="skin/default/skin.css">
+    <style>
+        body {
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+            transition: all var(--ds-duration-normal) var(--ds-easing-smooth);
+        }
+        
+        .demo-section {
+            max-width: 1200px;
+            margin: 0 auto var(--ds-spacing-8);
+            padding: var(--ds-spacing-6);
+            background-color: var(--ds-color-bg-primary);
+            border-radius: var(--ds-radius-lg);
+            box-shadow: var(--ds-shadow-md);
+        }
+        
+        .demo-title {
+            margin-bottom: var(--ds-spacing-5);
+            font-size: var(--ds-font-size-2xl);
+            font-weight: 600;
+            color: var(--ds-color-text-primary);
+        }
+        
+        .demo-subtitle {
+            margin-bottom: var(--ds-spacing-4);
+            font-size: var(--ds-font-size-lg);
+            color: var(--ds-color-text-secondary);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--ds-spacing-5);
+            margin-bottom: var(--ds-spacing-5);
+        }
+        
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--ds-spacing-3);
+            margin-bottom: var(--ds-spacing-4);
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--ds-radius-md);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: var(--ds-spacing-2);
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--ds-shadow-sm);
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--ds-spacing-3);
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 主题切换工具栏 -->
+    <div data-provide="theme-toolbar"></div>
+    
+    <div class="container-fluid">
+        <!-- Design Token 演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">🎨 Design Token 颜色系统</h1>
+            
+            <h3 class="demo-subtitle">品牌色</h3>
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-1)">Primary-1</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-3)">Primary-3</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-5)">Primary-5</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-6)">Primary-6</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-7)">Primary-7</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-9)">Primary-9</div>
+            </div>
+            
+            <h3 class="demo-subtitle">功能色</h3>
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: var(--ds-color-success-6)">Success</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-warning-6)">Warning</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-error-6)">Error</div>
+                <div class="color-swatch" style="background-color: var(--ds-color-primary-6)">Info</div>
+            </div>
+        </section>
+        
+        <!-- 按钮系统演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">🔘 按钮系统</h1>
+            
+            <h3 class="demo-subtitle">基础按钮</h3>
+            <div class="button-group mb-5">
+                <button class="btn btn-default">Default</button>
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-info">Info</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-danger">Danger</button>
+            </div>
+            
+            <h3 class="demo-subtitle">轮廓按钮</h3>
+            <div class="button-group mb-5">
+                <button class="btn btn-outline btn-primary">Primary</button>
+                <button class="btn btn-outline btn-success">Success</button>
+                <button class="btn btn-outline btn-danger">Danger</button>
+            </div>
+            
+            <h3 class="demo-subtitle">按钮尺寸</h3>
+            <div class="button-group mb-5">
+                <button class="btn btn-xs">Extra Small</button>
+                <button class="btn btn-sm">Small</button>
+                <button class="btn btn-md">Medium</button>
+                <button class="btn btn-lg">Large</button>
+                <button class="btn btn-xl">Extra Large</button>
+            </div>
+            
+            <h3 class="demo-subtitle">带图标按钮</h3>
+            <div class="button-group mb-5">
+                <button class="btn btn-primary">
+                    <i class="fa fa-download"></i>
+                    Download
+                </button>
+                <button class="btn btn-success">
+                    <i class="fa fa-check"></i>
+                    Confirm
+                </button>
+                <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                    Delete
+                </button>
+            </div>
+            
+            <h3 class="demo-subtitle">加载状态</h3>
+            <div class="button-group mb-5">
+                <button class="btn btn-primary btn-loading">
+                    Loading
+                </button>
+            </div>
+        </section>
+        
+        <!-- 空状态演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">📭 空状态组件</h1>
+            
+            <div class="kui-empty-state">
+                <div class="kui-empty-state__icon">
+                    <i class="fa fa-inbox"></i>
+                </div>
+                <h3 class="kui-empty-state__title">暂无数据</h3>
+                <p class="kui-empty-state__description">
+                    当前列表为空，请点击下方按钮添加新数据
+                </p>
+                <div class="kui-empty-state__actions">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                        添加数据
+                    </button>
+                    <button class="btn btn-default">刷新</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 加载状态演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">⏳ 加载状态</h1>
+            
+            <h3 class="demo-subtitle">Spinner</h3>
+            <div class="button-group mb-5">
+                <div class="kui-spinner kui-spinner--sm">
+                    <div class="kui-spinner-circle"></div>
+                </div>
+                <div class="kui-spinner kui-spinner--md">
+                    <div class="kui-spinner-circle"></div>
+                </div>
+                <div class="kui-spinner kui-spinner--lg">
+                    <div class="kui-spinner-circle"></div>
+                </div>
+            </div>
+            
+            <h3 class="demo-subtitle">骨架屏</h3>
+            <div class="kui-skeleton mb-5">
+                <div class="kui-skeleton__item kui-skeleton__avatar"></div>
+                <div class="kui-skeleton__item kui-skeleton__title"></div>
+                <div class="kui-skeleton__item kui-skeleton__text"></div>
+                <div class="kui-skeleton__item kui-skeleton__text"></div>
+            </div>
+        </section>
+        
+        <!-- 响应式网格演示 -->
+        <section class="demo-section">
+            <h1 class="demo-title">📐 响应式网格系统</h1>
+            
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="p-4" style="background: var(--ds-color-bg-secondary); border-radius: var(--ds-radius-md);">
+                        <h4>Column 1</h4>
+                        <p>这是一个响应式列，在不同屏幕宽度下会自动调整。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4" style="background: var(--ds-color-bg-secondary); border-radius: var(--ds-radius-md);">
+                        <h4>Column 2</h4>
+                        <p>使用 CSS Grid 和 Flexbox 实现灵活的布局。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4" style="background: var(--ds-color-bg-secondary); border-radius: var(--ds-radius-md);">
+                        <h4>Column 3</h4>
+                        <p>支持从 xs 到 xxl 多种断点配置。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 引入 jQuery -->
+    <script src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/common/theme-toolbar.js"></script>
+    <script>
+        // 初始化主题工具栏
+        $(document).ready(function() {
+            $('[data-provide="theme-toolbar"]').themeToolbar();
+            
+            console.log('✅ KUI Design System 已加载');
+            console.log('🎨 当前主题:', window.KUITheme ? window.KUITheme.get() : 'light');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/**
+ * KUI 响应式网格系统
+ * 基于 Flexbox 和 CSS Grid 的弹性布局系统
+ */
+
+@import 'tokens';
+
+/* ========================================
+ * 容器系统
+ * ======================================== */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--ds-spacing-4);
+  padding-left: var(--ds-spacing-4);
+}
+
+@media (min-width: --ds-breakpoint-sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: --ds-breakpoint-md) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: --ds-breakpoint-lg) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: --ds-breakpoint-xl) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: --ds-breakpoint-xxl) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: var(--ds-spacing-4);
+  padding-left: var(--ds-spacing-4);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ========================================
+ * Row & Column 系统
+ * ======================================== */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(var(--ds-spacing-4) * -1);
+  margin-left: calc(var(--ds-spacing-4) * -1);
+}
+
+.col {
+  flex: 1 0 0%;
+  padding-right: var(--ds-spacing-4);
+  padding-left: var(--ds-spacing-4);
+}
+
+/* 生成 12 列网格 */
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+    padding-right: var(--ds-spacing-4);
+    padding-left: var(--ds-spacing-4);
+  }
+}
+
+/* 响应式列 */
+@media (max-width: --ds-breakpoint-sm - 1) {
+  @for $i from 1 through 12 {
+    .col-xs-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: --ds-breakpoint-sm) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: --ds-breakpoint-md) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: --ds-breakpoint-lg) {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+@media (min-width: --ds-breakpoint-xl) {
+  @for $i from 1 through 12 {
+    .col-xl-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+/* ========================================
+ * Flexbox 工具类
+ * ======================================== */
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-block { display: block !important; }
+.d-inline-block { display: inline-block !important; }
+.d-none { display: none !important; }
+
+.flex-row { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+.flex-row-reverse { flex-direction: row-reverse !important; }
+.flex-column-reverse { flex-direction: column-reverse !important; }
+
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.flex-wrap-reverse { flex-wrap: wrap-reverse !important; }
+
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+.justify-content-evenly { justify-content: space-evenly !important; }
+
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-center { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.align-self-start { align-self: flex-start !important; }
+.align-self-end { align-self: flex-end !important; }
+.align-self-center { align-self: center !important; }
+.align-self-baseline { align-self: baseline !important; }
+.align-self-stretch { align-self: stretch !important; }
+
+.flex-fill { flex: 1 1 auto !important; }
+.flex-grow-0 { flex-grow: 0 !important; }
+.flex-grow-1 { flex-grow: 1 !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+.flex-shrink-1 { flex-shrink: 1 !important; }
+
+/* ========================================
+ * 间距工具类
+ * ======================================== */
+@for $i from 0 through 10 {
+  .m-#{$i} { margin: var(--ds-spacing-#{$i}) !important; }
+  .mt-#{$i} { margin-top: var(--ds-spacing-#{$i}) !important; }
+  .mr-#{$i} { margin-right: var(--ds-spacing-#{$i}) !important; }
+  .mb-#{$i} { margin-bottom: var(--ds-spacing-#{$i}) !important; }
+  .ml-#{$i} { margin-left: var(--ds-spacing-#{$i}) !important; }
+  .mx-#{$i} { margin-left: var(--ds-spacing-#{$i}) !important; margin-right: var(--ds-spacing-#{$i}) !important; }
+  .my-#{$i} { margin-top: var(--ds-spacing-#{$i}) !important; margin-bottom: var(--ds-spacing-#{$i}) !important; }
+  
+  .p-#{$i} { padding: var(--ds-spacing-#{$i}) !important; }
+  .pt-#{$i} { padding-top: var(--ds-spacing-#{$i}) !important; }
+  .pr-#{$i} { padding-right: var(--ds-spacing-#{$i}) !important; }
+  .pb-#{$i} { padding-bottom: var(--ds-spacing-#{$i}) !important; }
+  .pl-#{$i} { padding-left: var(--ds-spacing-#{$i}) !important; }
+  .px-#{$i} { padding-left: var(--ds-spacing-#{$i}) !important; padding-right: var(--ds-spacing-#{$i}) !important; }
+  .py-#{$i} { padding-top: var(--ds-spacing-#{$i}) !important; padding-bottom: var(--ds-spacing-#{$i}) !important; }
+}
+
+/* ========================================
+ * 响应式显示控制
+ * ======================================== */
+@media (max-width: --ds-breakpoint-sm - 1) {
+  .d-xs-none { display: none !important; }
+  .d-xs-block { display: block !important; }
+  .d-xs-flex { display: flex !important; }
+  .d-xs-inline { display: inline !important; }
+  .d-xs-inline-block { display: inline-block !important; }
+}
+
+@media (min-width: --ds-breakpoint-sm) and (max-width: --ds-breakpoint-md - 1) {
+  .d-sm-none { display: none !important; }
+  .d-sm-block { display: block !important; }
+  .d-sm-flex { display: flex !important; }
+  .d-sm-inline { display: inline !important; }
+  .d-sm-inline-block { display: inline-block !important; }
+}
+
+@media (min-width: --ds-breakpoint-md) and (max-width: --ds-breakpoint-lg - 1) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+  .d-md-inline { display: inline !important; }
+  .d-md-inline-block { display: inline-block !important; }
+}
+
+@media (min-width: --ds-breakpoint-lg) and (max-width: --ds-breakpoint-xl - 1) {
+  .d-lg-none { display: none !important; }
+  .d-lg-block { display: block !important; }
+  .d-lg-flex { display: flex !important; }
+  .d-lg-inline { display: inline !important; }
+  .d-lg-inline-block { display: inline-block !important; }
+}
+
+@media (min-width: --ds-breakpoint-xl) {
+  .d-xl-none { display: none !important; }
+  .d-xl-block { display: block !important; }
+  .d-xl-flex { display: flex !important; }
+  .d-xl-inline { display: inline !important; }
+  .d-xl-inline-block { display: inline-block !important; }
+}
