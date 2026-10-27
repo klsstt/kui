@@ -1,0 +1,44 @@
+@layer kui.components {
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        position:absolute;
+        z-index:1000;
+        display:none;
+        min-width:160px;
+        max-width:min(320px, calc(100vw - 24px));
+        max-height: min(420px, calc(100vh - 24px));
+        overflow: auto;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        list-style: none;
+        background: var(--kui-component-dropdown-background);
+        border: 1px solid var(--kui-component-dropdown-border-color);
+        border-radius: var(--kui-seed-radius-md);
+        box-shadow: var(--kui-component-dropdown-shadow);
+        text-align: left;
+    }
+
+    .dropdown.open > .dropdown-menu,
+    .dropdown-menu.show {
+        display:block;
+    }
+
+    .dropdown-menu > li > a,
+    .dropdown-menu > a {
+        display:block;
+        padding:6px 16px;
+        color: var(--kui-color-text);
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > a:hover {
+        background: var(--kui-seed-color-neutral-100);
+        color: var(--kui-color-primary)
+    }
+}

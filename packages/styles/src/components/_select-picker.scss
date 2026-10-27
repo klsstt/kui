@@ -1,0 +1,178 @@
+@layer kui.components {
+    .bs-select-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .btn-select {
+        position: relative;
+        z-index: var(--kui-layer-component);
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 0;
+        min-height: var(--kui-component-button-height);
+        padding-left: var(--kui-space-3);
+        padding-right: calc(var(--kui-space-5) + 8px);
+        border: 1px solid var(--kui-color-border);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        box-shadow: var(--kui-shadow-component);
+        font-family: var(--kui-font-family-component);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: var(--kui-font-weight-component-control);
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .btn-select.has-multiple-selection {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        min-height: var(--kui-component-button-height);
+        padding-top: var(--kui-space-1);
+        padding-bottom: var(--kui-space-1);
+        white-space: normal;
+    }
+
+    .selectpicker-label,
+    .selectpicker-selection-text {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .selectpicker-selection {
+        display: inline-flex;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 22px;
+        align-items: center;
+        gap: var(--kui-space-1);
+        padding: 2px var(--kui-space-2);
+        border-radius: var(--kui-seed-radius-sm);
+        background: color-mix(in srgb, var(--kui-color-text) 8%, var(--kui-color-surface));
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--kui-color-border) 72%, transparent);
+        color: var(--kui-color-text);
+    }
+
+    .selectpicker-selection--removable {
+        padding-right: var(--kui-space-1)
+    }
+
+    .selectpicker-selection-remove {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        color: var(--kui-color-text-subtle);
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .selectpicker-selection-remove:hover {
+        background: color-mix(in srgb, var(--kui-color-text) 10%, transparent);
+        color: var(--kui-color-text);
+    }
+
+    .btn-select:disabled .selectpicker-selection-remove {
+        cursor: default;
+    }
+
+    .btn-select::after {
+        position: absolute;
+        top: 50%;
+        right: var(--kui-space-3);
+        width: 0;
+        height: 0;
+        border-top: 5px solid var(--kui-color-text-subtle);
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        content: '';
+        transform: translateY(-50%);
+    }
+
+    .btn-select.is-placeholder {
+        color: color-mix(in srgb, var(--kui-color-text-subtle) 72%, var(--kui-color-surface));
+        font-weight: var(--kui-font-weight-component-control);
+    }
+
+    .selectpicker-menu {
+        box-sizing: border-box;
+        min-width: 160px;
+        width: 100%;
+        padding: var(--kui-space-1);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-dropdown);
+        font-family: var(--kui-font-family-component);
+    }
+
+    .selectpicker-menu[hidden] {
+        display: none;
+    }
+
+    .selectpicker-menu button {
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 30px;
+        align-items: center;
+        gap: var(--kui-space-2);
+        justify-content: flex-start;
+        padding: 0 var(--kui-space-2);
+        border: 0;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: var(--kui-font-weight-component-control);
+        text-align: left;
+    }
+
+    .selectpicker-menu button:hover {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    .selectpicker-menu button.is-active {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: calc(var(--kui-focus-ring-offset) * -1);
+    }
+
+    .selectpicker-menu button.active {
+        background: color-mix(in srgb, var(--kui-color-text) 8%, var(--kui-color-surface));
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--kui-color-border) 72%, transparent);
+        color: var(--kui-color-text);
+        font-weight: var(--kui-font-weight-component-control);
+    }
+
+    .selectpicker-menu button.active::after {
+        width: 6px;
+        height: 6px;
+        margin-left: auto;
+        border-radius: 999px;
+        background: var(--kui-color-text-subtle);
+        content: '';
+    }
+
+    .selectpicker-menu button:disabled.active {
+        background: transparent;
+        box-shadow: none;
+        color: color-mix(in srgb, var(--kui-color-text-subtle) 72%, var(--kui-color-surface));
+    }
+
+    .selectpicker-menu button:disabled.active::after {
+        content: none;
+    }
+}

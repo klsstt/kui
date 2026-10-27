@@ -1,0 +1,53 @@
+@layer kui.base {
+    .kui-container {
+        inline-size: min(100% - (2 * var(--kui-space-4)), var(--kui-container-max-width));
+        margin-inline: auto;
+    }
+
+    .kui-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-stack-gap, var(--kui-space-4));
+    }
+
+    .kui-cluster {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: var(--kui-cluster-align, center);
+        justify-content: var(--kui-cluster-justify, flex-start);
+        gap: var(--kui-cluster-gap, var(--kui-space-3));
+    }
+
+    .kui-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--kui-grid-min, 16rem)), 1fr));
+        gap: var(--kui-grid-gap, var(--kui-space-4));
+    }
+
+    .kui-split {
+        display: grid;
+        grid-template-columns: minmax(0, var(--kui-split-sidebar, 16rem)) minmax(0, 1fr);
+        gap: var(--kui-split-gap, var(--kui-space-4));
+    }
+
+    .kui-board {
+        container: kui-board / inline-size;
+        padding: var(--kui-board-padding, var(--kui-space-4));
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-container);
+    }
+
+    @container kui-board (width < 30rem) {
+        .kui-split {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    @media (max-width: 40rem) {
+        .kui-split {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}

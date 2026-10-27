@@ -1,0 +1,56 @@
+@layer kui.components {
+    .progress {
+        height: 18px;
+        overflow: hidden;
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface-muted);
+        box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%);
+    }
+
+    .progress-xs { height:6px; }
+    .progress-sm { height: 12px; }
+    .progress-lg { height: 26px; }
+    .progress-square { border-radius: 0; }
+    .progress-circle { border-radius: 999px; }
+
+    .progress-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 0;
+        height: 100%;
+        background: var(--kui-color-primary);
+        color: var(--kui-color-surface);
+        font-size: 12px;
+        line-height: 1;
+        transition: width var(--kui-motion-duration-base) ease;
+    }
+
+    .progress-bar-striped {
+        background-image: linear-gradient(45deg, rgb(255 255 255 / 18%) 25%, transparent 25%, transparent 50%, rgb(255 255 255 / 18%) 50% rgb(255 255 255 / 18%) 75%, transparent 75%, transparent);
+        background-size: 24px 24px;
+    }
+
+    .progress-bar-striped.active {
+        animation: kui-grogress-stripes 900ms linear infinite;
+    }
+
+    .progress-vertical {
+        display: inline-flex;
+        align-items: flex-end;
+        width: 18px;
+        height: 128px;
+    }
+
+    .progress-vertical .progress-bar {
+        width: 100%;
+        height: 0;
+        transition: height var(--kui-motion-duration-base) ease;
+    }
+
+    @keyframes kui-grogress-stripes {
+        from { background-position: 0 0; }
+        to { background-position: 24px 0; }
+    }
+
+}

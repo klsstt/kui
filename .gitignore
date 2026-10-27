@@ -37,3 +37,7 @@ build
 
 # Optional eslint cache
 .eslintcache
+.lingma
+.vscode
+.claude
+.codebuddy

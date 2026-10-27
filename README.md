@@ -3,10 +3,26 @@
 [![npm version](https://img.shields.io/npm/v/kui.svg)](https://www.npmjs.com/package/kui)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/klsstt/kui/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Phase](https://img.shields.io/badge/phase-1%20of%205-success)](./UPGRADE_ROADMAP.md)
 
 ## 📖 简介
 
 KUI 是一个基于 jQuery 的 UI 组件库，旨在继承 Bootstrap 3 的基础内容并汲取大量开源框架/控件精华，以支持便捷的敏捷开发。**现已升级至 Vite 5 构建系统**，提供更快的开发体验和更现代化的工作流。
+
+### 🔥 最新动态（2026-03-27）
+
+🎉 **现代化升级第一阶段完成！** 
+
+我们已完成 Design Token 系统的建设，包括：
+- ✅ 完整的三层 Token 架构（Primitive/Semantic/Component）
+- ✅ 140+ CSS Custom Properties
+- ✅ TypeScript 完整类型支持
+- ✅ Light/Dark 主题切换
+- ✅ 自动化生成工具
+
+查看 [PHASE1_SUMMARY.md](./PHASE1_SUMMARY.md) 了解详情。
+
+---
 
 ### ✨ 特性
 
@@ -18,6 +34,7 @@ KUI 是一个基于 jQuery 的 UI 组件库，旨在继承 Bootstrap 3 的基础
 - 🧪 **测试支持**：集成 Vitest 测试框架
 - 📦 **模块化输出**：同时支持 ESM 和 CommonJS 格式
 - 🔍 **TypeScript 支持**：提供完整的类型定义文件
+- 🎯 **Design Token 系统**：140+ CSS Variables，支持主题切换（新增）
 
 ## 🚀 快速开始
 
@@ -157,11 +174,15 @@ npm run dev
 ### 基本使用
 
 ```javascript
-// 引入 KUI
-import 'kui/dist/css/kui.css';
-import 'kui';
+// 引入 KUI（生产：使用打包后的 CSS；开发：可直接使用源码 Sass）
+// 生产示例：
+// import 'kui/dist/css/kui.css';
+// import 'kui';
 
-// 或使用 CDN
+// 开发示例（Vite 会处理 .scss 并热重载）：
+// import './sass/kui.scss';
+
+// 或使用 CDN（生产）：
 // <link rel="stylesheet" href="https://unpkg.com/kui/dist/css/kui.css">
 // <script src="https://unpkg.com/kui"></script>
 ```

@@ -1,0 +1,92 @@
+@layer kui.components {
+    .kui-iframe-tabs,
+    .kui-pjax-tabs {
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-iframe-tabs__nav,
+    .kui-pjax-tabs__nav {
+        --kui-tab-active-radius: 0px;
+        --kui-tab-active-radius-offset: 0px;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 8px;
+        margin: 0;
+        border-bottom: 1px solid var(--kui-color-border);
+        list-style:none;
+    }
+
+    .kui-tabs__item {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .kui-tabs__item > a,
+    .kui-tabs__item > button {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        padding: 6px 10px;
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+    }
+
+    .kui-tabs__item.active > a,
+    .kui-tabs__item.active > button,
+    .kui-tabs__item > a.active,
+    .kui-tabs__item > button.active {
+        border-color: var(--kui-color-border);
+        border-radius: calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) 0 0;
+        background: var(--kui-color-bg-muted);
+        color: var(--kui-color-primary);
+    }
+
+    .kui-tabs__item .close {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+    }
+
+    .kui-iframe-tabs__content,
+    .kui-pjax-tabs__content {
+        min-height: 180px;
+    }
+
+    .kui-iframe-tabs__pane,
+    .kui-pjax-tabs__pane {
+        display: none;
+        min-height: 180px;
+    }
+
+    .kui-iframe-tabs__pane.active,
+    .kui-iframe-tabs__pane.in,
+    .kui-iframe-tabs__pane.show,
+    .kui-pjax-tabs__pane.active,
+    .kui-pjax-tabs__pane.in,
+    .kui-pjax-tabs__pane.show {
+        display: block;
+    }
+
+    .kui-iframe-tabs__pane iframe {
+        width: 100%;
+        height: 260px;
+        border: 0;
+    }
+
+    .kui-tabs__loading,
+    .kui-tabs__error {
+        padding: 16px;
+        color: var(--kui-color-text-muted);
+    }
+}

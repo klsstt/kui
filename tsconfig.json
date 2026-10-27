@@ -1,28 +1,33 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@kui/core": ["./packages/core/src/index.ts"],
+      "@kui/core/components/*": ["./packages/core/src/components/*/index.ts"],
+      "@kui/core/internals": ["./packages/core/src/core/index.ts"],
+      "@kui/core/utils": ["./packages/core/src/utils/index.ts"],
+      "@kui/tokens": ["./packages/tokens/src/index.ts"]
+    },
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "strict": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true,
-    "types": ["vitest/globals"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "sourceMap": true
   },
   "include": [
-    "src/**/*.js",
-    "test/**/*.js",
-    "types/**/*.d.ts"
-  ],
-  "exclude": ["node_modules", "dist"]
+    "apps/admin",
+    "packages/*/src",
+    "packages/*/*.ts",
+    "tests",
+    "*.config.ts"
+  ]
 }

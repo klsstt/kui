@@ -1,0 +1,263 @@
+@layer kui.components {
+    .table,
+    .kui-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--kui-color-surface);
+        container-name: kui-table;
+        container-type: inline-size;
+    }
+
+    .table th,
+    .table td,
+    .kui-table th,
+    .kui-table td {
+        padding: 9px 10px;
+        border: 1px solid var(--kui-color-border);
+        text-align: left;
+    }
+
+    .table th,
+    .kui-table th {
+        background: var(--kui-color-surface-muted);
+        font-weight: 700;
+    }
+
+    .kui-table__sort {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+    }
+
+    .kui-table__detail-toggle {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .kui-table__detail {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+    }
+
+    .kui-table-toolbar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .kui-table-toolbar__search {
+        min-width: 220px;
+        height: 32px;
+        padding: 0 10px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+    }
+
+    .kui-table-toolbar__actions {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .kui-table-toolbar__actions .btn,
+    .kui-table-toolbar__columns > summary {
+        height: 32px;
+        padding: 0 10px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        cursor: pointer;
+        font: inherit;
+    }
+
+    .kui-table-toolbar__columns {
+        position: relative;
+    }
+
+    .kui-table-toolbar__columns > summary {
+        display: inline-flex;
+        align-items: center;
+        list-style: none;
+    }
+
+    .kui-table-toolbar__columns > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .kui-table-toolbar__columns-list {
+        position: absolute;
+        z-index: 20;
+        top: calc(100% + 4px);
+        right: 0;
+        display: grid;
+        gap: 6px;
+        min-width: 150px;
+        padding: 8px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
+    }
+
+    .kui-table-toolbar__columns-list label {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .kui-table-pagination {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .kui-table-pagination button {
+        min-width: 30px;
+        height: 30px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        cursor: pointer;
+    }
+
+    .kui-table-pagination button.active {
+        border-color: var(--kui-color-primary);
+        color: var(--kui-color-primary);
+    }
+
+    .kui-table-pagination:has(button:focus-visible) button:not(:focus-visible) {
+        opacity: 0.72;
+    }
+
+    .kui-table--card,
+    .kui-table--card tbody,
+    .kui-table--card tr,
+    .kui-table--card tb {
+        display: block;
+    }
+
+    .kui-table--card thead {
+        display: none;
+    }
+
+    .kui-table--card tr {
+        margin-bottom: 10px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-table--card td {
+        border-width: 0 0 1px;
+    }
+
+    .kui-table--card td:last-child {
+        border-bottom: 0;
+    }
+
+    .kui-table--card td::before {
+        display: inline-block;
+        min-width: 110px;
+        margin-right: 10px;
+        color: var(--kui-color-text-muted);
+        content: attr(data-label);
+        font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+        .kui-table--responsive,
+        .kui-table--responsive tbody,
+        .kui-table--responsive tr,
+        .kui-table--responsive td {
+            display:block;
+        }
+
+        .kui-table--responsive thead {
+            display: none;
+        }
+
+        .kui-table--responsive tr {
+            margin-bottom: 10px;
+            border: 1px solid var(--kui-color-border);
+            border-radius: var(--kui-seed-radius-sm);
+            background: var(--kui-color-surface);
+        }
+
+        .kui-table--responsive td {
+            border-width: 0 0 1px;
+        }
+
+        .kui-table--responsive td:last-child {
+            border-bottom: 0;
+        }
+
+        .kui-table--responsive td::before {
+            display: inline-block;
+            min-width: 110px;
+            margin-right: 10px;
+            color: var(--kui-color-text-muted);
+            content: attr(data-label);
+            font-weight: 700;
+        }
+
+        .kui-table-toolbar {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .kui-table-toolbar__search {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .kui-table-toolbar__actions {
+            flex-wrap: wrap;
+        }
+    }
+
+    @container kui-table (max-width: 640px) {
+        .kui-table--responsive tbody,
+        .kui-table--responsive tr,
+        .kui-table--responsive td {
+            display: block;
+        }
+
+        .kui-table--responsive thead {
+            display: none;
+        }
+
+        .kui-table--responsive tr {
+            margin-bottom: var(--kui-space-3);
+            border: 1px solid var(--kui-color-border);
+            border-radius: var(--kui-seed-radius-sm);
+            background: var(--kui-color-surface);
+        }
+
+        .kui-table--responsive td::before {
+            display: inline-block;
+            min-width: 7rem;
+            margin-inline-end: var(--kui-space-3);
+            color: var(--kui-color-text-muted);
+            content: attr(data-label);
+            font-weight: 700;
+        }
+    }
+}

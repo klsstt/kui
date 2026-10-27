@@ -1,0 +1,5 @@
+{
+  "name": "@kui/demo-site",
+  "private": true,
+  "description": "KUI 组件展示与验收站点： 仅部署，不发布到npm。"
+}

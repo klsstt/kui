@@ -1,0 +1,31 @@
+@layer kui.components {
+    .spinner {
+        display: inline-flex;
+        align-items: stretch;
+    }
+
+    .spinner .subtract,
+    .spinner .add {
+        display: inline-flex;
+        width: 32px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--kui-color-border);
+        background: var(--kui-color-bg-muted);
+        color: var(--kui-color-text);
+        text-decoration: none;
+    }
+
+    .spinner .subtract.disabled,
+    .spinner .add.disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+    }
+
+    .spinner .input-text {
+        width: 64px;
+        border: 1px solid var(--kui-color-border);
+        border-inline: 0;
+        text-align: center;
+    }
+}

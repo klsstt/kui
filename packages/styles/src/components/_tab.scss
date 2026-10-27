@@ -1,0 +1,40 @@
+@layer kui.components {
+    .nav {
+        --kui-tab-active-radius: 0px;
+        --kui-tab-active-radius-offset: 0px;
+
+        display: flex;
+        padding-left: 0;
+        margin: 0 0 12px;
+        list-style: none;
+        border-bottom: 1px solid var(--kui-color-border);
+    }
+
+    .nav > li > a,
+    .nav > a {
+        display: block;
+        padding: 8px 14px;
+        color: var(--kui-color-text-muted);
+        border: 1px solid transparent;
+        border-bottom: 0;
+    }
+
+    .nav > li.active > a,
+    .nav > a.active {
+        color: var(--kui-color-primary);
+        background: var(--kui-color-surface);
+        border-color: var(--kui-color-border);
+        border-radius: calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) 0 0;
+    }
+
+    .tab-pane {
+        display: none;
+    }
+
+    .tab-pane.active,
+    .tab-pane.in,
+    .tab-pane.show {
+        display: block;
+    }
+
+}

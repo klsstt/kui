@@ -1,0 +1,38 @@
+@layer kui.components {
+    .alert {
+        position: relative;
+        padding: 10px 34px 10px 12px;
+        margin-bottom: 16px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text)
+    }
+
+    .alert-success {
+        border-color: var(--kui-seed-color-success);
+        color: var(--kui-seed-color-success)
+    }
+
+    .alert-warning {
+        border-color: var(--kui-seed-color-warning);
+        color: var(--kui-seed-color-warning)
+    }
+
+    .alert-danger {
+        border-color: var(--kui-seed-color-danger);
+        color: var(--kui-seed-color-danger)
+    }
+
+    .alert .close {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        opacity: 0.7;
+    }
+}

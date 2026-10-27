@@ -1,0 +1,28 @@
+@layer kui.base {
+    *,
+    *::before,
+    *::after {
+        box-sizing:border-box
+    }
+
+    :where(html) {
+        text-size-adjust: 100%;
+    }
+
+    :where(body) {
+        margin: 0;
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+
+    :where(img, picture, svg, canvas, video) {
+        display: block;
+        max-inline-size: 100%;
+    }
+
+    :where(button, input, select, textarea) {
+        font: inherit;
+    }
+}

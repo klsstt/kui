@@ -1,0 +1,71 @@
+@layer kui.components {
+    .tree,
+    .tree ul {
+        padding-left: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .tree ul {
+        display: none;
+        padding-left: 18px;
+    }
+
+    .tree li.open > ul,
+    .tree li.in > ul {
+        display:block;
+    }
+
+    .tree.tree-animate ul {
+        display:block;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: max-height var(--kui-component-collapse-duration), opacity var(--kui-component-collapse-duration), transform var(--kui-component-collapse-duration);
+    }
+
+    .tree.tree-animate li.open > ul,
+    .tree.tree-animate li.in > ul {
+        max-height: var(--kui-tree-collapse-max-height, 60rem);
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tree li {
+        position: relative;
+        padding: 4px 0;
+    }
+
+    .tree li.tree-has-toggle {
+        padding-left: 20px;
+    }
+
+    .tree .list-toggle {
+        position: absolute;
+        top: 8px;
+        left: 2px;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid var(--kui-color-text-muted);
+        border-bottom: 2px solid var(--kui-color-text-muted);
+        cursor: pointer;
+        transform: rotate(-45deg);
+    }
+
+    .tree li.open > .list-toggle,
+    .tree li.in > .list-toggle {
+        transform: rotate(45deg);
+    }
+
+    .tree-actions {
+        display: inline-flex;
+        gap: 6px;
+        margin-left: 8px;
+    }
+
+    .tree-action {
+        color: var(--kui-color-primary);
+        font-size: 12px;
+    }
+}

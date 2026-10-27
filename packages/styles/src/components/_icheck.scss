@@ -1,0 +1,52 @@
+@layer kui.components {
+    .icheckbox,
+    .iradio {
+        position:relative;
+        z-index:var(--kui-layer-component);
+        display:inline-flex;
+        width:18px;
+        height:18px;
+        vertical-align: middle;
+        border: 1px solid var(--kui-color-border);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-component);
+        cursor: pointer;
+    }
+
+    .iradio {
+        border-radius: 50%;
+    }
+
+    .icheckbox.checked::after {
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+        border: solid var(--kui-color-primary);
+        border-width: 0 2px 2px 0;
+        content: '';
+        transform: rotate(45deg);
+    }
+
+    .iradio.checked::after {
+        position:absolute;
+        inset:4px;
+        border-radius: 50%;
+        background: var(--kui-color-primary);
+        content: '';
+    }
+
+    .icheckbox.disabled,
+    .iradio.disabled {
+        opacity: 0.55;
+        cursor: default;
+    }
+
+    .iCheck-input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: inherit;
+    }
+}

@@ -1,0 +1,41 @@
+@layer kui.components {
+    .rating {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .rating i {
+        display: inline-grid;
+        min-width: 24px;
+        min-height: 24px;
+        place-items: center;
+        cursor: pointer;
+        color: #ccd5db;
+    }
+
+    .rating .orange-600,
+    .rating .red-600,
+    .rating .fa-star-half-empty {
+        color: #f0ad4e;
+    }
+
+    .rating.is-readonly i {
+        cursor: default;
+    }
+
+    .rating [role="radio"]:focus-visible,
+    .rating [role="button"]:focus-visible,
+    .rating [role="slider"]:focus-visible {
+        border-radius: var(--kui-seed-radius-sm);
+        outline: var(--kui-focus-ring-width) solid var(--kui-focus-ring-color);
+        outline-offset: var(--kui-focus-ring-offset);
+    }
+
+    @media (forced-colors: active) {
+        .rating i { color: ButtonText }
+        .rating .orange-600,
+        .rating .red-600,
+        .rating .fa-star-half-empty { color: Highlight }
+    }
+}

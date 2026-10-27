@@ -1,0 +1,29 @@
+{
+  "name": "@kui/style",
+  "version": "0.1.0",
+  "description": "Pure CSS KUI foundations: tokens, reset, typography, accessibility, layout, and utilities.",
+  "license":"MIT",
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "files": ["dist", "README.md"],
+  "style": "dist/foundation.css",
+  "exports": {
+    ".": "./dist/foundation.css",
+    "./tokens":"./dist/tokens.css",
+    "./reset":"./dist/reset.css",
+    "./typography":"./dist/typography.css",
+    "./accessibility":"./dist/accessibility.css",
+    "./layout":"./dist/layout.css",
+    "./utilities":"./dist/utilities.css",
+    "./components":"./dist/components.css",
+    "./full":"./dist/full.css",
+    "./package.json": "./package.json"
+  },
+  "dependencies": { "@kui/tokens": "0.1.0" },
+  "publishConfig": {"access": "public", "provenance": true},
+  "engines": {"node": ">=20.19.0"},
+  "scripts": {
+    "build": "npm run build --workspace @kui/tokens && npm run build:local",
+    "build:local": "node build.mjs"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@kui/core",
+  "version": "0.1.0",
+  "description": "Framework-agnostic, accessible KUI DOM controllers with typed component subpath exports.",
+  "license":"MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist", "README.md"],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.js",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js"},
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./internals": {"types": "./dist/core/index.d.ts", "import": "./dist/core/index.js" },
+    "./utils": { "types": "./dist/utils/index.d.ts", "import": "./dist/utils/index.js" },
+    "./package.json": "./package.json"
+  },
+  "dependencies": { "@floating-ui/dom": "^1.6.13" },
+  "publishConfig": {"access": "public", "provenance": true},
+  "engines": {"node": ">=20.19.0"},
+  "scripts": {
+    "build": "vite build --config vite.config.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

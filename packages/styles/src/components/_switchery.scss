@@ -1,0 +1,61 @@
+@layer kui.components {
+    .switchery {
+        position: relative;
+        z-index: var(--kui-layer-component);
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+        vartical-align: middle;
+        border-radius: 999px;
+        box-shadow: var(--kui-shadow-component);
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+    .switchery small {
+        position:absolute;
+        top: 2px;
+        left: 2px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        box-shadow: var(--kui-shadow-sm);
+        transition: left 0.15s ease;
+    }
+
+    .switchery.checked small {
+        left: 20px;
+    }
+
+    .switchery-small {
+        width: 32px;
+        height: 18px;
+    }
+
+    .switchery-small small {
+        width: 14px;
+        height: 14px;
+    }
+
+    .switchery-small.checked small {
+        left: 16px;
+    }
+
+    .switchery-large {
+        width: 52px;
+        height: 28px;
+    }
+
+    .switchery-large small {
+        width: 24px;
+        height: 24px;
+    }
+
+    .switchery-large.checked small {
+        left: 26px;
+    }
+
+    .switchery.disabled {
+        cursor: default;
+    }
+}

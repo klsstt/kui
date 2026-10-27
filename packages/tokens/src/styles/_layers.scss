@@ -1,0 +1,98 @@
+@layer kui.tokens, kui.base, kui.components, kui.utilities, kui.overrides;
+
+@layer kui.tokens {
+  :root {
+    --kui-seed-color-brand: #2780e3;
+    --kui-seed-color-success: #38b03f;
+    --kui-seed-color-warning: #f1a325;
+    --kui-seed-color-danger: #ea644a;
+    --kui-seed-color-neutral-0: #ffffff;
+    --kui-seed-color-neutral-50: #f7f8fa;
+    --kui-seed-color-neutral-100: #f1f3f5;
+    --kui-seed-color-neutral-300: #d9dde3;
+    --kui-seed-color-neutral-500: #8a96a3;
+    --kui-seed-color-neutral-700: #3f4652;
+    --kui-seed-color-neutral-900: #1f2733;
+    --kui-seed-radius-sm: 2px;
+    --kui-seed-radius-md: 4px;
+    --kui-seed-radius-lg: 6px;
+    --kui-seed-shadow-sm: 0 2px 8px rgba(31, 39, 51, 0.12),
+    --kui-seed-shadow-md: 0 8px 24px rgba(31, 39, 51, 0.1),
+    --kui-seed-duration-fast: 120ms;
+    --kui-seed-duration-base: 180ms;
+
+    --kui-font-family-page: Aptos, 'HarmonyOS Sans', 'Microsoft YaHei', sans-serif;
+    --kui-font-family-component: 'Segoe UI Variable', Aptos, 'Microsoft YaHei UI', sans-serif;
+    --kui-font-size-component-label: 12px;
+    --kui-font-size-component-control: 13px;
+    --kui-font-size-component-value: 14px;
+    --kui-font-weight-component-label: 400;
+    --kui-font-weight-component-control: 400;
+    --kui-font-weight-component-value: 400;
+
+    --kui-layer-page: 0;
+    --kui-layer-container: 10;
+    --kui-layer-panel: 20;
+    --kui-layer-component: 30;
+    --kui-layer-dropdown: 1060;
+    --kui-layer-modal: 1080;
+    --kui-layer-drawer: 1088;
+    --kui-layer-toast: 1090;
+    --kui-shadow-container: 0 1px 2px rgba(31, 39, 51, 0.04);
+    --kui-shadow-panel: var(--kui-shadow-sm);
+    --kui-shadow-component: 0 1px 2px rgba(31, 39, 51, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    --kui-shadow-dropdown: var(--kui-seed-shadow-md);
+    --kui-shadow-sm: var(--kui-seed-shadow-sm);
+    --kui-shadow-md: var(--kui-seed-shadow-md);
+
+    --kui-space-1: 4px;
+    --kui-space-2: 8px;
+    --kui-space-3: 12px;
+    --kui-space-4: 16px;
+    --kui-space-5: 20px;
+    --kui-space-6: 24px;
+    --kui-space-7: 28px;
+    --kui-space-8: 32px;
+    --kui-container-max-width: 1200px;
+    --kui-motion-duration-fast: var(--kui-seed-duration-fast);
+    --kui-motion-duration-base: var(--kui-seed-duration-base);
+
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-primary-hover: #1b6ec2;
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-info: #3aa6c8;
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+    --kui-color-border-subtle: #e8edf2;
+    --kui-color-focus-ring: rgba(39, 128, 227, 0.28);
+    --kui-focus-ring-width: 3px;
+    --kui-focus-ring-offset: 2px;
+
+    --kui-component-button-height: 32px;
+    --kui-component-button-padding-x: 12px;
+    --kui-component-button-radius: var(--kui-seed-radius-md);
+    --kui-component-dropdown-background: var(--kui-color-surface);
+    --kui-component-dropdown-border-color: var(--kui-color-border);
+    --kui-component-dropdown-shadow: var(--kui-seed-shadow-sm);
+    --kui-component-collapse-duration: var(--kui-seed-duration-base);
+  }
+
+  [data-kui-theme='blue'] {
+    --kui-seed-color-brand:#2780e3;
+    --kui-color-primary-hover: #1b6ec2;
+    --kui-color-focus-ring: rgba(39, 128, 227, 0.28);
+  }
+
+  [data-kui-theme='green'] {
+    --kui-seed-color-brand:#2e9d63;
+    --kui-color-primary-hover: #23784d;
+    --kui-color-focus-ring: rgba(46, 157, 99, 0.28);
+  }
+}

@@ -1,0 +1,11 @@
+@layer kui.components {
+    .modal-trigger .modal-trigger-iframe {
+        width: 100%;
+        min-height: 360px;
+        border: 0;
+    }
+
+    .modal-trigger.modal-loading .modal-content {
+        min-height: 120px;
+    }
+}

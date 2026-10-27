@@ -1,0 +1,27 @@
+@layer kui.components {
+    .datetimepicker {
+        display: none;
+        width: max-content;
+        padding: 8px;
+        border: 1px solid var(--kui-color-border);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-md);
+        max-width: calc(100vw - 16px);
+        max-height: calc(100vh - 16px);
+        overflow: auto;
+    }
+
+    .datetimepicker.open {
+        display: inline-block;
+    }
+
+    .datetimepicker-actions {
+        display: flex;
+        gap: 6px;
+        margin-top: 6px;
+    }
+
+    @media (forced-colors: active) {
+        .datetimepicker { border-color: CanvasText;}
+    }
+}

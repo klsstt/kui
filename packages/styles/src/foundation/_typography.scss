@@ -1,0 +1,29 @@
+@layer kui.base {
+    :where(body) {
+        color: var(--kui-color-text);
+        background: var(--kui-color-background);
+        font-family: var(--kui-font-family-page);
+        font-size: 14px;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6, p) {
+        margin-block-start: 0;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+        color: var(--kui-color-text);
+        font-family: var(--kui-font-family-component);
+        line-height: 1.25;
+    }
+
+    :where(a) {
+        color: var(--kui-color-primary);
+        text-decoration: none;
+    }
+
+    :where(a:hover, a:focus) {
+        color: var(--kui-color-primary-hover);
+    }
+}

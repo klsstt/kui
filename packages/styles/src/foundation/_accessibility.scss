@@ -1,0 +1,31 @@
+@layer kui.base {
+    :focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: var(--kui-focus-ring-offset);
+    }
+
+    @scope (.kui-scope) {
+        :scope {
+            color: var(--kui-color-text);
+            font-family: var(--kui-font-family-component);
+            container-type: inline-size;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+        }
+    }
+
+    @media (forced-colors: active) {
+        :focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

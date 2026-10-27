@@ -1,0 +1,50 @@
+@layer kui.components {
+    .panel {
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+    }
+
+    .panel-heading,
+    .panel-footer {
+        padding: 10px 14px;
+        background: var(--kui-color-bg-muted);
+    }
+
+    .panel-heading {
+        border-bottom: 1px solid var(--kui-color-border);
+    }
+
+    .panel-footer {
+        border-top: 1px solid var(--kui-color-border)
+    }
+
+    .panel-body {
+        padding: 14px;
+    }
+
+    .panel.is-collapse .panel-body,
+    .panel.is-close {
+        display: none;
+    }
+
+    .panel.is-fullscreen {
+        position: fixed;
+        inset: 12px;
+        z-index: 1060;
+        overflow: auto;
+    }
+
+    .panel.is-loading {
+        opacity: 0.72;
+    }
+
+    .drag-ready {
+        cursor: move;
+    }
+
+    .dragging {
+        cursor: grabbing;
+        user-select: none;
+    }
+}

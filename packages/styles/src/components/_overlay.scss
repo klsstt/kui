@@ -1,0 +1,60 @@
+@layer kui.components {
+    .tooltip,
+    .popover {
+        z-index: calc(var(--kui-layer-toast) + 10);
+        display: block;
+        max-width: 260px;
+        color: var(--kui-color-text);
+    }
+
+    .tooltip-inner {
+        padding: 6px 8px;
+        border-radius: var(--kui-seed-radius-sm);
+        background: #1f2733;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .popover {
+        min-width: 180px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-seed-shadow-sm)
+    }
+
+    .popover-title {
+        padding: 8px 10px;
+        margin: 0;
+        border-bottom: 1px solid var(--kui-color-border);
+        font-size: 14px;
+    }
+
+    .popover-content {
+        padding: 10px;
+        color: var(--kui-color-text-muted);
+        max-height: min(60vh, 24rem);
+        overflow: auto;
+    }
+
+    [data-toggle="context"] .dropdown-menu,
+    [data-kui-toggle="context"] .dropdown-menu,
+    .context-menu { display:none }
+
+    .dropdown-menu.open,
+    .context-menu.open {
+        display: block;
+    }
+
+    [role="menuitem"]:focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-focus-ring-color);
+        outline-offset: calc(-1 * var(--kui-focus-ring-width));
+    }
+
+    @media (forced-colors: active) {
+        .popover,
+        .context-menu,
+        .dropdown-menu.open { border: 1px solid CanvasText; }
+        [role="menuitem"]:focus-visible { color: HighlightText; background: Highlight; }
+    }
+}

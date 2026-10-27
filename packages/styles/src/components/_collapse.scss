@@ -1,0 +1,17 @@
+@layer kui.components {
+    .collapse {
+        display: none;
+    }
+
+    .collapse.in,
+    .collapse.show {
+        display: block;
+    }
+
+    .collapsing {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        transition: height var(--kui-component-collapse-duration) ease;
+    }
+}
