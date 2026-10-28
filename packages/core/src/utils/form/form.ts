@@ -39,7 +39,7 @@ export function formToArray(form: HTMLFormElement, semantic=false): FormField[]{
             if(!files.length){
                 fields.push({name, value: '',type: element.type, required: element.required})
             }else{
-                files.forEach((file)=> files.push({name, value: file, type:element.type,required: element.required}))
+                files.forEach((file)=> fields.push({name, value: file.name, type:element.type,required: element.required}))
             }
             continue
         }
@@ -273,6 +273,7 @@ function normalizeHeaders(headers: HeadersInit|undefined): Record<string,string>
 }
 
 function escapeSelector(value: string): string {
-    return typeof CSS !== 'undefined' ? typeof CSS.escape === 'function'
-    ? CSS.escape(value) : value.replace(/"/g, '\\"')
+    return typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+        ? CSS.escape(value)
+        : value.replace(/"/g, '\\"')
 }

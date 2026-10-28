@@ -1,0 +1,198 @@
+@layer kui.components {
+    /* 徽章：只承载状态与计数，不使用渐变或大投影 */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+        min-height: 20px;
+        padding: 0 var(--kui-space-2);
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 500;
+        line-height: 1.4;
+        white-space: nowrap;
+    }
+
+    .badge-primary {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 24%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 12%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .badge-success {
+        border-color: color-mix(in srgb, var(--kui-color-success) 24%, transparent);
+        background: color-mix(in srgb, var(--kui-color-success) 12%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-success) 82%, var(--kui-color-text));
+    }
+
+    .badge-warning {
+        border-color: color-mix(in srgb, var(--kui-color-warning) 28%, transparent);
+        background: color-mix(in srgb, var(--kui-color-warning) 14%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-warning) 78%, var(--kui-color-text));
+    }
+
+    .badge-danger {
+        border-color: color-mix(in srgb, var(--kui-color-danger) 24%, transparent);
+        background: color-mix(in srgb, var(--kui-color-danger) 12%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-danger) 84%, var(--kui-color-text));
+    }
+
+    .badge-info {
+        border-color: color-mix(in srgb, var(--kui-color-info) 24%, transparent);
+        background: color-mix(in srgb, var(--kui-color-info) 12%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-info) 82%, var(--kui-color-text));
+    }
+
+    .badge-neutral,
+    .badge-default {
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+    }
+
+    .badge-solid {
+        border-color: transparent;
+        background: var(--kui-color-text);
+        color: var(--kui-color-surface);
+    }
+
+    .badge-solid.badge-primary {
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+    }
+
+    .badge-solid.badge-success {
+        background: var(--kui-color-success);
+        color: var(--kui-color-on-primary);
+    }
+
+    .badge-solid.badge-warning {
+        background: var(--kui-color-warning);
+        color: var(--kui-color-on-primary);
+    }
+
+    .badge-solid.badge-danger {
+        background: var(--kui-color-danger);
+        color: var(--kui-color-on-primary);
+    }
+
+    .badge-dot {
+        width: 20px;
+        min-width: 20px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .badge-dot::before {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: currentcolor;
+        content: '';
+    }
+
+    .badge-count {
+        min-width: 20px;
+        justify-content: center;
+        padding: 0 6px;
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .badge-lg {
+        min-height: 24px;
+        padding: 0 var(--kui-space-3);
+        font-size: var(--kui-font-size-component-control);
+    }
+
+    .kui-dot {
+        display: inline-block;
+        width: var(--kui-dot-size, 8px);
+        height: var(--kui-dot-size, 8px);
+        border-radius: 999px;
+        background: var(--kui-color-text-subtle);
+    }
+
+    .kui-dot--success { background: var(--kui-color-success); }
+    .kui-dot--warning { background: var(--kui-color-warning); }
+    .kui-dot--danger { background: var(--kui-color-danger); }
+    .kui-dot--primary { background: var(--kui-color-primary); }
+    .kui-dot--pulse {
+        box-shadow: 0 0 0 0 color-mix(in srgb, currentcolor 60%, transparent);
+        animation: kui-dot-pulse 1800ms ease-out infinite;
+    }
+
+    @keyframes kui-dot-pulse {
+        70% { box-shadow: 0 0 0 6px transparent; }
+        100% { box-shadow: 0 0 0 0 transparent; }
+    }
+
+    /* 标签：比徽章更"实体"，可带图标与移除按钮 */
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+        min-height: 24px;
+        padding: 0 var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.4;
+    }
+
+    .tag--primary {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 32%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 8%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .tag__remove {
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font-size: 10px;
+        opacity: 0.72;
+    }
+
+    .tag__remove:hover {
+        background: color-mix(in srgb, currentcolor 14%, transparent);
+        opacity: 1;
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        min-height: 28px;
+        padding: 0 var(--kui-space-3);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: 999px;
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .chip em {
+        color: var(--kui-color-text-subtle);
+        font-style: normal;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .chip.is-active {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 32%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+}

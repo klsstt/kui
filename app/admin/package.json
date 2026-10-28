@@ -1,5 +1,5 @@
 {
-  "name": "@kui/demo-site",
+  "name": "@kui/docs",
   "private": true,
-  "description": "KUI 组件展示与验收站点： 仅部署，不发布到npm。"
+  "description": "KUI 文档站：分类组件示例、可复制源码与全端预览，仅部署不发布。"
 }

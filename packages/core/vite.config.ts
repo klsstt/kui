@@ -4,22 +4,22 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 const componentEntries = readdirSync(resolve(__dirname, 'src/components'), { withFileTypes: true })
-    .filters((entry) => entry.isDirectory())
-    .map((entry) => resolve(__dirname, 'src/components', entry.name, 'index.ts));
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => resolve(__dirname, 'src/components', entry.name, 'index.ts'))
 
 export default defineConfig({
     plugins: [
-        dts([
+        dts({
             entryRoot: 'src',
             include: ['src'],
             outDir: 'dist',
             rollupTypes: false,
             tsconfigPath: resolve(__dirname, 'tsconfig.json'),
-        ]),
+        }),
     ],
     build: {
-        emptyOutDir: true,
-        lib: { entry: resolve(__dirname, 'src/index.ts'), formats: ['es']},
+        emptyOutDir: false,
+        lib: { entry: resolve(__dirname, 'src/index.ts'), formats: ['es'] },
         rollupOptions: {
             input: [
                 resolve(__dirname, 'src/index.ts'),
@@ -38,5 +38,5 @@ export default defineConfig({
         },
         sourcemap: true,
         target: 'es2020',
-    }
+    },
 })

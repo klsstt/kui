@@ -1,0 +1,181 @@
+@layer kui.components {
+    /* 富文本：工具栏与编辑区共享同一圈边框，Markdown 视图复用同一高度 */
+    .kui-rich-text {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            box-shadow var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-rich-text:focus-within {
+        border-color: var(--kui-color-primary);
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .kui-rich-text__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2px;
+        padding: var(--kui-space-1);
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+        background: var(--kui-color-surface-muted);
+    }
+
+    .kui-rich-text__button,
+    .kui-rich-text__mode {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--kui-space-1);
+        min-width: 28px;
+        height: 28px;
+        padding: 0 var(--kui-space-2);
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+        transition:
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-rich-text__button:hover,
+    .kui-rich-text__mode:hover {
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+    }
+
+    .kui-rich-text__button:active {
+        transform: translateY(1px);
+    }
+
+    .kui-rich-text__mode {
+        margin-left: auto;
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-rich-text__mode.is-active {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 32%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .kui-rich-text__select {
+        height: 28px;
+        padding: 0 var(--kui-space-1);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-rich-text__editor {
+        min-height: var(--kui-rich-text-min-height, 180px);
+        padding: var(--kui-space-3);
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-value);
+        line-height: 1.75;
+        outline: none;
+        overflow-wrap: anywhere;
+    }
+
+    .kui-rich-text__editor[hidden] {
+        display: none;
+    }
+
+    .kui-rich-text__editor:empty::before {
+        color: var(--kui-color-text-subtle);
+        content: attr(data-placeholder);
+        pointer-events: none;
+    }
+
+    .kui-rich-text__editor h2 {
+        margin: var(--kui-space-4) 0 var(--kui-space-2);
+        font-size: 1.35rem;
+    }
+
+    .kui-rich-text__editor h3 {
+        margin: var(--kui-space-3) 0 var(--kui-space-2);
+        font-size: 1.1rem;
+    }
+
+    .kui-rich-text__editor p {
+        margin: 0 0 var(--kui-space-2);
+    }
+
+    .kui-rich-text__editor ul,
+    .kui-rich-text__editor ol {
+        padding-left: var(--kui-space-5);
+        margin: 0 0 var(--kui-space-2);
+    }
+
+    .kui-rich-text__editor blockquote {
+        padding: var(--kui-space-2) var(--kui-space-3);
+        margin: var(--kui-space-2) 0;
+        border-left: 2px solid var(--kui-color-primary);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+    }
+
+    .kui-rich-text__editor pre {
+        padding: var(--kui-space-3);
+        overflow: auto;
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-code-surface);
+        color: var(--kui-color-code-text);
+        font-family: 'Cascadia Code', Consolas, monospace;
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-rich-text__editor code {
+        padding: 1px 4px;
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface-muted);
+        font-family: 'Cascadia Code', Consolas, monospace;
+        font-size: 0.9em;
+    }
+
+    .kui-rich-text__editor pre code {
+        padding: 0;
+        background: transparent;
+    }
+
+    .kui-rich-text__editor img {
+        max-width: 100%;
+        border-radius: var(--kui-seed-radius-md);
+    }
+
+    .kui-rich-text__editor a {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .kui-rich-text__source {
+        min-height: var(--kui-rich-text-min-height, 180px);
+        padding: var(--kui-space-3);
+        border: 0;
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        font-family: 'Cascadia Code', Consolas, monospace;
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.75;
+        outline: none;
+        resize: vertical;
+    }
+
+    .kui-rich-text__source[hidden] {
+        display: none;
+    }
+}

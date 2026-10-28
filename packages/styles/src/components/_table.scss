@@ -185,9 +185,15 @@
     @media (max-width: 640px) {
         .kui-table--responsive,
         .kui-table--responsive tbody,
-        .kui-table--responsive tr,
+        .kui-table--responsive tr {
+            display: block;
+        }
+
         .kui-table--responsive td {
-            display:block;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: var(--kui-space-1) var(--kui-space-3);
         }
 
         .kui-table--responsive thead {
@@ -202,6 +208,7 @@
         }
 
         .kui-table--responsive td {
+            padding: var(--kui-space-2) var(--kui-space-3);
             border-width: 0 0 1px;
         }
 
@@ -209,13 +216,37 @@
             border-bottom: 0;
         }
 
+        /* 卡片首列当标题，与其余字段明显分层 */
+        .kui-table--responsive td:first-child {
+            border-bottom: 1px solid var(--kui-color-border);
+            background: var(--kui-color-surface-muted);
+            color: var(--kui-color-text);
+            font-weight: 600;
+        }
+
         .kui-table--responsive td::before {
-            display: inline-block;
-            min-width: 110px;
-            margin-right: 10px;
-            color: var(--kui-color-text-muted);
+            display: block;
+            flex: 0 0 5.5rem;
+            min-width: 0;
+            margin: 0;
+            color: var(--kui-color-text-subtle);
             content: attr(data-label);
-            font-weight: 700;
+            font-weight: 500;
+        }
+
+        /* 操作列：标签独占一行，按钮横排且可换行，不与字段值挤在一起 */
+        .kui-table--responsive td:last-child {
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .kui-table--responsive td:last-child::before {
+            flex-basis: 100%;
+        }
+
+        .kui-table--responsive td:last-child .kui-cluster,
+        .kui-table--responsive td:last-child .btn {
+            flex: 0 0 auto;
         }
 
         .kui-table-toolbar {

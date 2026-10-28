@@ -41,3 +41,10 @@ build
 .vscode
 .claude
 .codebuddy
+
+# Local verification shots
+tmp-shots
+test-results
+playwright-report
+
+dist-demo

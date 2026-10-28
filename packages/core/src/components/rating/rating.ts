@@ -55,6 +55,7 @@ export class Rating extends Component<RatingOptions> {
     }
 
     private scoreInput!: HTMLInputElement
+    private starsElement: HTMLElement | null = null
     private currentScore: number | null = null
 
     private constructor(element: HTMLElement, options: Partial<RatingOptions> = {}) {
@@ -113,6 +114,8 @@ export class Rating extends Component<RatingOptions> {
     private render(): void {
         this.element.replaceChildren()
         this.element.classList.add('rating')
+        this.element.setAttribute('role', 'group')
+
         if (this.options.cancel) {
             const cancel = this.createIcon(this.options.cancelOff, 'X', this.options.cancelHint)
             cancel.classList.add(this.options.cancelClass)
@@ -121,11 +124,16 @@ export class Rating extends Component<RatingOptions> {
             this.element.append(cancel)
         }
 
+        // 星星单独成组：滑块/单选组只包住星星，取消按钮不会被卷进交互区
+        const stars = document.createElement('span')
+        stars.className = 'kui-rating__stars'
         for (let index = 1; index <= Math.max(1, this.options.number); index += 1) {
             const star = this.createIcon(this.options.starOff, String(index), this.options.hints[index - 1] ?? String(index))
             star.dataset.score = String(index)
-            this.element.append(star)
+            stars.append(star)
         }
+        this.element.append(stars)
+        this.starsElement = stars
 
         this.scoreInput = document.createElement('input')
         this.scoreInput.type = 'hidden'
@@ -164,6 +172,10 @@ export class Rating extends Component<RatingOptions> {
                 this.commitScore(star, event)
             }
         })
+        this.listen(this.element, 'mouseleave', () => {
+            this.applyScore(this.currentScore)
+            this.updateTarget(this.currentScore, this.options.targetKeep)
+        })
         this.listen(this.element, 'keydown', (event) => this.handleKeydown(event))
     }
 
@@ -186,6 +198,10 @@ export class Rating extends Component<RatingOptions> {
             next = step
         } else if (event.key === 'End') {
             next = this.options.number
+        } else if (event.key === 'Delete' || event.key === 'Backspace') {
+            event.preventDefault()
+            this.cancel(true)
+            return
         } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
             next += step
         } else if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
@@ -206,14 +222,21 @@ export class Rating extends Component<RatingOptions> {
         if (this.options.readOnly) {
             return
         }
-        const score = this.scoreFromStar(star, event)
+        // 悬停只预览整颗，点击时再决定半星或整星
+        const score = Number(star.dataset.score ?? 0)
         this.applyScore(score)
         this.updateTarget(score, true)
         this.options.mouseover?.(score, event)
     }
 
     private commitScore(star: HTMLElement, event: Event): void {
-        const score = this.scoreFromStar(star, event)
+        const index = Number(star.dataset.score ?? 0)
+        // 半星：第一次点第 N 颗 → N-0.5；再点同一颗 → N。未开启半星则直接点亮整颗。
+        const score = this.options.half
+            ? this.currentScore === index - 0.5
+                ? index
+                : index - 0.5
+            : index
         this.currentScore = score
         this.applyScore(score)
         this.updateTarget(score, true)
@@ -233,10 +256,15 @@ export class Rating extends Component<RatingOptions> {
     private applyScore(score: number | null): void {
         this.element.querySelectorAll<HTMLElement>('[data-score]').forEach((star) => {
             const starScore = Number(star.dataset.score)
-            star.className = starScore <= (score ?? 0) ? this.options.starOn : this.options.starOff
-            if (score !== null && score > starScore - 1 && score < starScore) {
-                star.className = this.options.starHalf
+            const half = score !== null && score > starScore - 1 && score < starScore
+            const filled = score !== null && score >= starScore
+            if (this.options.starType === 'class') {
+                star.classList.toggle('fa-star', !half)
+                star.classList.toggle('fa-star-half-empty', half)
             }
+            star.classList.toggle('is-on', filled)
+            star.classList.toggle('is-half', half)
+            star.classList.toggle('is-off', !filled && !half)
         })
         this.scoreInput.value = score === null ? '' : String(score)
         this.syncAccessibility()
@@ -244,28 +272,32 @@ export class Rating extends Component<RatingOptions> {
 
     private syncAccessibility(): void {
         const baseLabel = this.element.dataset.ratingLabel ?? this.element.getAttribute('aria-label') ?? '评分'
+        const target = this.starsElement ?? this.element
         const stars = Array.from(this.element.querySelectorAll<HTMLElement>('[data-score]'))
         const cancel = this.element.querySelector<HTMLElement>('[data-rating-cancel]')
 
-        cancel?.setAttribute('tabindex', this.options.readOnly ? '-1' : '0')
+        this.element.setAttribute('aria-label', baseLabel)
+        if (cancel) {
+            cancel.setAttribute('tabindex', this.options.readOnly ? '-1' : '0')
+        }
         if(this.options.readOnly) {
-            this.element.setAttribute('role', 'img')
-            this.element.setAttribute('aria-label', `${baseLabel} ${this.currentScore ?? 0}/${this.options.number}`)
-            this.element.removeAttribute('tabindex')
+            target.setAttribute('role', 'img')
+            target.setAttribute('aria-label', `${baseLabel} ${this.currentScore ?? 0}/${this.options.number}`)
+            target.removeAttribute('tabindex')
             stars.forEach((star) => { star.removeAttribute('role'); star.tabIndex = -1; star.setAttribute('aria-hidden', 'true') })
         } else if (this.options.half) {
-            this.element.setAttribute('role', 'slider')
-            this.element.setAttribute('aria-label', baseLabel)
-            this.element.setAttribute('aria-valuemin', '0')
-            this.element.setAttribute('aria-valuemax', String(this.options.number))
-            this.element.setAttribute('aria-valuenow', String(this.currentScore ?? 0))
-            this.element.setAttribute('aria-valuetext', `${this.currentScore ?? 0}/${this.options.number}`)
-            this.element.tabIndex = 0
+            target.setAttribute('role', 'slider')
+            target.setAttribute('aria-label', baseLabel)
+            target.setAttribute('aria-valuemin', '0')
+            target.setAttribute('aria-valuemax', String(this.options.number))
+            target.setAttribute('aria-valuenow', String(this.currentScore ?? 0))
+            target.setAttribute('aria-valuetext', `${this.currentScore ?? 0}/${this.options.number}`)
+            target.tabIndex = 0
             stars.forEach((star) => { star.tabIndex = -1; star.setAttribute('aria-hidden', 'true') })
         } else {
-            this.element.setAttribute('role', 'radiogroup')
-            this.element.setAttribute('aria-label', baseLabel)
-            this.element.removeAttribute('tabindex')
+            target.setAttribute('role', 'radiogroup')
+            target.setAttribute('aria-label', baseLabel)
+            target.removeAttribute('tabindex')
             const activeScore = this.currentScore ?? 1
             stars.forEach((star) => {
                 const score = Number(star.dataset.score)

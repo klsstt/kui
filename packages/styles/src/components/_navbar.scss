@@ -1,0 +1,186 @@
+@layer kui.components {
+    /* 导航条：应用级横向导航，与标签页共享焦点环与激活色 */
+    .navbar {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-4);
+        min-height: 52px;
+        padding: 0 var(--kui-space-4);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: color-mix(in srgb, var(--kui-color-surface) 92%, transparent);
+        box-shadow: var(--kui-shadow-container);
+        backdrop-filter: blur(var(--kui-space-2));
+    }
+
+    .navbar-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .navbar-brand__mark {
+        display: grid;
+        width: 26px;
+        height: 26px;
+        place-items: center;
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 700;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-1);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .navbar-nav > li > a,
+    .navbar-nav > li > button,
+    .navbar-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        min-height: 32px;
+        padding: 0 var(--kui-space-3);
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-md);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        text-decoration: none;
+        transition:
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease;
+    }
+
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > button:hover,
+    .navbar-link:hover {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    .navbar-nav > li.active > a,
+    .navbar-nav > li > a.is-active,
+    .navbar-link.is-active {
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+        font-weight: 500;
+    }
+
+    .navbar-spacer {
+        flex: 1 1 auto;
+    }
+
+    .navbar-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+    }
+
+    .navbar-form {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+    }
+
+    .navbar-toggler {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        cursor: pointer;
+    }
+
+    .navbar-collapse {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        gap: var(--kui-space-4);
+        min-width: 0;
+    }
+
+    .navbar--dark {
+        border-color: transparent;
+        background: var(--kui-color-text);
+    }
+
+    .navbar--dark .navbar-brand,
+    .navbar--dark .navbar-nav > li > a,
+    .navbar--dark .navbar-nav > li > button,
+    .navbar--dark .navbar-link {
+        color: color-mix(in srgb, var(--kui-color-surface) 76%, transparent);
+    }
+
+    .navbar--dark .navbar-nav > li > a:hover,
+    .navbar--dark .navbar-nav > li > button:hover,
+    .navbar--dark .navbar-link:hover {
+        background: color-mix(in srgb, var(--kui-color-surface) 12%, transparent);
+        color: var(--kui-color-surface);
+    }
+
+    .navbar--dark .navbar-nav > li.active > a,
+    .navbar--dark .navbar-nav > li > a.is-active,
+    .navbar--dark .navbar-link.is-active {
+        background: color-mix(in srgb, var(--kui-color-surface) 16%, transparent);
+        color: var(--kui-color-surface);
+    }
+
+    .navbar--bordered {
+        border-width: 0 0 1px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    @media (max-width: 48rem) {
+        .navbar {
+            flex-wrap: wrap;
+            padding-block: var(--kui-space-2);
+        }
+
+        .navbar-toggler {
+            display: inline-flex;
+        }
+
+        .navbar-collapse {
+            display: none;
+            flex-basis: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            padding-block: var(--kui-space-2);
+        }
+
+        .navbar-collapse.show {
+            display: flex;
+        }
+
+        .navbar-nav {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .navbar-nav > li > a,
+        .navbar-nav > li > button,
+        .navbar-link {
+            width: 100%;
+        }
+    }
+}

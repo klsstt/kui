@@ -78,7 +78,7 @@ export class ModalTrigger extends Component<ModalTriggerOptions> {
 
     async show(options: Partial<ModalTriggerOptions> = {}): Promise<void> {
         this.options = this.normalizeOptions(mergeOptions(this.options, options))
-        if (!this.emitCancelable(['show.kui.modalTrigger', 'kui:modalTrigger:show'], this.options)) {
+        if (!this.emit('kui:modalTrigger:show', this.options)) {
             return
         }
 

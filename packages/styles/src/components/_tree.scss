@@ -1,4 +1,31 @@
 @layer kui.components {
+    /* 树形容器：边框可选，内部列表不再重复描边 */
+    .kui-tree {
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-tree--borderless {
+        border-color: transparent;
+        background: transparent;
+    }
+
+    .kui-tree .kui-list {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .kui-tree .kui-list__item {
+        padding-inline: var(--kui-space-3);
+    }
+
+    .kui-tree .kui-nestable__children {
+        padding-left: var(--kui-space-5);
+    }
+
     .tree,
     .tree ul {
         padding-left: 0;
@@ -35,6 +62,15 @@
     .tree li {
         position: relative;
         padding: 4px 0;
+        cursor: default;
+    }
+
+    .tree button,
+    .tree a,
+    .tree .tree-label,
+    .tree .list-toggle {
+        cursor: pointer;
+        user-select: none;
     }
 
     .tree li.tree-has-toggle {

@@ -1,4 +1,4 @@
-import { applyTabActiveRadiusStyles, type TabActiveRadiusOptions } from '../../core/dom/styles'
+﻿import { applyTabActiveRadiusStyles, type TabActiveRadiusOptions } from '../../core/dom/styles'
 
 export interface ClassToggleOptions {
     className?: string
@@ -506,7 +506,7 @@ export function bindEmailSuggest(input: HTMLInputElement, options: EmailSuggestO
                 selectedIndex = index
                 render()
             })
-            item.addEventListener('click', (event) => {
+            item.addEventListener('click', () => {
                 input.value = item.textContent ?? ''
                 hide()
             })

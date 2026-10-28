@@ -1,0 +1,275 @@
+@layer kui.components {
+    /* 表单：标签、控件、辅助文案、校验态共用一套尺寸与焦点语言 */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-2);
+        margin-bottom: var(--kui-space-4);
+    }
+
+    .form-label,
+    .control-label {
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 500;
+        letter-spacing: 0.02em;
+    }
+
+    .form-label .required,
+    .required-mark {
+        margin-left: 2px;
+        color: var(--kui-color-danger);
+    }
+
+    .form-control {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        font-family: var(--kui-font-family-component);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.5;
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            box-shadow var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    textarea.form-control {
+        min-height: 96px;
+        padding: 8px 10px;
+        resize: vertical;
+    }
+
+    select.form-control {
+        padding-right: var(--kui-space-2);
+        cursor: pointer;
+    }
+
+    .form-control::placeholder {
+        color: var(--kui-color-text-subtle);
+    }
+
+    .form-control:hover:not(:disabled):not([readonly]) {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 36%, var(--kui-color-border));
+    }
+
+    .form-control:focus,
+    .form-control:focus-visible {
+        border-color: var(--kui-color-primary);
+        outline: none;
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .form-control:disabled,
+    .form-control[readonly] {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-subtle);
+        cursor: not-allowed;
+    }
+
+    .form-control.is-invalid,
+    .has-error .form-control {
+        border-color: var(--kui-color-danger);
+    }
+
+    .form-control.is-invalid:focus,
+    .has-error .form-control:focus {
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) color-mix(in srgb, var(--kui-color-danger) 24%, transparent);
+    }
+
+    .form-control.is-valid,
+    .has-success .form-control {
+        border-color: var(--kui-color-success);
+    }
+
+    .form-hint {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+    }
+
+    .form-error {
+        color: var(--kui-color-danger);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+        gap: var(--kui-space-4);
+    }
+
+    .form-row > .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-inline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: var(--kui-space-3);
+    }
+
+    .form-inline .form-group {
+        margin-bottom: 0;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .input-group > .form-control {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .input-group > :not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
+    }
+
+    .input-group > :not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .input-addon,
+    .input-group-text {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: 0 10px;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        white-space: nowrap;
+    }
+
+    .input-group > .btn {
+        margin-left: -1px;
+    }
+
+    .form-check {
+        display: inline-flex;
+        /* 多行文案时复选框对齐首行，而不是整块垂直居中 */
+        align-items: flex-start;
+        gap: var(--kui-space-2);
+        min-height: 24px;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.5;
+        cursor: pointer;
+    }
+
+    .form-check > input[type='checkbox'],
+    .form-check > input[type='radio'] {
+        flex: 0 0 auto;
+        margin-top: 3px;
+    }
+
+    .form-check input[type='checkbox'],
+    .form-check input[type='radio'],
+    .kui-checkbox,
+    .kui-radio {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--kui-color-primary);
+        cursor: pointer;
+    }
+
+    /* 横向并排才需要额外左间距；纵向堆叠时由容器 gap 负责，避免第二行起整体缩进 */
+    .form-check + .form-check {
+        margin-left: var(--kui-space-3);
+    }
+
+    .kui-stack > .form-check + .form-check,
+    .kui-stack--tight > .form-check + .form-check,
+    .form-check-block .form-check + .form-check,
+    .form-group > .form-check + .form-check {
+        margin-left: 0;
+    }
+
+    .form-check-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-1);
+    }
+
+    .form-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        cursor: pointer;
+    }
+
+    /* 原生文件选择：把浏览器按钮纳入 KUI 按钮体系 */
+    .form-control[type='file'] {
+        height: auto;
+        padding: var(--kui-space-1);
+        line-height: 1.6;
+        cursor: pointer;
+    }
+
+    .form-control[type='file']::file-selector-button {
+        min-height: 26px;
+        padding: 0 var(--kui-space-3);
+        margin-right: var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    .form-control[type='file']::file-selector-button:hover {
+        border-color: var(--kui-color-primary);
+        background: color-mix(in srgb, var(--kui-color-primary) 8%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .form-control-sm {
+        min-height: 26px;
+        padding: 0 var(--kui-space-2);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .form-control-lg {
+        min-height: 40px;
+        padding: 0 var(--kui-space-3);
+        font-size: var(--kui-font-size-component-value);
+    }
+
+    .form-section {
+        padding: var(--kui-space-4);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+    }
+
+    .form-section__title {
+        margin: 0 0 var(--kui-space-1);
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 600;
+    }
+
+    .form-section__desc {
+        margin: 0 0 var(--kui-space-4);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+}

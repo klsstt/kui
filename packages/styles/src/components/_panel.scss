@@ -1,26 +1,70 @@
 @layer kui.components {
+    /* 面板：可折叠、可全屏的容器卡片，标题区只放标题与操作 */
     .panel {
-        border: 1px solid var(--kui-color-border);
-        border-radius: var(--kui-seed-radius-md);
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
         background: var(--kui-color-surface);
-    }
-
-    .panel-heading,
-    .panel-footer {
-        padding: 10px 14px;
-        background: var(--kui-color-bg-muted);
+        box-shadow: var(--kui-shadow-container);
     }
 
     .panel-heading {
-        border-bottom: 1px solid var(--kui-color-border);
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-3) var(--kui-space-4);
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+        background: var(--kui-color-surface);
     }
 
-    .panel-footer {
-        border-top: 1px solid var(--kui-color-border)
+    .panel-title {
+        flex: 1 1 auto;
+        margin: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 600;
+    }
+
+    .panel-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+    }
+
+    .panel-actions > button {
+        display: inline-grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-subtle);
+        cursor: pointer;
+        font-size: 11px;
+    }
+
+    .panel-actions > button:hover {
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
     }
 
     .panel-body {
-        padding: 14px;
+        padding: var(--kui-space-4);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.7;
+    }
+
+    .panel-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-3) var(--kui-space-4);
+        border-top: 1px solid var(--kui-color-border-subtle);
+        background: var(--kui-color-surface-muted);
     }
 
     .panel.is-collapse .panel-body,
@@ -28,15 +72,29 @@
         display: none;
     }
 
+    .panel.is-collapse .panel-heading {
+        border-bottom-color: transparent;
+    }
+
     .panel.is-fullscreen {
         position: fixed;
-        inset: 12px;
-        z-index: 1060;
+        inset: var(--kui-space-3);
+        z-index: var(--kui-layer-modal);
+        display: flex;
+        flex-direction: column;
         overflow: auto;
+        box-shadow: var(--kui-shadow-lg);
     }
 
     .panel.is-loading {
         opacity: 0.72;
+        pointer-events: none;
+    }
+
+    .panel--muted {
+        background: var(--kui-color-surface-muted);
+        border-color: transparent;
+        box-shadow: none;
     }
 
     .drag-ready {

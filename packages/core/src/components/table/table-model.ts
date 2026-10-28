@@ -2,7 +2,7 @@ import type { PlainObject } from "../../core/options";
 
 export type TableRow = Record<string, unknown>;
 export type TableSortOrder = 'asc' | 'desc'
-export type TableFetcher = (options: TableFetcherOptions) => Promise<TableRow[] | TableResponse>
+export type TableFetcher = (options: TableFetchOptions) => Promise<TableRow[] | TableResponse>
 
 export interface TableFetchOptions extends PlainObject {
     url: string

@@ -1,15 +1,18 @@
 @layer kui.components {
+    /* 进度：轨道只用内阴影表达凹陷，填充色来自语义色 */
     .progress {
-        height: 18px;
+        position: relative;
+        height: 8px;
         overflow: hidden;
-        border-radius: var(--kui-seed-radius-sm);
+        border-radius: 999px;
         background: var(--kui-color-surface-muted);
-        box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%);
+        box-shadow: inset 0 1px 2px color-mix(in srgb, var(--kui-color-text) 8%, transparent);
     }
 
-    .progress-xs { height:6px; }
-    .progress-sm { height: 12px; }
-    .progress-lg { height: 26px; }
+    .progress-xs { height: 4px; }
+    .progress-sm { height: 6px; }
+    .progress-lg { height: 12px; }
+    .progress-xl { height: 18px; }
     .progress-square { border-radius: 0; }
     .progress-circle { border-radius: 999px; }
 
@@ -19,38 +22,173 @@
         justify-content: center;
         width: 0;
         height: 100%;
+        border-radius: inherit;
         background: var(--kui-color-primary);
-        color: var(--kui-color-surface);
-        font-size: 12px;
+        color: var(--kui-color-on-primary);
+        font-size: var(--kui-font-size-component-label);
         line-height: 1;
         transition: width var(--kui-motion-duration-base) ease;
     }
 
+    .progress-bar-success { background: var(--kui-color-success); }
+    .progress-bar-info { background: var(--kui-color-info); }
+    .progress-bar-warning { background: var(--kui-color-warning); }
+    .progress-bar-danger { background: var(--kui-color-danger); }
+
     .progress-bar-striped {
-        background-image: linear-gradient(45deg, rgb(255 255 255 / 18%) 25%, transparent 25%, transparent 50%, rgb(255 255 255 / 18%) 50% rgb(255 255 255 / 18%) 75%, transparent 75%, transparent);
-        background-size: 24px 24px;
+        background-image: linear-gradient(
+            45deg,
+            color-mix(in srgb, var(--kui-color-surface) 18%, transparent) 25%,
+            transparent 25% 50%,
+            color-mix(in srgb, var(--kui-color-surface) 18%, transparent) 50% 75%,
+            transparent 75%
+        );
+        background-size: 16px 16px;
     }
 
     .progress-bar-striped.active {
-        animation: kui-grogress-stripes 900ms linear infinite;
+        animation: kui-progress-stripes 900ms linear infinite;
     }
 
     .progress-vertical {
         display: inline-flex;
         align-items: flex-end;
-        width: 18px;
+        width: 12px;
         height: 128px;
     }
 
     .progress-vertical .progress-bar {
         width: 100%;
         height: 0;
+        border-radius: inherit;
         transition: height var(--kui-motion-duration-base) ease;
     }
 
-    @keyframes kui-grogress-stripes {
-        from { background-position: 0 0; }
-        to { background-position: 24px 0; }
+    /* 堆叠分段：同一轨道内多段进度 */
+    .progress-group {
+        display: flex;
+        overflow: hidden;
+        border-radius: 999px;
+        background: var(--kui-color-surface-muted);
     }
 
+    .progress-group .progress-bar {
+        border-radius: 0;
+    }
+
+    @keyframes kui-progress-stripes {
+        from { background-position: 0 0; }
+        to { background-position: 16px 0; }
+    }
+}
+
+@layer kui.components {
+    /* 可拖动进度：range 自身作为轨道，填充与条纹都画在轨道背景上 */
+    .kui-progress-range {
+        --kui-progress-fill: 0%;
+
+        width: 100%;
+        height: 12px;
+        margin: 0;
+        appearance: none;
+        border-radius: 999px;
+        background: linear-gradient(
+            to right,
+            var(--kui-color-primary) 0 var(--kui-progress-fill),
+            var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+        );
+        cursor: pointer;
+    }
+
+    .kui-progress-range.is-striped {
+        background-image:
+            repeating-linear-gradient(
+                45deg,
+                color-mix(in srgb, var(--kui-color-surface) 28%, transparent) 0 6px,
+                transparent 6px 12px
+            ),
+            linear-gradient(
+                to right,
+                var(--kui-color-primary) 0 var(--kui-progress-fill),
+                var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+            );
+    }
+
+    .kui-progress-range::-webkit-slider-runnable-track {
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(
+            to right,
+            var(--kui-color-primary) 0 var(--kui-progress-fill),
+            var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+        );
+    }
+
+    .kui-progress-range.is-striped::-webkit-slider-runnable-track {
+        background-size: var(--kui-progress-fill) 12px, 100% 12px;
+        background-repeat: no-repeat;
+        background-image:
+            repeating-linear-gradient(
+                45deg,
+                color-mix(in srgb, var(--kui-color-surface) 28%, transparent) 0 6px,
+                transparent 6px 12px
+            ),
+            linear-gradient(
+                to right,
+                var(--kui-color-primary) 0 var(--kui-progress-fill),
+                var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+            );
+    }
+
+    .kui-progress-range::-webkit-slider-thumb {
+        width: 18px;
+        height: 18px;
+        margin-top: -3px;
+        appearance: none;
+        border: 2px solid var(--kui-color-primary);
+        border-radius: 999px;
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-sm);
+        cursor: grab;
+    }
+
+    .kui-progress-range:active::-webkit-slider-thumb {
+        cursor: grabbing;
+    }
+
+    .kui-progress-range::-moz-range-track {
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(
+            to right,
+            var(--kui-color-primary) 0 var(--kui-progress-fill),
+            var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+        );
+    }
+
+    .kui-progress-range.is-striped::-moz-range-track {
+        background-size: var(--kui-progress-fill) 12px, 100% 12px;
+        background-repeat: no-repeat;
+        background-image:
+            repeating-linear-gradient(
+                45deg,
+                color-mix(in srgb, var(--kui-color-surface) 28%, transparent) 0 6px,
+                transparent 6px 12px
+            ),
+            linear-gradient(
+                to right,
+                var(--kui-color-primary) 0 var(--kui-progress-fill),
+                var(--kui-color-surface-muted) var(--kui-progress-fill) 100%
+            );
+    }
+
+    .kui-progress-range::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--kui-color-primary);
+        border-radius: 999px;
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-sm);
+        cursor: grab;
+    }
 }

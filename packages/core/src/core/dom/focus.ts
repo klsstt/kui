@@ -44,7 +44,7 @@ export function trapFocus(event: KeyboardEvent, container: HTMLElement): void {
 export type RovingFocusOrientation = 'horizontal' | 'vertical' | 'both';
 
 export interface RovingFocusOptions {
-    orientation: RovingFocusOrientation;
+    orientation?: RovingFocusOrientation;
    loop?: boolean;
 }
 
@@ -91,7 +91,7 @@ export interface RovingFocusOptions {
     }
 
     function isRovingFocusCandidate(item: HTMLElement): boolean {
-        return item.hidden
+        return !item.hidden
         && item.getAttribute('aria-disabled') !== 'true'
         && !('disabled' in item && item.disabled === true);
     }

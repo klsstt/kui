@@ -46,7 +46,7 @@ export class Modal extends Component<ModalOptions> {
     }
 
     show(): void {
-        if (this.isShown() || !this.emitCancelable(['show.kui.modal', 'kui:modal:show'])) {
+        if (this.isShown() || !this.emit('kui:modal:show')) {
             return
         }
 
@@ -70,7 +70,7 @@ export class Modal extends Component<ModalOptions> {
     }
 
     hide(): void {
-        if (!this.isShown() || !this.emitCancelable(['hide.kui.modal', 'kui:modal:hide'])) {
+        if (!this.isShown() || !this.emit('kui:modal:hide')) {
             return
         }
 

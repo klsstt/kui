@@ -1,0 +1,128 @@
+@layer kui.components {
+    /*
+     * 排版模式。
+     * 只收敛业务里反复出现的四种写法：首字下沉、图文混排、行内强调与渐变文字。
+     * 不提供「字号工具类」——字号统一走令牌，避免页面各写一套。
+     */
+
+    .kui-drop-cap::first-letter {
+        float: left;
+        padding-right: var(--kui-space-2);
+        color: var(--kui-color-primary);
+        font-size: 3.2em;
+        font-weight: 700;
+        line-height: 0.9;
+    }
+
+    /* 图片左右浮动，正文围绕 */
+    .kui-figure-float {
+        display: block;
+        max-width: 44%;
+        margin: var(--kui-space-2) 0 var(--kui-space-3) var(--kui-space-5);
+        float: right;
+        border-radius: var(--kui-seed-radius-lg);
+    }
+
+    .kui-figure-float--left {
+        margin-right: var(--kui-space-5);
+        margin-left: 0;
+        float: left;
+    }
+
+    .kui-figure-float figcaption {
+        padding-top: var(--kui-space-1);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+    }
+
+    .kui-clearfix::after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    /* 行内强调：荧光笔、下划线与编号 */
+    .kui-mark {
+        padding: 0 3px;
+        border-radius: 2px;
+        background: color-mix(in srgb, var(--kui-color-warning) 28%, transparent);
+        color: var(--kui-color-text);
+    }
+
+    .kui-underline-mark {
+        background: linear-gradient(transparent 62%, color-mix(in srgb, var(--kui-color-primary) 28%, transparent) 62%);
+        color: inherit;
+    }
+
+    .kui-em {
+        color: var(--kui-color-primary);
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    .kui-text-gradient {
+        background: linear-gradient(96deg, var(--kui-color-primary), color-mix(in srgb, var(--kui-color-info) 72%, var(--kui-color-primary)));
+        background-clip: text;
+        color: transparent;
+        -webkit-background-clip: text;
+    }
+
+    /* 文本容器：控制行长与段距，正文阅读的默认写法 */
+    .kui-prose {
+        max-width: 44rem;
+    }
+
+    .kui-prose > p {
+        margin: 0 0 var(--kui-space-3);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-value);
+        line-height: 1.8;
+    }
+
+    .kui-prose > p:last-child {
+        margin-bottom: 0;
+    }
+
+    .kui-prose > h2,
+    .kui-prose > h3 {
+        margin: var(--kui-space-5) 0 var(--kui-space-2);
+    }
+
+    .kui-prose > h2:first-child,
+    .kui-prose > h3:first-child {
+        margin-top: 0;
+    }
+
+    /* 行内混排：数字、单位与英文名的对齐 */
+    .kui-mixed-type {
+        font-variant-numeric: tabular-nums;
+        line-height: 1.7;
+    }
+
+    .kui-mixed-type small {
+        margin-left: 2px;
+        color: var(--kui-color-text-subtle);
+        font-size: 0.62em;
+    }
+
+    .kui-truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .kui-clamp-2 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .kui-clamp-3 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+}

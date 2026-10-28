@@ -1,0 +1,191 @@
+@layer kui.components {
+    /* 时间线：轴线与节点对齐首行文字，节点颜色只承担状态语义 */
+    .kui-timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-5);
+        /* 与容器边框保持呼吸：上下留白，左侧留出轴线和节点 */
+        padding: var(--kui-space-3) 0 var(--kui-space-3) var(--kui-space-6);
+        margin: 0;
+        list-style: none;
+    }
+
+    .kui-timeline::before {
+        position: absolute;
+        inset-block: 8px;
+        inset-inline-start: 8px;
+        width: 1px;
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-timeline__item {
+        position: relative;
+        display: flex;
+        gap: var(--kui-space-3);
+        min-width: 0;
+    }
+
+    .kui-timeline__dot {
+        position: absolute;
+        inset-block-start: 3px;
+        inset-inline-start: calc(var(--kui-space-6) * -1);
+        display: grid;
+        width: 17px;
+        height: 17px;
+        place-items: center;
+        border: 3px solid var(--kui-color-surface);
+        border-radius: 999px;
+        background: var(--kui-color-border);
+        box-shadow: 0 0 0 1px var(--kui-color-border);
+        color: var(--kui-color-on-primary);
+        font-size: 8px;
+    }
+
+    .kui-timeline__dot .fa {
+        font-size: 7px;
+        line-height: 1;
+    }
+
+    .kui-timeline__item.is-primary .kui-timeline__dot {
+        background: var(--kui-color-primary);
+        box-shadow: 0 0 0 1px var(--kui-color-primary);
+    }
+
+    .kui-timeline__item.is-success .kui-timeline__dot {
+        background: var(--kui-color-success);
+        box-shadow: 0 0 0 1px var(--kui-color-success);
+    }
+
+    .kui-timeline__item.is-warning .kui-timeline__dot {
+        background: var(--kui-color-warning);
+        box-shadow: 0 0 0 1px var(--kui-color-warning);
+    }
+
+    .kui-timeline__item.is-danger .kui-timeline__dot {
+        background: var(--kui-color-danger);
+        box-shadow: 0 0 0 1px var(--kui-color-danger);
+    }
+
+    .kui-timeline__body {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+        padding-top: 1px;
+    }
+
+    .kui-timeline__title {
+        margin: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .kui-timeline__meta {
+        margin: 0;
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-timeline__desc {
+        margin: var(--kui-space-1) 0 0;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.7;
+    }
+
+    .kui-timeline--dense {
+        gap: var(--kui-space-3);
+    }
+
+    /* 交替布局：中线居中；内容靠近中轴，节点与内容之间用短横线连接 */
+    .kui-timeline--alternating {
+        padding: var(--kui-space-3) 0;
+    }
+
+    .kui-timeline--alternating::before {
+        inset-inline-start: 50%;
+    }
+
+    .kui-timeline--alternating .kui-timeline__item {
+        width: 50%;
+        padding-right: 56px;
+        text-align: right;
+    }
+
+    .kui-timeline--alternating .kui-timeline__item:nth-child(even) {
+        align-self: flex-end;
+        padding-right: 0;
+        padding-left: 56px;
+        text-align: left;
+    }
+
+    .kui-timeline--alternating .kui-timeline__dot {
+        inset-inline-start: auto;
+        inset-inline-end: -9px;
+        inset-block-start: 11px;
+    }
+
+    .kui-timeline--alternating .kui-timeline__item:nth-child(even) .kui-timeline__dot {
+        inset-inline-start: -9px;
+        inset-inline-end: auto;
+    }
+
+    /* 节点到内容引一条短横线，左右两侧都能看清归属 */
+    .kui-timeline--alternating .kui-timeline__item::after {
+        position: absolute;
+        top: 19px;
+        right: 9px;
+        width: 38px;
+        height: 1px;
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-timeline--alternating .kui-timeline__item:nth-child(even)::after {
+        right: auto;
+        left: 9px;
+    }
+
+    .kui-timeline--alternating .kui-timeline__body {
+        width: 100%;
+    }
+
+    .kui-timeline--alternating .kui-timeline__title,
+    .kui-timeline--alternating .kui-timeline__meta,
+    .kui-timeline--alternating .kui-timeline__desc {
+        margin-left: 0;
+    }
+
+    @media (max-width: 40rem) {
+        .kui-timeline--alternating {
+            padding-left: var(--kui-space-6);
+        }
+
+        .kui-timeline--alternating::before {
+            inset-inline-start: 8px;
+        }
+
+        .kui-timeline--alternating .kui-timeline__item,
+        .kui-timeline--alternating .kui-timeline__item:nth-child(even) {
+            width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .kui-timeline--alternating .kui-timeline__item::after,
+        .kui-timeline--alternating .kui-timeline__item:nth-child(even)::after {
+            display: none;
+        }
+
+        .kui-timeline--alternating .kui-timeline__dot,
+        .kui-timeline--alternating .kui-timeline__item:nth-child(even) .kui-timeline__dot {
+            inset-inline-start: calc(var(--kui-space-6) * -1);
+            inset-inline-end: auto;
+        }
+    }
+}

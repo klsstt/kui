@@ -1,3 +1,4 @@
+@use './motion';
 @layer kui.utilities {
     .kui-visually-hidden,
     .kui-sr-only {
@@ -26,4 +27,15 @@
     .kui-scroll-hidden {
         overflow: hidden;
     }
+
+    /* 少量排版工具：只收敛高频的宽度、对齐与留白需求 */
+    .kui-w-full { inline-size: 100%; }
+    .kui-max-w-xs { max-inline-size: 12rem; }
+    .kui-max-w-sm { max-inline-size: 16rem; }
+    .kui-max-w-md { max-inline-size: 24rem; }
+    .kui-justify-end { justify-content: flex-end; }
+    .kui-justify-between { justify-content: space-between; }
+    .kui-text-right { text-align: right; }
+    .kui-mt-auto { margin-block-start: auto; }
+    .kui-nowrap { white-space: nowrap; }
 }

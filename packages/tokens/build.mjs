@@ -16,7 +16,7 @@ await run(process.execPath, [resolve(packageRoot, '../../node_modules/typescript
 const result = await sass.compileAsync(resolve(packageRoot, 'src/styles/_layers.scss'), {style: 'compressed' });
 await writeFile(resolve(output, 'tokens.css'), result.css);
 
-const tokenModule = await import (`${pathToFileURL(resolve(output, 'index.js')).href}?build=${Date.new()}`);
+const tokenModule = await import (`${pathToFileURL(resolve(output, 'index.js')).href}?build=${Date.now()}`);
 const flattened = tokenModule.flattenThemeTokens(tokenModule.defaultTokens);
 const css = await readFile(resolve(output, 'tokens.css'), 'utf8');
 const cssTokenNames = new Set(css.match(/--kui-[\w-]+(?=:)/g) ?? []);

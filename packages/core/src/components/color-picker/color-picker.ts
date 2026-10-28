@@ -53,12 +53,15 @@ export class ColorPicker extends Component<ColorPickerOptions> {
         if(hex) {
             this.button.style.background = hex
             this.button.style.borderColor = hex
+            // 按钮底色就是选中的颜色，文字必须跟着底色切换，保证可读
+            this.button.style.color = readableTextColor(hex)
             if(!notSetInput) {
                 this.setInputValue(hex)
             }
             this.menu.querySelector<HTMLElement>(`.cp-tile[data-color="${hex}"]`)?.classList.add('active')
         } else {
             this.button.removeAttribute('style')
+            this.button.style.color = ''
             if(!notSetInput) {
                 this.setInputValue('')
             }
@@ -105,6 +108,7 @@ export class ColorPicker extends Component<ColorPickerOptions> {
         const tile = document.createElement('a')
         tile.href = '###'
         tile.className = `cp-tile${empty ? ' empty' : ''}`
+        tile.setAttribute('aria-label', empty ? '不设置颜色' : `选择颜色 ${color}`)
         if (color) {
             tile.dataset.color = color
             tile.style.background = color
@@ -181,3 +185,19 @@ function normalizeColor(color: string): string {
     return value.startsWith('#') ? value.toLowerCase() : `#${value.toLowerCase()}`
 }
 
+
+/** 根据底色亮度选择可读的文字色：深底用白字，浅底用近黑字 */
+function readableTextColor(color: string): string {
+    const value = normalizeColor(color)
+    const match = /^#([0-9a-f]{3}|[0-9a-f]{6})$/.exec(value)
+    if (!match) {
+        return ''
+    }
+    const hex = match[1].length === 3 ? match[1].split('').map((char) => char + char).join('') : match[1]
+    const [red, green, blue] = [0, 2, 4].map((offset) => {
+        const channel = Number.parseInt(hex.slice(offset, offset + 2), 16) / 255
+        return channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4
+    })
+    const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+    return luminance > 0.45 ? '#0f172a' : '#ffffff'
+}

@@ -1,0 +1,138 @@
+@layer kui.components {
+    /* 裁剪：画布承载图片，裁剪框用遮罩外的投影压暗四周 */
+    .kui-cropper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-3);
+    }
+
+    .kui-cropper__stage {
+        cursor: grab;
+        position: relative;
+        height: var(--kui-cropper-height, 340px);
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background-color: var(--kui-color-surface-muted);
+        background-image:
+            linear-gradient(45deg, color-mix(in srgb, var(--kui-color-border) 45%, transparent) 25%, transparent 25%),
+            linear-gradient(-45deg, color-mix(in srgb, var(--kui-color-border) 45%, transparent) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, color-mix(in srgb, var(--kui-color-border) 45%, transparent) 75%),
+            linear-gradient(-45deg, transparent 75%, color-mix(in srgb, var(--kui-color-border) 45%, transparent) 75%);
+        background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+        background-size: 16px 16px;
+        touch-action: none;
+    }
+
+    .kui-cropper__canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .kui-cropper__box {
+        position: absolute;
+        box-sizing: border-box;
+        border: 1px solid var(--kui-color-surface);
+        cursor: move;
+        box-shadow:
+            0 0 0 1px color-mix(in srgb, var(--kui-color-text) 28%, transparent),
+            0 0 0 9999px var(--kui-color-overlay);
+    }
+
+    .kui-cropper__box:focus-visible {
+        outline: 2px solid var(--kui-color-primary);
+        outline-offset: 2px;
+    }
+
+    .kui-cropper__grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+            linear-gradient(to right, color-mix(in srgb, var(--kui-color-surface) 55%, transparent) 1px, transparent 1px),
+            linear-gradient(to bottom, color-mix(in srgb, var(--kui-color-surface) 55%, transparent) 1px, transparent 1px);
+        background-size: 33.33% 33.33%;
+        background-position: -1px -1px;
+    }
+
+    .kui-cropper__handle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid var(--kui-color-text);
+        border-radius: 2px;
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-component);
+    }
+
+    .kui-cropper__handle--nw { top: -5px; left: -5px; cursor: nwse-resize; }
+    .kui-cropper__handle--n { top: -5px; left: 50%; margin-left: -5px; cursor: ns-resize; }
+    .kui-cropper__handle--ne { top: -5px; right: -5px; cursor: nesw-resize; }
+    .kui-cropper__handle--e { top: 50%; right: -5px; margin-top: -5px; cursor: ew-resize; }
+    .kui-cropper__handle--se { right: -5px; bottom: -5px; cursor: nwse-resize; }
+    .kui-cropper__handle--s { bottom: -5px; left: 50%; margin-left: -5px; cursor: ns-resize; }
+    .kui-cropper__handle--sw { bottom: -5px; left: -5px; cursor: nesw-resize; }
+    .kui-cropper__handle--w { top: 50%; left: -5px; margin-top: -5px; cursor: ew-resize; }
+
+    .kui-cropper.is-dragging,
+    .kui-cropper.is-dragging .kui-cropper__box {
+        user-select: none;
+    }
+
+    .kui-cropper__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-cropper__preview {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-cropper__preview img {
+        display: block;
+        max-width: 100%;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface-muted);
+    }
+
+    .kui-cropper__preview figcaption {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 40rem) {
+        .kui-cropper__stage {
+            height: calc(var(--kui-cropper-height, 340px) * 0.72);
+        }
+    }
+}
+
+@layer kui.components {
+    /* 圆形头像裁剪：框体与导出结果一起变成圆形 */
+    .kui-cropper--circle .kui-cropper__box {
+        border-radius: 50%;
+    }
+
+    .kui-cropper--circle .kui-cropper__grid {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .kui-cropper--circle .kui-cropper__handle--nw,
+    .kui-cropper--circle .kui-cropper__handle--ne,
+    .kui-cropper--circle .kui-cropper__handle--sw,
+    .kui-cropper--circle .kui-cropper__handle--se {
+        display: none;
+    }
+
+    .kui-cropper.is-dragging .kui-cropper__stage {
+        cursor: grabbing;
+    }
+}

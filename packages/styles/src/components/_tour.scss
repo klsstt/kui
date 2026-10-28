@@ -1,0 +1,161 @@
+@layer kui.components {
+    /* 引导：遮罩压暗上下文，聚光框与气泡跟随目标 */
+    .kui-tour__mask {
+        position: fixed;
+        inset: 0;
+        z-index: var(--kui-layer-toast);
+        background: var(--kui-color-overlay);
+        animation: kui-tour-fade var(--kui-seed-duration-base) ease;
+    }
+
+    .kui-tour__highlight {
+        position: fixed;
+        z-index: calc(var(--kui-layer-toast) + 1);
+        border: 1px solid color-mix(in srgb, var(--kui-color-surface) 72%, transparent);
+        border-radius: var(--kui-seed-radius-lg);
+        box-shadow: 0 0 0 9999px var(--kui-color-overlay);
+        pointer-events: none;
+        transition:
+            top var(--kui-seed-duration-base) ease,
+            left var(--kui-seed-duration-base) ease,
+            width var(--kui-seed-duration-base) ease,
+            height var(--kui-seed-duration-base) ease;
+    }
+
+    .kui-tour__bubble {
+        position: fixed;
+        z-index: calc(var(--kui-layer-toast) + 2);
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-2);
+        width: min(320px, calc(100vw - 24px));
+        padding: var(--kui-space-4);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-lg);
+        animation: kui-tour-pop var(--kui-seed-duration-base) cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .kui-tour__bubble.is-centered {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%);
+    }
+
+    .kui-tour__bubble[data-placement='top']::after,
+    .kui-tour__bubble[data-placement='bottom']::after {
+        position: absolute;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        border: 1px solid var(--kui-color-border-subtle);
+        background: var(--kui-color-surface);
+        content: '';
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .kui-tour__bubble[data-placement='top']::after {
+        bottom: -6px;
+        border-width: 0 1px 1px 0;
+    }
+
+    .kui-tour__bubble[data-placement='bottom']::after {
+        top: -6px;
+        border-width: 1px 0 0 1px;
+    }
+
+    .kui-tour__head {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-tour__counter {
+        padding: 1px var(--kui-space-2);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--kui-color-primary) 12%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+        font-size: var(--kui-font-size-component-label);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .kui-tour__title {
+        flex: 1 1 auto;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 600;
+    }
+
+    .kui-tour__close {
+        display: grid;
+        width: 22px;
+        height: 22px;
+        place-items: center;
+        border: 0;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-subtle);
+        cursor: pointer;
+    }
+
+    .kui-tour__close:hover {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    .kui-tour__content {
+        margin: 0;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.7;
+    }
+
+    .kui-tour__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--kui-space-2);
+        padding-top: var(--kui-space-1);
+    }
+
+    .kui-tour__dots {
+        display: inline-flex;
+        gap: 4px;
+    }
+
+    .kui-tour__dots i {
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--kui-color-border);
+    }
+
+    .kui-tour__dots i.is-active {
+        background: var(--kui-color-primary);
+    }
+
+    .kui-tour__actions {
+        display: inline-flex;
+        gap: var(--kui-space-2);
+    }
+
+    @keyframes kui-tour-fade {
+        from { opacity: 0; }
+    }
+
+    @keyframes kui-tour-pop {
+        from {
+            opacity: 0;
+            transform: translateY(4px) scale(0.98);
+        }
+    }
+
+    @media (max-width: 40rem) {
+        .kui-tour__bubble {
+            right: var(--kui-space-3);
+            left: var(--kui-space-3);
+            width: auto;
+        }
+    }
+}

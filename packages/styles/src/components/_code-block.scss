@@ -1,0 +1,146 @@
+@layer kui.components {
+    /*
+     * 代码块：深色底让代码与正文形成清晰分工。
+     * 语法色是固定调色板（与打印语法高亮同理），不随主题变化，保证同一段代码在哪都一样。
+     */
+    .kui-code-block {
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--kui-color-code-surface) 88%, transparent);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-code-surface);
+        color: var(--kui-color-code-text);
+    }
+
+    .kui-code-block__toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-1) var(--kui-space-2) var(--kui-space-1) var(--kui-space-3);
+        border-bottom: 1px solid color-mix(in srgb, var(--kui-color-code-text) 12%, transparent);
+    }
+
+    .kui-code-block__lang {
+        color: color-mix(in srgb, var(--kui-color-code-text) 62%, transparent);
+        font-family: var(--kui-font-family-component);
+        font-size: var(--kui-font-size-component-label);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .kui-code-block__actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .kui-code-block__copy,
+    .kui-code-block__lineno {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+        padding: 2px var(--kui-space-2);
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: color-mix(in srgb, var(--kui-color-code-text) 70%, transparent);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+        transition:
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-code-block__copy:hover,
+    .kui-code-block__lineno:hover {
+        background: color-mix(in srgb, var(--kui-color-code-text) 12%, transparent);
+        color: var(--kui-color-code-text);
+    }
+
+    .kui-code-block__copy.is-copied,
+    .kui-code-block__lineno[aria-pressed='true'] {
+        background: color-mix(in srgb, var(--kui-color-code-text) 12%, transparent);
+        color: var(--kui-color-code-text);
+    }
+
+    .kui-code-block__pre {
+        padding: var(--kui-space-3);
+        margin: 0;
+        overflow: auto;
+        font-family: 'Cascadia Code', Consolas, 'JetBrains Mono', monospace;
+        font-size: 12.5px;
+        line-height: 1.85;
+        tab-size: 4;
+        white-space: pre;
+    }
+
+    .kui-code-block__pre code {
+        display: block;
+        font: inherit;
+    }
+
+    .kui-code-block__line {
+        position: relative;
+        display: block;
+        min-height: 1.85em;
+    }
+
+    /* 行号：用 CSS 计数器绘制，复制时不会带上序号 */
+    .kui-code-block--numbered .kui-code-block__line {
+        padding-left: 2.8em;
+    }
+
+    .kui-code-block--numbered .kui-code-block__line::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2em;
+        color: color-mix(in srgb, var(--kui-color-code-text) 34%, transparent);
+        content: attr(data-line);
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+        user-select: none;
+    }
+
+    /* 语法色 */
+    .kui-code-block__tok--comment {
+        color: #7c8ba1;
+        font-style: italic;
+    }
+
+    .kui-code-block__tok--keyword {
+        color: #93c5fd;
+    }
+
+    .kui-code-block__tok--string {
+        color: #86efac;
+    }
+
+    .kui-code-block__tok--number {
+        color: #fbbf24;
+    }
+
+    .kui-code-block__tok--key {
+        color: #7dd3fc;
+    }
+
+    .kui-code-block__tok--tag {
+        color: #f0abfc;
+    }
+
+    .kui-code-block__tok--attr {
+        color: #fcd34d;
+    }
+
+    .kui-inline-code,
+    .kui-code {
+        padding: 1px 5px;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface-muted);
+        color: color-mix(in srgb, var(--kui-color-text) 88%, var(--kui-color-primary));
+        font-family: 'Cascadia Code', Consolas, 'JetBrains Mono', monospace;
+        font-size: 0.9em;
+    }
+}

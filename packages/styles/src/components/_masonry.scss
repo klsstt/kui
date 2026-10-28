@@ -1,0 +1,52 @@
+@layer kui.components {
+    /* 瀑布流：容器留出高度，子项由脚本绝对定位 */
+    .kui-masonry {
+        position: relative;
+        width: 100%;
+    }
+
+    .kui-masonry.is-positioned > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        transition: transform var(--kui-seed-duration-base) ease;
+    }
+
+    .kui-masonry__item {
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-container);
+    }
+
+    .kui-masonry__item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .kui-masonry__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-1);
+        padding: var(--kui-space-3);
+    }
+
+    .kui-masonry__body strong {
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
+    }
+
+    .kui-masonry__body span {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+    }
+
+    .kui-masonry__item--tall img {
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+    }
+}

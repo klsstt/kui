@@ -3,152 +3,211 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: var(--kui-space-2);
         min-height: var(--kui-component-button-height);
-        padding: 6px var(--kui-component-button-padding-x);
+        padding: 0 var(--kui-component-button-padding-x);
         border: 1px solid var(--kui-color-border);
         border-radius: var(--kui-component-button-radius);
         background: var(--kui-color-surface);
         color: var(--kui-color-text);
         cursor: pointer;
-        font: inherit;
+        font-family: var(--kui-font-family-component);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 500;
         line-height: 1.2;
+        text-decoration: none;
+        white-space: nowrap;
         transition:
-            border-color var(--kui-seed-duration-fast),
-            background-color var(--kui-seed-duration-fast),
-            color var(--kui-seed-duration-fast)
+            border-color var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease,
+            box-shadow var(--kui-seed-duration-fast) ease;
     }
 
-    .btn:hover,
-    .btn:focus {
-        border-color: var(--kui-color-primary);
-        color: var(--kui-color-primary)
+    .btn:hover {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 48%, var(--kui-color-border));
+        color: var(--kui-color-primary);
     }
 
-    .btn-primary {
+    .btn:focus-visible {
         border-color: var(--kui-color-primary);
-        background: var(--kui-color-primary);
-        color: #fff;
+        outline: none;
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
     }
+
+    .btn:active {
+        box-shadow: inset 0 1px 2px color-mix(in srgb, var(--kui-color-text) 14%, transparent);
+    }
+
+    .btn i,
+    .btn .fa {
+        font-size: 1em;
+        line-height: 1;
+    }
+
+    /* 实心：主操作与语义操作 */
+    .btn-primary,
+    .btn-success,
+    .btn-info,
+    .btn-warning,
+    .btn-danger,
+    .btn-dark {
+        border-color: transparent;
+        color: var(--kui-color-on-primary);
+    }
+
+    .btn-primary { background: var(--kui-color-primary); }
+    .btn-success { background: var(--kui-color-success); }
+    .btn-info { background: var(--kui-color-info); }
+    .btn-warning { background: var(--kui-color-warning); }
+    .btn-danger { background: var(--kui-color-danger); }
+    .btn-dark { background: var(--kui-color-text); }
 
     .btn-primary:hover,
-    .btn-primary:focus {
-        border-color: var(--kui-color-primary-hover);
-        background: var(--kui-color-primary-hover);
-        color: #fff;
-    }
-
-    .btn-default {
-        border-color: var(--kui-color-border);
-        background: var(--kui-color-surface);
-        color: var(--kui-color-text)
-    }
-
-    .btn-success { border-color: var(--kui-color-success); background: var(--kui-color-success); color:#fff }
-    .btn-info { border-color: var(--kui-color-info); background: var(--kui-color-info); color: #fff}
-    .btn-warning { border-color: var(--kui-color-warning); background: var(--kui-color-warning); color: #fff }
-    .btn-danger { border-color: var(--kui-color-danger); background: var(--kui-color-danger); color:#fff }
-    .btn-dark { border-color: var(--kui-seed-color-neutral-900 ); background: var(--kui-seed-color-neutral-900); color:#fff}
+    .btn-primary:focus-visible { border-color: transparent; background: var(--kui-color-primary-hover); color: var(--kui-color-on-primary); }
 
     .btn-success:hover,
-    .btn-success:focus,
+    .btn-success:focus-visible,
     .btn-info:hover,
-    .btn-info:focus,
+    .btn-info:focus-visible,
     .btn-warning:hover,
-    .btn-warning:focus,
+    .btn-warning:focus-visible,
     .btn-danger:hover,
-    .btn-danger:focus,
+    .btn-danger:focus-visible,
     .btn-dark:hover,
-    .btn-dark:focus {
+    .btn-dark:focus-visible {
+        border-color: transparent;
+        color: var(--kui-color-on-primary);
         filter: brightness(0.94);
-        color: #fff;
     }
 
-    .btn-outline { background:transparent; }
-    .btn-outline.btn-default { color: var(--kui-color-text-muted); }
-    .btn-outline.btn-primary { color: var(--kui-color-primary); }
-    .btn-outline.btn-success { color: var(--kui-color-success); }
-    .btn-outline.btn-info { color: var(--kui-color-info); }
-    .btn-outline.btn-warning { color: var(--kui-color-warning); }
-    .btn-outline.btn-danger { color: var(--kui-color-danger); }
-    .btn-outline.btn-dark { color: var(--kui-color-dark); }
+    /* 描边：与实心按钮等宽等高，用于次级操作 */
+    .btn-outline {
+        background: transparent;
+    }
+
+    .btn-outline.btn-default { border-color: var(--kui-color-border); color: var(--kui-color-text-muted); }
+    .btn-outline.btn-primary { border-color: color-mix(in srgb, var(--kui-color-primary) 48%, transparent); color: var(--kui-color-primary); }
+    .btn-outline.btn-success { border-color: color-mix(in srgb, var(--kui-color-success) 48%, transparent); color: var(--kui-color-success); }
+    .btn-outline.btn-info { border-color: color-mix(in srgb, var(--kui-color-info) 48%, transparent); color: var(--kui-color-info); }
+    .btn-outline.btn-warning { border-color: color-mix(in srgb, var(--kui-color-warning) 52%, transparent); color: var(--kui-color-warning); }
+    .btn-outline.btn-danger { border-color: color-mix(in srgb, var(--kui-color-danger) 48%, transparent); color: var(--kui-color-danger); }
+    .btn-outline.btn-dark { border-color: color-mix(in srgb, var(--kui-color-text) 32%, transparent); color: var(--kui-color-text); }
 
     .btn-outline:hover,
-    .btn-outline:focus {
-        color:#fff;
+    .btn-outline:focus-visible {
+        color: var(--kui-color-on-primary);
+        background: var(--kui-color-text-muted);
+        border-color: var(--kui-color-text-muted);
     }
 
-    .btn-outline.btn-default:hover,
-    .btn-outline.btn-default:focus { background: var(--kui-color-text-muted); border-color: var(--kui-color-text-muted); }
     .btn-outline.btn-primary:hover,
-    .btn-outline.btn-primary:focus { background: var(--kui-color-primary); border-color: var(--kui-color-primary); }
+    .btn-outline.btn-primary:focus-visible { background: var(--kui-color-primary); border-color: var(--kui-color-primary); }
     .btn-outline.btn-success:hover,
-    .btn-outline.btn-success:focus { background: var(--kui-color-success); border-color: var(--kui-color-success); }
+    .btn-outline.btn-success:focus-visible { background: var(--kui-color-success); border-color: var(--kui-color-success); }
     .btn-outline.btn-info:hover,
-    .btn-outline.btn-info:focus { background: var(--kui-color-info); border-color: var(--kui-color-info); }
+    .btn-outline.btn-info:focus-visible { background: var(--kui-color-info); border-color: var(--kui-color-info); }
     .btn-outline.btn-warning:hover,
-    .btn-outline.btn-warning:focus { background: var(--kui-color-warning); border-color: var(--kui-color-warning); }
+    .btn-outline.btn-warning:focus-visible { background: var(--kui-color-warning); border-color: var(--kui-color-warning); }
     .btn-outline.btn-danger:hover,
-    .btn-outline.btn-danger:focus { background: var(--kui-color-danger); border-color: var(--kui-color-danger); }
+    .btn-outline.btn-danger:focus-visible { background: var(--kui-color-danger); border-color: var(--kui-color-danger); }
+    .btn-outline.btn-dark:hover,
+    .btn-outline.btn-dark:focus-visible { background: var(--kui-color-text); border-color: var(--kui-color-text); }
 
-    .btn-xs { min-height: 24px; padding: 3px 8px; font-size: 12px; }
-    .btn-sm { min-height: 28px; padding: 4px 10px; font-size: 12px; }
-    .btn-lg { min-height: 40px; padding: 9px 16px; font-size: 16px; }
+    /* 文字与幽灵：低视觉权重 */
+    .btn-link {
+        min-height: auto;
+        padding: 0;
+        border-color: transparent;
+        background: transparent;
+        color: var(--kui-color-primary);
+    }
 
+    .btn-link:hover {
+        border-color: transparent;
+        color: var(--kui-color-primary-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .btn-ghost {
+        border-color: transparent;
+        background: transparent;
+        color: var(--kui-color-text-muted);
+    }
+
+    .btn-ghost:hover {
+        border-color: transparent;
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    /* 尺寸 */
+    .btn-xs { min-height: 22px; padding: 0 var(--kui-space-2); font-size: var(--kui-font-size-component-label); }
+    .btn-sm { min-height: 26px; padding: 0 var(--kui-space-2); font-size: var(--kui-font-size-component-label); }
+    .btn-lg { min-height: 40px; padding: 0 var(--kui-space-4); font-size: var(--kui-font-size-component-value); }
+    .btn-sm i { font-size: 0.92em; }
+
+    /* 形状 */
     .btn-round { border-radius: 999px; }
-    .btn-circle { border-radius: 50%; }
-    .btn-letter { font-weight: 800; }
+    .btn-circle { width: var(--kui-component-button-height); padding: 0; border-radius: 999px; }
     .btn-squared { border-radius: 0; }
-    .btn-block { display: flex; width: 100% }
+    .btn-letter { font-weight: 700; letter-spacing: 0.02em; }
+    .btn-block { display: flex; width: 100%; }
     .btn-raised { box-shadow: var(--kui-seed-shadow-sm); }
 
-    .btn-animate {
-        position: relative;
-        overflow: hidden;
+    .btn-icon {
+        width: var(--kui-component-button-height);
+        padding: 0;
     }
 
-    .btn-animate span {
-        display: inline-flex;
-        gap: var(--kui-space-2);
-        align-items: center;
-        transition: transform var(--kui-seed-duration-base) ease;
+    .btn-icon.btn-sm { width: 26px; }
+    .btn-icon.btn-lg { width: 40px; }
+
+    /* 加载态：保留原宽度，用三点指示，避免布局跳动 */
+    .btn.is-loading {
+        pointer-events: none;
+        color: transparent;
     }
 
-    .btn-animate-side::after {
+    .btn.is-loading::after {
         position: absolute;
-        right: var(--kui-space-3);
-        opacity: 0;
-        color: inherit;
-        content: '→';
-        transform: translateX(-8px);
-        transition:
-            opacity var(--kui-seed-duration-base) ease,
-            transform var(--kui-seed-duration-base) ease;
+        width: 12px;
+        height: 12px;
+        border: 2px solid color-mix(in srgb, currentcolor 32%, transparent);
+        border-top-color: var(--kui-color-primary);
+        border-radius: 999px;
+        content: '';
+        animation: kui-btn-spin 720ms linear infinite;
     }
 
-    .btn-animate-side:hover span,
-    .btn-animate-side:focus span {
-        transform: translateX(-8px);
+    .btn-primary.is-loading::after,
+    .btn-success.is-loading::after,
+    .btn-danger.is-loading::after,
+    .btn-warning.is-loading::after,
+    .btn-info.is-loading::after,
+    .btn-dark.is-loading::after {
+        border-color: color-mix(in srgb, var(--kui-color-on-primary) 36%, transparent);
+        border-top-color: var(--kui-color-on-primary);
     }
 
-    .btn-animate-side:hover::after,
-    .btn-animate-side:focus::after {
-        opacity: 1;
-        transform: translateX(0);
+    .btn.is-loading {
+        position: relative;
     }
 
-    .btn.active,
-    .btn:active {
-        box-shadow: inset 0 2px 5px rgb(0 0 0 / 16%);
+    @keyframes kui-btn-spin {
+        to { transform: rotate(360deg); }
     }
 
     .btn.disabled,
     .btn[disabled] {
         pointer-events: none;
         cursor: not-allowed;
-        filter: grayscale(0.25);
-        opacity: 0.55;
+        filter: grayscale(0.2);
+        opacity: 0.52;
     }
 
+    /* 按钮组 */
     .btn-group,
     .btn-toolbar {
         display: inline-flex;
@@ -158,7 +217,7 @@
     }
 
     .btn-toolbar {
-        gap: var(--kui-space-2)
+        gap: var(--kui-space-2);
     }
 
     .btn-group > .btn + .btn {
@@ -179,8 +238,47 @@
         border-bottom-left-radius: 0;
     }
 
-    .btn-icon {
-        width: var(--kui-component-button-height);
-        padding: 0;
+    .btn-group > .btn.is-active {
+        position: relative;
+        z-index: 1;
+        border-color: var(--kui-color-primary);
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    /* 侧滑箭头：只对需要「进入下一步」的主按钮使用 */
+    .btn-animate {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-animate span {
+        display: inline-flex;
+        gap: var(--kui-space-2);
+        align-items: center;
+        transition: transform var(--kui-seed-duration-base) ease;
+    }
+
+    .btn-animate-side::after {
+        position: absolute;
+        right: var(--kui-space-3);
+        opacity: 0;
+        color: inherit;
+        content: '→';
+        transform: translateX(-6px);
+        transition:
+            opacity var(--kui-seed-duration-base) ease,
+            transform var(--kui-seed-duration-base) ease;
+    }
+
+    .btn-animate-side:hover span,
+    .btn-animate-side:focus-visible span {
+        transform: translateX(-6px);
+    }
+
+    .btn-animate-side:hover::after,
+    .btn-animate-side:focus-visible::after {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

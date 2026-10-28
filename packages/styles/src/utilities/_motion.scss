@@ -1,0 +1,184 @@
+@layer kui.utilities {
+    /*
+     * 动效工具类。
+     * 只做 transform / opacity，时长与延迟由变量控制，默认跟随令牌。
+     * 组合方式：class="kui-anim kui-anim--fade-up"，需要循环再加 --infinite。
+     */
+
+    .kui-anim {
+        display: inline-block;
+        --kui-anim-duration: var(--kui-seed-duration-base);
+        --kui-anim-delay: 0ms;
+        --kui-anim-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+        --kui-anim-distance: 12px;
+        animation-duration: var(--kui-anim-duration);
+        animation-delay: var(--kui-anim-delay);
+        animation-fill-mode: both;
+        animation-timing-function: var(--kui-anim-ease);
+    }
+
+    .kui-anim--slow { --kui-anim-duration: 480ms; }
+    .kui-anim--fast { --kui-anim-duration: var(--kui-seed-duration-fast); }
+    .kui-anim--delay-1 { --kui-anim-delay: 80ms; }
+    .kui-anim--delay-2 { --kui-anim-delay: 160ms; }
+    .kui-anim--delay-3 { --kui-anim-delay: 240ms; }
+    .kui-anim--delay-4 { --kui-anim-delay: 320ms; }
+    .kui-anim--infinite { animation-iteration-count: infinite; }
+    .kui-anim--alternate { animation-direction: alternate; }
+
+    .kui-anim--fade { animation-name: kui-anim-fade; }
+    .kui-anim--fade-up { animation-name: kui-anim-fade-up; }
+    .kui-anim--fade-down { animation-name: kui-anim-fade-down; }
+    .kui-anim--fade-left { animation-name: kui-anim-fade-left; }
+    .kui-anim--fade-right { animation-name: kui-anim-fade-right; }
+    .kui-anim--zoom { animation-name: kui-anim-zoom; }
+    .kui-anim--zoom-out { animation-name: kui-anim-zoom-out; }
+    .kui-anim--flip-x { animation-name: kui-anim-flip-x; }
+    .kui-anim--flip-y { animation-name: kui-anim-flip-y; }
+    .kui-anim--rotate { animation-name: kui-anim-rotate; }
+    .kui-anim--bounce { animation-name: kui-anim-bounce; }
+    .kui-anim--shake { animation-name: kui-anim-shake; }
+    .kui-anim--pulse { animation-name: kui-anim-pulse; }
+    .kui-anim--float { animation-name: kui-anim-float; }
+    .kui-anim--swing { animation-name: kui-anim-swing; }
+    .kui-anim--spin { animation-name: kui-anim-spin; animation-timing-function: linear; }
+    .kui-anim--shimmer {
+        animation-name: kui-anim-shimmer;
+        animation-timing-function: linear;
+        background-size: 400% 100%;
+    }
+
+    @keyframes kui-anim-fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes kui-anim-fade-up {
+        from { opacity: 0; transform: translateY(var(--kui-anim-distance)); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes kui-anim-fade-down {
+        from { opacity: 0; transform: translateY(calc(var(--kui-anim-distance) * -1)); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes kui-anim-fade-left {
+        from { opacity: 0; transform: translateX(var(--kui-anim-distance)); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes kui-anim-fade-right {
+        from { opacity: 0; transform: translateX(calc(var(--kui-anim-distance) * -1)); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes kui-anim-zoom {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes kui-anim-zoom-out {
+        from { opacity: 0; transform: scale(1.08); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes kui-anim-flip-x {
+        from { opacity: 0; transform: perspective(600px) rotateX(70deg); }
+        to { opacity: 1; transform: perspective(600px) rotateX(0); }
+    }
+
+    @keyframes kui-anim-flip-y {
+        from { opacity: 0; transform: perspective(600px) rotateY(70deg); }
+        to { opacity: 1; transform: perspective(600px) rotateY(0); }
+    }
+
+    @keyframes kui-anim-rotate {
+        from { opacity: 0; transform: rotate(-12deg) scale(0.96); }
+        to { opacity: 1; transform: rotate(0) scale(1); }
+    }
+
+    @keyframes kui-anim-bounce {
+        0% { opacity: 0; transform: translateY(-18px); }
+        55% { opacity: 1; transform: translateY(6px); }
+        78% { transform: translateY(-3px); }
+        100% { transform: translateY(0); }
+    }
+
+    @keyframes kui-anim-shake {
+        0%, 100% { transform: translateX(0); }
+        20% { transform: translateX(-5px); }
+        40% { transform: translateX(5px); }
+        60% { transform: translateX(-3px); }
+        80% { transform: translateX(3px); }
+    }
+
+    @keyframes kui-anim-pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.65; transform: scale(0.97); }
+    }
+
+    @keyframes kui-anim-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    @keyframes kui-anim-swing {
+        0%, 100% { transform: rotate(0); }
+        25% { transform: rotate(6deg); }
+        75% { transform: rotate(-6deg); }
+    }
+
+    @keyframes kui-anim-spin {
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes kui-anim-shimmer {
+        from { background-position: 100% 50%; }
+        to { background-position: 0 50%; }
+    }
+
+    /* 加载指示：三点脉冲与环形旋转 */
+    .kui-loading-dots {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .kui-loading-dots i {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--kui-color-primary);
+        animation: kui-anim-pulse 1.2s ease-in-out infinite;
+    }
+
+    .kui-loading-dots i:nth-child(2) { animation-delay: 120ms; }
+    .kui-loading-dots i:nth-child(3) { animation-delay: 240ms; }
+
+    .kui-loading-ring {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid color-mix(in srgb, var(--kui-color-primary) 24%, transparent);
+        border-top-color: var(--kui-color-primary);
+        border-radius: 999px;
+        animation: kui-anim-spin 720ms linear infinite;
+    }
+
+    /* 交互动效：悬停抬起 / 按下回弹 */
+    .kui-hover-lift {
+        transition:
+            transform var(--kui-seed-duration-base) cubic-bezier(0.22, 0.61, 0.36, 1),
+            box-shadow var(--kui-seed-duration-base) ease;
+    }
+
+    .kui-hover-lift:hover {
+        box-shadow: var(--kui-shadow-md);
+        transform: translateY(-3px);
+    }
+
+    .kui-press:active {
+        transform: translateY(1px) scale(0.99);
+    }
+}

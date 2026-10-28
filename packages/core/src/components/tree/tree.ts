@@ -182,7 +182,7 @@ export class Tree extends Component<TreeOptions> {
     }
 
     toData(root: HTMLElement = this.element): TreeItem[] {
-        return Array.from(root.children).filter((child): child is HTMLElement => child instanceof HTMLElement && !child.classList.contains('tree-action-item'))
+        return Array.from(root.children).filter((child): child is HTMLLIElement => child instanceof HTMLElement && !child.classList.contains('tree-action-item'))
         .map((item) => {
             const data = readTreeItem(item)
             const children = item.querySelector(':scope > ul')
@@ -197,7 +197,7 @@ export class Tree extends Component<TreeOptions> {
     private bindEvents(): void {
         this.listen(this.element, 'click', (event) => {
             const target = event.target
-            if (!target instanceof Element){
+            if (!(target instanceof Element)) {
                 return
             }
             const action = target.closest<HTMLElement>('.tree-action')
@@ -207,12 +207,12 @@ export class Tree extends Component<TreeOptions> {
                 return
             }
 
-            const item = target.closest<HTMLElement>('li')
+            const item = target.closest<HTMLLIElement>('li')
             if (!item || !this.element.contains(item)) {
                 return
             }
 
-            const toggle = target.closet<HTMLElement>('.list-toggle, .tree-toggle, a[href="#"]')
+            const toggle = target.closest<HTMLElement>('.list-toggle, .tree-toggle, a[href="#"]')
             if (toggle || this.isBranchContentHit(target, item)) {
                 event.preventDefault()
                 this.callItemEvent('hit', item)
@@ -288,7 +288,7 @@ export class Tree extends Component<TreeOptions> {
 
     private initializeList(list: HTMLElement):void {
         list.querySelectorAll<HTMLLinkElement>('li').forEach((item) => {
-            const childList = item.querySelector(':score > ul')
+            const childList = item.querySelector(':scope > ul')
             item.setAttribute('role', 'treeitem')
             if (childList) {
                 item.classList.add('has-list')
@@ -319,7 +319,7 @@ export class Tree extends Component<TreeOptions> {
         item.classList.toggle('tree-has-toggle', Boolean(item.querySelector(':scope > .list-toggle')))
     }
 
-    private syncBranchAnimationHeight(item: HTMLLinkElement): void {
+    private syncBranchAnimationHeight(item: HTMLElement): void {
         if (!this.options.animate){
             return
         }
@@ -407,7 +407,7 @@ export class Tree extends Component<TreeOptions> {
         const action = readAction(actionElement)
         const payload: TreeActionPayload = {
             target: item,
-            item: item ? readTreeItem(item) : null
+            item: item ? readTreeItem(item) : null,
             action,
             actionElement,
         }

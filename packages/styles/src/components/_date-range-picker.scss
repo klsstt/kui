@@ -1,0 +1,205 @@
+@layer kui.components {
+    .daterange-input {
+        cursor: pointer;
+    }
+
+    .daterange-input[readonly] {
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+    }
+
+    /* 浮层挂在 body 上并使用 fixed 定位：文档里的滚动容器不会把它裁掉 */
+    .daterange {
+        position: fixed;
+        z-index: var(--kui-layer-dropdown);
+        display: none;
+        box-sizing: border-box;
+        width: 292px;
+        padding: var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-dropdown);
+        color: var(--kui-color-text);
+        font-family: var(--kui-font-family-component);
+        font-size: var(--kui-font-size-component-control);
+    }
+
+    .daterange.open {
+        display: block;
+    }
+
+    .daterange__header {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: 0 var(--kui-space-1) var(--kui-space-2);
+    }
+
+    .daterange__title {
+        flex: 1 1 auto;
+        text-align: center;
+        font-size: var(--kui-font-size-component-value);
+        font-weight: var(--kui-font-weight-component-value);
+        line-height: 28px;
+    }
+
+    .daterange__nav {
+        display: inline-flex;
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    .daterange__nav:hover:not(:disabled) {
+        border-color: var(--kui-color-primary);
+        color: var(--kui-color-primary);
+    }
+
+    .daterange__nav:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+    }
+
+    .daterange__weekdays,
+    .daterange__grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+    }
+
+    .daterange__weekdays {
+        padding-bottom: var(--kui-space-1);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        text-align: center;
+    }
+
+    .daterange__day {
+        display: flex;
+        min-width: 0;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1;
+    }
+
+    .daterange__day:not(.is-empty):hover:not(:disabled) {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    .daterange__day:focus-visible,
+    .daterange__nav:focus-visible,
+    .daterange__action:focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: calc(var(--kui-focus-ring-offset) * -1);
+    }
+
+    .daterange__day.is-empty {
+        cursor: default;
+    }
+
+    .daterange__day.is-today {
+        box-shadow: inset 0 0 0 1px var(--kui-color-border);
+        color: var(--kui-color-text);
+        font-weight: var(--kui-font-weight-component-value);
+    }
+
+    .daterange__day.is-in-range {
+        border-radius: 0;
+        background: color-mix(in srgb, var(--kui-color-primary) 14%, var(--kui-color-surface));
+        color: var(--kui-color-text);
+    }
+
+    .daterange__day.is-start,
+    .daterange__day.is-end {
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+        font-weight: var(--kui-font-weight-component-value);
+    }
+
+    .daterange__day.is-start:hover:not(:disabled),
+    .daterange__day.is-end:hover:not(:disabled) {
+        background: var(--kui-color-primary-hover);
+        color: var(--kui-color-on-primary);
+    }
+
+    .daterange__day:disabled {
+        cursor: not-allowed;
+        opacity: 0.36;
+    }
+
+    .daterange__footer {
+        display: flex;
+        gap: var(--kui-space-1);
+        padding-top: var(--kui-space-2);
+        margin-top: var(--kui-space-2);
+        border-top: 1px solid var(--kui-color-border-subtle);
+    }
+
+    .daterange__action {
+        min-height: 28px;
+        padding: 0 var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .daterange__action:hover {
+        border-color: var(--kui-color-primary);
+        color: var(--kui-color-primary);
+    }
+
+    .daterange__action[data-daterange-action='clear'] {
+        margin-right: auto;
+    }
+
+    .daterange__action.is-primary {
+        border-color: var(--kui-color-primary);
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+    }
+
+    .daterange__action.is-primary:hover {
+        border-color: var(--kui-color-primary-hover);
+        background: var(--kui-color-primary-hover);
+        color: var(--kui-color-on-primary);
+    }
+
+    @media (forced-colors: active) {
+        .daterange {
+            border-color: CanvasText;
+        }
+
+        .daterange__day.is-start,
+        .daterange__day.is-end,
+        .daterange__action.is-primary {
+            border: 1px solid CanvasText;
+        }
+    }
+}

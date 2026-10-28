@@ -6,6 +6,7 @@ export interface ProgressOptions extends PlainObject {
     max: number,
     min: number,
     showText: boolean,
+    label: string,
     value?: number,
     vertical: boolean
 }
@@ -22,6 +23,7 @@ export class Progress extends Component<ProgressOptions> {
         max: 100,
         min: 0,
         showText: false,
+        label: '进度',
         vertical: false,
     }
 
@@ -117,6 +119,7 @@ export class Progress extends Component<ProgressOptions> {
             this.bar.style.removeProperty(oppositeDimension)
         }
         this.bar.setAttribute('role', 'progressbar')
+        this.bar.setAttribute('aria-label', this.options.label)
         this.bar.setAttribute('aria-valuemin', String(this.options.min))
         this.bar.setAttribute('aria-valuemax', String(this.options.max))
         this.bar.setAttribute('aria-valuenow', String(this.value))

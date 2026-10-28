@@ -1,4 +1,4 @@
-export interface Kuistore {
+export interface KuiStore {
  get<TValue>(key: string, fallback?:TValue): TValue;
  set<TValue>(key: string, value: TValue): void;
  remove(key: string): void;
@@ -6,10 +6,10 @@ export interface Kuistore {
 
 export function createLocalStore(storage: Storage= window.localStorage): KuiStore {
     return {
-        get<TValue>(key: string, fallback?: TValue): TValue | null {
+        get<TValue>(key: string, fallback?: TValue): TValue {
             const raw = storage.getItem(key);
             if(raw === null){
-                return fallback ?? null;
+                return fallback as TValue;
             }
             try{
                 return JSON.parse(raw) as TValue;
@@ -35,15 +35,15 @@ export interface StoreAdapter {
 export class LocalStore implements StoreAdapter {
     constructor(private readonly storage: Storage = window.localStorage) {}
 
-    get<TValue>(key: string, fallback: TValue): TValue {
+    get<TValue>(key: string, fallback?: TValue): TValue {
         const raw = this.storage.getItem(key);
         if(raw === null){
-            return fallback;
+            return fallback as TValue;
         }
         try{
             return JSON.parse(raw) as TValue;
         }catch{
-            return fallback;
+            return fallback as TValue;
         }
     }
 

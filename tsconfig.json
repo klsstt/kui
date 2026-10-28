@@ -24,7 +24,7 @@
     "sourceMap": true
   },
   "include": [
-    "apps/admin",
+    "app/admin",
     "packages/*/src",
     "packages/*/*.ts",
     "tests",

@@ -29,7 +29,7 @@ export class Alert extends Component<AlertOptions> {
     }
 
     close(): void {
-        if (!this.emitCancelable(['close.kui.alert', 'kui:alert:close'])) {
+        if (!this.emit('kui:alert:close')) {
             return
         }
 

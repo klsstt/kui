@@ -1,7 +1,7 @@
 import { Component } from "../../core/component";
 import { delegate, type EventDisposer } from "../../core/events";
 import { getInstance } from '../../core/instances';
-import { mergeOptions, readDataOptions, type PlainObject } from '../../core/options';
+import { mergeOptions, readDataOptions } from '../../core/options';
 import { getTableRowLabel, readStaticTableData, resolveTableElement } from "./table-dom";
 import {
     countTablePages,
@@ -166,7 +166,7 @@ export class Table extends Component<TableOptions> {
             return
         }
 
-        if(!this.emitCancelable(['refresh.kui.table', 'kui:table:refresh'], { url})){
+        if(!this.emit('kui:table:refresh', { url})){
             return
         }
 
@@ -202,7 +202,7 @@ export class Table extends Component<TableOptions> {
     }
 
     sort(field: string, order: TableSortOrder=this.nextSortOrder(field)): void {
-        if (!this.emitCancelable(['sort.kui.table', 'kui:table:sort'], { field, order })) {
+        if (!this.emit('kui:table:sort', { field, order })) {
             return
         }
 
@@ -217,7 +217,7 @@ export class Table extends Component<TableOptions> {
     }
 
     previousPage(): void {
-        this.append.goToPage(this.page - 1)
+        this.goToPage(this.page - 1)
     }
 
     goToPage(page: number): void {
@@ -226,7 +226,7 @@ export class Table extends Component<TableOptions> {
             return
         }
 
-        if (!this.emitCancelable(['page.kui.table', 'kui:table:page'], { page: nextPage })) {
+        if (!this.emit('kui:table:page', { page: nextPage })) {
             return
         }
 
@@ -335,11 +335,11 @@ export class Table extends Component<TableOptions> {
                 this.toggleDetail(Number(detailButton.dataset.kuiDetailRow))
                 return
             }
-            const tableRow = target.closest<HTMLTableRowElement>('[data-kui-row-index')
+            const tableRow = target.closest<HTMLTableRowElement>('[data-kui-row-index]')
             const rowIndex = Number(tableRow?.dataset.kuiRowIndex)
             const row = this.options.data[rowIndex]
             if (tableRow && row && this.tableElement.contains(tableRow)) {
-                this.options.onClickRow?.(row, rowIndex, rowIndex)
+                this.options.onClickRow?.(row, tableRow, rowIndex)
                 if (this.options.clickToSelect && this.options.selectable && !shouldIgnoreTableSelection(event.target)) {
                     this.toggleRowSelection(rowIndex)
                 }
@@ -558,7 +558,7 @@ export class Table extends Component<TableOptions> {
                 td.dataset.label = column.title
 
                 const value = row[column.field]
-                const formatted = column.formatter?.(value, row, rawIndex) ?? stringifyTableValue(value)
+                const formatted = column.formatter?.(value, row, column) ?? stringifyTableValue(value)
                 if (formatted instanceof HTMLElement) {
                     td.append(formatted)
                 } else {

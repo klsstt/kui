@@ -38,6 +38,10 @@ export class ScrollSpy extends Component<ScrollSpyOptions> {
 
     refresh(): void {
         const nav = this.options.target ? document.querySelector<HTMLElement>(this.options.target) : document.body
+        // 以滚动容器的内容原点为基准度量锚点位置，
+        // 这样锚点与 scrollTop 处于同一坐标系，不受中间布局祖先（定位/contain）影响
+        const containerTop = this.element === document.body ? 0 : this.element.getBoundingClientRect().top
+        const scrolled = this.getScrollTop()
         this.targets = Array.from(nav?.querySelectorAll<HTMLAnchorElement>('.nav li > a, .nav a, a[data-target]') ?? [])
         .map((anchor) => {
             const selector = anchor.dataset.target ?? anchor.getAttribute('href') ?? ''
@@ -46,7 +50,7 @@ export class ScrollSpy extends Component<ScrollSpyOptions> {
                 return null
             }
 
-            return { selector, top: target.offsetTop }
+            return { selector, top: target.getBoundingClientRect().top - containerTop + scrolled }
         })
         .filter((target): target is SpyTarget => target !== null)
         .sort((left, right) => left.top - right.top)
@@ -60,7 +64,7 @@ export class ScrollSpy extends Component<ScrollSpyOptions> {
         const scrollTop = this.getScrollTop() + this.options.offset
         const nextTarget = this.targets.reduce((active, target) => (scrollTop >= target.top ? target : active), this.targets[0]).selector
         if (nextTarget !== this.activeTarget) {
-            this.activeTarget(nextTarget)
+            this.activate(nextTarget)
         }
     }
 

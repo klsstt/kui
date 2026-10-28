@@ -67,7 +67,8 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
 
         this.nav = this.ensureSlot(this.options.navSelector, 'ul', 'kui-pjax-tabs__nav nav')
         this.content = this.ensureSlot(this.options.contentSelector, 'div', 'kui-pajx-tabs__content')
-        this.nav.setAttribute('role', 'tablist')
+        this.nav.setAttribute('role', 'toolbar')
+        this.nav.setAttribute('aria-label', '标签页')
         this.bindKeyboardNavigation()
         void this.restore()
     }
@@ -91,7 +92,7 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
         }
 
         const nextDescriptor = { ...descriptor, id }
-        if (!this.emitCancelable(['add.kui.pjaxTabs', 'kui:pjax-tabs:add'], nextDescriptor)) {
+        if (!this.emit('kui:pjax-tabs:add', nextDescriptor)) {
             return id
         }
 
@@ -104,9 +105,9 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
         trigger.id = `kui-pjax-tabs-${this.accessibilityId}-${id}-tab`
         trigger.textContent = descriptor.title
         trigger.setAttribute('data-kui-tab-id', id)
-        trigger.setAttribute('role', 'tab')
+        trigger.setAttribute('role', 'button')
         trigger.setAttribute('aria-controls', id)
-        trigger.setAttribute('aria-selected', 'false')
+        trigger.setAttribute('aria-pressed', 'false')
         trigger.tabIndex = -1
         applyTabActiveRadiusStyles(trigger, this.options)
         item.append(trigger)
@@ -116,16 +117,15 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
             closeButton.type = 'button'
             closeButton.className = 'close'
             closeButton.textContent = 'x'
-            closeButton.setAttribute('aria-label', `Close ${descriptor.title}`)
+            closeButton.setAttribute('aria-label', `关闭 ${descriptor.title}`)
             closeButton.setAttribute('data-kui-close-tab', id)
-            closeButton.tabIndex = -1
             item.append(closeButton)
         }
 
         const  pane = document.createElement('div')
         pane.id = id
         pane.className = 'kui-pjax-tabs__pane tab-pane'
-        pane.setAttribute('role', 'tabpanel')
+        pane.setAttribute('role', 'region')
         pane.setAttribute('aria-labelledby', trigger.id)
         pane.hidden = true
 
@@ -142,7 +142,7 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
 
     activate(id: string): void {
         const tab = this.tabs.get(id)
-        if (!tab || !this.emitCancelable(['show.kui.pjaxTabs', 'kui:pjax-tabs:show'], tab)){
+        if (!tab || !this.emit('kui:pjax-tabs:show', tab)){
             return
         }
 
@@ -150,7 +150,7 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
             const isActive = candidate.id === id
             candidate.item.classList.toggle(this.options.activeClass, isActive)
             candidate.trigger.classList.toggle(this.options.activeClass, isActive)
-            candidate.trigger.setAttribute('aria-selected', String(isActive))
+            candidate.trigger.setAttribute('aria-pressed', String(isActive))
             candidate.pane.classList.toggle(this.options.activeClass, isActive)
             candidate.pane.classList.toggle('in', isActive)
             candidate.pane.classList.toggle('show', isActive)
@@ -164,7 +164,7 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
 
     close(id:string): void {
         const tab = this.tabs.get(id)
-        if (!tab || !this.emitCancelable(['close.kui.pjaxTabs', 'kui:pjax-tabs:close'], tab)) {
+        if (!tab || !this.emit('kui:pjax-tabs:close', tab)) {
             return
         }
 
@@ -283,7 +283,7 @@ export class PjaxTabs extends Component<PjaxTabsOptions> {
 
     private bindKeyboardNavigation(): void {
         this.listen(this.nav, 'keydown', (event) => {
-            const current = event.target instanceof Element ? event.target.closest<HTMLElement>('[role="tab"]') : null
+            const current = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-kui-tab-id]') : null
             if (!current) {
                 return
             }

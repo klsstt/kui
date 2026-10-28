@@ -41,7 +41,7 @@ export class Collapse extends Component<CollapseOptions> {
             return
         }
 
-        if (!this.emitCancelable(['show.kui.collapse', 'kui:collapse:show'])) {
+        if (!this.emit('kui:collapse:show')) {
             return
         }
 
@@ -68,7 +68,7 @@ export class Collapse extends Component<CollapseOptions> {
             return
         }
 
-        if(!this.emitCancelable(['hide.kui.collapse', 'kui:collapse:hide'])) {
+        if(!this.emit('kui:collapse:hide')) {
             return
         }
 

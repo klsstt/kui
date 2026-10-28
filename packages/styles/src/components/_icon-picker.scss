@@ -1,0 +1,128 @@
+@layer kui.components {
+    /* 图标选择器：触发按钮沿用控件外观，弹层是固定列数的图标网格 */
+    .kui-icon-picker {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .kui-icon-picker__trigger {
+        display: flex;
+        width: 100%;
+        min-height: 32px;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: 0 var(--kui-space-3);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+    }
+
+    .kui-icon-picker__trigger:hover {
+        border-color: var(--kui-color-primary);
+    }
+
+    .kui-icon-picker__trigger:focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: var(--kui-focus-ring-offset);
+    }
+
+    .kui-icon-picker__trigger > .fa:first-child {
+        color: var(--kui-color-primary);
+        font-size: var(--kui-font-size-component-value);
+    }
+
+    .kui-icon-picker__trigger > span {
+        flex: 1 1 auto;
+        overflow: hidden;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .kui-icon-picker__trigger > .fa:last-child {
+        color: var(--kui-color-text-subtle);
+        font-size: 10px;
+    }
+
+    .kui-icon-picker.is-open .kui-icon-picker__trigger {
+        border-color: var(--kui-color-primary);
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .kui-icon-picker__popup {
+        position: absolute;
+        z-index: var(--kui-layer-dropdown);
+        top: calc(100% + 4px);
+        left: 0;
+        width: min(22rem, 92vw);
+        padding: var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-lg);
+    }
+
+    .kui-icon-picker__search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--kui-space-2);
+    }
+
+    .kui-icon-picker__search > .fa {
+        position: absolute;
+        left: var(--kui-space-2);
+        color: var(--kui-color-text-subtle);
+        font-size: 11px;
+    }
+
+    .kui-icon-picker__search .form-control {
+        padding-left: calc(var(--kui-space-5) + 2px);
+    }
+
+    .kui-icon-picker__grid {
+        display: grid;
+        grid-template-columns: repeat(var(--kui-icon-picker-columns, 8), minmax(0, 1fr));
+        gap: 2px;
+        max-height: 15rem;
+        overflow: auto;
+    }
+
+    .kui-icon-picker__option {
+        display: grid;
+        aspect-ratio: 1;
+        place-items: center;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .kui-icon-picker__option:hover {
+        background: var(--kui-color-surface-hover);
+        color: var(--kui-color-text);
+    }
+
+    .kui-icon-picker__option.is-active {
+        border-color: var(--kui-color-primary);
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .kui-icon-picker__empty {
+        grid-column: 1 / -1;
+        margin: var(--kui-space-2) 0;
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        text-align: center;
+    }
+}

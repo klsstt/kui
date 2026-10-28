@@ -102,7 +102,7 @@
     }
 
     .btn-select.is-placeholder {
-        color: color-mix(in srgb, var(--kui-color-text-subtle) 72%, var(--kui-color-surface));
+        color: var(--kui-color-text-subtle);
         font-weight: var(--kui-font-weight-component-control);
     }
 

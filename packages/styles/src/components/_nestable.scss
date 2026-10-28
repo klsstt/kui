@@ -1,0 +1,116 @@
+@layer kui.components {
+    /* 嵌套排序：行是操作单位，落点用上下边线与内嵌底色区分 */
+    .kui-nestable,
+    .kui-nestable__children {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .kui-nestable__children {
+        padding-left: var(--kui-space-6);
+    }
+
+    .kui-nestable__item {
+        position: relative;
+        margin-bottom: var(--kui-space-2);
+    }
+
+    .kui-nestable__row {
+        display: flex;
+        cursor: grab;
+        touch-action: none;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-2) var(--kui-space-3);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-container);
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-nestable__content {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        gap: var(--kui-space-2);
+        min-width: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+    }
+
+    .kui-nestable__item.is-dragging > .kui-nestable__row {
+        opacity: 0.45;
+    }
+
+    .kui-nestable.is-pointer-dragging,
+    .kui-nestable.is-pointer-dragging * {
+        user-select: none;
+        cursor: grabbing;
+    }
+
+    /* 跟随指针的浮层：只做视觉反馈，不参与命中测试 */
+    .kui-nestable__ghost {
+        position: fixed;
+        z-index: var(--kui-layer-toast);
+        pointer-events: none;
+        opacity: 0.92;
+        padding: 0;
+        border: 1px solid color-mix(in srgb, var(--kui-color-primary) 40%, transparent);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-lg);
+        transform: rotate(-0.6deg);
+    }
+
+    .kui-nestable__item.is-drop-before > .kui-nestable__row {
+        box-shadow: inset 0 2px 0 var(--kui-color-primary);
+    }
+
+    .kui-nestable__item.is-drop-after > .kui-nestable__row {
+        box-shadow: inset 0 -2px 0 var(--kui-color-primary);
+    }
+
+    .kui-nestable__item.is-drop-inside > .kui-nestable__row {
+        border-color: var(--kui-color-primary);
+        background: color-mix(in srgb, var(--kui-color-primary) 6%, var(--kui-color-surface));
+    }
+
+    .kui-nestable__actions {
+        display: inline-flex;
+        flex: 0 0 auto;
+        gap: 2px;
+    }
+
+    .kui-nestable__action {
+        display: inline-grid;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-subtle);
+        cursor: pointer;
+        font-size: 11px;
+    }
+
+    .kui-nestable__action:hover {
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-primary);
+    }
+
+    .kui-nestable__handle {
+        display: inline-grid;
+        width: 18px;
+        height: 18px;
+        place-items: center;
+        color: var(--kui-color-text-subtle);
+        cursor: grab;
+        font-size: 11px;
+    }
+}

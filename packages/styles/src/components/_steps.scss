@@ -1,0 +1,200 @@
+@layer kui.components {
+    /* 步骤条：标记只承载状态，文字与标记之间留出稳定间距 */
+    .kui-steps {
+        display: flex;
+        gap: var(--kui-space-4);
+        padding: var(--kui-space-2) 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .kui-step {
+        position: relative;
+        display: flex;
+        flex: 1 1 0;
+        gap: var(--kui-space-3);
+        align-items: flex-start;
+        min-width: 0;
+        padding-right: var(--kui-space-6);
+        cursor: pointer;
+    }
+
+    .kui-step:last-child {
+        flex: 0 0 auto;
+        padding-right: 0;
+    }
+
+    /* 连接线：从标记右侧拉到下一步，垂直居中于标记 */
+    .kui-step::before {
+        position: absolute;
+        top: 13px;
+        right: 0;
+        left: calc(28px + var(--kui-space-3));
+        height: 1px;
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-step:last-child::before {
+        display: none;
+    }
+
+    .kui-step.is-finish::before {
+        background: color-mix(in srgb, var(--kui-color-primary) 32%, transparent);
+    }
+
+    .kui-step__marker {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 1px solid var(--kui-color-border);
+        border-radius: 999px;
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 600;
+        line-height: 1;
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-step__marker .fa {
+        font-size: 11px;
+        line-height: 1;
+    }
+
+    .kui-step__content {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+        /* 横向连接线在标记中心，正文从线的下方开始，避免线压住标题 */
+        padding-top: 18px;
+    }
+
+    .kui-steps--vertical .kui-step__content {
+        padding-top: 0;
+    }
+
+    .kui-step__title {
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    .kui-step__desc {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+    }
+
+    .kui-step.is-process .kui-step__marker {
+        border-color: var(--kui-color-primary);
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .kui-step.is-process .kui-step__title {
+        color: var(--kui-color-text);
+        font-weight: 600;
+    }
+
+    .kui-step.is-finish .kui-step__marker {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 32%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 12%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .kui-step.is-error .kui-step__marker {
+        border-color: var(--kui-color-danger);
+        color: var(--kui-color-danger);
+    }
+
+    .kui-step.is-error .kui-step__title {
+        color: var(--kui-color-danger);
+    }
+
+    .kui-step:focus-visible {
+        border-radius: var(--kui-seed-radius-sm);
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: var(--kui-focus-ring-offset);
+    }
+
+    .kui-steps--small .kui-step {
+        gap: var(--kui-space-2);
+    }
+
+    .kui-steps--small .kui-step__marker {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+
+    .kui-steps--small .kui-step__marker .fa {
+        font-size: 9px;
+    }
+
+    .kui-steps--small .kui-step::before {
+        top: 10px;
+        left: calc(22px + var(--kui-space-2));
+    }
+
+    .kui-steps--small .kui-step__content {
+        padding-top: 16px;
+    }
+
+    .kui-steps--vertical.kui-steps--small .kui-step__content {
+        padding-top: 0;
+    }
+
+    .kui-steps--small .kui-step__desc {
+        display: none;
+    }
+
+    /* 竖向：轴线落在标记下方 */
+    .kui-steps--vertical {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .kui-steps--vertical .kui-step {
+        flex: 0 0 auto;
+        padding: 0 0 var(--kui-space-5);
+    }
+
+    .kui-steps--vertical .kui-step::before {
+        top: 32px;
+        bottom: 4px;
+        left: 13px;
+        width: 1px;
+        height: auto;
+    }
+
+    @media (max-width: 40rem) {
+        .kui-steps {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .kui-step {
+            flex: 0 0 auto;
+            padding: 0 0 var(--kui-space-4);
+        }
+
+        .kui-step::before {
+            top: 32px;
+            bottom: 4px;
+            left: 13px;
+            width: 1px;
+            height: auto;
+        }
+    }
+}

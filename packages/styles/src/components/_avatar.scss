@@ -1,0 +1,96 @@
+@layer kui.components {
+    /* 头像：尺寸、形状、状态点统一，被列表、评论、社交等多种页面复用 */
+    .kui-avatar {
+        position: relative;
+        display: inline-grid;
+        flex: 0 0 auto;
+        place-items: center;
+        width: var(--kui-avatar-size, 36px);
+        height: var(--kui-avatar-size, 36px);
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: 999px;
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    .kui-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .kui-avatar--primary {
+        border-color: transparent;
+        background: color-mix(in srgb, var(--kui-color-primary) 16%, var(--kui-color-surface));
+        color: var(--kui-color-primary);
+    }
+
+    .kui-avatar--success {
+        border-color: transparent;
+        background: color-mix(in srgb, var(--kui-color-success) 16%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-success) 84%, var(--kui-color-text));
+    }
+
+    .kui-avatar--warning {
+        border-color: transparent;
+        background: color-mix(in srgb, var(--kui-color-warning) 18%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-warning) 80%, var(--kui-color-text));
+    }
+
+    .kui-avatar--danger {
+        border-color: transparent;
+        background: color-mix(in srgb, var(--kui-color-danger) 16%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-danger) 84%, var(--kui-color-text));
+    }
+
+    .kui-avatar--sm { --kui-avatar-size: 24px; font-size: var(--kui-font-size-component-label); }
+    .kui-avatar--lg { --kui-avatar-size: 44px; font-size: var(--kui-font-size-component-value); }
+    .kui-avatar--xl { --kui-avatar-size: 56px; font-size: 18px; }
+    .kui-avatar--square { border-radius: var(--kui-seed-radius-md); }
+
+    .kui-avatar__status {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 10px;
+        height: 10px;
+        border: 2px solid var(--kui-color-surface);
+        border-radius: 999px;
+        background: var(--kui-color-success);
+    }
+
+    .kui-avatar__status.is-busy { background: var(--kui-color-warning); }
+    .kui-avatar__status.is-offline { background: var(--kui-color-text-subtle); }
+
+    .kui-avatar-group {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .kui-avatar-group .kui-avatar + .kui-avatar {
+        margin-left: calc(var(--kui-space-2) * -1);
+    }
+
+    .kui-avatar-group .kui-avatar {
+        box-shadow: 0 0 0 2px var(--kui-color-surface);
+    }
+
+    .kui-avatar-group__more {
+        display: inline-grid;
+        place-items: center;
+        min-width: var(--kui-avatar-size, 36px);
+        height: var(--kui-avatar-size, 36px);
+        margin-left: calc(var(--kui-space-2) * -1);
+        padding: 0 var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: 999px;
+        background: var(--kui-color-surface);
+        box-shadow: 0 0 0 2px var(--kui-color-surface);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+}

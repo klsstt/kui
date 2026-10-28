@@ -1,53 +1,110 @@
 @layer kui.components {
+    /* 浮层：工具提示与气泡卡片共享定位层级，视觉上区分为「纯文本」与「有标题」 */
     .tooltip,
     .popover {
         z-index: calc(var(--kui-layer-toast) + 10);
         display: block;
-        max-width: 260px;
+        max-width: 280px;
         color: var(--kui-color-text);
     }
 
     .tooltip-inner {
-        padding: 6px 8px;
+        padding: 5px 9px;
         border-radius: var(--kui-seed-radius-sm);
-        background: #1f2733;
-        color: #fff;
-        font-size: 12px;
+        background: var(--kui-color-text);
+        color: var(--kui-color-surface);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.5;
+        box-shadow: var(--kui-shadow-sm);
+    }
+
+    .tooltip--light .tooltip-inner {
+        border: 1px solid var(--kui-color-border-subtle);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text);
     }
 
     .popover {
         min-width: 180px;
-        border: 1px solid var(--kui-color-border);
+        border: 1px solid var(--kui-color-border-subtle);
         border-radius: var(--kui-seed-radius-md);
         background: var(--kui-color-surface);
-        box-shadow: var(--kui-seed-shadow-sm)
+        box-shadow: var(--kui-shadow-md);
     }
 
     .popover-title {
-        padding: 8px 10px;
+        padding: var(--kui-space-2) var(--kui-space-3);
         margin: 0;
-        border-bottom: 1px solid var(--kui-color-border);
-        font-size: 14px;
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
     }
 
     .popover-content {
-        padding: 10px;
-        color: var(--kui-color-text-muted);
         max-height: min(60vh, 24rem);
+        padding: var(--kui-space-3);
         overflow: auto;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.65;
     }
 
-    [data-toggle="context"] .dropdown-menu,
-    [data-kui-toggle="context"] .dropdown-menu,
-    .context-menu { display:none }
+    [data-toggle='context'] .dropdown-menu,
+    [data-kui-toggle='context'] .dropdown-menu,
+    .context-menu {
+        display: none;
+    }
 
     .dropdown-menu.open,
     .context-menu.open {
         display: block;
     }
 
-    [role="menuitem"]:focus-visible {
-        outline: var(--kui-focus-ring-width) solid var(--kui-focus-ring-color);
+    .context-menu {
+        position: fixed;
+        z-index: calc(var(--kui-layer-toast) + 12);
+        min-width: 168px;
+        padding: var(--kui-space-1);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-md);
+    }
+
+    .context-menu__item {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        width: 100%;
+        padding: var(--kui-space-1) var(--kui-space-2);
+        border: 0;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-control);
+        text-align: left;
+    }
+
+    .context-menu__item:hover {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+    }
+
+    .context-menu__item.is-danger {
+        color: var(--kui-color-danger);
+    }
+
+    .context-menu__separator {
+        height: 1px;
+        margin: var(--kui-space-1) 0;
+        background: var(--kui-color-border-subtle);
+    }
+
+    [role='menuitem']:focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
         outline-offset: calc(-1 * var(--kui-focus-ring-width));
     }
 
@@ -55,6 +112,6 @@
         .popover,
         .context-menu,
         .dropdown-menu.open { border: 1px solid CanvasText; }
-        [role="menuitem"]:focus-visible { color: HighlightText; background: Highlight; }
+        [role='menuitem']:focus-visible { color: HighlightText; background: Highlight; }
     }
 }

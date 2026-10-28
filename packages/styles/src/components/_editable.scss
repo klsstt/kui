@@ -1,0 +1,90 @@
+@layer kui.components {
+    /* 行内可编辑：文本态保持稳定高度，编辑态才出现输入框 */
+    .kui-editable {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+        min-height: 26px;
+        padding: 1px var(--kui-space-2);
+        border: 1px dashed transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        color: var(--kui-color-text);
+        cursor: text;
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.4;
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-editable:hover {
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface-muted);
+    }
+
+    .kui-editable:focus-visible {
+        border-style: solid;
+        border-color: var(--kui-color-primary);
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: 0;
+    }
+
+    .kui-editable.is-editing {
+        padding: 0;
+        border-style: solid;
+        border-color: var(--kui-color-primary);
+        background: var(--kui-color-surface);
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .kui-editable__input {
+        min-width: 7rem;
+        width: 100%;
+        padding: 3px var(--kui-space-2);
+        border: 0;
+        border-radius: inherit;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        outline: none;
+    }
+
+    .kui-editable__value {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .kui-editable__placeholder {
+        color: var(--kui-color-text-subtle);
+    }
+
+    .kui-editable__affix {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-editable__pen {
+        color: var(--kui-color-text-subtle);
+        font-size: 10px;
+        opacity: 0;
+        transition: opacity var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-editable:hover .kui-editable__pen,
+    .kui-editable:focus-visible .kui-editable__pen {
+        opacity: 1;
+    }
+
+    .kui-editable__hint {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    /* 可编辑金额 / 数字在表格中右对齐，保持小数位视觉稳定 */
+    .kui-editable--numeric {
+        justify-content: flex-end;
+        font-variant-numeric: tabular-nums;
+    }
+}

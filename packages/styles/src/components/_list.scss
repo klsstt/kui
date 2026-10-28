@@ -1,0 +1,505 @@
+@layer kui.components {
+    /* 列表：信息流的基本骨架，列表项只保留「主体 + 辅助 + 操作」三段 */
+    .kui-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+        list-style: none;
+    }
+
+    .kui-list--flush {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .kui-list__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3) var(--kui-space-4);
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+    }
+
+    .kui-list__header h3,
+    .kui-list__header h4 {
+        margin: 0;
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 600;
+    }
+
+    .kui-list__item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3) var(--kui-space-4);
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+        transition: background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-list__item:last-child {
+        border-bottom: 0;
+    }
+
+    .kui-list__item:hover {
+        background: var(--kui-color-surface-hover);
+    }
+
+    .kui-list__item.is-active {
+        background: color-mix(in srgb, var(--kui-color-primary) 8%, var(--kui-color-surface));
+        box-shadow: inset 2px 0 0 var(--kui-color-primary);
+    }
+
+    .kui-list__item.is-unread .kui-list__title {
+        font-weight: 600;
+    }
+
+    .kui-list__media {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+    }
+
+    .kui-list__body {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .kui-list__title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-2);
+        margin: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-value);
+        font-weight: 500;
+        line-height: 1.45;
+    }
+
+    .kui-list__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-2);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-list__desc {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.65;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .kui-list__aside {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: var(--kui-space-1);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        white-space: nowrap;
+    }
+
+    .kui-list__actions {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: var(--kui-space-1);
+        opacity: 0;
+        transition: opacity var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-list__item:hover .kui-list__actions,
+    .kui-list__item:focus-within .kui-list__actions {
+        opacity: 1;
+    }
+
+    .kui-list__empty {
+        padding: var(--kui-space-8) var(--kui-space-4);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-control);
+        text-align: center;
+    }
+
+    /* 评论 */
+    .kui-comment {
+        display: flex;
+        gap: var(--kui-space-3);
+    }
+
+    .kui-comment__body {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: var(--kui-space-1);
+        min-width: 0;
+    }
+
+    .kui-comment__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-comment__author {
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
+    }
+
+    .kui-comment__time {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-comment__content {
+        margin: 0;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.75;
+    }
+
+    .kui-comment__toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-3);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-comment__toolbar button {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+    }
+
+    .kui-comment__toolbar button:hover,
+    .kui-comment__toolbar button.is-active {
+        color: var(--kui-color-primary);
+    }
+
+    .kui-comment__replies {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-3);
+        padding-left: var(--kui-space-4);
+        margin-top: var(--kui-space-2);
+        border-left: 2px solid var(--kui-color-border-subtle);
+    }
+
+    .kui-comment__quote {
+        padding: var(--kui-space-2) var(--kui-space-3);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+    }
+
+    .kui-composer {
+        display: flex;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-composer__body {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: var(--kui-space-2);
+        min-width: 0;
+    }
+
+    .kui-composer__input {
+        min-height: 64px;
+        padding: var(--kui-space-2);
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text);
+        font: inherit;
+        line-height: 1.7;
+        resize: vertical;
+    }
+
+    .kui-composer__input:focus {
+        border-color: var(--kui-color-primary);
+        outline: none;
+        background: var(--kui-color-surface);
+        box-shadow: 0 0 0 var(--kui-focus-ring-width) var(--kui-color-focus-ring);
+    }
+
+    .kui-composer__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-composer__tools {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-1);
+    }
+
+    /* 消息 */
+    .kui-message {
+        display: flex;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3);
+        border-radius: var(--kui-seed-radius-md);
+        transition: background-color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-message:hover {
+        background: var(--kui-color-surface-hover);
+    }
+
+    .kui-message.is-unread {
+        background: color-mix(in srgb, var(--kui-color-primary) 6%, var(--kui-color-surface));
+    }
+
+    .kui-message__body {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .kui-message__title {
+        margin: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 500;
+    }
+
+    .kui-message__text {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.6;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+
+    .kui-message__time {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        white-space: nowrap;
+    }
+
+    /* 任务 */
+    .kui-task {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3);
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            box-shadow var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-task:hover {
+        border-color: var(--kui-color-border);
+        box-shadow: var(--kui-shadow-container);
+    }
+
+    .kui-task.is-done {
+        background: var(--kui-color-surface-muted);
+    }
+
+    .kui-task.is-done .kui-task__title {
+        color: var(--kui-color-text-subtle);
+        text-decoration: line-through;
+    }
+
+    .kui-task__body {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: var(--kui-space-1);
+        min-width: 0;
+    }
+
+    .kui-task__title {
+        margin: 0;
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .kui-task__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--kui-space-2);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-task__check {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        accent-color: var(--kui-color-primary);
+    }
+
+    /* 社交：一条动态就是「作者 + 正文 + 媒体 + 计数 + 操作」 */
+    .kui-feed {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-3);
+    }
+
+    .kui-post {
+        overflow: hidden;
+        border: 1px solid var(--kui-color-border-subtle);
+        border-radius: var(--kui-seed-radius-lg);
+        background: var(--kui-color-surface);
+    }
+
+    .kui-post__head {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-3);
+        padding: var(--kui-space-3) var(--kui-space-4) var(--kui-space-2);
+    }
+
+    .kui-post__author {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;
+    }
+
+    .kui-post__name {
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
+    }
+
+    .kui-post__time {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-post__content {
+        padding: 0 var(--kui-space-4) var(--kui-space-3);
+        margin: 0;
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-control);
+        line-height: 1.75;
+    }
+
+    .kui-post__media {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2px;
+        border-block: 1px solid var(--kui-color-border-subtle);
+    }
+
+    .kui-post__media img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .kui-post__media--single {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kui-post__media--single img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .kui-post__stats {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-4);
+        padding: var(--kui-space-2) var(--kui-space-4);
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .kui-post__actions {
+        display: flex;
+        border-top: 1px solid var(--kui-color-border-subtle);
+    }
+
+    .kui-post__action {
+        display: inline-flex;
+        flex: 1 1 0;
+        align-items: center;
+        justify-content: center;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-2);
+        border: 0;
+        background: transparent;
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+        transition:
+            background-color var(--kui-seed-duration-fast) ease,
+            color var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-post__action:hover {
+        background: var(--kui-color-surface-hover);
+        color: var(--kui-color-primary);
+    }
+
+    .kui-post__action.is-active {
+        color: var(--kui-color-primary);
+    }
+
+    @media (max-width: 40rem) {
+        .kui-list__item {
+            flex-wrap: wrap;
+        }
+
+        .kui-list__aside {
+            align-items: flex-start;
+        }
+
+        .kui-list__actions {
+            opacity: 1;
+        }
+    }
+}

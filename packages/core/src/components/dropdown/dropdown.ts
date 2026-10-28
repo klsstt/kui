@@ -66,7 +66,7 @@ export class Dropdown extends Component<DropdownOptions> {
     }
 
     show(focusMenu = false): void {
-        if (this.isShown() || !this.emitCancelable(['show.kui.dropdown', 'kui:dropdown:show'])) {
+        if (this.isShown() || !this.emit('kui:dropdown:show')) {
             return
         }
 
@@ -82,7 +82,7 @@ export class Dropdown extends Component<DropdownOptions> {
     }
 
     hide(): void {
-        if (!this.isShown() || !this.emitCancelable(['hide.kui.dropdown', 'kui:dropdown:hide'])) {
+        if (!this.isShown() || !this.emit('kui:dropdown:hide')) {
             return
         }
 
@@ -105,12 +105,21 @@ export class Dropdown extends Component<DropdownOptions> {
     }
 
     private bindEvents(): void {
+        this.listen(this.element, 'click', (event) => {
+            // 触发器自身点击始终切换菜单；菜单内的点击交给下面的文档级处理
+            if (event.target instanceof Node && this.menu.contains(event.target)) {
+                return
+            }
+            this.toggle()
+        })
+
         this.listen(this.element, 'keydown', (event) => {
             if(event.key === 'ArrowDown' || event.key === 'ArrowUp') {
                 event.preventDefault()
                 this.show(true)
-                const items = this.getMenuItems()
-                (event.key === 'ArrowUp' ? items.at(-1) : items[0])?.focus()
+                const items: HTMLElement[] = this.getMenuItems()
+                const initialItem = event.key === 'ArrowUp' ? items.at(-1) : items[0]
+                initialItem?.focus()
             } else if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault()
                 this.toggle()
@@ -121,7 +130,7 @@ export class Dropdown extends Component<DropdownOptions> {
         })
 
         this.listen(this.menu, 'keydown', (event) => {
-            const items = this.getMenuItems()
+            const items: HTMLElement[] = this.getMenuItems()
             const activeIndex = items.findIndex((item) => item === document.activeElement)
             let nextIndex: number | null = null
 
@@ -151,7 +160,16 @@ export class Dropdown extends Component<DropdownOptions> {
                     return
                 }
 
-                if (this.element.contains(event.target) || this.menu.contains(event.target)) {
+                if (this.element.contains(event.target)) {
+                    return
+                }
+
+                // 点击菜单项后收起，点击菜单空白处保持展开
+                if (this.menu.contains(event.target)) {
+                    const item = event.target instanceof Element ? event.target.closest<HTMLElement>('[role="menuitem"], a[href], button') : null
+                    if (item) {
+                        this.hide()
+                    }
                     return
                 }
 

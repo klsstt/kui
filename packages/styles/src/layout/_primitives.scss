@@ -24,10 +24,28 @@
         gap: var(--kui-grid-gap, var(--kui-space-4));
     }
 
+    /* 栅格密度：同一套自动布局，只换最小列宽 */
+    .kui-grid--sm { --kui-grid-min: 9rem; }
+    .kui-grid--md { --kui-grid-min: 13rem; }
+    .kui-grid--lg { --kui-grid-min: 18rem; }
+
+    /* 指标行：一行最多四张，容器变窄时自动折行 */
+    .kui-grid--metrics {
+        --kui-grid-min: 11.5rem;
+    }
+
+    .kui-stack--tight { --kui-stack-gap: var(--kui-space-2); }
+    .kui-stack--loose { --kui-stack-gap: var(--kui-space-6); }
+
     .kui-split {
         display: grid;
         grid-template-columns: minmax(0, var(--kui-split-sidebar, 16rem)) minmax(0, 1fr);
         gap: var(--kui-split-gap, var(--kui-space-4));
+    }
+
+    /* 主内容在左、辅助栏在右 */
+    .kui-split--main-first {
+        grid-template-columns: minmax(0, 1fr) minmax(0, var(--kui-split-sidebar, 16rem));
     }
 
     .kui-board {
@@ -40,13 +58,15 @@
     }
 
     @container kui-board (width < 30rem) {
-        .kui-split {
+        .kui-split,
+        .kui-split--main-first {
             grid-template-columns: minmax(0, 1fr);
         }
     }
 
     @media (max-width: 40rem) {
-        .kui-split {
+        .kui-split,
+        .kui-split--main-first {
             grid-template-columns: minmax(0, 1fr);
         }
     }

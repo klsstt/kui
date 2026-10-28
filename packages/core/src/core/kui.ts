@@ -1,8 +1,8 @@
-export type MouseButtonName = 'all' | 'left' | 'middle' | 'right';
+﻿export type MouseButtonName = 'all' | 'left' | 'middle' | 'right';
 
-export interface LegacyKuiStore {
+export interface KuiStoreFacade {
     enable: boolean;
-    slience: boolean;
+    silent: boolean;
     page: Record<string, unknown>;
     pageSave(): void;
     pageRemove(key: string): void;
@@ -11,15 +11,15 @@ export interface LegacyKuiStore {
     pageSet(objOrKey: Record<string, unknown> | string, val?: unknown): void;
     check(): boolean;
     length(): number;
-    removeItem(key: string): LegacyKuiStore;
-    remove(key: string): LegacyKuiStore;
+    removeItem(key: string): KuiStoreFacade;
+    remove(key: string): KuiStoreFacade;
     getItem(key: string): string | null;
     get<TValue>(key: string, defaultValue?: TValue): TValue | unknown;
     key(index: number): string | null;
-    setItem(key: string, val: string): LegacyKuiStore;
-    set(key: string, val: unknown): LegacyKuiStore;
-    clear(): LegacyKuiStore;
-    forEach(callback: (key: string, val: unknown) => void): LegacyKuiStore;
+    setItem(key: string, val: string): KuiStoreFacade;
+    set(key: string, val: unknown): KuiStoreFacade;
+    clear(): KuiStoreFacade;
+    forEach(callback: (key: string, val: unknown) => void): KuiStoreFacade;
     getAll(): Record<string, unknown>;
     serialize(value: unknown): string;
     deserialize(value: unknown): unknown;
@@ -48,7 +48,7 @@ export function callEvent<TEvent extends {result?: unknown}>(
 
 export function clientLang(): string {
     const configured = typeof window === 'undefined' ? undefined : (window as Window & {config?: {clientLang?: string}}).config?.clientLang;
-    const htmlLang = typeof document === 'undefined' ? undefined : navigator as Navigator & { userLanguage?: string};
+    const htmlLang = typeof document === 'undefined' ? undefined : document.documentElement.lang;
     const nav = typeof navigator === 'undefined' ? undefined : navigator as Navigator & { userLanguage?: string};
     return (configured || htmlLang || nav?.userLanguage || nav?.language || 'zh-CN').replace('-','_').toLowerCase();
 }
@@ -68,9 +68,9 @@ export function getMouseButtonCode(mouseButton: MouseButtonName|number|undefined
     return mouseButton ? buttonMap[mouseButton] : -1;
 }
 
-export class Store implements LegacyKuiStore {
+export class Store implements KuiStoreFacade {
     enable = false;
-    slience = true;
+    silent = true;
     page: Record<string, unknown> ;
 
     private readonly storage: StorageLike;
@@ -120,7 +120,7 @@ export class Store implements LegacyKuiStore {
     }
 
     check(): boolean {
-        if(!this.enable && !this.slience){
+        if(!this.enable && !this.silent){
             throw new Error('Browser does not support localStorage or store is not enabled')
         }
         return this.enable;
@@ -130,12 +130,14 @@ export class Store implements LegacyKuiStore {
         return this.storage.length;
     }
 
-    removeItem(key: string): LegacyKuiStore {
-        return  this.storage.removeItem(key);
+    removeItem(key: string): KuiStoreFacade {
+        this.storage.removeItem(key);
+        return this;
     }
 
-    remove(key: string): LegacyKuiStore {
-        return this.storage.removeItem(key);
+    remove(key: string): KuiStoreFacade {
+        this.storage.removeItem(key);
+        return this;
     }
 
     getItem(key: string): string | null {
@@ -154,11 +156,12 @@ export class Store implements LegacyKuiStore {
         return this.storage.key(index);
     }
 
-    setItem(key: string, val: string): LegacyKuiStore {
-        return this.storage.setItem(key, val);
+    setItem(key: string, val: string): KuiStoreFacade {
+        this.storage.setItem(key, val);
+        return this;
     }
 
-    set(key: string, val: unknown): LegacyKuiStore {
+    set(key: string, val: unknown): KuiStoreFacade {
         if(typeof val === 'undefined'){
             return this.remove(key);
         }
@@ -166,11 +169,12 @@ export class Store implements LegacyKuiStore {
         return this;
     }
 
-    clear(): LegacyKuiStore {
-        return this.storage.clear();
+    clear(): KuiStoreFacade {
+        this.storage.clear();
+        return this;
     }
 
-    forEach(callback: (key: string, val: unknown) => void): LegacyKuiStore {
+    forEach(callback: (key: string, val: unknown) => void): KuiStoreFacade {
         for (let index = this.length() - 1; index >= 0; index-=1) {
             const key = this.storage.key(index);
             if(key){
@@ -199,7 +203,7 @@ export class Store implements LegacyKuiStore {
 
         try{
             return JSON.parse(value);
-        }catch(e){
+        }catch{
             return value||undefined;
         }
     }

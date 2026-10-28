@@ -1,0 +1,87 @@
+@layer kui.components {
+    /* 缎带：贴在容器角落的状态标记，只占用角上一小块，不遮挡主内容 */
+    .kui-ribbon {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .kui-ribbon__corner {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        width: 92px;
+        height: 92px;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .kui-ribbon__corner > span {
+        position: absolute;
+        inset-block-start: 18px;
+        inset-inline-end: -30px;
+        width: 128px;
+        padding-block: 4px;
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-align: center;
+        transform: rotate(45deg);
+        box-shadow: var(--kui-shadow-component);
+    }
+
+    .kui-ribbon__corner > span.is-success { background: var(--kui-color-success); color: var(--kui-color-on-primary); }
+    .kui-ribbon__corner > span.is-warning { background: var(--kui-color-warning); color: var(--kui-color-on-primary); }
+    .kui-ribbon__corner > span.is-danger { background: var(--kui-color-danger); color: var(--kui-color-on-primary); }
+    .kui-ribbon__corner > span.is-neutral {
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+    }
+
+    /* 顶部条幅：适合表达「推荐 / 已归档 / 草稿」等整体状态 */
+    .kui-ribbon__bar {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        padding: var(--kui-space-1) var(--kui-space-4);
+        background: color-mix(in srgb, var(--kui-color-primary) 10%, var(--kui-color-surface));
+        border-bottom: 1px solid color-mix(in srgb, var(--kui-color-primary) 24%, transparent);
+        color: var(--kui-color-primary);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 500;
+    }
+
+    .kui-ribbon__bar.is-success {
+        border-bottom-color: color-mix(in srgb, var(--kui-color-success) 26%, transparent);
+        background: color-mix(in srgb, var(--kui-color-success) 10%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-success) 82%, var(--kui-color-text));
+    }
+
+    .kui-ribbon__bar.is-warning {
+        border-bottom-color: color-mix(in srgb, var(--kui-color-warning) 28%, transparent);
+        background: color-mix(in srgb, var(--kui-color-warning) 12%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-warning) 80%, var(--kui-color-text));
+    }
+
+    .kui-ribbon__bar.is-danger {
+        border-bottom-color: color-mix(in srgb, var(--kui-color-danger) 26%, transparent);
+        background: color-mix(in srgb, var(--kui-color-danger) 10%, var(--kui-color-surface));
+        color: color-mix(in srgb, var(--kui-color-danger) 84%, var(--kui-color-text));
+    }
+
+    /* 侧边飘带：竖排贴在容器左侧，不旋转、不越界 */
+    .kui-ribbon__side {
+        position: absolute;
+        top: var(--kui-space-4);
+        left: 0;
+        padding: var(--kui-space-2) 5px;
+        border-radius: 0 var(--kui-seed-radius-sm) var(--kui-seed-radius-sm) 0;
+        background: var(--kui-color-text);
+        color: var(--kui-color-surface);
+        font-size: var(--kui-font-size-component-label);
+        letter-spacing: 0.14em;
+        line-height: 1;
+        writing-mode: vertical-rl;
+    }
+}

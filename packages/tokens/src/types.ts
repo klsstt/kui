@@ -15,8 +15,10 @@ export interface KuiSeedTokens {
     radiusSm: string
     radiusMd: string
     radiusLg: string
+    radiusXl: string
     shadowSm: string
     shadowMd: string
+    shadowLg: string
     durationFast: string
     durationBase: string
 }
@@ -44,6 +46,7 @@ export interface KuiFoundationTokens {
     shadowDropdown: string
     shadowSm: string
     shadowMd: string
+    shadowLg: string
     space1: string
     space2: string
     space3: string
@@ -69,12 +72,17 @@ export interface KuiSemanticTokens {
     colorBackground: string
     colorSurface: string
     colorSurfaceMuted: string
+    colorSurfaceHover: string
+    colorOnPrimary: string
     colorText: string
     colorTextMuted: string
     colorTextSubtle: string
     colorBorder: string
     colorBorderSubtle: string
     colorFocusRing: string
+    colorOverlay: string
+    colorCodeSurface: string
+    colorCodeText: string
 }
 
 export interface KuiComponentTokens {

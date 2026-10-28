@@ -62,7 +62,7 @@ export class ContextMenu extends Component<ContextMenuOptions> {
         }
 
         const menu = this.getMenu()
-        if (!menu || !this.emitCancelable(['show.kui.context', 'kui:contextmenu:show'], { event })) {
+        if (!menu || !this.emit('kui:contextmenu:show', { event })) {
             return
         }
 
@@ -174,7 +174,7 @@ export class ContextMenu extends Component<ContextMenuOptions> {
                 return
             }
             const items = this.getItems()
-            const current = document.activeElement instanceof HTMLElement ? items.indexof(document.activeElement) : -1
+            const current = document.activeElement instanceof HTMLElement ? items.indexOf(document.activeElement) : -1
             let next = current
             if (event.key === 'Escape') {
                 event.preventDefault()

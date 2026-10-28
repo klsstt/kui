@@ -18,7 +18,7 @@ export function flattenThemeTokens(tokens: KuiThemeTokens): Record<string, strin
         ...flattenTokenGroup('seed', tokens.seed),
         ...flattenTokenGroup('', tokens.foundation),
         ...flattenTokenGroup('', tokens.semantic),
-        ...flattenTokenGroup('components', tokens.components),
+        ...flattenTokenGroup('component', tokens.components),
     }
 }
 

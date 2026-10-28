@@ -1,13 +1,21 @@
 @layer kui.components {
     .colorpicker {
-        display: inline-block;
+        display: inline-flex;
         position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--kui-space-1);
     }
 
     .colorpicker .dropdown-menu {
+        /* 色板常驻展示：走文档流，避免在窄屏盖住下面的说明文字 */
+        position: static;
+        z-index: var(--kui-layer-dropdown);
         display:flex;
         flex-wrap:wrap;
         gap:2px;
+        max-height: 13rem;
+        overflow: auto;
         margin: 4px 0 0;
         padding: 4px;
         border: 1px solid var(--kui-color-border);

@@ -2,22 +2,24 @@
 
 @layer kui.tokens {
   :root {
-    --kui-seed-color-brand: #2780e3;
-    --kui-seed-color-success: #38b03f;
-    --kui-seed-color-warning: #f1a325;
-    --kui-seed-color-danger: #ea644a;
+    --kui-seed-color-brand: #1d4ed8;
+    --kui-seed-color-success: #15803d;
+    --kui-seed-color-warning: #b45309;
+    --kui-seed-color-danger: #dc2626;
     --kui-seed-color-neutral-0: #ffffff;
-    --kui-seed-color-neutral-50: #f7f8fa;
-    --kui-seed-color-neutral-100: #f1f3f5;
-    --kui-seed-color-neutral-300: #d9dde3;
-    --kui-seed-color-neutral-500: #8a96a3;
-    --kui-seed-color-neutral-700: #3f4652;
-    --kui-seed-color-neutral-900: #1f2733;
+    --kui-seed-color-neutral-50: #f7f9fc;
+    --kui-seed-color-neutral-100: #eef2f7;
+    --kui-seed-color-neutral-300: #cfd8e3;
+    --kui-seed-color-neutral-500: #5b6b7f;
+    --kui-seed-color-neutral-700: #334155;
+    --kui-seed-color-neutral-900: #0f172a;
     --kui-seed-radius-sm: 2px;
     --kui-seed-radius-md: 4px;
     --kui-seed-radius-lg: 6px;
-    --kui-seed-shadow-sm: 0 2px 8px rgba(31, 39, 51, 0.12),
-    --kui-seed-shadow-md: 0 8px 24px rgba(31, 39, 51, 0.1),
+    --kui-seed-radius-xl: 10px;
+    --kui-seed-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.12);
+    --kui-seed-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.1);
+    --kui-seed-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.14);
     --kui-seed-duration-fast: 120ms;
     --kui-seed-duration-base: 180ms;
 
@@ -38,12 +40,13 @@
     --kui-layer-modal: 1080;
     --kui-layer-drawer: 1088;
     --kui-layer-toast: 1090;
-    --kui-shadow-container: 0 1px 2px rgba(31, 39, 51, 0.04);
+    --kui-shadow-container: 0 1px 2px rgba(15, 23, 42, 0.04);
     --kui-shadow-panel: var(--kui-shadow-sm);
-    --kui-shadow-component: 0 1px 2px rgba(31, 39, 51, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    --kui-shadow-component: 0 1px 2px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.72);
     --kui-shadow-dropdown: var(--kui-seed-shadow-md);
     --kui-shadow-sm: var(--kui-seed-shadow-sm);
     --kui-shadow-md: var(--kui-seed-shadow-md);
+    --kui-shadow-lg: var(--kui-seed-shadow-lg);
 
     --kui-space-1: 4px;
     --kui-space-2: 8px;
@@ -58,20 +61,25 @@
     --kui-motion-duration-base: var(--kui-seed-duration-base);
 
     --kui-color-primary: var(--kui-seed-color-brand);
-    --kui-color-primary-hover: #1b6ec2;
+    --kui-color-primary-hover: #1e40af;
     --kui-color-success: var(--kui-seed-color-success);
     --kui-color-warning: var(--kui-seed-color-warning);
     --kui-color-danger: var(--kui-seed-color-danger);
-    --kui-color-info: #3aa6c8;
+    --kui-color-info: #0e7490;
     --kui-color-background: var(--kui-seed-color-neutral-50);
     --kui-color-surface: var(--kui-seed-color-neutral-0);
     --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-surface-hover: #f1f5f9;
+    --kui-color-on-primary: #ffffff;
     --kui-color-text: var(--kui-seed-color-neutral-900);
     --kui-color-text-muted: var(--kui-seed-color-neutral-700);
     --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
     --kui-color-border: var(--kui-seed-color-neutral-300);
-    --kui-color-border-subtle: #e8edf2;
-    --kui-color-focus-ring: rgba(39, 128, 227, 0.28);
+    --kui-color-border-subtle: #e6ecf3;
+    --kui-color-focus-ring: rgba(29, 78, 216, 0.28);
+    --kui-color-overlay: rgba(15, 23, 42, 0.48);
+    --kui-color-code-surface: #0f172a;
+    --kui-color-code-text: #e2e8f0;
     --kui-focus-ring-width: 3px;
     --kui-focus-ring-offset: 2px;
 
@@ -84,15 +92,263 @@
     --kui-component-collapse-duration: var(--kui-seed-duration-base);
   }
 
+  /* 12 个色系主题：id 与 colorPalette 一致，品牌色取该色系 600、悬停取 700。
+     每个块都重声明语义色与背景/文字派生，容器级主题也能整体生效。 */
+
   [data-kui-theme='blue'] {
-    --kui-seed-color-brand:#2780e3;
-    --kui-color-primary-hover: #1b6ec2;
-    --kui-color-focus-ring: rgba(39, 128, 227, 0.28);
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #2563eb;
+    --kui-color-primary-hover: #1d4ed8;
+    --kui-color-focus-ring: rgba(147, 197, 253, 0.6);
+  }
+
+  [data-kui-theme='indigo'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #4f46e5;
+    --kui-color-primary-hover: #4338ca;
+    --kui-color-focus-ring: rgba(165, 180, 252, 0.6);
+  }
+
+  [data-kui-theme='violet'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #7c3aed;
+    --kui-color-primary-hover: #6d28d9;
+    --kui-color-focus-ring: rgba(196, 181, 253, 0.6);
+  }
+
+  [data-kui-theme='purple'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #9333ea;
+    --kui-color-primary-hover: #7e22ce;
+    --kui-color-focus-ring: rgba(216, 180, 254, 0.6);
+  }
+
+  [data-kui-theme='pink'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #db2777;
+    --kui-color-primary-hover: #be185d;
+    --kui-color-focus-ring: rgba(249, 168, 212, 0.6);
+  }
+
+  [data-kui-theme='red'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #dc2626;
+    --kui-color-primary-hover: #b91c1c;
+    --kui-color-focus-ring: rgba(252, 165, 165, 0.6);
+  }
+
+  [data-kui-theme='orange'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    /* 橙色底上白字仅 3.56:1，改用深色文字 */
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-brand: #ea580c;
+    --kui-color-primary-hover: #c2410c;
+    --kui-color-focus-ring: rgba(253, 186, 116, 0.6);
+  }
+
+  [data-kui-theme='amber'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    /* 琥珀色是浅底，白字仅 3.19:1，改用深色文字 */
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-brand: #d97706;
+    --kui-color-primary-hover: #b45309;
+    --kui-color-focus-ring: rgba(252, 211, 77, 0.6);
   }
 
   [data-kui-theme='green'] {
-    --kui-seed-color-brand:#2e9d63;
-    --kui-color-primary-hover: #23784d;
-    --kui-color-focus-ring: rgba(46, 157, 99, 0.28);
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    /* 绿色 600 上白字仅 3.30:1，改用深色文字 */
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-brand: #16a34a;
+    --kui-color-primary-hover: #15803d;
+    --kui-color-focus-ring: rgba(134, 239, 172, 0.6);
+  }
+
+  [data-kui-theme='teal'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    /* 青绿 600 上白字仅 3.74:1，改用深色文字 */
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-brand: #0d9488;
+    --kui-color-primary-hover: #0f766e;
+    --kui-color-focus-ring: rgba(94, 234, 212, 0.6);
+  }
+
+  [data-kui-theme='cyan'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    /* 青 600 上白字仅 3.68:1，改用深色文字 */
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-brand: #0891b2;
+    --kui-color-primary-hover: #0e7490;
+    --kui-color-focus-ring: rgba(103, 232, 249, 0.6);
+  }
+
+  [data-kui-theme='slate'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-seed-color-brand: #475569;
+    --kui-color-primary-hover: #334155;
+    --kui-color-focus-ring: rgba(203, 213, 225, 0.6);
+  }
+
+  [data-kui-theme='dark'] {
+    --kui-color-primary: var(--kui-seed-color-brand);
+    --kui-color-success: var(--kui-seed-color-success);
+    --kui-color-warning: var(--kui-seed-color-warning);
+    --kui-color-danger: var(--kui-seed-color-danger);
+    --kui-color-background: var(--kui-seed-color-neutral-50);
+    --kui-color-surface: var(--kui-seed-color-neutral-0);
+    --kui-color-surface-muted: var(--kui-seed-color-neutral-100);
+    --kui-color-text: var(--kui-seed-color-neutral-900);
+    --kui-color-text-muted: var(--kui-seed-color-neutral-700);
+    --kui-color-text-subtle: var(--kui-seed-color-neutral-500);
+    --kui-color-border: var(--kui-seed-color-neutral-300);
+
+    --kui-color-on-primary: #0b1220;
+    --kui-seed-color-neutral-0: #111b2c;
+    --kui-seed-color-neutral-50: #080e19;
+    --kui-seed-color-neutral-100: #172233;
+    --kui-seed-color-neutral-300: #2b3a52;
+    --kui-seed-color-neutral-500: #8fa1bb;
+    --kui-seed-color-neutral-700: #c9d5e4;
+    --kui-seed-color-neutral-900: #f4f8ff;
+    --kui-seed-color-brand: #60a5fa;
+    --kui-color-primary-hover: #93c5fd;
+    --kui-color-focus-ring: rgba(96, 165, 250, 0.4);
+    --kui-color-border-subtle: #1e2b3f;
+    --kui-color-surface-hover: #1a2639;
+    --kui-color-overlay: rgba(3, 7, 14, 0.62);
+    --kui-color-code-surface: #020617;
+    --kui-color-code-text: #e2e8f0;
   }
 }

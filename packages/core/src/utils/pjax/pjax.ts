@@ -90,7 +90,7 @@ export async function runPjax(options: PjaxOptions): Promise<string> {
     }
 }
 
-export function pjaxClick(eventOrLink: Event | HTMLAnchorElement, options?: PjaxOptions = {}): Promise<string> {
+export function pjaxClick(eventOrLink: Event | HTMLAnchorElement, options: PjaxOptions = {}): Promise<string> {
     const event = eventOrLink instanceof Event ? eventOrLink : undefined
     const link = event ? closestAnchor(event.target) : eventOrLink instanceof HTMLAnchorElement ? eventOrLink : null
     if(!link){
@@ -100,7 +100,7 @@ export function pjaxClick(eventOrLink: Event | HTMLAnchorElement, options?: Pjax
     event?.preventDefault()
     return runPjax({
         container: link.getAttribute('data-pjax') || options.container,
-        fragement: link.getAttribute('data-fragment') || options.fragement,
+        fragment: link.getAttribute('data-fragment') || options.fragment,
         url: link.href,
         ...options,
     })
@@ -132,7 +132,7 @@ export function pjaxReload(container?: Element | string, options: PjaxOptions = 
     })
 }
 
-export function defaultFetcher(url: string, init: RequestInit): Promise<string> {
+export async function defaultFetcher(url: string, init: RequestInit): Promise<string> {
     const response = await fetch(url, init)
     if (!response.ok) {
         throw new Error(`KUI pjax request failed with status ${response.status}`)

@@ -26,6 +26,34 @@
         align-items: center;
     }
 
+    /* 可关闭标签：标题与关闭合成同一颗胶囊，不再像两个独立按钮 */
+    .kui-tabs__item:has(.close) {
+        gap: 0;
+        padding: 0 4px 0 2px;
+        border: 1px solid transparent;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
+    }
+
+    .kui-tabs__item:has(.close) > a,
+    .kui-tabs__item:has(.close) > button:not(.close) {
+        padding: 6px 4px 6px 10px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .kui-tabs__item:has(.close).active {
+        border-color: var(--kui-color-border);
+        background: var(--kui-color-surface-muted);
+    }
+
+    .kui-tabs__item:has(.close).active > a,
+    .kui-tabs__item:has(.close).active > button:not(.close) {
+        border: 0;
+        background: transparent;
+    }
+
     .kui-tabs__item > a,
     .kui-tabs__item > button {
         display: inline-flex;
@@ -46,16 +74,37 @@
     .kui-tabs__item > button.active {
         border-color: var(--kui-color-border);
         border-radius: calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) calc(var(--kui-tab-active-radius) + var(--kui-tab-active-radius-offset)) 0 0;
-        background: var(--kui-color-bg-muted);
+        background: var(--kui-color-surface-muted);
         color: var(--kui-color-primary);
     }
 
     .kui-tabs__item .close {
+        display: inline-grid;
+        width: 16px;
+        height: 16px;
+        place-items: center;
+        padding: 0;
         border: 0;
+        border-radius: 999px;
         background: transparent;
         color: inherit;
         cursor: pointer;
-        font: inherit;
+        font-size: 9px;
+        line-height: 1;
+        opacity: 0.55;
+    }
+
+    .kui-tabs__item .close:hover {
+        background: transparent;
+        color: var(--kui-color-primary);
+    }
+
+    /* 关闭按钮是胶囊内部的操作，不继承触发器内边距与圆角 */
+    .kui-tabs__item:has(.close) > button.close {
+        padding: 0;
+        border: 0;
+        border-radius: var(--kui-seed-radius-sm);
+        background: transparent;
     }
 
     .kui-iframe-tabs__content,

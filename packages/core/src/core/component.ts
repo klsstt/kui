@@ -1,6 +1,5 @@
 import { getElement, type ElementTarget } from './dom/elements';
 import {
-    emitCancelableKuiEvent,
     emitKuiEvent,
     on,
     type EventDisposer,
@@ -32,13 +31,6 @@ export abstract class Component<TOptions extends object = Record<string, never>>
 
     protected emit<TDetail>(name: string, payload?: TDetail): boolean {
         return emitKuiEvent(this.element, name, this.createEventDetail(payload));
-    }
-
-    protected emitCancelable<TDetail>(
-        names: readonly [legacyName: string, modernName: string],
-        payload?: TDetail,
-    ): boolean {
-        return emitCancelableKuiEvent(this.element, names, this.createEventDetail(payload));
     }
 
     dispose(): void {

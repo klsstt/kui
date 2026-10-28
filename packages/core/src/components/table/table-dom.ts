@@ -21,7 +21,7 @@ export function readStaticTableData(table: HTMLTableElement): { columns: TableCo
         return columns.reduce<TableRow>((record, column, index) => {
             record[column.field] = cells[index]?.textContent?.trim() ?? ''
             return record
-        }, [])
+        }, {})
     })
     return { columns, data }
 }

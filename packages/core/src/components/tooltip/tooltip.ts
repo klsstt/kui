@@ -62,7 +62,7 @@ export class Tooltip extends Component<TooltipOptions> {
     }
 
     show(): boolean {
-        if (!this.enabled || !this.hasContent() || !this.emitCancelable(['show.kui.tooltip', 'kui:tooptip:show'])) {
+        if (!this.enabled || !this.hasContent() || !this.emit('kui:tooltip:show')) {
             return false
         }
 
@@ -83,7 +83,7 @@ export class Tooltip extends Component<TooltipOptions> {
     }
 
     hide(): boolean {
-        if (!this.tipElement?.isConnected || !this.emitCancelable(['hide.kui.tooltip', 'kui:tooptip:hide'])) {
+        if (!this.tipElement?.isConnected || !this.emit('kui:tooltip:hide')) {
             return false
         }
 

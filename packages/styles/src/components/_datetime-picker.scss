@@ -17,8 +17,37 @@
 
     .datetimepicker-actions {
         display: flex;
-        gap: 6px;
-        margin-top: 6px;
+        gap: var(--kui-space-1);
+        padding-top: var(--kui-space-2);
+        margin-top: var(--kui-space-2);
+        border-top: 1px solid var(--kui-color-border-subtle);
+    }
+
+    .datetimepicker-actions button {
+        min-height: 26px;
+        padding: 0 var(--kui-space-2);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-sm);
+        background: var(--kui-color-surface);
+        color: var(--kui-color-text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: var(--kui-font-size-component-label);
+    }
+
+    .datetimepicker-actions button:hover {
+        border-color: var(--kui-color-primary);
+        color: var(--kui-color-primary);
+    }
+
+    .datetimepicker-actions [data-kui-datetime-action='cancel'] {
+        margin-left: auto;
+    }
+
+    .datetimepicker-actions button.is-primary {
+        border-color: var(--kui-color-primary);
+        background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
     }
 
     @media (forced-colors: active) {

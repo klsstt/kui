@@ -53,18 +53,3 @@ export function emitKuiEvent<TDetail>(
 
    return target.dispatchEvent(event);
 }
-
-export function emitCancelableKuiEvent<TDetail>(
-    element: HTMLElement,
-    names: readonly [legacyName: string, modernName: string],
-    detail: KuiEventDetail<TDetail>,
-): boolean{
-    return names.every((name) => {
-        const event = new CustomEvent<KuiEventDetail<TDetail>>(name, {
-            bubbles: true,
-            cancelable: true,
-            detail,
-        });
-        return element.dispatchEvent(event);
-    })
-}

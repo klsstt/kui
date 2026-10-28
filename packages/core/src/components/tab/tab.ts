@@ -26,7 +26,7 @@ export class Tab extends Component<TabOptions> {
         paneActiveClass: 'active'
     }
 
-    private constructor(element: HTMLElement, options: Prtial<TabOptions> = {}) {
+    private constructor(element: HTMLElement, options: Partial<TabOptions> = {}) {
         super(element, Tab.componentName, mergeOptions(Tab.defaults, options))
         applyTabActiveRadiusStyles(this.element, this.options)
         this.configureAccessibility()
@@ -52,11 +52,11 @@ export class Tab extends Component<TabOptions> {
         ) ?? null
         const payload: TabEventPayload = { previousTab, targetPane }
 
-        if(!this.emitCancelable(['show.kui.tab', 'kui:tab:show'], payload))
+        if(!this.emit('kui:tab:show', payload))
             return
 
         this.deactivalCurrentTab(tabList)
-        this.activateTab(listItem)                                                                                                                                                                                                                                                                                                                                                         )
+        this.activateTab(listItem)
         this.activatePane(targetPane)
         this.syncTabStops(tabList)
         this.emit('kui:tab:shown', payload)
@@ -104,6 +104,8 @@ export class Tab extends Component<TabOptions> {
         triggers.forEach((trigger, index) => {
             trigger.id ||= `kui-tab-${index + 1}-${getSelectorFromElement(trigger)?.replace(/^#/, '') ?? 'item'}`
             trigger.setAttribute('role', 'tab')
+            // tablist 的直接子元素必须是 tab 或 presentation，中间的 li 只承担布局
+            trigger.closest('li')?.setAttribute('role', 'presentation')
             const paneSelector = getSelectorFromElement(trigger)
             const pane = paneSelector ? document.querySelector<HTMLElement>(paneSelector) : null
             if (pane) {

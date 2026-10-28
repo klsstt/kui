@@ -1,0 +1,275 @@
+@layer kui.components {
+    /* 组织关系：竖向为树，横向为缩进树；节点用层级色区分 */
+    .kui-org-chart,
+    .kui-org-chart__level {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .kui-org-chart {
+        position: relative;
+        overflow: auto;
+        padding: var(--kui-space-2);
+    }
+
+    .kui-org-chart__lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        overflow: visible;
+        pointer-events: none;
+    }
+
+    .kui-org-chart__level {
+        position: relative;
+        z-index: 1;
+    }
+
+    .kui-org-chart__level {
+        display: flex;
+        justify-content: center;
+        gap: var(--kui-space-4);
+    }
+
+    .kui-org-chart__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: var(--kui-space-6);
+    }
+
+    .kui-org-chart__item > .kui-org-chart__level {
+        position: relative;
+    }
+
+    .kui-org-chart > .kui-org-chart__level > .kui-org-chart__item {
+        padding-top: 0;
+    }
+
+    /* 连接线：父节点底部先落 12px 竖线，再横向分叉，各子节点再向下连 12px */
+    .kui-org-chart__level > .kui-org-chart__item::after,
+    .kui-org-chart__level > .kui-org-chart__item.is-svg-lines::after {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-org-chart__level > .kui-org-chart__item::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: var(--kui-space-5);
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-org-chart__item > .kui-org-chart__level::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 12px;
+        background: var(--kui-color-border);
+        content: '';
+    }
+
+    .kui-org-chart > .kui-org-chart__level::before {
+        display: none;
+    }
+
+    .kui-org-chart__level > .kui-org-chart__item:first-child::after {
+        left: 50%;
+    }
+
+    .kui-org-chart__level > .kui-org-chart__item:last-child::after {
+        right: 50%;
+    }
+
+    .kui-org-chart__level > .kui-org-chart__item:only-child::after {
+        display: none;
+    }
+
+    .kui-org-chart > .kui-org-chart__level > .kui-org-chart__item::before,
+    .kui-org-chart > .kui-org-chart__level > .kui-org-chart__item::after {
+        display: none;
+    }
+
+    .kui-org-chart__node {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-2);
+        min-width: 9.5rem;
+        padding: var(--kui-space-2) var(--kui-space-3);
+        border: 1px solid var(--kui-color-border);
+        border-radius: var(--kui-seed-radius-md);
+        background: var(--kui-color-surface);
+        box-shadow: var(--kui-shadow-container);
+        cursor: pointer;
+        transition:
+            border-color var(--kui-seed-duration-fast) ease,
+            box-shadow var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-org-chart__node:hover {
+        border-color: var(--kui-color-primary);
+        box-shadow: var(--kui-shadow-sm);
+    }
+
+    .kui-org-chart__node:focus-visible {
+        outline: var(--kui-focus-ring-width) solid var(--kui-color-focus-ring);
+        outline-offset: var(--kui-focus-ring-offset);
+    }
+
+    .kui-org-chart__avatar {
+        display: grid;
+        flex: 0 0 auto;
+        width: 26px;
+        height: 26px;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--kui-color-surface-muted);
+        color: var(--kui-color-text-muted);
+        font-size: var(--kui-font-size-component-label);
+        font-weight: 600;
+    }
+
+    .kui-org-chart__avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        object-fit: cover;
+    }
+
+    .kui-org-chart__info {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;
+    }
+
+    .kui-org-chart__info strong {
+        color: var(--kui-color-text);
+        font-size: var(--kui-font-size-component-control);
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .kui-org-chart__info small {
+        color: var(--kui-color-text-subtle);
+        font-size: var(--kui-font-size-component-label);
+        line-height: 1.4;
+    }
+
+    /* 层级色：一级主干、二级职能、三级执行 */
+    .kui-org-chart__item[data-org-level='1'] .kui-org-chart__node {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 48%, transparent);
+        box-shadow: inset 3px 0 0 var(--kui-color-primary), var(--kui-shadow-container);
+    }
+
+    .kui-org-chart__item[data-org-level='2'] .kui-org-chart__node {
+        box-shadow: inset 3px 0 0 color-mix(in srgb, var(--kui-color-primary) 40%, transparent), var(--kui-shadow-container);
+    }
+
+    .kui-org-chart__item[data-org-level='3'] .kui-org-chart__node {
+        box-shadow: inset 3px 0 0 var(--kui-color-border), var(--kui-shadow-container);
+    }
+
+    .kui-org-chart__node.is-primary {
+        border-color: color-mix(in srgb, var(--kui-color-primary) 48%, transparent);
+        background: color-mix(in srgb, var(--kui-color-primary) 6%, var(--kui-color-surface));
+    }
+
+    .kui-org-chart__node.is-success {
+        border-color: color-mix(in srgb, var(--kui-color-success) 44%, transparent);
+        background: color-mix(in srgb, var(--kui-color-success) 6%, var(--kui-color-surface));
+    }
+
+    .kui-org-chart__node.is-warning {
+        border-color: color-mix(in srgb, var(--kui-color-warning) 46%, transparent);
+        background: color-mix(in srgb, var(--kui-color-warning) 8%, var(--kui-color-surface));
+    }
+
+    .kui-org-chart__node.is-danger {
+        border-color: color-mix(in srgb, var(--kui-color-danger) 44%, transparent);
+        background: color-mix(in srgb, var(--kui-color-danger) 6%, var(--kui-color-surface));
+    }
+
+    .kui-org-chart__chevron {
+        flex: 0 0 auto;
+        margin-left: auto;
+        color: var(--kui-color-text-subtle);
+        font-size: 11px;
+        transition: transform var(--kui-seed-duration-fast) ease;
+    }
+
+    .kui-org-chart__node.is-collapsed .kui-org-chart__chevron {
+        transform: rotate(-90deg);
+    }
+
+    .kui-org-chart__item[data-org-collapsed='true'] > .kui-org-chart__level {
+        display: none;
+    }
+
+    /* 横向：子级向右展开，用左侧导轨表达归属 */
+    .kui-org-chart--horizontal .kui-org-chart__level {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: var(--kui-space-2);
+    }
+
+    .kui-org-chart--horizontal .kui-org-chart__item {
+        flex-direction: row;
+        align-items: center;
+        align-self: flex-start;
+        padding-top: 0;
+    }
+
+    .kui-org-chart--horizontal .kui-org-chart__item > .kui-org-chart__level {
+        padding-left: var(--kui-space-5);
+        margin-left: var(--kui-space-4);
+        border-left: 0;
+    }
+
+    .kui-org-chart--horizontal .kui-org-chart__item > .kui-org-chart__level > .kui-org-chart__item::before {
+        top: 50%;
+        left: calc(var(--kui-space-5) * -1);
+        width: var(--kui-space-4);
+        height: 1px;
+        transform: translateY(-50%);
+    }
+
+    .kui-org-chart--horizontal .kui-org-chart__item > .kui-org-chart__level > .kui-org-chart__item::after {
+        display: none;
+    }
+
+
+    @media (max-width: 48rem) {
+        .kui-org-chart__level {
+            gap: var(--kui-space-2);
+        }
+
+        .kui-org-chart__node {
+            min-width: 7.5rem;
+        }
+    }
+}
+
+@layer kui.components {
+    /* 连接线统一交给 SVG，避免伪元素在换行与折叠时断裂 */
+    .kui-org-chart__level > .kui-org-chart__item::before,
+    .kui-org-chart__level > .kui-org-chart__item::after,
+    .kui-org-chart__item > .kui-org-chart__level::before {
+        display: none;
+    }
+}
