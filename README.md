@@ -81,4 +81,4 @@ Chrome / Edge ≥ 111、Firefox ≥ 113、Safari ≥ 16.4（需要 Cascade Layer
 
 ## 许可
 
-MIT
+EPL
