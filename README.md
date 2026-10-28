@@ -75,6 +75,10 @@ scripts           构建与校验脚本
 tests             单元测试与 E2E
 ```
 
+## 开发工具与临时文件
+正是构建，审计和效验工具放在`script/`.
+`npm run hygiene:check` 检查放错目录的 tmp-* 文件
+
 ## 浏览器支持
 
 Chrome / Edge ≥ 111、Firefox ≥ 113、Safari ≥ 16.4（需要 Cascade Layers 与容器查询）。
