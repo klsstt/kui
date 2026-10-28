@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Private workspace for KUI libraries and the Admin showcase application.",
   "private": true,
-  "license": "MIT",
+  "license": "EPL",
   "type": "module",
   "workspaces": [
     "packages/*"
