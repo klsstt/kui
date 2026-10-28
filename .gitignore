@@ -48,4 +48,4 @@ test-results
 playwright-report
 
 dist-demo
-lint-output.txt
+*.txt
