@@ -39,7 +39,7 @@
         border-radius: 999px;
         background: var(--kui-color-border);
         box-shadow: 0 0 0 1px var(--kui-color-border);
-        color: var(--kui-color-on-primary);
+        color: var(--kui-color-text);
         font-size: 8px;
     }
 
@@ -50,21 +50,25 @@
 
     .kui-timeline__item.is-primary .kui-timeline__dot {
         background: var(--kui-color-primary);
+        color: var(--kui-color-on-primary);
         box-shadow: 0 0 0 1px var(--kui-color-primary);
     }
 
     .kui-timeline__item.is-success .kui-timeline__dot {
         background: var(--kui-color-success);
+        color: var(--kui-color-on-success);
         box-shadow: 0 0 0 1px var(--kui-color-success);
     }
 
     .kui-timeline__item.is-warning .kui-timeline__dot {
         background: var(--kui-color-warning);
+        color: var(--kui-color-on-warning);
         box-shadow: 0 0 0 1px var(--kui-color-warning);
     }
 
     .kui-timeline__item.is-danger .kui-timeline__dot {
         background: var(--kui-color-danger);
+        color: var(--kui-color-on-danger);
         box-shadow: 0 0 0 1px var(--kui-color-danger);
     }
 

@@ -1,5 +1,5 @@
 import { IframeTabs, PjaxTabs, Tab } from '@kui/core'
-import { trackComponent, trackDispose } from '../../context'
+import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
 

@@ -14,12 +14,12 @@ export default defineConfig({
     projects: [
         {
             name: 'docs-chromium',
-            testMatch: ['**/docs.spec.ts'],
+            testMatch: ['**/docs.spec.ts', '**/themes.spec.ts'],
             use: { ...devices['Desktop Chrome'], ...(browserChannel ? { channel: browserChannel } : {}) },
         },
         {
             name: 'docs-mobile',
-            testMatch: ['**/docs.spec.ts'],
+            testMatch: ['**/docs.spec.ts', '**/themes.spec.ts'],
             use: { ...devices['Pixel 7'], ...(browserChannel ? { channel: browserChannel } : {}) },
         },
         {

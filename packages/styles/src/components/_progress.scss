@@ -30,10 +30,10 @@
         transition: width var(--kui-motion-duration-base) ease;
     }
 
-    .progress-bar-success { background: var(--kui-color-success); }
-    .progress-bar-info { background: var(--kui-color-info); }
-    .progress-bar-warning { background: var(--kui-color-warning); }
-    .progress-bar-danger { background: var(--kui-color-danger); }
+    .progress-bar-success { background: var(--kui-color-success); color: var(--kui-color-on-success); }
+    .progress-bar-info { background: var(--kui-color-info); color: var(--kui-color-on-info); }
+    .progress-bar-warning { background: var(--kui-color-warning); color: var(--kui-color-on-warning); }
+    .progress-bar-danger { background: var(--kui-color-danger); color: var(--kui-color-on-danger) }
 
     .progress-bar-striped {
         background-image: linear-gradient(

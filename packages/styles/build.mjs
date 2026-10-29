@@ -46,7 +46,7 @@ const foundation = await compileEntry('foundation');
 const full = await compileEntry('full');
 await cp(fontAwesomeSource, resolve(output, 'font-awesome-4.7'), { recursive: true });
 await writeFile(resolve(output, 'foundation.css'), joinCss(tokenCss, foundation));
-await writeFile(resolve(output, 'full.css'), joinCss('@import "./font-awesome-4.7/css/font-awesome.min.css";', tokenCss, full));
+await writeFile(resolve(output, 'full.css'), joinCss('@import "./font-awesome-4.7/css/font-awesome.css";', tokenCss, full));
 
 async function compileEntry(entry) {
     const result = await sass.compileAsync(resolve(sourceRoot, `entries/${entry}.scss`), {

@@ -31,9 +31,9 @@
         box-shadow: var(--kui-shadow-component);
     }
 
-    .kui-ribbon__corner > span.is-success { background: var(--kui-color-success); color: var(--kui-color-on-primary); }
-    .kui-ribbon__corner > span.is-warning { background: var(--kui-color-warning); color: var(--kui-color-on-primary); }
-    .kui-ribbon__corner > span.is-danger { background: var(--kui-color-danger); color: var(--kui-color-on-primary); }
+    .kui-ribbon__corner > span.is-success { background: var(--kui-color-success); color: var(--kui-color-on-success); }
+    .kui-ribbon__corner > span.is-warning { background: var(--kui-color-warning); color: var(--kui-color-on-warning); }
+    .kui-ribbon__corner > span.is-danger { background: var(--kui-color-danger); color: var(--kui-color-on-danger); }
     .kui-ribbon__corner > span.is-neutral {
         background: var(--kui-color-surface-muted);
         color: var(--kui-color-text-muted);

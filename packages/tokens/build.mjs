@@ -14,7 +14,10 @@ await mkdir(output, { recursive: true });
 await run(process.execPath, [resolve(packageRoot, '../../node_modules/typescript/bin/tsc'), '-p', resolve(packageRoot, 'tsconfig.json')]);
 
 const result = await sass.compileAsync(resolve(packageRoot, 'src/styles/_layers.scss'), {style: 'compressed' });
-await writeFile(resolve(output, 'tokens.css'), result.css);
+const { createAppearanceCss } = await import(`${pathToFileURL(resolve(output, 'appearance.js')).href}?build=${Date.now()}`);
+const layerCss = result.css.trimEnd();
+const terminatedLayerCss = layerCss.endsWith(';') ? layerCss : `${layerCss};`;
+await writeFile(resolve(output, 'tokens.css'), `${terminatedLayerCss}\n${createAppearanceCss()}`);
 
 const tokenModule = await import (`${pathToFileURL(resolve(output, 'index.js')).href}?build=${Date.now()}`);
 const flattened = tokenModule.flattenThemeTokens(tokenModule.defaultTokens);

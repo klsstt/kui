@@ -64,17 +64,22 @@
 
     .badge-solid.badge-success {
         background: var(--kui-color-success);
-        color: var(--kui-color-on-primary);
+        color: var(--kui-color-on-success);
     }
 
     .badge-solid.badge-warning {
         background: var(--kui-color-warning);
-        color: var(--kui-color-on-primary);
+        color: var(--kui-color-on-warning);
     }
 
     .badge-solid.badge-danger {
         background: var(--kui-color-danger);
-        color: var(--kui-color-on-primary);
+        color: var(--kui-color-on-danger);
+    }
+
+    .badge-solid.badge-info {
+        background: var(--kui-color-info);
+        color: var(--kui-color-on-info);
     }
 
     .badge-dot {

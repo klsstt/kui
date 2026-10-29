@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, statSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
 
 const repositoryRoot = process.cwd()
 // 阈值按「最小合理产物」设定：桶文件（仅 re-export）与压缩后的 reset 都很小，
@@ -18,6 +18,29 @@ const expectations = [
 ]
 
 const failures = []
+const checkedStylesheets = new Set()
+
+function checkStylesheetAssets(file) {
+    if (checkedStylesheets.has(file) || !existsSync(file)) return
+    checkedStylesheets.add(file)
+    const content = readFileSync(file, 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '')
+    const references = [
+        ...[...content.matchAll(/@import\s+['"]([^'"]+)['"]/g)].map((match) => match[1]),
+        ...[...content.matchAll(/url\(\s*(?:'([^']*)'|"([^"]*)"|([^\s)]+))\s*\)/g)]
+            .map((match) => match[1] ?? match[2] ?? match[3]),
+    ]
+    for (const reference of new Set(references)) {
+        if (!reference || /^(?:[a-z][z-z\d+.-]*:|\/|#)/i.test(reference)) continue
+        const path = reference.split(/[?#]/, 1)[0]
+        if (!path) continue
+        const target = resolve(dirname(file), path)
+        if (!existsSync(target) || !statSync(target).isFile()) {
+            failures.push(`CSS 引用缺少资源：${relative(repositoryRoot, file)} → ${reference}`)
+        } else if (target.endsWith('.css')) {
+            checkStylesheetAssets(target)
+        }
+    }
+}
 
 for (const expectation of expectations) {
     const target = resolve(repositoryRoot, expectation.file)
@@ -31,14 +54,15 @@ for (const expectation of expectations) {
         continue
     }
     console.log(`[ok] ${expectation.file} ${size} 字节`)
+    if (target.endsWith('.css')) checkStylesheetAssets(target)
 }
 
 const tokensCss = resolve(repositoryRoot, 'packages/tokens/dist/tokens.css')
 if (existsSync(tokensCss)) {
     const content = readFileSync(tokensCss, 'utf8')
     const layerOrder = ['kui.tokens', 'kui.base', 'kui.components', 'kui.utilities', 'kui.overrides']
-    const positions = layerOrder.map((layer) => content.indexOf(layer))
-    const declared = positions.every((position, index) => index === 0 || position > positions[index - 1])
+    const declaration = content.match(/@layer\s+([^;{}]+);/)?.[1].split(',').map((layer) => layer.trim())
+    const declared = declaration?.length === layerOrder.length && layerOrder.every((layer, index) => declaration[index] === layer)
     if (!declared) {
         failures.push('tokens.css 未声明完整的 @layer 顺序')
     }

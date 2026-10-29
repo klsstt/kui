@@ -289,11 +289,11 @@ ${demo({
 
 ${callout('派生色一律写成 <code>color-mix(in srgb, var(--kui-color-…) 12%, var(--kui-color-surface))</code>：主题切换时混色基数跟着变，不必为每个主题维护一套色值。只有色板本身保存原始 hex，组件里不出现字面色值。')}
 
-${sectionTitle('主题', 'blue / green / dark 三个主题共用同一套令牌名，只换品牌色与中性阶。')}
+${sectionTitle('主题与明暗模式', '12 个主题共用同一套令牌名，浅色 / 深色通过顶栏状态按钮切换。')}
 
 ${demo({
     title: '切换主题',
-    desc: '主题按钮把 data-kui-theme 写到 html 上，整站一起换色：品牌色、文本、描边、表面与焦点环同步变化，布局与间距不动。离开本页时自动恢复进入前的主题。',
+    desc: '主题按钮把 data-kui-theme 写到 html 上，整站一起换色：顶栏明暗独立切换 data-kui-mode, 品牌色、文本、描边、表面与焦点环同步变化，组件功能与布局不动。离开本页时自动恢复进入前的主题。',
     tags: ['[data-kui-theme]', '--kui-seed-color-brand'],
     script: `
 const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-col-theme]'))
@@ -312,9 +312,7 @@ buttons.forEach((button) => {
 <div class="kui-stack" data-col-scope>
     <div class="kui-cluster">
         <div class="kui-segmented" role="group" aria-label="选择主题">
-            <button type="button" class="is-active" data-col-theme="blue">经典蓝</button>
-            <button type="button" data-col-theme="green">生态绿</button>
-            <button type="button" data-col-theme="dark">深色</button>
+            ${colorPalette.map((theme) => `<button type="button" class="btn btn-outline btn-primary btn-sm" data-col-theme="${theme.id}">${theme.label}</button>`).join('')}
         </div>
         <span class="kui-stat__label" data-col-status>当前主题：blue · 整站生效</span>
     </div>
@@ -327,7 +325,7 @@ buttons.forEach((button) => {
             <span class="kui-dot kui-dot--primary" aria-hidden="true"></span>
         </div>
         <div class="progress progress-sm"><div class="progress-bar" style="width: 62%"></div></div>
-        <p class="kui-page-header__desc">同一段结构在三个主题下只换令牌值：按钮、徽章、进度与文本一起换色，组件代码一个字都不用改。</p>
+        <p class="kui-page-header__desc">同一段结构支持12色 x 明暗模式：按钮、徽章、进度、表面与文本一起换色，组件行为保持不变。</p>
     </div>
 </div>`,
 })}
@@ -357,7 +355,8 @@ ${propsTable([
     { name: '--kui-color-background', type: 'color', defaultValue: 'neutral-50', desc: '页面底色，比表面低一层。' },
     { name: '--kui-color-on-primary', type: 'color', defaultValue: 'white', desc: '品牌色上的反白文字，主题切换时同步。' },
     { name: '--kui-shadow-sm / -md / -lg', type: 'shadow', defaultValue: 'seed', desc: '三档阴影：下拉与悬停 / 浮层 / 整屏浮层。' },
-    { name: '[data-kui-theme]', type: 'attribute', defaultValue: 'blue', desc: '取值 <code>blue</code> / <code>green</code> / <code>dark</code>，可写在任意容器上。' },
+    { name: '[data-kui-theme]', type: 'attribute', defaultValue: 'blue', desc: '支持色卡中的12个颜色id, 例如 <code>blue</code> / <code>green</code> / <code>amber</code>' },
+    { name: '[data-kui-mode]', type: 'attribute', defaultValue: 'light', desc: '<code>light</code> / <code>dark</code>, 与颜色独立，局部主题请将两个属性写在同一个容器上。' },
 ])}
 
 `

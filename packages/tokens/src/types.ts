@@ -74,6 +74,11 @@ export interface KuiSemanticTokens {
     colorSurfaceMuted: string
     colorSurfaceHover: string
     colorOnPrimary: string
+    colorOnSuccess: string
+    colorOnWarning: string
+    colorOnDanger: string
+    colorOnInfo: string
+    colorOnText: string
     colorText: string
     colorTextMuted: string
     colorTextSubtle: string

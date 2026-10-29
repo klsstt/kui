@@ -12,7 +12,7 @@ import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui
 export default function render({ root, meta }: DocPageContext): void {
     root.innerHTML = `
 ${pageHead(meta, {
-    lead: '悬浮不是只有提示语。按承载的信息量分三档：Tooltip 解释一个词或一个图标，Dropdown 给出一组同级动作，Popover 承载一整段可以继续操作的内容——按钮组、列表、表格、图文，甚至一张小表单。所有触发器都是 <button type="button">，不使用 # 锚点，因此打开浮层不会改变页面滚动位置。',
+    lead: '悬浮不是只有提示语。按承载的信息量分三档：<code>Tooltip</code> 解释一个词或一个图标，<code>Dropdown</code> 给出一组同级动作，<code>Popover</code> 承载一整段可以继续操作的内容——按钮组、列表、表格、图文，甚至一张小表单。所有触发器都是 <code>&lt;button type="button"&gt;</code>，不使用 <code>#</code> 锚点，因此打开浮层不会改变页面滚动位置。',
     tags: ['Dropdown', 'Tooltip', 'Popover', 'button'],
 })}
 

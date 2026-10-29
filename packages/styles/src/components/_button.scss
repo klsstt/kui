@@ -1,5 +1,6 @@
 @layer kui.components {
     .btn {
+        --kui-button-on-fill: var(--kui-color-on-text);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -53,14 +54,14 @@
     .btn-danger,
     .btn-dark {
         border-color: transparent;
-        color: var(--kui-color-on-primary);
+        color: var(--kui-button-on-fill);
     }
 
-    .btn-primary { background: var(--kui-color-primary); }
-    .btn-success { background: var(--kui-color-success); }
-    .btn-info { background: var(--kui-color-info); }
-    .btn-warning { background: var(--kui-color-warning); }
-    .btn-danger { background: var(--kui-color-danger); }
+    .btn-primary { --kui-button-on-fill: var(--kui-color-on-primary); background: var(--kui-color-primary); }
+    .btn-success { --kui-button-on-fill: var(--kui-color-on-success); background: var(--kui-color-success); }
+    .btn-info { --kui-button-on-fill: var(--kui-color-on-info); background: var(--kui-color-info); }
+    .btn-warning { --kui-button-on-fill: var(--kui-color-on-warning); background: var(--kui-color-warning); }
+    .btn-danger { --kui-button-on-fill: var(--kui-color-on-danger); background: var(--kui-color-danger); }
     .btn-dark { background: var(--kui-color-text); }
 
     .btn-primary:hover,
@@ -77,7 +78,7 @@
     .btn-dark:hover,
     .btn-dark:focus-visible {
         border-color: transparent;
-        color: var(--kui-color-on-primary);
+        color: var(--kui-button-on-fill);
         filter: brightness(0.94);
     }
 
@@ -96,7 +97,7 @@
 
     .btn-outline:hover,
     .btn-outline:focus-visible {
-        color: var(--kui-color-on-primary);
+        color: var(--kui-button-on-fill);
         background: var(--kui-color-text-muted);
         border-color: var(--kui-color-text-muted);
     }
@@ -187,8 +188,8 @@
     .btn-warning.is-loading::after,
     .btn-info.is-loading::after,
     .btn-dark.is-loading::after {
-        border-color: color-mix(in srgb, var(--kui-color-on-primary) 36%, transparent);
-        border-top-color: var(--kui-color-on-primary);
+        border-color: color-mix(in srgb, var(--kui-color-on-fill) 36%, transparent);
+        border-top-color: var(--kui-button-on-fill);
     }
 
     .btn.is-loading {

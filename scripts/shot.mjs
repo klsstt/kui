@@ -40,10 +40,16 @@ for (const id of targets) {
     messages.length = 0
     await page.goto(`${base}/#/${id}`, { waitUntil: 'load' })
     await page.waitForTimeout(900)
-    if (process.env.KUI_SHOT_THEME) {
-        await page.evaluate((theme) => {
-            document.documentElement.dataset.kuiTheme = theme
-        }, process.env.KUI_SHOT_THEME)
+    if (process.env.KUI_SHOT_THEME || process.env.KUI_SHOT_MODE) {
+        await page.evaluate(({theme, mode}) => {
+            if (theme === 'dark') {
+                document.documentElement.dataset.kuiTheme = 'blue'
+                document.documentElement.dataset.kuiMode = 'dark'
+            } else if (theme) {
+                document.documentElement.dataset.kuiTheme = theme
+            }
+            if (mode === 'light' || mode === 'dark') document.documentElement.dataset.kuiMode = mode
+        }, { theme: process.env.KUI_SHOT_THEME, mode: process.env.KUI_SHOT_MODE })
         await page.waitForTimeout(300)
     }
     if (process.env.KUI_SHOT_OPEN === '1') {
@@ -53,7 +59,7 @@ for (const id of targets) {
         }
         await page.waitForTimeout(400)
     }
-    const file = resolve(output, `${id}${mobile ? '-mobile' : ''}${process.env.KUI_SHOT_THEME ? `-${process.env.KUI_SHOT_THEME}` : ''}.png`)
+    const file = resolve(output, `${id}${mobile ? '-mobile' : ''}${process.env.KUI_SHOT_THEME ? `-${process.env.KUI_SHOT_THEME}` : ''}${process.env.KUI_SHOT_MODE ? `-{process.evn.KUI_SHOT_MODE}` : ''}.png`)
     await page.screenshot({ path: file, fullPage: process.env.KUI_SHOT_VIEWPORT !== '1' })
     const title = await page.title()
     const demos = await page.locator('[data-demo]').count()

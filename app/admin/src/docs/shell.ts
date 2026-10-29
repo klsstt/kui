@@ -10,6 +10,7 @@ import type { Route } from './router'
  */
 
 const THEME_KEY = 'kui-docs-theme'
+const MODE_KEY = 'kui-docs-mode'
 const SIDEBAR_KEY = 'kui-docs-sidebar'
 const TOPBAR_KEY = 'kui-docs-topbar'
 const GROUP_KEY = 'kui-docs-groups'
@@ -17,7 +18,7 @@ const GROUP_KEY = 'kui-docs-groups'
 export interface ThemeChoice {
     value: string
     label: string
-    /** 设置面板色点颜色，取该色系 600；深色主题按页面底色给值 */
+    /** 设置面板色点颜色，取该色系 600 */
     color: string
 }
 
@@ -26,14 +27,13 @@ function shortColorLabel(label: string): string {
     return label.replace(/色$/, '')
 }
 
-/** 12 个色系与 colorPalette 同源，另加一个深色主题 */
+/** 12 个色系与 colorPalette 同源 */
 export const themeChoices: ThemeChoice[] = [
     ...colorPalette.map((ramp) => ({
         value: ramp.id,
         label: shortColorLabel(ramp.label),
         color: ramp.shades['600'],
-    })),
-    { value: 'dark', label: '深色', color: '#0f172a' },
+    }))
 ]
 
 export interface TocItem {
@@ -71,12 +71,30 @@ function write(key: string, value: string): void {
 }
 
 export function currentTheme(): string {
-    return document.documentElement.dataset.kuiTheme ?? read(THEME_KEY) ?? 'blue'
+    const value = document.documentElement.dataset.kuiTheme ?? read(THEME_KEY)
+    return themeChoices.some((theme) => theme.value === value) ? value!: 'blue'
 }
 
 export function applyTheme(value: string): void {
-    document.documentElement.dataset.kuiTheme = value
-    write(THEME_KEY, value)
+    const theme = themeChoices.some((choice) => choice.value === value) ? value : 'blue'
+    document.documentElement.dataset.kuiTheme = theme
+    write(THEME_KEY, theme)
+}
+
+export function currentMode(): 'light' | 'dark' {
+    return (document.documentElement.dataset.kuiMode ?? read(MODE_KEY)) === 'dark' ? 'dark' : 'light'
+}
+
+export function applyMode(mode: 'light' | 'dark'): void {
+    document.documentElement.dataset.kuiMode = mode
+    write(MODE_KEY, mode)
+}
+
+export function initializeAppearance(): void {
+    const savedTheme = read(THEME_KEY)
+    const savedMode = read(MODE_KEY)
+    applyMode(savedMode === 'dark' || (!savedMode && savedTheme === 'dark') ? 'dark' : 'light')
+    applyTheme(savedTheme ?? document.documentElement.dataset.kuiTheme ?? 'blue')
 }
 
 function renderNav(): string {
@@ -131,6 +149,9 @@ function renderShell(): string {
     <div class="docs-topbar__actions">
         <button type="button" class="docs-topbar__icon docs-settings-trigger" data-docs-settings aria-label="打开设置" aria-expanded="false" aria-controls="docs-settings">
             <i class="fa fa-cog" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="docs-topbar__icon docs-mode-trigger" data-docs-mode aria-label="切换到深色模式" aria-pressed="false" title="切换到深色模式">
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
         </button>
         <button type="button" class="docs-topbar__icon" data-docs-menu aria-label="打开组件导航" aria-expanded="false">
             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -220,7 +241,7 @@ function renderShell(): string {
 }
 
 export function renderDocsShell(root: HTMLElement): DocsShell {
-    applyTheme(currentTheme())
+    initializeAppearance()
     root.classList.add('docs')
     root.innerHTML = renderShell()
 
@@ -263,6 +284,24 @@ export function renderDocsShell(root: HTMLElement): DocsShell {
     })
     syncThemeDots()
 
+    const modeButton = root.querySelector<HTMLButtonElement>('[data-docs-mode]')
+    const syncModeButton = () : void => {
+        const dark = currentMode() === 'dark'
+        const label = dark ? '切换到浅色模式' : '切换到深色模式'
+        modeButton?.setAttribute('aria-pressed', String(dark))
+        modeButton?.setAttribute('aria-label', label)
+        if (modeButton) modeButton.title = label
+        modeButton?.querySelector('i')?.classList.toggle('fa-moon-o', !dark)
+        modeButton?.querySelector('i')?.classList.toggle('fa-sun-o', dark)
+    }
+    const toggleMode = () : void => {
+        applyMode(currentMode() === 'dark' ? 'light' : 'dark')
+        syncModeButton()
+    }
+    modeButton?.addEventListener('click', toggleMode)
+    trackPersistent(() => modeButton?.removeEventListener('click', toggleMode))
+    syncModeButton()
+
     /* ---------- 侧栏整体收缩 ---------- */
     const isCollapsed = (): boolean => root.classList.contains('is-collapsed')
     const setCollapsed = (collapsed: boolean): void => {
@@ -285,13 +324,14 @@ export function renderDocsShell(root: HTMLElement): DocsShell {
         settingsTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', String(open)))
         scrim.hidden = !open && !root.classList.contains('is-drawer-open')
         if (open) {
+            syncThemeDots()
             const active = settingsPanel.querySelector<HTMLElement>('[data-theme-value].is-active')
             active?.focus()
         } else if (restoreFocus) {
             settingsTriggers[0]?.focus()
         }
     }
-    settingsTriggers.forEach((trigger) => trigger.addEventListener('click', () => setSettings(settingsPanel.hidden)))
+    settingsTriggers.forEach((trigger) => trigger.addEventListener('click', () => setSettings(Boolean(settingsPanel.hidden))))
     settingsClose?.addEventListener('click', () => setSettings(false))
     settingsDone?.addEventListener('click', () => setSettings(false))
 
@@ -306,7 +346,9 @@ export function renderDocsShell(root: HTMLElement): DocsShell {
 
     settingsReset?.addEventListener('click', () => {
         applyTheme('blue')
+        applyMode('light')
         syncThemeDots()
+        syncModeButton()
         setTopbarHidden(false)
         setCollapsed(false)
     })
