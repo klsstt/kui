@@ -5,9 +5,9 @@ const repositoryRoot = process.cwd()
 const violations = []
 
 const forbiddenImports = {
-    'packages/core': ['@kui/style', '@kui/tokens', 'packages/styles', 'packages/tokens'],
-    'packages/styles': ['@kui/core', 'packages/core'],
-    'packages/tokens': ['@kui/core', '@kui/style', 'packages/core', 'packages/styles'],
+    'packages/core': ['@kuiuni/style', '@kuiuni/tokens', 'packages/styles', 'packages/tokens'],
+    'packages/styles': ['@kuiuni/core', 'packages/core'],
+    'packages/tokens': ['@kuiuni/core', '@kuiuni/style', 'packages/core', 'packages/styles'],
 }
 
 function walk(dir, onFile) {

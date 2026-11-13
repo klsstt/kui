@@ -1,11 +1,11 @@
-import { colorPalette, colorShades } from '@kui/tokens'
+import { colorPalette, colorShades } from '@kuiuni/tokens'
 import { trackDispose } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, codeSample, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
 
 /**
  * 颜色。
- * 页面里不出现随手取的字面色值：色卡直接来自 @kui/tokens 的 12 色系 × 8 阶，
+ * 页面里不出现随手取的字面色值：色卡直接来自 @kuiuni/tokens 的 12 色系 × 8 阶，
  * 组件只引用语义令牌，主题切换时改的是令牌值，不是某一行样式。
  */
 
@@ -331,7 +331,7 @@ buttons.forEach((button) => {
 })}
 
 ${codeSample(`
-import { colorPalette, colorShades } from '@kui/tokens'
+import { colorPalette, colorShades } from '@kuiuni/tokens'
 
 // 12 个色系，每个色系 8 阶（50 → 700）
 colorPalette.forEach((ramp) => {

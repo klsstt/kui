@@ -1,4 +1,4 @@
-import { Timeline } from '@kui/core'
+import { Timeline } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

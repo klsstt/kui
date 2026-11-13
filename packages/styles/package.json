@@ -1,5 +1,5 @@
 {
-  "name": "@kui/style",
+  "name": "@kuiuni/style",
   "version": "0.1.0",
   "description": "Pure CSS KUI foundations: tokens, reset, typography, accessibility, layout, and utilities.",
   "license":"MIT",
@@ -19,11 +19,11 @@
     "./full":"./dist/full.css",
     "./package.json": "./package.json"
   },
-  "dependencies": { "@kui/tokens": "0.1.0" },
-  "publishConfig": {"access": "public", "provenance": true},
+  "dependencies": { "@kuiuni/tokens": "0.1.0" },
+  "publishConfig": {"access": "public"},
   "engines": {"node": ">=20.19.0"},
   "scripts": {
-    "build": "npm run build --workspace @kui/tokens && npm run build:local",
+    "build": "npm run build --workspace @kuiuni/tokens && npm run build:local",
     "build:local": "node build.mjs"
   }
 }

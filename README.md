@@ -18,14 +18,14 @@
 ## 分层
 
 ```
-@kui/tokens   设计令牌唯一真源（TypeScript / CSS 变量 / JSON 三份输出）
+@kuiuni/tokens   设计令牌唯一真源（TypeScript / CSS 变量 / JSON 三份输出）
      ↓
-@kui/style    基础样式、布局原语、组件样式（Cascade Layers 固定层序）
+@kuiuni/style    基础样式、布局原语、组件样式（Cascade Layers 固定层序）
      ↓
-@kui/core     框架无关的 DOM 行为（组件基类、事件、焦点、数据 API）
+@kuiuni/core     框架无关的 DOM 行为（组件基类、事件、焦点、数据 API）
 ```
 
-每层只依赖上一层，可以单独使用：只要视觉就引 `@kui/style`，只要行为就引 `@kui/core`。
+每层只依赖上一层，可以单独使用：只要视觉就引 `@kuiuni/style`，只要行为就引 `@kuiuni/core`。
 
 ## 快速开始
 
@@ -38,11 +38,11 @@ npm run verify     # 类型、体积、边界、单测、E2E、可访问性全�
 ```
 
 ```ts
-import '@kui/tokens/css'
-import '@kui/style/components'
-import '@kui/style/layout'
-import '@kui/style/utilities'
-import { Modal, Table } from '@kui/core'
+import '@kuiuni/tokens/css'
+import '@kuiuni/style/components'
+import '@kuiuni/style/layout'
+import '@kuiuni/style/utilities'
+import { Modal, Table } from '@kuiuni/core'
 
 const modal = Modal.getOrCreate('#confirm-dialog', { backdrop: 'static' })
 modal.show()

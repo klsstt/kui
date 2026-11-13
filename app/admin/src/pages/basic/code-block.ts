@@ -1,4 +1,4 @@
-import { CodeBlock } from '@kui/core'
+import { CodeBlock } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, codeSample, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
@@ -19,7 +19,7 @@ interface CodeSample {
 const SAMPLES: Record<string, CodeSample> = {
     ts: {
         label: 'TypeScript',
-        code: `import { Progress } from '@kui/core'
+        code: `import { Progress } from '@kuiuni/core'
 
 const bar = Progress.getOrCreate('#upload', { value: 40, showText: true })
 bar.setValue(72)
@@ -59,8 +59,8 @@ export function report(): number {
   "private": true,
   "scripts": { "build": "vite build" },
   "dependencies": {
-    "@kui/core": "^0.1.0",
-    "@kui/tokens": "^0.1.0"
+    "@kuiuni/core": "^0.1.0",
+    "@kuiuni/tokens": "^0.1.0"
   }
 }`,
     },
@@ -236,10 +236,10 @@ ${demo({
 ${callout('在示例里再嵌代码块时，必须先把源码的尖括号写成 <code>&amp;lt;</code> 与 <code>&amp;gt;</code>，否则浏览器会把它当成真实结构渲染；页面自身用转义函数统一处理这一步。')}
 
 ${codeSample(`
-npm install @kui/core @kui/style @kui/tokens
+npm install @kuiuni/core @kuiuni/style @kuiuni/tokens
 
 # 只装核心组件与样式
-npm install @kui/core @kui/style
+npm install @kuiuni/core @kuiuni/style
 `, 'bash', '安装')}
 
 ${propsTable([

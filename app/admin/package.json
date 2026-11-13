@@ -1,5 +1,5 @@
 {
-  "name": "@kui/docs",
+  "name": "@kuiuni/docs",
   "private": true,
   "description": "KUI 文档站：分类组件示例、可复制源码与全端预览，仅部署不发布。"
 }

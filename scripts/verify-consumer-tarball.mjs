@@ -3,9 +3,9 @@ import { resolve } from 'node:path'
 
 const repositoryRoot = process.cwd()
 const packages = [
-    { name: '@kui/tokens', dist: 'packages/tokens/dist', files: ['index.js', 'index.d.ts', 'tokens.css'] },
-    { name: '@kui/style', dist: 'packages/styles/dist', files: ['full.css', 'components.css', 'reset.css'] },
-    { name: '@kui/core', dist: 'packages/core/dist', files: ['index.js', 'index.d.ts'] },
+    { name: '@kuiuni/tokens', dist: 'packages/tokens/dist', files: ['index.js', 'index.d.ts', 'tokens.css'] },
+    { name: '@kuiuni/style', dist: 'packages/styles/dist', files: ['full.css', 'components.css', 'reset.css'] },
+    { name: '@kuiuni/core', dist: 'packages/core/dist', files: ['index.js', 'index.d.ts'] },
 ]
 
 const failures = []

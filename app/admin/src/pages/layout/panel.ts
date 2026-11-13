@@ -1,4 +1,4 @@
-import { Panel } from '@kui/core'
+import { Panel } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

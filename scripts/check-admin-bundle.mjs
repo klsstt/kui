@@ -15,7 +15,7 @@ const htmlEntries = records.filter(([name]) => name.endsWith('.html'))
 const scriptChunks = records.filter(([name, item]) => !name.endsWith('.html') && item.file?.endsWith('.js'))
 console.log(`[ok] HTML 入口 ${htmlEntries.length} 个，脚本分块 ${scriptChunks.length} 个`)
 
-// 展示站必须依赖 @kui/core 的产物，而非源码目录，否则产物无法独立部署
+// 展示站必须依赖 @kuiuni/core 的产物，而非源码目录，否则产物无法独立部署
 const violations = []
 let cssChunkCount = 0
 for (const [name, item] of records) {

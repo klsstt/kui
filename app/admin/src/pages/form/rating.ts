@@ -1,4 +1,4 @@
-import { Rating, type KuiEventDetail } from '@kui/core'
+import { Rating, type KuiEventDetail } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

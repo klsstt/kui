@@ -1,5 +1,5 @@
 {
-  "name": "@kui/tokens",
+  "name": "@kuiuni/tokens",
   "version": "0.1.0",
   "description": "Framework-agnostic KUI design tokens as TypeScript, CSS variables, and JSON.",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "./json": "./dist/tokens.json",
     "./package.json": "./package.json"
   },
-  "publishConfig": {"access": "public", "provenance": true},
+  "publishConfig": {"access": "public"},
   "engines": {"node": ">=20.19.0"},
   "scripts": {
     "build": "node build.mjs",

@@ -1,4 +1,4 @@
-import { Dropdown } from '@kui/core'
+import { Dropdown } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

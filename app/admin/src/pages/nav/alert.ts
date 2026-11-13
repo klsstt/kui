@@ -1,4 +1,4 @@
-import { Alert } from '@kui/core'
+import { Alert } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { demo, pageHead, propsTable } from '../../docs/ui'

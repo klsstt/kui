@@ -1,4 +1,4 @@
-import { CodeBlock } from '@kui/core'
+import { CodeBlock } from '@kuiuni/core'
 import { trackComponent } from '../context'
 import { groupIndexLabel } from './nav'
 import type { DocPageMeta } from './types'

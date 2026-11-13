@@ -1,4 +1,4 @@
-import { Progress, Switchery } from '@kui/core'
+import { Progress, Switchery } from '@kuiuni/core'
 import { trackComponent, trackDispose } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

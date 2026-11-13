@@ -44,9 +44,9 @@ const details = [
 ]
 
 const layers = [
-    { name: '@kui/tokens', role: '设计令牌唯一真源', points: ['四层令牌', 'TS / CSS / JSON 三份输出', '构建期一致性校验'] },
-    { name: '@kui/style', role: '基础与组件样式', points: ['Cascade Layers 分层', '容器查询响应式', '20+ 组件样式文件'] },
-    { name: '@kui/core', role: '框架无关的 DOM 行为', points: ['Component 基类', 'getOrCreate 单例', 'dispose 零残留'] },
+    { name: '@kuiuni/tokens', role: '设计令牌唯一真源', points: ['四层令牌', 'TS / CSS / JSON 三份输出', '构建期一致性校验'] },
+    { name: '@kuiuni/style', role: '基础与组件样式', points: ['Cascade Layers 分层', '容器查询响应式', '20+ 组件样式文件'] },
+    { name: '@kuiuni/core', role: '框架无关的 DOM 行为', points: ['Component 基类', 'getOrCreate 单例', 'dispose 零残留'] },
 ]
 
 function categoryCards(): string {

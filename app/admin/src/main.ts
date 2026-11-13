@@ -1,4 +1,4 @@
-import '@kui/style/full'
+import '@kuiuni/style/full'
 
 import './styles/site.scss'
 

@@ -1,4 +1,4 @@
-import type { TreeItem } from '@kui/core'
+import type { TreeItem } from '@kuiuni/core'
 import type { DocPageContext } from '../../docs/types'
 import { callout, codeSample, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
 

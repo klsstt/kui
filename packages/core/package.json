@@ -1,5 +1,5 @@
 {
-  "name": "@kui/core",
+  "name": "@kuiuni/core",
   "version": "0.1.0",
   "description": "Framework-agnostic, accessible KUI DOM controllers with typed component subpath exports.",
   "license":"MIT",
@@ -20,7 +20,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": { "@floating-ui/dom": "^1.6.13" },
-  "publishConfig": {"access": "public", "provenance": true},
+  "publishConfig": {"access": "public" },
   "engines": {"node": ">=20.19.0"},
   "scripts": {
     "build": "vite build --config vite.config.ts",

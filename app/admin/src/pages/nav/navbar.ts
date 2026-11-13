@@ -1,4 +1,4 @@
-import { Collapse } from '@kui/core'
+import { Collapse } from '@kuiuni/core'
 import { trackComponent, trackDispose } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
@@ -225,7 +225,7 @@ if (region && toggler) {
 </div>`,
 })}
 
-${callout('顶部导航与侧栏导航都使用 <code>&lt;button type="button"&gt;</code>，不写 <code>href="#"</code> 或 <code>javascript:void(0)</code>：侧栏的可点击行，图标对齐与选中态由 <code>@kui/style</code> 提供，<code>aria-current="page"</code> 标记当前入口，父分组用 <code>has-current</code> 在图标状态保留当前位置。收起只改变展示，不清空选中项和分组状态。')}
+${callout('顶部导航与侧栏导航都使用 <code>&lt;button type="button"&gt;</code>，不写 <code>href="#"</code> 或 <code>javascript:void(0)</code>：侧栏的可点击行，图标对齐与选中态由 <code>@kuiuni/style</code> 提供，<code>aria-current="page"</code> 标记当前入口，父分组用 <code>has-current</code> 在图标状态保留当前位置。收起只改变展示，不清空选中项和分组状态。')}
 
 ${propsTable([
     { name: '.navbar', type: 'class', defaultValue: '—', desc: '导航条容器：品牌、导航与动作三段，最小高度 52px。' },

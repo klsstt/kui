@@ -34,7 +34,7 @@ emptyDirectory(output);
 await mkdir(output, { recursive: true });
 
 const tokenCss = await readFile(tokenCssPath, 'utf8').catch(() => {
-    throw new Error('@kui/tokens must be built before @kui/styles. Run the package build script instead of build:local.');
+    throw new Error('@kuiuni/tokens must be built before @kuiuni/styles. Run the package build script instead of build:local.');
 });
 await cp(tokenCssPath, resolve(output, 'tokens.css'));
 

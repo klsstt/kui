@@ -1,4 +1,4 @@
-import { colorPalette } from '@kui/tokens'
+import { colorPalette } from '@kuiuni/tokens'
 
 import { trackPersistent } from '../context'
 import { docNav, docPages } from './nav'

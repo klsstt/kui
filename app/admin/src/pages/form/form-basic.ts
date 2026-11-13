@@ -1,4 +1,4 @@
-import { ColorPicker, IconPicker, Switchery, type KuiEventDetail } from '@kui/core'
+import { ColorPicker, IconPicker, Switchery, type KuiEventDetail } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import { iconCategories } from '../../data/icons'
 import type { DocPageContext } from '../../docs/types'
@@ -289,7 +289,7 @@ trigger.addEventListener('kui:iconpicker:change', (event) => {
 })}
 
 ${codeSample(`
-import { IconPicker } from '@kui/core'
+import { IconPicker } from '@kuiuni/core'
 import { iconCategories } from '../../data/icons'
 
 const icons = iconCategories.flatMap((category) => category.icons.map((name) => 'fa fa-' + name))

@@ -1,4 +1,4 @@
-import { DataGrid, Table, type DataGridColumn, type TableColumn, type TableRow } from '@kui/core'
+import { DataGrid, Table, type DataGridColumn, type TableColumn, type TableRow } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

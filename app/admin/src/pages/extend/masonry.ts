@@ -1,5 +1,5 @@
-import { Masonry } from '@kui/core'
-import type { MasonryOptions } from '@kui/core'
+import { Masonry } from '@kuiuni/core'
+import type { MasonryOptions } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

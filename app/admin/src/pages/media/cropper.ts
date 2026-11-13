@@ -1,5 +1,5 @@
-import { Cropper } from '@kui/core'
-import type { CropperCropData, CropperOptions, KuiEventDetail } from '@kui/core'
+import { Cropper } from '@kuiuni/core'
+import type { CropperCropData, CropperOptions, KuiEventDetail } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

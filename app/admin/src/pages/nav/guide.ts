@@ -1,4 +1,4 @@
-import { Tour } from '@kui/core'
+import { Tour } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

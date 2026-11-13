@@ -1,4 +1,4 @@
-import { RichText } from '@kui/core'
+import { RichText } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'
@@ -28,7 +28,7 @@ const value =
     '<blockquote><p>文案留白比形容词更有说服力。</p></blockquote>' +
     '<ul><li>主推三款外套</li><li>尺码表与往年一致</li></ul>' +
     '<img src="./images/photos/city-1.jpg" alt="街头舞者脚上的运动鞋与地面的涂鸦">' +
-    '<pre><code>npm install @kui/core</code></pre>'
+    '<pre><code>npm install @kuiuni/core</code></pre>'
 
 const editor = RichText.getOrCreate('[data-richtext-basic]', {
     value,
@@ -168,7 +168,7 @@ ${callout('工具栏只保留 Markdown 能完整表达的操作，因此从 HTML
         '<blockquote><p>文案留白比形容词更有说服力。</p></blockquote>' +
         '<ul><li>主推三款外套</li><li>尺码表与往年一致</li></ul>' +
         '<img src="./images/photos/city-1.jpg" alt="街头舞者脚上的运动鞋与地面的涂鸦">' +
-        '<pre><code>npm install @kui/core</code></pre>'
+        '<pre><code>npm install @kuiuni/core</code></pre>'
 
     const sampleMarkdown = [
         '# 上新节奏',

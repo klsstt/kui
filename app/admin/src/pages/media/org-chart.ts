@@ -1,5 +1,5 @@
-import { OrgChart } from '@kui/core'
-import type { OrgNode } from '@kui/core'
+import { OrgChart } from '@kuiuni/core'
+import type { OrgNode } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

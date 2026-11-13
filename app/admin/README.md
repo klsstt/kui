@@ -30,7 +30,7 @@ src/
 
 ## 约定
 
-- 该应用是 `private` 的非发布边界，只消费 `@kui/*` 的公开产物，禁止相对引用 `packages/*/src`。
+- 该应用是 `private` 的非发布边界，只消费 `@kuiuni/*` 的公开产物，禁止相对引用 `packages/*/src`。
 - 站点骨架用 `docs-*` 前缀，页面内容元件用 `doc-*` 前缀，宣传首页用 `home-*` 前缀；都不进入库产物。
 - 示例统一通过 `src/docs/ui.ts` 的 `demo()` 产出，预览与源码来自同一份字符串。
 - 图片走 `public/images/`（`./images/...`），不在页面里引用外链图片。

@@ -1,4 +1,4 @@
-import { ContextMenu, Draggable } from '@kui/core'
+import { ContextMenu, Draggable } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import type { DocPageContext } from '../../docs/types'
 import { callout, demo, pageHead, propsTable, sectionTitle } from '../../docs/ui'

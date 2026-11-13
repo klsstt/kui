@@ -1,4 +1,4 @@
-import { ColorPicker, DateRangePicker, DateTimePicker, IconPicker, SelectPicker, type DateRangeValue, type DateTimePickerMode, type KuiEventDetail } from '@kui/core'
+import { ColorPicker, DateRangePicker, DateTimePicker, IconPicker, SelectPicker, type DateRangeValue, type DateTimePickerMode, type KuiEventDetail } from '@kuiuni/core'
 import { trackComponent } from '../../context'
 import { iconCategories } from '../../data/icons'
 import type { DocPageContext } from '../../docs/types'
@@ -434,7 +434,7 @@ host.addEventListener('kui:datetimepicker:change', (event) => {
 
 ${demo({
     title: '图标选择：弹层 + 搜索 + 回写',
-    desc: '用法与基础表单一致：从 <code>@kui/core</code> 引入 <code>IconPicker</code>，把 <code>iconCategories</code> 摊平成 <code>fa fa-*</code> 数组后传给 <code>getOrCreate</code>；弹层负责搜索与点选，<code>kui:iconpicker:change</code> 负责回写。',
+    desc: '用法与基础表单一致：从 <code>@kuiuni/core</code> 引入 <code>IconPicker</code>，把 <code>iconCategories</code> 摊平成 <code>fa fa-*</code> 数组后传给 <code>getOrCreate</code>；弹层负责搜索与点选，<code>kui:iconpicker:change</code> 负责回写。',
     tags: ['IconPicker', 'search', 'kui:iconpicker:change'],
     script: `
 const icons = iconCategories.flatMap((category) => category.icons.map((name) => 'fa fa-' + name))
