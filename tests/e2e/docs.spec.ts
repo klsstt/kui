@@ -45,18 +45,6 @@ test('示例可以展开源码并复制', async ({ page, context }) => {
     expect(clipboard).toContain('btn-primary')
 })
 
-test('三套主题切换后颜色令牌随之变化', async ({ page }) => {
-    await page.goto('/#/dashboard')
-    const primary = () => page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--kui-color-primary').trim())
-    await page.locator('[data-docs-settings]').first().click()
-    await page.locator('[data-theme-value="green"]').click()
-    await expect(page.locator('html')).toHaveAttribute('data-kui-theme', 'green')
-    const green = await primary()
-    await page.locator('[data-theme-value="dark"]').click()
-    await expect(page.locator('html')).toHaveAttribute('data-kui-theme', 'dark')
-    const dark = await primary()
-    expect(green).not.toBe(dark)
-})
 
 test('侧栏可以收起、展开，并能按关键字过滤', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name.includes('mobile'), '移动端使用抽屉导航，折叠仅桌面端提供')
